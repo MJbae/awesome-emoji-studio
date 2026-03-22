@@ -1,0 +1,30 @@
+# Dependencies
+node_modules
+
+# Build
+dist
+out
+
+# Coverage
+coverage
+
+# Environment
+.env.local
+.env
+
+# Playwright
+playwright-report
+test-results
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+.DS_Store
+
+# Serena
+.serena/
+
+# CLI output
+output/
