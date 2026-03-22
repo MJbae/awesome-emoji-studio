@@ -1,0 +1,35 @@
+{
+  "name": "@emoji/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "emoji-cli": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@google/genai": "latest",
+    "chalk": "^5.4.0",
+    "commander": "^13.1.0",
+    "dotenv": "^16.4.0",
+    "jszip": "^3.10.1",
+    "ora": "^8.2.0",
+    "sharp": "^0.33.0",
+    "uuid": "^11.0.0",
+    "zod": "^3.24.0",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.0",
+    "typescript": "~5.8.0",
+    "vitest": "^3.0.0"
+  }
+}
