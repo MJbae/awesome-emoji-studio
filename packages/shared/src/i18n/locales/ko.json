@@ -19,8 +19,10 @@
         "stickersShort": "이모지",
         "postprocess": "후처리",
         "postprocessShort": "후처리",
-        "metadata": "메타 · 내보내기",
-        "metadataShort": "내보내기"
+        "metadata": "메타데이터",
+        "metadataShort": "메타",
+        "export": "내보내기",
+        "exportShort": "내보내기"
     },
     "input": {
         "step1": "1단계",
@@ -107,10 +109,6 @@
         "subtitle": "대상 언어를 선택하세요 (복수 선택 가능). Gemini AI가 이모지를 분석하여 각 언어에 최적화된 메타데이터를 생성합니다.",
         "generate": "메타데이터 생성",
         "results": "생성 결과",
-        "exportZip": "ZIP 내보내기",
-        "exporting": "내보내기 중…",
-        "exportFailed": "내보내기 실패",
-        "exportFailedDesc": "인앱 브라우저에서는 다운로드가 제한될 수 있습니다. Safari 또는 Chrome에서 다시 시도해 주세요.",
         "selected": "선택됨",
         "select": "선택",
         "titleLabel": "제목",
@@ -123,6 +121,29 @@
         "tone": "톤",
         "seo": "SEO",
         "creativity": "창의성"
+    },
+    "export": {
+        "title": "이모지 팩 내보내기",
+        "subtitle": "내보낼 플랫폼을 선택하고 다운로드하세요.",
+        "selectPlatforms": "플랫폼 선택",
+        "selectAll": "전체 선택",
+        "deselectAll": "전체 해제",
+        "exportSelected": "선택 플랫폼 내보내기",
+        "exportCombined": "통합 ZIP 내보내기",
+        "exporting": "내보내기 중…",
+        "exportProgress": "내보내기 진행",
+        "exportComplete": "내보내기 완료",
+        "exportFailed": "실패",
+        "comingSoon": "Coming Soon",
+        "dimensions": "크기",
+        "format": "포맷",
+        "maxCount": "수량",
+        "maxSize": "최대 크기",
+        "readyCount": "{{count}}개 플랫폼 준비 완료",
+        "categoryKorean": "한국 플랫폼",
+        "categoryJapanese": "일본 플랫폼",
+        "categoryTelegram": "Telegram",
+        "categorySocial": "소셜 미디어"
     },
     "setup": {
         "apiTitle": "API 키 설정",

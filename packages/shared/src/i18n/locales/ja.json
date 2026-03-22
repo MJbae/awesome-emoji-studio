@@ -19,8 +19,10 @@
         "stickersShort": "絵文字",
         "postprocess": "後処理",
         "postprocessShort": "後処理",
-        "metadata": "メタデータ・エクスポート",
-        "metadataShort": "出力"
+        "metadata": "メタデータ",
+        "metadataShort": "メタ",
+        "export": "エクスポート",
+        "exportShort": "出力"
     },
     "input": {
         "step1": "ステップ 1",
@@ -107,10 +109,6 @@
         "subtitle": "対象言語を選択してください（複数選択可）。Gemini AIが絵文字を分析し、各言語に最適化されたメタデータを生成します。",
         "generate": "メタデータ生成",
         "results": "生成結果",
-        "exportZip": "ZIP エクスポート",
-        "exporting": "エクスポート中...",
-        "exportFailed": "エクスポート失敗",
-        "exportFailedDesc": "アプリ内ブラウザではダウンロードが制限される場合があります。Safari または Chrome で再度お試しください。",
         "selected": "選択済み",
         "select": "選択",
         "titleLabel": "タイトル",
@@ -123,6 +121,29 @@
         "tone": "トーン",
         "seo": "SEO",
         "creativity": "創造性"
+    },
+    "export": {
+        "title": "絵文字パックのエクスポート",
+        "subtitle": "プラットフォームを選択してダウンロードしてください。",
+        "selectPlatforms": "プラットフォーム選択",
+        "selectAll": "すべて選択",
+        "deselectAll": "すべて解除",
+        "exportSelected": "選択プラットフォームをエクスポート",
+        "exportCombined": "統合 ZIP エクスポート",
+        "exporting": "エクスポート中...",
+        "exportProgress": "エクスポート進捗",
+        "exportComplete": "エクスポート完了",
+        "exportFailed": "失敗",
+        "comingSoon": "Coming Soon",
+        "dimensions": "サイズ",
+        "format": "フォーマット",
+        "maxCount": "数量",
+        "maxSize": "最大サイズ",
+        "readyCount": "{{count}} プラットフォーム準備完了",
+        "categoryKorean": "韓国プラットフォーム",
+        "categoryJapanese": "日本プラットフォーム",
+        "categoryTelegram": "Telegram",
+        "categorySocial": "ソーシャルメディア"
     },
     "setup": {
         "apiTitle": "APIキー設定",

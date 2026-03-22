@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Sparkles, RefreshCw, Copy, Check, Hash, Download } from 'lucide-react';
+import { Sparkles, RefreshCw, Copy, Check, Hash, ArrowRight } from 'lucide-react';
 import type { MetaResult, LanguageCode, LanguageEntry } from '@/types/domain';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -17,10 +17,7 @@ interface MetadataStageProps {
   onSelect: (result: MetaResult) => void;
   selectedMetaMap: Map<LanguageCode, MetaResult>;
   onRegenerate: () => void;
-  onExport: () => void;
-  isExporting: boolean;
-  exportProgress: number;
-  exportError: string | null;
+  onContinue: () => void;
   onBack: () => void;
 }
 
@@ -34,10 +31,7 @@ function MetadataStage({
   onSelect,
   selectedMetaMap,
   onRegenerate,
-  onExport,
-  isExporting,
-  exportProgress,
-  exportError,
+  onContinue,
   onBack,
 }: MetadataStageProps) {
   const { t } = useTranslation();
@@ -134,45 +128,16 @@ function MetadataStage({
                 {t('character.regenerate')}
               </Button>
               <Button
-                onClick={onExport}
+                onClick={onContinue}
                 size="sm"
-                disabled={isExporting}
-                icon={<Download size={14} />}
-                aria-label="Export emoji ZIP"
-                data-testid="export-btn"
+                icon={<ArrowRight size={14} />}
+                aria-label="Continue to export"
+                data-testid="continue-to-export-btn"
               >
-                {t('metadata.exportZip')}
+                {t('strategy.next')}
               </Button>
             </div>
           </div>
-
-          {isExporting && (
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-3">
-              <div className="flex items-center gap-3">
-                <Download className="text-primary animate-bounce" size={20} />
-                <span className="text-sm font-medium text-text">{t('metadata.exporting')}</span>
-              </div>
-              <progress
-                value={exportProgress}
-                max={100}
-                className="w-full h-3 overflow-hidden [&::-webkit-progress-bar]:rounded-full [&::-webkit-progress-bar]:bg-slate-200 [&::-webkit-progress-value]:rounded-full [&::-webkit-progress-value]:bg-primary [&::-webkit-progress-value]:transition-all [&::-moz-progress-bar]:bg-primary [&::-moz-progress-bar]:rounded-full"
-              />
-              <p className="text-xs text-text-muted text-right">{exportProgress}%</p>
-            </div>
-          )}
-
-          {exportError && !isExporting && (
-            <div className="bg-red-50 p-4 rounded-2xl border border-red-200 flex items-start gap-3">
-              <span className="text-red-500 shrink-0 mt-0.5">⚠</span>
-              <div className="space-y-1">
-                <p className="text-sm font-medium text-red-800">{t('metadata.exportFailed')}</p>
-                <p className="text-xs text-red-600">{exportError}</p>
-                <p className="text-xs text-text-muted">
-                  {t('metadata.exportFailedDesc')}
-                </p>
-              </div>
-            </div>
-          )}
 
           {Object.entries(resultsByLang).map(([code, options]) => {
             const langInfo = languages.find((l) => l.code === code);

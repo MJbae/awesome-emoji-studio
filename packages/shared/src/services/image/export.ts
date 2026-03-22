@@ -1,5 +1,5 @@
 import JSZip from 'jszip';
-import type { PlatformId, PlatformSpec, Sticker, ProcessedImage, MetaResult } from '@/types/domain';
+import type { PlatformId, PlatformSpec, Sticker, ProcessedImage, MetaResult, PlatformExportResult } from '@/types/domain';
 import { PLATFORM_SPECS } from '@/constants/platforms';
 import { base64ToBlob } from '@/utils/base64';
 import { loadImage } from './core';
@@ -53,6 +53,63 @@ export async function generateStickerZip(
   }
 
   return zip.generateAsync({ type: 'blob' });
+}
+
+export async function generateMultiPlatformExport(
+  stickers: Sticker[],
+  processedImages: ProcessedImage[],
+  platforms: PlatformId[],
+  mainImageBase64: string | null,
+  metadata?: MetaResult[],
+  onProgress?: (platformId: PlatformId, progress: number) => void,
+): Promise<PlatformExportResult[]> {
+  const results: PlatformExportResult[] = [];
+
+  for (const platformId of platforms) {
+    onProgress?.(platformId, 0);
+    try {
+      let blob: Blob;
+      if (processedImages.length > 0) {
+        blob = await generatePostProcessedZip(processedImages, platformId, metadata);
+      } else if (mainImageBase64) {
+        blob = await generateStickerZip(stickers, platformId, mainImageBase64, metadata);
+      } else {
+        continue;
+      }
+      const randomId = Math.floor(Math.random() * 900000 + 100000);
+      results.push({
+        platformId,
+        blob,
+        fileName: `${platformId}_${randomId}.zip`,
+      });
+      onProgress?.(platformId, 100);
+    } catch (e) {
+      console.error(`Export failed for ${platformId}:`, e);
+      onProgress?.(platformId, -1);
+    }
+  }
+
+  return results;
+}
+
+export async function generateCombinedZip(
+  results: PlatformExportResult[],
+): Promise<Blob> {
+  const combinedZip = new JSZip();
+
+  for (const result of results) {
+    const folder = combinedZip.folder(result.platformId)!;
+    const innerZip = await JSZip.loadAsync(result.blob);
+    const files = Object.entries(innerZip.files);
+    for (const [name, file] of files) {
+      if (!file.dir) {
+        const content = await file.async('blob');
+        folder.file(name, content);
+      }
+    }
+  }
+
+  return combinedZip.generateAsync({ type: 'blob' });
 }
 
 export async function generatePostProcessedZip(

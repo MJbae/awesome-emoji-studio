@@ -4,8 +4,9 @@ import { createConfigSlice, type ConfigSlice, type SupportedLanguage } from './s
 import { createWorkflowSlice, type WorkflowSlice } from './slices/workflowSlice';
 import { createAssetsSlice, type AssetsSlice } from './slices/assetsSlice';
 import { createJobsSlice, type JobsSlice } from './slices/jobsSlice';
+import { createExportSlice, type ExportSlice } from './slices/exportSlice';
 
-export type AppState = ConfigSlice & WorkflowSlice & AssetsSlice & JobsSlice;
+export type AppState = ConfigSlice & WorkflowSlice & AssetsSlice & JobsSlice & ExportSlice;
 
 const VALID_LANGUAGES: readonly SupportedLanguage[] = [
   'Korean',
@@ -24,6 +25,7 @@ export const useAppStore = create<AppState>()(
       ...createWorkflowSlice(...args),
       ...createAssetsSlice(...args),
       ...createJobsSlice(...args),
+      ...createExportSlice(...args),
     }),
     {
       name: 'emoticon-studio-config',

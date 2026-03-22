@@ -7,7 +7,11 @@ import { stopSpinner } from '../io/progress.js';
 import type { GenerateOptions, ResultEvent } from '../types/cli.js';
 import { calculateRequiredStickers } from '@/constants/platforms';
 
-const ALL_PLATFORMS: PlatformId[] = ['ogq_sticker', 'line_sticker', 'line_emoji', 'kakaotalk_emoticon', 'kakaotalk_mini'];
+const ALL_PLATFORMS: PlatformId[] = [
+  'ogq_sticker', 'line_sticker', 'line_emoji',
+  'kakaotalk_emoticon', 'kakaotalk_mini',
+  'telegram_static', 'telegram_emoji',
+];
 
 export async function generate(opts: {
   concept: string;

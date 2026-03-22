@@ -19,8 +19,10 @@
         "stickersShort": "Emojis",
         "postprocess": "Post-process",
         "postprocessShort": "Post-process",
-        "metadata": "Metadata & Export",
-        "metadataShort": "Export"
+        "metadata": "Metadata",
+        "metadataShort": "Meta",
+        "export": "Export",
+        "exportShort": "Export"
     },
     "input": {
         "step1": "Step 1",
@@ -107,10 +109,6 @@
         "subtitle": "Select target languages (multiple allowed). Gemini AI will analyze the emojis and generate optimized metadata for each language.",
         "generate": "Generate Metadata",
         "results": "Generation Results",
-        "exportZip": "Export ZIP",
-        "exporting": "Exporting...",
-        "exportFailed": "Export Failed",
-        "exportFailedDesc": "Downloads may be restricted in in-app browsers. Please try again in Safari or Chrome.",
         "selected": "Selected",
         "select": "Select",
         "titleLabel": "Title",
@@ -123,6 +121,29 @@
         "tone": "Tone",
         "seo": "SEO",
         "creativity": "Creativity"
+    },
+    "export": {
+        "title": "Export Emoji Pack",
+        "subtitle": "Select platforms and download your emoji pack.",
+        "selectPlatforms": "Select Platforms",
+        "selectAll": "Select All",
+        "deselectAll": "Deselect All",
+        "exportSelected": "Export Selected Platforms",
+        "exportCombined": "Export Combined ZIP",
+        "exporting": "Exporting...",
+        "exportProgress": "Export Progress",
+        "exportComplete": "Export Complete",
+        "exportFailed": "Failed",
+        "comingSoon": "Coming Soon",
+        "dimensions": "Size",
+        "format": "Format",
+        "maxCount": "Count",
+        "maxSize": "Max Size",
+        "readyCount": "{{count}} platforms ready",
+        "categoryKorean": "Korean Platforms",
+        "categoryJapanese": "Japanese Platforms",
+        "categoryTelegram": "Telegram",
+        "categorySocial": "Social Media"
     },
     "setup": {
         "apiTitle": "API Key Setup",

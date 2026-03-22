@@ -7,7 +7,8 @@ export type WorkflowStage =
   | 'character'
   | 'stickers'
   | 'postprocess'
-  | 'metadata';
+  | 'metadata'
+  | 'export';
 
 export type WorkflowMode = 'full' | 'postprocess-only';
 
@@ -31,9 +32,10 @@ const FULL_STAGES: readonly WorkflowStage[] = [
   'stickers',
   'postprocess',
   'metadata',
+  'export',
 ] as const;
 
-const POSTPROCESS_STAGES: readonly WorkflowStage[] = ['setup', 'postprocess', 'metadata'] as const;
+const POSTPROCESS_STAGES: readonly WorkflowStage[] = ['setup', 'postprocess', 'metadata', 'export'] as const;
 
 function getStagesForMode(mode: WorkflowMode): readonly WorkflowStage[] {
   return mode === 'full' ? FULL_STAGES : POSTPROCESS_STAGES;

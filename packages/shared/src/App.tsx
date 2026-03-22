@@ -25,9 +25,9 @@ import {
 } from '@/services/gemini/orchestrator';
 import { processImageWithBgRemoval } from '@/services/image/backgroundRemoval';
 import { performOutline } from '@/services/image/outlineGeneration';
-import { generateStickerZip, generatePostProcessedZip } from '@/services/image/export';
+import { generateMultiPlatformExport, generateCombinedZip } from '@/services/image/export';
 import { VISUAL_STYLES } from '@/constants/styles';
-import { TOTAL_STICKERS, CHUNK_SIZE, API_DELAY_MS } from '@/constants/platforms';
+import { TOTAL_STICKERS, CHUNK_SIZE, API_DELAY_MS, PLATFORM_SPECS } from '@/constants/platforms';
 import { platform } from '@/platform/adapter';
 
 import { AppShell } from '@/components/layout/AppShell';
@@ -40,6 +40,7 @@ import { CharacterStage } from '@/components/stages/CharacterStage';
 import { StickerBatchStage } from '@/components/stages/StickerBatchStage';
 import { PostProcessStage } from '@/components/stages/PostProcessStage';
 import { MetadataStage } from '@/components/stages/MetadataStage';
+import { ExportStage } from '@/components/stages/ExportStage';
 
 const LANGUAGES: LanguageEntry[] = [
   { code: 'en', label: 'English', required: true, nativeName: 'English' },
@@ -84,7 +85,16 @@ function App() {
   const stickers = useAppStore((s) => s.stickers);
   const setUserInput = useAppStore((s) => s.setUserInput);
   const metadata = useAppStore((s) => s.metadata);
-  const defaultPlatform = useAppStore((s) => s.defaultPlatform);
+
+  // Export slice
+  const selectedExportPlatforms = useAppStore((s) => s.selectedExportPlatforms);
+  const exportJobs = useAppStore((s) => s.exportJobs);
+  const isExporting = useAppStore((s) => s.isExporting);
+  const toggleExportPlatform = useAppStore((s) => s.toggleExportPlatform);
+  const selectAllPlatforms = useAppStore((s) => s.selectAllPlatforms);
+  const deselectAllPlatforms = useAppStore((s) => s.deselectAllPlatforms);
+  const updateExportJob = useAppStore((s) => s.updateExportJob);
+  const resetExport = useAppStore((s) => s.resetExport);
 
   const [showApiModal, setShowApiModal] = useState(false);
   const [completedStages, setCompletedStages] = useState<Set<WorkflowStage>>(new Set());
@@ -108,9 +118,6 @@ function App() {
   const [stickerGenerating, setStickerGenerating] = useState(false);
   const [postProcessing, setPostProcessing] = useState(false);
   const [metadataLoading, setMetadataLoading] = useState(false);
-  const [exporting, setExporting] = useState(false);
-  const [exportProgress, setExportProgress] = useState(0);
-  const [exportError, setExportError] = useState<string | null>(null);
   const [previewSrc, setPreviewSrc] = useState<string | null>(null);
   const [selectedMetaMap, setSelectedMetaMap] = useState<Map<LanguageCode, MetaResult>>(new Map());
 
@@ -515,40 +522,78 @@ function App() {
   }, [runMetadataGeneration]);
 
   // ---------------------------------------------------------------------------
-  // Export Stage
+  // Export Stage — multi-platform export
   // ---------------------------------------------------------------------------
-  const runExport = useCallback(async () => {
-    setExporting(true);
-    setExportProgress(0);
-    setExportError(null);
+  const runMultiPlatformExport = useCallback(async () => {
+    useAppStore.setState({ isExporting: true });
+    resetExport();
     try {
       const state = useAppStore.getState();
       const processedImages = state.processedImages;
-      let blob: Blob;
-      setExportProgress(30);
       const selectedMetaArray = Array.from(selectedMetaMap.values());
       const metaForExport = selectedMetaArray.length > 0 ? selectedMetaArray : undefined;
-      if (processedImages.length > 0) {
-        blob = await generatePostProcessedZip(processedImages, defaultPlatform, metaForExport);
-      } else {
-        const mainImg = state.mainImage;
-        if (!mainImg) throw new Error(t('app.noImageToExport'));
-        blob = await generateStickerZip(state.stickers, defaultPlatform, mainImg, metaForExport);
+
+      const results = await generateMultiPlatformExport(
+        state.stickers,
+        processedImages,
+        selectedExportPlatforms.filter((p) => PLATFORM_SPECS[p]?.available),
+        state.mainImage,
+        metaForExport,
+        (platformId, progress) => {
+          updateExportJob(platformId, {
+            status: progress < 0 ? 'error' : progress >= 100 ? 'done' : 'processing',
+            progress: Math.max(0, progress),
+          });
+        },
+      );
+
+      // Download each ZIP
+      for (const result of results) {
+        const arrayBuffer = await result.blob.arrayBuffer();
+        const data = new Uint8Array(arrayBuffer);
+        await platform.saveFile(data, result.fileName);
       }
-      setExportProgress(80);
-      const arrayBuffer = await blob.arrayBuffer();
-      const data = new Uint8Array(arrayBuffer);
-      const fileName = `line_emoji_${Math.floor(Math.random() * 900000 + 100000)}.zip`;
-      await platform.saveFile(data, fileName);
-      setExportProgress(100);
     } catch (e) {
-      const msg = e instanceof Error ? e.message : t('app.exportFailed');
-      console.error('Export failed:', e);
-      setExportError(msg);
+      console.error('Multi-platform export failed:', e);
     } finally {
-      setExporting(false);
+      useAppStore.setState({ isExporting: false });
     }
-  }, [defaultPlatform, selectedMetaMap]);
+  }, [selectedExportPlatforms, selectedMetaMap, resetExport, updateExportJob]);
+
+  const runCombinedExport = useCallback(async () => {
+    useAppStore.setState({ isExporting: true });
+    resetExport();
+    try {
+      const state = useAppStore.getState();
+      const processedImages = state.processedImages;
+      const selectedMetaArray = Array.from(selectedMetaMap.values());
+      const metaForExport = selectedMetaArray.length > 0 ? selectedMetaArray : undefined;
+
+      const results = await generateMultiPlatformExport(
+        state.stickers,
+        processedImages,
+        selectedExportPlatforms.filter((p) => PLATFORM_SPECS[p]?.available),
+        state.mainImage,
+        metaForExport,
+        (platformId, progress) => {
+          updateExportJob(platformId, {
+            status: progress < 0 ? 'error' : progress >= 100 ? 'done' : 'processing',
+            progress: Math.max(0, progress),
+          });
+        },
+      );
+
+      const combinedBlob = await generateCombinedZip(results);
+      const arrayBuffer = await combinedBlob.arrayBuffer();
+      const data = new Uint8Array(arrayBuffer);
+      const fileName = `emoji_studio_combined_${Math.floor(Math.random() * 900000 + 100000)}.zip`;
+      await platform.saveFile(data, fileName);
+    } catch (e) {
+      console.error('Combined export failed:', e);
+    } finally {
+      useAppStore.setState({ isExporting: false });
+    }
+  }, [selectedExportPlatforms, selectedMetaMap, resetExport, updateExportJob]);
 
   // ---------------------------------------------------------------------------
 
@@ -647,10 +692,24 @@ function App() {
             onSelect={handleMetaSelect}
             selectedMetaMap={selectedMetaMap}
             onRegenerate={regenerateMetadata}
-            onExport={runExport}
-            isExporting={exporting}
-            exportProgress={exportProgress}
-            exportError={exportError}
+            onContinue={() => {
+              markCompleted('metadata');
+              nextStage();
+            }}
+            onBack={prevStage}
+          />
+        );
+      case 'export':
+        return (
+          <ExportStage
+            selectedPlatforms={selectedExportPlatforms}
+            onTogglePlatform={toggleExportPlatform}
+            onSelectAll={selectAllPlatforms}
+            onDeselectAll={deselectAllPlatforms}
+            exportJobs={exportJobs}
+            isExporting={isExporting}
+            onExportSelected={runMultiPlatformExport}
+            onExportCombined={runCombinedExport}
             onBack={prevStage}
           />
         );

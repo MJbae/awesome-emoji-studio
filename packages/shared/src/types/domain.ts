@@ -7,7 +7,14 @@
 // ---------------------------------------------------------------------------
 
 /** Unified platform identifier (generator's PlatformType + post-processor's ExportPlatform) */
-export type PlatformId = 'ogq_sticker' | 'line_sticker' | 'line_emoji' | 'kakaotalk_emoticon' | 'kakaotalk_mini';
+export type PlatformId =
+  | 'ogq_sticker' | 'line_sticker' | 'line_emoji'
+  | 'kakaotalk_emoticon' | 'kakaotalk_mini'
+  | 'telegram_static' | 'telegram_animated' | 'telegram_video' | 'telegram_emoji'
+  | 'instagram_giphy';
+
+export type ExportFormat = 'png' | 'webp' | 'tgs' | 'webm' | 'gif';
+export type PlatformCategory = 'korean' | 'japanese' | 'telegram' | 'social';
 
 export interface PlatformSize {
   width: number;
@@ -22,6 +29,23 @@ export interface PlatformSpec {
   main: PlatformSize | null;
   tab: PlatformSize;
   fileNameFormat: (index: number) => string;
+  format: ExportFormat;
+  maxFileSize?: number;
+  available: boolean;
+  category: PlatformCategory;
+}
+
+export interface ExportJob {
+  platformId: PlatformId;
+  status: 'pending' | 'processing' | 'done' | 'error';
+  progress: number;
+  error?: string;
+}
+
+export interface PlatformExportResult {
+  platformId: PlatformId;
+  blob: Blob;
+  fileName: string;
 }
 
 // ---------------------------------------------------------------------------

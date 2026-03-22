@@ -23,11 +23,13 @@ const getFullSteps = (t: any): StepDef[] => [
   { id: 'stickers', label: t('stepper.stickers'), shortLabel: t('stepper.stickersShort') },
   { id: 'postprocess', label: t('stepper.postprocess'), shortLabel: t('stepper.postprocessShort') },
   { id: 'metadata', label: t('stepper.metadata'), shortLabel: t('stepper.metadataShort') },
+  { id: 'export', label: t('stepper.export'), shortLabel: t('stepper.exportShort') },
 ];
 
 const getPostprocessSteps = (t: any): StepDef[] => [
   { id: 'postprocess', label: t('stepper.postprocess'), shortLabel: t('stepper.postprocessShort') },
   { id: 'metadata', label: t('stepper.metadata'), shortLabel: t('stepper.metadataShort') },
+  { id: 'export', label: t('stepper.export'), shortLabel: t('stepper.exportShort') },
 ];
 
 function StageStepper({ currentStage, mode, completedStages, onStageClick }: StageStepperProps) {

@@ -19,8 +19,10 @@
         "stickersShort": "表情貼",
         "postprocess": "後製處理",
         "postprocessShort": "後製處理",
-        "metadata": "中繼資料與匯出",
-        "metadataShort": "匯出"
+        "metadata": "中繼資料",
+        "metadataShort": "中繼",
+        "export": "匯出",
+        "exportShort": "匯出"
     },
     "input": {
         "step1": "步驟 1",
@@ -107,10 +109,6 @@
         "subtitle": "選擇目標語言（可複選）。Gemini AI 將分析表情貼，為每種語言生成最佳化的中繼資料。",
         "generate": "生成中繼資料",
         "results": "生成結果",
-        "exportZip": "匯出 ZIP",
-        "exporting": "匯出中...",
-        "exportFailed": "匯出失敗",
-        "exportFailedDesc": "應用程式內建瀏覽器可能限制下載功能，請嘗試使用 Safari 或 Chrome。",
         "selected": "已選擇",
         "select": "選擇",
         "titleLabel": "標題",
@@ -123,6 +121,29 @@
         "tone": "語氣",
         "seo": "SEO（搜尋引擎最佳化）",
         "creativity": "創意度"
+    },
+    "export": {
+        "title": "匯出表情貼套組",
+        "subtitle": "選擇平台並下載您的表情貼套組。",
+        "selectPlatforms": "選擇平台",
+        "selectAll": "全選",
+        "deselectAll": "全部取消",
+        "exportSelected": "匯出選定平台",
+        "exportCombined": "匯出整合 ZIP",
+        "exporting": "匯出中...",
+        "exportProgress": "匯出進度",
+        "exportComplete": "匯出完成",
+        "exportFailed": "失敗",
+        "comingSoon": "即將推出",
+        "dimensions": "尺寸",
+        "format": "格式",
+        "maxCount": "數量",
+        "maxSize": "最大大小",
+        "readyCount": "{{count}} 個平台已準備就緒",
+        "categoryKorean": "韓國平台",
+        "categoryJapanese": "日本平台",
+        "categoryTelegram": "Telegram",
+        "categorySocial": "社群媒體"
     },
     "setup": {
         "apiTitle": "API 金鑰設定",
