@@ -1,0 +1,39 @@
+{
+  "name": "@emoji/electron",
+  "private": true,
+  "version": "0.1.0",
+  "description": "AI-powered emoji pack creator with cross-platform desktop support",
+  "author": "LINE Emoji Studio",
+  "type": "module",
+  "main": "./out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "package:mac": "electron-vite build && electron-builder --mac",
+    "package:win": "electron-vite build && electron-builder --win",
+    "package:all": "electron-vite build && electron-builder --mac --win",
+    "test": "vitest run --config vitest.config.main.ts",
+    "test:e2e": "npx playwright test --config playwright-electron.config.ts"
+  },
+  "dependencies": {
+    "@emoji/shared": "*",
+    "electron-store": "^8.2.0",
+    "electron-updater": "^6.7.3"
+  },
+  "devDependencies": {
+    "@electron-toolkit/utils": "^4.0.0",
+    "@playwright/test": "^1.49.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "electron": "^40.4.0",
+    "electron-builder": "^26.7.0",
+    "electron-vite": "^5.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "~5.8.0",
+    "vite": "^6.0.0",
+    "vitest": "^3.0.0"
+  }
+}

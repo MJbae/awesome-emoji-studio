@@ -1,0 +1,68 @@
+appId: com.emoticonstudio.app
+productName: LINE Emoji Studio
+directories:
+  buildResources: resources
+  output: dist
+
+files:
+  - out/**/*
+  - resources/**/*
+
+# electron-vite outputs to out/
+# electron-builder needs to know the main entry
+extraMetadata:
+  main: ./out/main/index.js
+
+# --- macOS ---
+mac:
+  category: public.app-category.graphics-design
+  icon: resources/icon.icns
+  target:
+    - target: dmg
+      arch:
+        - universal
+    - target: zip
+      arch:
+        - universal
+  entitlementsInherit: resources/entitlements.mac.plist
+  # notarize is NOT set here — notarization is controlled via env vars:
+  #   APPLE_ID + APPLE_APP_SPECIFIC_PASSWORD + APPLE_TEAM_ID
+  #   (or) APPLE_API_KEY + APPLE_API_KEY_ID + APPLE_API_ISSUER
+  # Set identity to null for unsigned dev builds; override in CI
+  identity: null
+  hardenedRuntime: true
+  gatekeeperAssess: false
+
+dmg:
+  artifactName: ${name}-${version}-mac-universal.${ext}
+  contents:
+    - x: 130
+      y: 220
+    - x: 410
+      y: 220
+      type: link
+      path: /Applications
+
+# --- Windows ---
+win:
+  icon: resources/icon.ico
+  target:
+    - target: nsis
+      arch:
+        - x64
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  artifactName: ${name}-${version}-setup.${ext}
+  shortcutName: LINE Emoji Studio
+  uninstallDisplayName: LINE Emoji Studio
+  installerIcon: resources/icon.ico
+  uninstallerIcon: resources/icon.ico
+
+# --- Auto Update ---
+publish:
+  provider: github
+  owner: your-username
+  repo: emoticon-studio
+  releaseType: release
