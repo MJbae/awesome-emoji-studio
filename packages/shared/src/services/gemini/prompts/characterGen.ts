@@ -112,12 +112,12 @@ export function buildEmoteIdeasPrompt(
   const culturalContext = getCulturalContext(language);
   const languageSpecificCategories = getLanguageSpecificCategories(language);
 
-  const c1 = Math.floor(targetCount * 0.22);
-  const c2 = Math.floor(targetCount * 0.18);
-  const c3 = Math.floor(targetCount * 0.18);
-  const c4 = Math.floor(targetCount * 0.18);
-  const c5 = Math.floor(targetCount * 0.13);
-  const c6 = targetCount - c1 - c2 - c3 - c4 - c5;
+  const c1 = Math.floor(targetCount * 0.22); // Core Theme Emotions
+  const c2 = Math.floor(targetCount * 0.22); // Theme-Specific Actions
+  const c3 = Math.floor(targetCount * 0.18); // Daily Life with Theme
+  const c4 = Math.floor(targetCount * 0.16); // Social Reactions
+  const c5 = Math.floor(targetCount * 0.13); // Special Moments
+  const c6 = targetCount - c1 - c2 - c3 - c4 - c5; // Signature Poses
 
   return `
 Generate ${targetCount} unique emoji ideas optimized for LINE messenger emoji sales.
@@ -139,53 +139,41 @@ ${languageSpecificCategories}
 Focus on expressions and scenarios that drive the highest engagement and purchases on LINE messenger.
 Think about what makes users want to BUY and USE these stickers in daily conversations.
 
+CORE THEME: "${concept}"
+CRITICAL: Every emoji must naturally incorporate this theme's unique identity.
+Do NOT generate generic emotions disconnected from the theme.
+
 Categories to distribute (${targetCount} total):
-1. Basic Emotions (${c1}) - Universal emotions that get used most frequently
-2. Greetings & Responses (${c2}) - Gestures for hi, bye, thanks, sorry, OK, NO
-3. Daily Actions (${c3}) - Eating, coffee, work, study, gaming, music
-4. Emphasis Reactions (${c4}) - Amazing, thumbs up, fighting, congrats, shy, rage
-5. Trending/Humor (${c5}) - Money, lucky, healing, flex, TMI, lazy
-6. Special Occasions (${c6}) - Birthday, new year, christmas, rainy day, cold
+1. Core Theme Emotions (${c1}) — feelings directly tied to the theme
+2. Theme-Specific Actions (${c2}) — actions/situations unique to the theme
+3. Daily Life with Theme (${c3}) — everyday moments filtered through the theme lens
+4. Social Reactions (${c4}) — greetings and responses incorporating theme elements
+5. Special Moments (${c5}) — celebrations and events related to the theme
+6. Signature Poses (${c6}) — iconic poses that define this character's theme
 
 STRATEGY DIRECTION (each imagePrompt MUST reflect this):
 - Sales Strategy: ${strategyContext.salesReasoning}
 - Cultural Optimization: ${strategyContext.culturalNotes}
 
-Each imagePrompt must be a SINGLE SENTENCE that:
-1. Describes the character (referencing the CHARACTER REFERENCE above) doing a specific action/expression
-2. Incorporates the strategy direction naturally (e.g., cultural appeal, sales-driving elements)
-3. Is vivid enough to guide image generation but not overly detailed
+imagePrompt rules:
+- Maximum 10 words, action-focused keywords only
+- Do NOT describe the character's appearance (reference image is provided separately)
+- Focus on WHAT the character is doing and HOW they feel
+- Example: "joyfully celebrating after hole-in-one"
+- NOT: "A cute round character with glasses jumping with joy while holding a golf club"
 
 CRITICAL RULES:
 - DO NOT include any text on the emoji. Image only.
 - Distinct silhouettes for each emote.
 - Exaggerated expressions for visibility at small sizes.
 - Prioritize emoji that users will send MOST OFTEN in LINE conversations.
-- For EACH emote, write an "imagePrompt": a SINGLE SENTENCE that captures both the emoji scene AND the strategy direction.
 `;
 }
 
-export function buildSingleEmotePrompt(idea: EmoteIdea, characterSpec: CharacterSpec): string {
-  return `
-Generate a LINE messenger emoji (will display at 180x180px).
-
-CHARACTER IDENTITY (MUST MAINTAIN EXACTLY):
-- Appearance: ${characterSpec.physicalDescription}
-- Colors: ${characterSpec.colorPalette}
-- Key Features: ${characterSpec.distinguishingFeatures}
-- Art Style: ${characterSpec.artStyle}
-
-FACIAL FEATURES LOCK (CRITICAL - DO NOT DEVIATE):
-${characterSpec.facialFeatures}
-The face structure, eye shape, nose, mouth, and all facial details MUST be IDENTICAL to the reference image. Only the EXPRESSION changes (e.g., smile vs frown), never the underlying facial structure.
-
-STICKER SCENE: ${idea.imagePrompt}
-ABSOLUTELY NO TEXT. PURE IMAGE ONLY.
-
-RULES:
-1. The character MUST look identical to the reference image - same colors, proportions, facial features.
-2. Only the expression, pose, and action should change - NOT the character design.
-3. SOLID WHITE BACKGROUND. Square 1:1. SINGLE CHARACTER ONLY.
-4. Design for TINY size: exaggerated expression, minimal background elements, bold lines.
-`;
+export function buildSingleEmotePrompt(idea: EmoteIdea, _characterSpec: CharacterSpec): string {
+  return `LINE emoji sticker, 180x180px, square, solid white background.
+Match the character in the reference image exactly.
+Only change the expression and pose — not the character design.
+Scene: ${idea.imagePrompt}
+No text. Single character only. Bold lines, exaggerated expression.`;
 }

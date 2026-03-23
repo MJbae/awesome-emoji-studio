@@ -152,7 +152,7 @@ function App() {
         .map((s) => ({
           id: String(s.id),
           src: `data:image/png;base64,${s.imageUrl}`,
-          name: s.idea.expression,
+          name: s.idea.label,
         })),
     [stickers],
   );
@@ -399,7 +399,7 @@ function App() {
             processingOptions.outlineOpacity / 100,
           );
         }
-        results.push({ id: String(sticker.id), name: sticker.idea.expression, data });
+        results.push({ id: String(sticker.id), name: sticker.idea.label, data });
       }
       state.setProcessedImages(results);
     } finally {

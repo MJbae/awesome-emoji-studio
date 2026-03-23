@@ -120,14 +120,14 @@ function StickerBatchStage({
               <div
                 className="w-full aspect-square bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden border border-slate-100 relative group"
                 role="listitem"
-                aria-label={`Emoji ${sticker.id}: ${sticker.idea.expression}`}
+                aria-label={`Emoji ${sticker.id}: ${sticker.idea.label}`}
                 data-job-status={sticker.status}
               >
                 {sticker.status === 'done' && sticker.imageUrl ? (
                   <>
                     <img
                       src={`data:image/png;base64,${sticker.imageUrl}`}
-                      alt={sticker.idea.expression}
+                      alt={sticker.idea.label}
                       className="w-full h-full object-contain"
                     />
                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
@@ -172,7 +172,7 @@ function StickerBatchStage({
 
               <div className="w-full text-center space-y-0.5">
                 <p className="text-xs font-bold text-slate-900 leading-tight line-clamp-2">
-                  {sticker.idea.expression}
+                  {sticker.idea.label}
                 </p>
                 <div className="flex justify-between items-center text-[10px] text-text-muted border-t border-slate-100 pt-1 mt-1">
                   <span>#{sticker.id}</span>

@@ -250,7 +250,7 @@ export async function generateEmoteIdeas(
     targetCount,
   );
 
-  const response = await generateText({
+  const response = await generateWithFlash({
     contents: prompt,
     config: {
       responseMimeType: 'application/json',
@@ -263,14 +263,11 @@ export async function generateEmoteIdeas(
               type: Type.OBJECT,
               properties: {
                 id: { type: Type.INTEGER },
-                expression: { type: Type.STRING },
-                action: { type: Type.STRING },
-                text: { type: Type.STRING },
+                label: { type: Type.STRING },
                 category: { type: Type.STRING },
-                useCase: { type: Type.STRING },
                 imagePrompt: { type: Type.STRING },
               },
-              required: ['id', 'expression', 'action', 'category', 'useCase', 'imagePrompt'],
+              required: ['id', 'label', 'category', 'imagePrompt'],
             },
           },
         },

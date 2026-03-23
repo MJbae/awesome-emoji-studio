@@ -81,10 +81,8 @@ export interface LLMStrategy {
 
 export interface EmoteIdea {
   id: number;
-  expression: string;
-  action: string;
+  label: string;
   category: string;
-  useCase: string;
   imagePrompt: string;
 }
 

@@ -257,7 +257,7 @@ export async function runGenerationPipeline(
           emitEvent('emoticon:sticker-generated', {
             jobId,
             stickerId: idea.id,
-            expression: idea.expression,
+            label: idea.label,
           });
         } catch {
           stickers[stickerIndex] = { ...stickers[stickerIndex]!, status: 'error' };
