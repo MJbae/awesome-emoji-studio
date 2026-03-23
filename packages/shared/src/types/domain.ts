@@ -10,8 +10,7 @@
 export type PlatformId =
   | 'ogq_sticker' | 'line_sticker' | 'line_emoji'
   | 'kakaotalk_emoticon' | 'kakaotalk_mini'
-  | 'telegram_static' | 'telegram_animated' | 'telegram_video' | 'telegram_emoji'
-  | 'instagram_giphy';
+  | 'telegram_static';
 
 export type ExportFormat = 'png' | 'webp' | 'tgs' | 'webm' | 'gif';
 export type PlatformCategory = 'line' | 'kakaotalk' | 'etc';
@@ -31,7 +30,6 @@ export interface PlatformSpec {
   fileNameFormat: (index: number) => string;
   format: ExportFormat;
   maxFileSize?: number;
-  available: boolean;
   category: PlatformCategory;
 }
 

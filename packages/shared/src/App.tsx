@@ -27,7 +27,7 @@ import { processImageWithBgRemoval } from '@/services/image/backgroundRemoval';
 import { performOutline } from '@/services/image/outlineGeneration';
 import { generateMultiPlatformExport, generateCombinedZip } from '@/services/image/export';
 import { VISUAL_STYLES } from '@/constants/styles';
-import { TOTAL_STICKERS, CHUNK_SIZE, API_DELAY_MS, PLATFORM_SPECS } from '@/constants/platforms';
+import { TOTAL_STICKERS, CHUNK_SIZE, API_DELAY_MS } from '@/constants/platforms';
 import { platform } from '@/platform/adapter';
 
 import { AppShell } from '@/components/layout/AppShell';
@@ -536,7 +536,7 @@ function App() {
       const results = await generateMultiPlatformExport(
         state.stickers,
         processedImages,
-        selectedExportPlatforms.filter((p) => PLATFORM_SPECS[p]?.available),
+        selectedExportPlatforms,
         state.mainImage,
         metaForExport,
         (platformId, progress) => {
@@ -572,7 +572,7 @@ function App() {
       const results = await generateMultiPlatformExport(
         state.stickers,
         processedImages,
-        selectedExportPlatforms.filter((p) => PLATFORM_SPECS[p]?.available),
+        selectedExportPlatforms,
         state.mainImage,
         metaForExport,
         (platformId, progress) => {

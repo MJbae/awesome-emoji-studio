@@ -42,7 +42,6 @@ function ExportStage({
   }));
 
   const selectedCount = selectedPlatforms.length;
-  const availableSelected = selectedPlatforms.filter((p) => PLATFORM_SPECS[p].available);
 
   return (
     <section data-stage="export" className="max-w-5xl mx-auto space-y-8">
@@ -79,26 +78,18 @@ function ExportStage({
             {cat.platforms.map((platformId) => {
               const spec = PLATFORM_SPECS[platformId];
               const isSelected = selectedPlatforms.includes(platformId);
-              const isAvailable = spec.available;
 
               return (
                 <button
                   key={platformId}
-                  onClick={() => isAvailable && onTogglePlatform(platformId)}
-                  disabled={!isAvailable}
+                  onClick={() => onTogglePlatform(platformId)}
                   className={cn(
                     'relative p-4 rounded-xl border-2 text-left transition-all',
-                    isAvailable && isSelected && 'border-primary bg-primary/5',
-                    isAvailable && !isSelected && 'border-slate-200 hover:border-slate-300 bg-white',
-                    !isAvailable && 'border-slate-100 bg-slate-50 opacity-60 cursor-not-allowed',
+                    isSelected && 'border-primary bg-primary/5',
+                    !isSelected && 'border-slate-200 hover:border-slate-300 bg-white',
                   )}
                 >
-                  {!isAvailable && (
-                    <span className="absolute top-2 right-2 px-2 py-0.5 bg-slate-200 text-slate-500 text-[10px] font-bold rounded-full uppercase">
-                      {t('export.comingSoon')}
-                    </span>
-                  )}
-                  {isAvailable && isSelected && (
+                  {isSelected && (
                     <span className="absolute top-2 right-2">
                       <CheckCircle2 size={18} className="text-primary" />
                     </span>
@@ -146,7 +137,7 @@ function ExportStage({
           <Download className="text-primary" size={20} />
           <div>
             <p className="font-bold text-slate-800">
-              {t('export.readyCount', { count: availableSelected.length })}
+              {t('export.readyCount', { count: selectedCount })}
             </p>
           </div>
         </div>

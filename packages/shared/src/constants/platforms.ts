@@ -10,7 +10,6 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
     tab: { width: 96, height: 74 },
     fileNameFormat: (i: number) => `${String(i + 1).padStart(2, '0')}.png`,
     format: 'png',
-    available: true,
     category: 'etc',
   },
   line_sticker: {
@@ -22,7 +21,6 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
     tab: { width: 96, height: 74 },
     fileNameFormat: (i: number) => `${String(i + 1).padStart(2, '0')}.png`,
     format: 'png',
-    available: true,
     category: 'line',
   },
   line_emoji: {
@@ -34,7 +32,6 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
     tab: { width: 96, height: 74 },
     fileNameFormat: (i: number) => `${String(i + 1).padStart(3, '0')}.png`,
     format: 'png',
-    available: true,
     category: 'line',
   },
   kakaotalk_emoticon: {
@@ -46,7 +43,6 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
     tab: { width: 96, height: 74 },
     fileNameFormat: (i: number) => `${String(i + 1).padStart(2, '0')}.png`,
     format: 'png',
-    available: true,
     category: 'kakaotalk',
   },
   kakaotalk_mini: {
@@ -58,7 +54,6 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
     tab: { width: 96, height: 74 },
     fileNameFormat: (i: number) => `${String(i + 1).padStart(2, '0')}.png`,
     format: 'png',
-    available: true,
     category: 'kakaotalk',
   },
   telegram_static: {
@@ -71,65 +66,11 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
     fileNameFormat: (i: number) => `${String(i + 1).padStart(3, '0')}.png`,
     format: 'png',
     maxFileSize: 512 * 1024,
-    available: true,
-    category: 'etc',
-  },
-  telegram_animated: {
-    label: 'Telegram Animated Sticker',
-    description: 'Telegram 애니메이션 스티커 (TGS/Lottie)',
-    count: 45,
-    content: { width: 512, height: 512 },
-    main: null,
-    tab: { width: 100, height: 100 },
-    fileNameFormat: (i: number) => `${String(i + 1).padStart(3, '0')}.tgs`,
-    format: 'tgs',
-    maxFileSize: 64 * 1024,
-    available: false,
-    category: 'etc',
-  },
-  telegram_video: {
-    label: 'Telegram Video Sticker',
-    description: 'Telegram 비디오 스티커 (WEBM/VP9)',
-    count: 45,
-    content: { width: 512, height: 512 },
-    main: null,
-    tab: { width: 100, height: 100 },
-    fileNameFormat: (i: number) => `${String(i + 1).padStart(3, '0')}.webm`,
-    format: 'webm',
-    maxFileSize: 256 * 1024,
-    available: false,
-    category: 'etc',
-  },
-  telegram_emoji: {
-    label: 'Telegram Custom Emoji',
-    description: 'Telegram 커스텀 이모지',
-    count: 45,
-    content: { width: 100, height: 100 },
-    main: null,
-    tab: { width: 100, height: 100 },
-    fileNameFormat: (i: number) => `${String(i + 1).padStart(3, '0')}.png`,
-    format: 'png',
-    maxFileSize: 512 * 1024,
-    available: true,
-    category: 'etc',
-  },
-  instagram_giphy: {
-    label: 'Instagram / GIPHY Sticker',
-    description: 'Instagram/GIPHY GIF 스티커',
-    count: 45,
-    content: { width: 500, height: 500 },
-    main: null,
-    tab: { width: 100, height: 100 },
-    fileNameFormat: (i: number) => `${String(i + 1).padStart(3, '0')}.gif`,
-    format: 'gif',
-    available: false,
     category: 'etc',
   },
 };
 
-export const AVAILABLE_PLATFORMS: PlatformId[] = (Object.entries(PLATFORM_SPECS) as [PlatformId, PlatformSpec][])
-  .filter(([_, spec]) => spec.available)
-  .map(([id]) => id);
+export const AVAILABLE_PLATFORMS: PlatformId[] = Object.keys(PLATFORM_SPECS) as PlatformId[];
 
 export const PLATFORM_CATEGORIES: { id: PlatformCategory; label: string; labelKey: string }[] = [
   { id: 'line', label: 'LINE', labelKey: 'export.categoryLine' },
