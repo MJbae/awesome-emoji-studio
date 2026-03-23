@@ -1,5 +1,5 @@
-import type { ProcessedImage, ProcessingOptions } from '@/types/domain';
-import type { JobProgress } from '@/types/api';
+import type { ProcessedImage, ProcessingOptions } from '../../types/domain.js';
+import type { JobProgress } from '../../types/api.js';
 import { processImageWithBgRemoval } from '../image/backgroundRemoval.js';
 import { performOutline } from '../image/outlineGeneration.js';
 import { getAppState } from '../../store/cliStore.js';

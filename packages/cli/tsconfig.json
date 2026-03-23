@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": ["ES2022"],
     "module": "ESNext",
     "moduleResolution": "bundler",
     "outDir": "dist",
@@ -11,30 +11,14 @@
     "resolveJsonModule": true,
     "declaration": true,
     "isolatedModules": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["../shared/src/*"]
-    }
+    "baseUrl": "."
   },
   "include": [
-    "src",
-    "../shared/src/types",
-    "../shared/src/constants",
-    "../shared/src/utils",
-    "../shared/src/services/gemini",
-    "../shared/src/services/config",
-    "../shared/src/services/pipeline",
-    "../shared/src/platform",
-    "../shared/src/bridge",
-    "../shared/src/store",
-    "../shared/src/vite-env.d.ts"
+    "src"
   ],
   "exclude": [
     "tests",
     "dist",
-    "node_modules",
-    "../shared/src/**/*.test.ts",
-    "../shared/src/**/*.test.tsx",
-    "../shared/src/msw"
+    "node_modules"
   ]
 }

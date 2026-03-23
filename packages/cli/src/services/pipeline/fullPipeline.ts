@@ -6,8 +6,8 @@ import type {
   PlatformId,
   MetaResult,
   ProcessedImage,
-} from '@/types/domain';
-import type { JobProgress } from '@/types/api';
+} from '../../types/domain.js';
+import type { JobProgress } from '../../types/api.js';
 import { getAppState } from '../../store/cliStore.js';
 import { emitEvent } from '../../bridge/eventBus.js';
 import { reportProgress } from '../../io/progress.js';
@@ -20,7 +20,7 @@ import { exportAllPlatforms } from '../image/export.js';
 import { getSessionDir } from '../../platform/adapter.js';
 import { loadImageBuffer, toRawBase64 } from '../image/core.js';
 import type { GenerateOptions, ConfirmAction, SessionData } from '../../types/cli.js';
-import { calculateRequiredStickers } from '@/constants/platforms';
+import { calculateRequiredStickers } from '../../constants/platforms.js';
 
 const controllers = new Map<string, AbortController>();
 

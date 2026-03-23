@@ -1,16 +1,16 @@
-import type { PlatformId } from '@/types/domain';
+import type { PlatformId } from '../types/domain.js';
 import { platform } from '../platform/adapter.js';
 import { setApiKey, validateApiKey } from '../services/gemini/index.js';
 import { runCliPipeline } from '../services/pipeline/fullPipeline.js';
 import { printBanner, printResult, printError, isJsonMode, emitJson } from '../io/output.js';
 import { stopSpinner } from '../io/progress.js';
 import type { GenerateOptions, ResultEvent } from '../types/cli.js';
-import { calculateRequiredStickers } from '@/constants/platforms';
+import { calculateRequiredStickers } from '../constants/platforms.js';
 
 const ALL_PLATFORMS: PlatformId[] = [
   'ogq_sticker', 'line_sticker', 'line_emoji',
   'kakaotalk_emoticon', 'kakaotalk_mini',
-  'telegram_static', 'telegram_emoji',
+  'telegram_static',
 ];
 
 export async function generate(opts: {

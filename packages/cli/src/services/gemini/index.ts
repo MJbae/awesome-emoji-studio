@@ -15,14 +15,14 @@ export {
   generateEmoteIdeas,
   generateSingleEmote,
   generateMetadata,
-} from '@/services/gemini/orchestrator';
+} from './orchestrator';
 
 // Re-export client functions
 export {
   generateText,
   generateImage,
   generateWithFlash,
-} from '@/services/gemini/client';
+} from './client';
 
 // Re-export API key management
 export {
@@ -30,4 +30,4 @@ export {
   setApiKey,
   clearApiKey,
   validateApiKey,
-} from '@/services/config/apiKeyManager';
+} from '../config/apiKeyManager';

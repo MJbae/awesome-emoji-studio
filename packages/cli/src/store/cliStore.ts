@@ -7,9 +7,9 @@ import type {
   ProcessedImage,
   MetaResult,
   PlatformId,
-} from '@/types/domain';
-import type { JobSnapshot, JobStatus } from '@/types/jobs';
-import type { JobProgress } from '@/types/api';
+} from '../types/domain.js';
+import type { JobSnapshot, JobStatus } from '../types/jobs.js';
+import type { JobProgress } from '../types/api.js';
 
 // ---------------------------------------------------------------------------
 // State shape

@@ -1,0 +1,19 @@
+export const BG_REMOVAL_CONFIG = {
+  BG_TOLERANCE: 35,
+  SOBEL_EDGE_THRESHOLD: 40,
+  DEFRINGE_ALPHA_BG: 20,
+} as const;
+
+export const OUTLINE_CONFIG = {
+  DEFAULT_THICKNESS: 4,
+  MIN_THICKNESS: 1,
+  MAX_THICKNESS: 12,
+  DEFAULT_OPACITY: 1.0,
+  ANGLE_STEP: 15,
+} as const;
+
+export const IMAGE_CONFIG = {
+  TARGET_DIMENSION: 720,
+  PADDING: 60,
+  MAX_IMAGES: 120,
+} as const;

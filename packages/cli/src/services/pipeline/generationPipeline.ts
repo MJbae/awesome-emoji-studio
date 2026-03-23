@@ -1,7 +1,7 @@
-import type { UserInput, Sticker, EmoteIdea, CharacterSpec, LLMStrategy } from '@/types/domain';
-import type { JobProgress } from '@/types/api';
-import { VISUAL_STYLES } from '@/constants/styles';
-import { TOTAL_STICKERS, CHUNK_SIZE, API_DELAY_MS } from '@/constants/platforms';
+import type { UserInput, Sticker, EmoteIdea, CharacterSpec, LLMStrategy } from '../../types/domain.js';
+import type { JobProgress } from '../../types/api.js';
+import { VISUAL_STYLES } from '../../constants/styles.js';
+import { TOTAL_STICKERS, CHUNK_SIZE, API_DELAY_MS } from '../../constants/platforms.js';
 import {
   analyzeConcept,
   generateBaseCharacter,
@@ -206,7 +206,7 @@ export async function runGenerationPipeline(
         emitEvent('emoticon:sticker-generated', {
           jobId,
           stickerId: idea.id,
-          expression: idea.expression,
+          expression: idea.label,
         });
       } catch {
         stickers[stickerIndex] = { ...stickers[stickerIndex]!, status: 'error' };

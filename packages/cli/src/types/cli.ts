@@ -8,8 +8,8 @@ import type {
   MetaResult,
   ProcessingOptions,
   OutlineStyle,
-} from '@/types/domain';
-import type { Stage, JobProgress } from '@/types/api';
+} from './domain.js';
+import type { Stage, JobProgress } from './api.js';
 
 // ---------------------------------------------------------------------------
 // CLI Options

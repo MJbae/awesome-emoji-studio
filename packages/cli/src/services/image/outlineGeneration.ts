@@ -1,5 +1,5 @@
 import sharp from 'sharp';
-import type { OutlineStyle } from '@/types/domain';
+import type { OutlineStyle } from '../../types/domain.js';
 import { loadImageBuffer, bufferToBase64 } from './core.js';
 
 const ANGLE_STEP = 15;

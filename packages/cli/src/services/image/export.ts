@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import JSZip from 'jszip';
-import type { PlatformId, ProcessedImage, MetaResult, PlatformSpec } from '@/types/domain';
-import { PLATFORM_SPECS } from '@/constants/platforms';
+import type { PlatformId, ProcessedImage, MetaResult, PlatformSpec } from '../../types/domain.js';
+import { PLATFORM_SPECS } from '../../constants/platforms.js';
 import { resizeImage } from './resize.js';
 import { loadImageBuffer } from './core.js';
 
