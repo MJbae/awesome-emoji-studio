@@ -1,6 +1,6 @@
 # Awesome Emoji Studio
 
-**https://awesome-emoji-master.vercel.app**
+**https://awesome-emoji-studio.vercel.app**
 
 캐릭터 컨셉만 입력하면 AI가 이모지 세트를 자동으로 만들어 줍니다.
 전략 수립부터 이미지 생성, 후처리, 메타데이터, ZIP 내보내기까지 한 번에 처리됩니다.
