@@ -10,7 +10,7 @@ import type {
   LanguageEntry,
 } from '@/types/domain';
 import { VISUAL_STYLES } from '@/constants/styles';
-import { generateText, generateImage, generateWithFlash } from './client';
+import { generateImage, generateWithFlash } from './client';
 import {
   buildMarketAnalystPrompt,
   buildArtDirectorPrompt,
@@ -40,10 +40,9 @@ function buildContentsWithOptionalImage(
   return prompt;
 }
 
-async function consultMarketAnalyst(input: UserInput, useFlash = false): Promise<PersonaInsight> {
+async function consultMarketAnalyst(input: UserInput): Promise<PersonaInsight> {
   const prompt = buildMarketAnalystPrompt(input.concept, input.language);
-  const generateFn = useFlash ? generateWithFlash : generateText;
-  const response = await generateFn({
+  const response = await generateWithFlash({
     contents: buildContentsWithOptionalImage(prompt, input.referenceImage),
   });
 
@@ -55,7 +54,6 @@ async function consultMarketAnalyst(input: UserInput, useFlash = false): Promise
 async function consultArtDirector(
   input: UserInput,
   marketInsight: string,
-  useFlash = false,
 ): Promise<PersonaInsight> {
   const prompt = buildArtDirectorPrompt(
     input.concept,
@@ -63,8 +61,7 @@ async function consultArtDirector(
     marketInsight,
     VISUAL_STYLES,
   );
-  const generateFn = useFlash ? generateWithFlash : generateText;
-  const response = await generateFn({
+  const response = await generateWithFlash({
     contents: buildContentsWithOptionalImage(prompt, input.referenceImage),
   });
 
@@ -73,10 +70,9 @@ async function consultArtDirector(
   return { persona: 'Art Director', analysis: text };
 }
 
-async function consultCulturalExpert(input: UserInput, useFlash = false): Promise<PersonaInsight> {
+async function consultCulturalExpert(input: UserInput): Promise<PersonaInsight> {
   const prompt = buildCulturalExpertPrompt(input.concept, input.language);
-  const generateFn = useFlash ? generateWithFlash : generateText;
-  const response = await generateFn({ contents: prompt });
+  const response = await generateWithFlash({ contents: prompt });
 
   const text = response.text;
   if (!text) throw new Error('No response from Cultural Expert persona');
@@ -86,7 +82,6 @@ async function consultCulturalExpert(input: UserInput, useFlash = false): Promis
 async function synthesizeStrategy(
   input: UserInput,
   insights: PersonaInsight[],
-  useFlash = false,
 ): Promise<LLMStrategy> {
   const insightsSummary = insights.map((i) => `=== ${i.persona} ===\n${i.analysis}`).join('\n\n');
 
@@ -97,8 +92,7 @@ async function synthesizeStrategy(
     VISUAL_STYLES,
   );
 
-  const generateFn = useFlash ? generateWithFlash : generateText;
-  const response = await generateFn({
+  const response = await generateWithFlash({
     contents: buildContentsWithOptionalImage(prompt, input.referenceImage),
     config: {
       responseMimeType: 'application/json',
@@ -150,7 +144,7 @@ export async function extractCharacterSpec(
 ): Promise<CharacterSpec> {
   const prompt = buildExtractCharacterSpecPrompt(concept);
 
-  const response = await generateText({
+  const response = await generateWithFlash({
     contents: {
       parts: [{ inlineData: { mimeType: 'image/png', data: mainImage } }, { text: prompt }],
     },

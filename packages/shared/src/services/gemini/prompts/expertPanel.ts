@@ -25,13 +25,7 @@ Target Market: ${language}
 
 ${culturalContext}
 
-Cover these points in 3-5 short paragraphs:
-1. Current market trends relevant to this concept in the ${language} LINE emoji store.
-2. Target demographics and their purchasing patterns for this category.
-3. Competition level — how saturated is this concept category?
-4. Recommended pricing tier (low/mid/premium) and pack positioning strategy.
-
-Be specific and data-informed. No generic advice.
+Respond in 3-4 sentences total covering: market trends, target demographics, competition level, and pricing tier for this concept. Be specific. No generic advice.
 `;
 }
 
@@ -61,12 +55,7 @@ Target Market: ${language}
 AVAILABLE VISUAL STYLES (recommend ONE by index):
 ${visualStyleDescriptions}
 
-Cover these points concisely:
-1. Which visual style index (0-4) best fits this concept AND market? Why?
-2. Color palette strategy for maximum shelf appeal at tiny emoji sizes (180x180px).
-3. How does this concept translate visually for the ${language} audience?
-
-Be decisive — give clear recommendations, not options.
+Respond in 3-4 sentences total: recommend ONE visual style index (0-4) with reason, color palette strategy, and visual translation for the ${language} audience. Be decisive.
 `;
 }
 
@@ -79,13 +68,7 @@ Analyze cultural considerations for this LINE emoji concept.
 Concept: ${concept}
 Target Market: ${language}
 
-Cover these points concisely:
-1. Deep cultural nuances for the ${language} market that affect emoji purchasing.
-2. Taboo topics, gestures, colors, or symbols to AVOID for this concept.
-3. Current cultural trends in the ${language} market that could boost sales.
-4. Localization recommendations for text expressions and emotional tone.
-
-Be specific to ${language} — no generic East Asian generalizations.
+Respond in 3-4 sentences total: key cultural nuances, taboos to avoid, and current trends for this concept in the ${language} market. Be specific to ${language}.
 `;
 }
 
@@ -112,12 +95,12 @@ ${visualStyleDescriptions}
 Concept: ${concept}
 Target Market: ${language}
 
-YOUR TASK: Make the definitive creative and commercial decisions by integrating all expert inputs.
+YOUR TASK: Integrate all expert inputs into a final decision.
 
 1. SELECT the single best visual style index (0-4).
-2. EXPLAIN cultural considerations that shaped your decisions.
-3. PROVIDE the commercial reasoning behind your final strategy.
+2. culturalNotes: 2-3 sentences on cultural considerations.
+3. salesReasoning: 2-3 sentences on commercial strategy.
 
-Be decisive. This is the final call — no hedging.
+Be decisive. Keep each field under 3 sentences.
 `;
 }

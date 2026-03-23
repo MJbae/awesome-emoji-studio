@@ -14,7 +14,7 @@ export type PlatformId =
   | 'instagram_giphy';
 
 export type ExportFormat = 'png' | 'webp' | 'tgs' | 'webm' | 'gif';
-export type PlatformCategory = 'korean' | 'japanese' | 'telegram' | 'social';
+export type PlatformCategory = 'line' | 'kakaotalk' | 'etc';
 
 export interface PlatformSize {
   width: number;

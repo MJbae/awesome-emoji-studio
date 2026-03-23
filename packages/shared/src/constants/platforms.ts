@@ -11,7 +11,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
     fileNameFormat: (i: number) => `${String(i + 1).padStart(2, '0')}.png`,
     format: 'png',
     available: true,
-    category: 'korean',
+    category: 'etc',
   },
   line_sticker: {
     label: 'LINE Sticker',
@@ -23,7 +23,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
     fileNameFormat: (i: number) => `${String(i + 1).padStart(2, '0')}.png`,
     format: 'png',
     available: true,
-    category: 'japanese',
+    category: 'line',
   },
   line_emoji: {
     label: 'LINE Emoji',
@@ -35,7 +35,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
     fileNameFormat: (i: number) => `${String(i + 1).padStart(3, '0')}.png`,
     format: 'png',
     available: true,
-    category: 'japanese',
+    category: 'line',
   },
   kakaotalk_emoticon: {
     label: '카카오톡 이모티콘',
@@ -47,7 +47,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
     fileNameFormat: (i: number) => `${String(i + 1).padStart(2, '0')}.png`,
     format: 'png',
     available: true,
-    category: 'korean',
+    category: 'kakaotalk',
   },
   kakaotalk_mini: {
     label: '카카오톡 미니 이모티콘',
@@ -59,7 +59,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
     fileNameFormat: (i: number) => `${String(i + 1).padStart(2, '0')}.png`,
     format: 'png',
     available: true,
-    category: 'korean',
+    category: 'kakaotalk',
   },
   telegram_static: {
     label: 'Telegram Static Sticker',
@@ -72,7 +72,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
     format: 'png',
     maxFileSize: 512 * 1024,
     available: true,
-    category: 'telegram',
+    category: 'etc',
   },
   telegram_animated: {
     label: 'Telegram Animated Sticker',
@@ -85,7 +85,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
     format: 'tgs',
     maxFileSize: 64 * 1024,
     available: false,
-    category: 'telegram',
+    category: 'etc',
   },
   telegram_video: {
     label: 'Telegram Video Sticker',
@@ -98,7 +98,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
     format: 'webm',
     maxFileSize: 256 * 1024,
     available: false,
-    category: 'telegram',
+    category: 'etc',
   },
   telegram_emoji: {
     label: 'Telegram Custom Emoji',
@@ -111,7 +111,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
     format: 'png',
     maxFileSize: 512 * 1024,
     available: true,
-    category: 'telegram',
+    category: 'etc',
   },
   instagram_giphy: {
     label: 'Instagram / GIPHY Sticker',
@@ -123,7 +123,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
     fileNameFormat: (i: number) => `${String(i + 1).padStart(3, '0')}.gif`,
     format: 'gif',
     available: false,
-    category: 'social',
+    category: 'etc',
   },
 };
 
@@ -132,10 +132,9 @@ export const AVAILABLE_PLATFORMS: PlatformId[] = (Object.entries(PLATFORM_SPECS)
   .map(([id]) => id);
 
 export const PLATFORM_CATEGORIES: { id: PlatformCategory; label: string; labelKey: string }[] = [
-  { id: 'korean', label: '한국', labelKey: 'export.categoryKorean' },
-  { id: 'japanese', label: '일본', labelKey: 'export.categoryJapanese' },
-  { id: 'telegram', label: 'Telegram', labelKey: 'export.categoryTelegram' },
-  { id: 'social', label: 'Social', labelKey: 'export.categorySocial' },
+  { id: 'line', label: 'LINE', labelKey: 'export.categoryLine' },
+  { id: 'kakaotalk', label: '카카오톡', labelKey: 'export.categoryKakaotalk' },
+  { id: 'etc', label: '기타', labelKey: 'export.categoryEtc' },
 ];
 
 export const TOTAL_STICKERS = 45;
