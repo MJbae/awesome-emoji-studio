@@ -20,7 +20,7 @@ Most AI image generators stop at "here's a picture." Awesome Emoji Studio goes f
 - **Market-Ready Output**: Not just generated images, but store-submission-ready packages with correct dimensions, naming conventions, tab/main images, and metadata for KakaoTalk, LINE, Telegram, and OGQ Market.
 - **AI Expert Panel**: Four AI personas (Market Analyst, Art Director, Cultural Expert, Chief Creative Director) collaborate to build a data-driven creative strategy before a single pixel is drawn.
 - **Zero Backend**: Fully serverless. Gemini API calls, image processing, and ZIP generation all happen client-side. Your API key never leaves your device.
-- **Three Interfaces, One Codebase**: Web (Vite + Vercel), Desktop (Electron), and CLI (Commander + Sharp) share ~80% of code through a monorepo architecture.
+- **Two Interfaces, One Codebase**: Web (Vite + Vercel) and Desktop (Electron) share ~80% of code through a monorepo architecture.
 - **Pure Canvas Image Engine**: Background removal (Sobel edge detection + flood fill + defringing) and outline rendering built entirely with the Canvas API — no native dependencies in the browser.
 
 ---
@@ -95,11 +95,10 @@ packages/
 │   ├── i18n/                5-language translations
 │   └── types/               Domain types + API contracts
 ├── web/           ← Thin Vite SPA shell
-├── electron/      ← Thin Electron shell (contextIsolation + sandbox)
-└── cli/           ← Commander + Sharp adapter
+└── electron/      ← Thin Electron shell (contextIsolation + sandbox)
 ```
 
-Platform-specific behavior is handled through a **Bridge pattern** — `@emoji/shared` defines the interfaces, and each platform package provides the concrete implementation. The web adapter uses Canvas API for image processing; the CLI adapter uses Sharp.
+Platform-specific behavior is handled through a **Bridge pattern** — `@emoji/shared` defines the interfaces, and each platform package provides the concrete implementation.
 
 ### Gemini Model Fallback Chain
 
@@ -190,10 +189,6 @@ npm run dev:web
 
 # Desktop
 npm run dev:electron
-
-# CLI
-npm run dev:cli -- config set-key <YOUR_GEMINI_API_KEY>
-npm run dev:cli -- generate -c "cute office cat" --auto -o ./output
 ```
 
 ### Build
@@ -201,7 +196,6 @@ npm run dev:cli -- generate -c "cute office cat" --auto -o ./output
 ```bash
 npm run build:web         # Production web build
 npm run build:electron    # Production desktop build
-npm run build:cli         # Production CLI build
 ```
 
 ### Test

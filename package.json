@@ -12,8 +12,6 @@
     "dev:electron": "npm -w @emoji/electron run dev",
     "build:web": "npm -w @emoji/web run build",
     "build:electron": "npm -w @emoji/electron run build",
-    "dev:cli": "npm -w @emoji/cli run dev --",
-    "build:cli": "npm -w @emoji/cli run build",
     "test": "npm -w @emoji/web run test && npm -w @emoji/electron run test",
     "test:e2e": "npm -w @emoji/web run test:e2e",
     "test:e2e:electron": "npm -w @emoji/electron run test:e2e",
