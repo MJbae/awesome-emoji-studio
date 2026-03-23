@@ -35,7 +35,7 @@ function ApiKeyModal({ open, onSave, onClose, dismissable = false }: ApiKeyModal
 
     try {
       const ai = new GoogleGenAI({ apiKey: trimmed });
-      await ai.models.list({ pageSize: 1 });
+      await ai.models.list({ config: { pageSize: 1 } });
       onSave(trimmed);
     } catch {
       setError(t('setup.invalidError'));
