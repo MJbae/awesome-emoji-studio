@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Sparkles, Eye, EyeOff, X } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { AnimatedInputWrapper } from '@/components/ui/AnimatedInputWrapper';
-import { generateText } from '@/services/gemini/client';
+import { GoogleGenAI } from '@google/genai';
 
 interface ApiKeyModalProps {
   open: boolean;
@@ -34,7 +34,8 @@ function ApiKeyModal({ open, onSave, onClose, dismissable = false }: ApiKeyModal
     setValidating(true);
 
     try {
-      await generateText({ contents: 'hi' }, trimmed);
+      const ai = new GoogleGenAI({ apiKey: trimmed });
+      await ai.models.list({ pageSize: 1 });
       onSave(trimmed);
     } catch {
       setError(t('setup.invalidError'));
