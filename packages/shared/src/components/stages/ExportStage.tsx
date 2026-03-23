@@ -116,9 +116,15 @@ function ExportStage({
                       <span>{t('export.format')}</span>
                       <span className="font-mono uppercase">{spec.format}</span>
                     </div>
+                    {spec.main && (
+                      <div className="flex justify-between">
+                        <span>{t('export.mainImage')}</span>
+                        <span className="font-mono">{spec.main.width}×{spec.main.height}</span>
+                      </div>
+                    )}
                     <div className="flex justify-between">
-                      <span>{t('export.maxCount')}</span>
-                      <span className="font-mono">{spec.count}</span>
+                      <span>{t('export.tabImage')}</span>
+                      <span className="font-mono">{spec.tab.width}×{spec.tab.height}</span>
                     </div>
                     {spec.maxFileSize && (
                       <div className="flex justify-between">

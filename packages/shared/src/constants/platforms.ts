@@ -4,7 +4,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
   ogq_sticker: {
     label: 'OGQ Sticker',
     description: 'OGQ Market 이모티콘',
-    count: 24,
+    count: 45,
     content: { width: 740, height: 640 },
     main: { width: 240, height: 240 },
     tab: { width: 96, height: 74 },
@@ -16,7 +16,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
   line_sticker: {
     label: 'LINE Sticker',
     description: 'Line 이모티콘',
-    count: 40,
+    count: 45,
     content: { width: 370, height: 320 },
     main: { width: 240, height: 240 },
     tab: { width: 96, height: 74 },
@@ -28,7 +28,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
   line_emoji: {
     label: 'LINE Emoji',
     description: 'Line 미니 이모티콘',
-    count: 40,
+    count: 45,
     content: { width: 180, height: 180 },
     main: null,
     tab: { width: 96, height: 74 },
@@ -40,7 +40,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
   kakaotalk_emoticon: {
     label: '카카오톡 이모티콘',
     description: '카카오톡 멈춰있는 이모티콘',
-    count: 40,
+    count: 45,
     content: { width: 360, height: 360 },
     main: { width: 240, height: 240 },
     tab: { width: 96, height: 74 },
@@ -64,7 +64,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
   telegram_static: {
     label: 'Telegram Static Sticker',
     description: 'Telegram 정적 스티커',
-    count: 120,
+    count: 45,
     content: { width: 512, height: 512 },
     main: null,
     tab: { width: 100, height: 100 },
@@ -77,7 +77,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
   telegram_animated: {
     label: 'Telegram Animated Sticker',
     description: 'Telegram 애니메이션 스티커 (TGS/Lottie)',
-    count: 50,
+    count: 45,
     content: { width: 512, height: 512 },
     main: null,
     tab: { width: 100, height: 100 },
@@ -90,7 +90,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
   telegram_video: {
     label: 'Telegram Video Sticker',
     description: 'Telegram 비디오 스티커 (WEBM/VP9)',
-    count: 50,
+    count: 45,
     content: { width: 512, height: 512 },
     main: null,
     tab: { width: 100, height: 100 },
@@ -103,7 +103,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
   telegram_emoji: {
     label: 'Telegram Custom Emoji',
     description: 'Telegram 커스텀 이모지',
-    count: 200,
+    count: 45,
     content: { width: 100, height: 100 },
     main: null,
     tab: { width: 100, height: 100 },
@@ -116,7 +116,7 @@ export const PLATFORM_SPECS: Record<PlatformId, PlatformSpec> = {
   instagram_giphy: {
     label: 'Instagram / GIPHY Sticker',
     description: 'Instagram/GIPHY GIF 스티커',
-    count: 30,
+    count: 45,
     content: { width: 500, height: 500 },
     main: null,
     tab: { width: 100, height: 100 },
