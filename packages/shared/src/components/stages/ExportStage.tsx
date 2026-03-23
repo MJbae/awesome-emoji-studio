@@ -179,7 +179,7 @@ function ExportStage({
           {exportJobs.map((job) => (
             <div key={job.platformId} className="flex items-center gap-3">
               <div className="w-5 shrink-0">
-                {job.status === 'done' && <CheckCircle2 size={16} className="text-emerald-500" />}
+                {job.status === 'done' && <CheckCircle2 size={16} className="text-success" />}
                 {job.status === 'error' && <XCircle size={16} className="text-red-500" />}
                 {job.status === 'processing' && <Clock size={16} className="text-primary animate-spin" />}
                 {job.status === 'pending' && <Clock size={16} className="text-slate-300" />}

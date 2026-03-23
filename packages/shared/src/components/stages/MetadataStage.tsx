@@ -200,7 +200,7 @@ function MetaResultCard({
     4;
 
   const scoreColor =
-    scoreAvg >= 4.5 ? 'text-emerald-600' : scoreAvg >= 3.5 ? 'text-amber-600' : 'text-slate-500';
+    scoreAvg >= 4.5 ? 'text-success' : scoreAvg >= 3.5 ? 'text-amber-600' : 'text-slate-500';
 
   const copyTags = () => {
     navigator.clipboard.writeText(result.tags.join(', ')).catch(() => { });
@@ -268,7 +268,7 @@ function MetaResultCard({
               data-testid="copy-tags-btn"
               className={cn(
                 'text-xs px-2 py-0.5 rounded transition-colors flex items-center gap-1',
-                copiedTags ? 'text-emerald-600 bg-emerald-50' : 'text-slate-500 hover:bg-slate-100',
+                copiedTags ? 'text-success bg-success-light' : 'text-slate-500 hover:bg-slate-100',
               )}
             >
               {copiedTags ? <Check size={10} /> : <Copy size={10} />}

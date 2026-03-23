@@ -108,13 +108,13 @@ function ProcessingOptions({ options, onChange }: ProcessingOptionsProps) {
                       'group relative overflow-hidden rounded-xl text-sm font-bold transition-all duration-300 flex items-center justify-center text-center',
                       options.outlineStyle === s.value
                         ? 'p-[2px] shadow-sm scale-[1.02] text-[#111111] bg-white z-10'
-                        : 'p-2 border border-slate-200 bg-white hover:border-[#06C755]/40 hover:bg-slate-50 text-slate-500 active:scale-95'
+                        : 'p-2 border border-slate-200 bg-white hover:border-[#7c3aed]/40 hover:bg-slate-50 text-slate-500 active:scale-95'
                     )}
                   >
                     {options.outlineStyle === s.value && (
                       <>
-                        <span className="absolute left-1/2 top-1/2 aspect-square w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_270deg,rgba(6,199,85,0.2)_330deg,#06C755_360deg)]" />
-                        <span className="absolute inset-[1px] rounded-[11px] bg-[#EBF7EF]" />
+                        <span className="absolute left-1/2 top-1/2 aspect-square w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_270deg,rgba(124,58,237,0.2)_330deg,#7c3aed_360deg)]" />
+                        <span className="absolute inset-[1px] rounded-[11px] bg-[#f5f3ff]" />
                       </>
                     )}
                     <span className={cn(

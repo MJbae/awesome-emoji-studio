@@ -81,14 +81,14 @@ function FileUpload({
           'group relative overflow-hidden flex flex-col items-center justify-center p-6 sm:p-10 text-center cursor-pointer transition-all duration-300 rounded-2xl border-2',
           isDragging
             ? 'border-transparent shadow-lg scale-105 bg-white'
-            : 'border-dashed border-slate-300 hover:border-[#06C755]/40 hover:bg-slate-50',
+            : 'border-dashed border-slate-300 hover:border-[#7c3aed]/40 hover:bg-slate-50',
         )}
         aria-label={label}
       >
         {isDragging && (
           <>
-            <span className="absolute left-1/2 top-1/2 aspect-square w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_270deg,rgba(6,199,85,0.2)_330deg,#06C755_360deg)] opacity-100" />
-            <span className="absolute inset-[2px] rounded-[14px] bg-[#EBF7EF]" />
+            <span className="absolute left-1/2 top-1/2 aspect-square w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_270deg,rgba(124,58,237,0.2)_330deg,#7c3aed_360deg)] opacity-100" />
+            <span className="absolute inset-[2px] rounded-[14px] bg-[#f5f3ff]" />
           </>
         )}
         <div className="relative z-10 w-full flex flex-col items-center gap-3">
@@ -106,8 +106,8 @@ function FileUpload({
             <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center pointer-events-none">
               {isProcessing ? (
                 <div className="relative overflow-hidden w-9 h-9 rounded-full flex items-center justify-center">
-                  <span className="absolute left-1/2 top-1/2 aspect-square w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_1s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_270deg,rgba(6,199,85,0.4)_330deg,#06C755_360deg)]" />
-                  <span className="absolute inset-[3px] rounded-full bg-[#EBF7EF]" />
+                  <span className="absolute left-1/2 top-1/2 aspect-square w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_1s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_270deg,rgba(124,58,237,0.4)_330deg,#7c3aed_360deg)]" />
+                  <span className="absolute inset-[3px] rounded-full bg-[#f5f3ff]" />
                 </div>
               ) : (
                 <Upload size={28} />

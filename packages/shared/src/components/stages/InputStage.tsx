@@ -110,13 +110,13 @@ function InputStage({ onSubmit, initialData }: InputStageProps) {
                     'group relative flex flex-col items-center justify-center rounded-2xl text-sm sm:text-base font-bold transition-all duration-300 w-full text-center overflow-hidden',
                     isSelected
                       ? 'p-[2px] shadow-lg scale-[1.02] sm:scale-105 z-10 text-[#111111] bg-white'
-                      : 'p-3 sm:p-4 border-2 bg-white border-slate-100 hover:border-[#06C755]/40 hover:bg-slate-50 hover:-translate-y-[2px] sm:hover:-translate-y-1 hover:shadow-sm sm:hover:shadow-md text-slate-500 active:scale-95',
+                      : 'p-3 sm:p-4 border-2 bg-white border-slate-100 hover:border-[#7c3aed]/40 hover:bg-slate-50 hover:-translate-y-[2px] sm:hover:-translate-y-1 hover:shadow-sm sm:hover:shadow-md text-slate-500 active:scale-95',
                   )}
                 >
                   {isSelected && (
                     <>
-                      <span className="absolute left-1/2 top-1/2 aspect-square w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_270deg,rgba(6,199,85,0.2)_330deg,#06C755_360deg)]" />
-                      <span className="absolute inset-[2px] rounded-[14px] bg-[#EBF7EF]" />
+                      <span className="absolute left-1/2 top-1/2 aspect-square w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_270deg,rgba(124,58,237,0.2)_330deg,#7c3aed_360deg)]" />
+                      <span className="absolute inset-[2px] rounded-[14px] bg-[#f5f3ff]" />
                     </>
                   )}
 

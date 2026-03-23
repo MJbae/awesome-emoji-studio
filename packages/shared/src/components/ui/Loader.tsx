@@ -33,8 +33,8 @@ function Loader({ title, text, size = 'md' }: LoaderProps) {
           className={cn('relative rounded-full flex items-center justify-center shadow-inner overflow-hidden', dimensions.w)}
           aria-hidden="true"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-[#06C755] to-[#45e888] animate-[spin_3s_linear_infinite]" />
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#06C755]/50 to-transparent animate-[spin_2s_linear_infinite_reverse]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#7c3aed] to-[#a78bfa] animate-[spin_3s_linear_infinite]" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#7c3aed]/50 to-transparent animate-[spin_2s_linear_infinite_reverse]" />
 
           {/* A soft inner glow rather than cutting out the center */}
           <div className="absolute inset-1 rounded-full bg-white/20 backdrop-blur-sm" />

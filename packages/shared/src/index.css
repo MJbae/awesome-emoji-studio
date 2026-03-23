@@ -3,26 +3,26 @@
 @theme {
   --font-sans: 'Nunito', sans-serif;
 
-  /* Primary Scale: Awesome Green base emerald */
-  --color-primary-50: #ecfdf5;
-  --color-primary-100: #d1fae5;
-  --color-primary-200: #a7f3d0;
-  --color-primary-300: #6ee7b7;
-  --color-primary-400: #34d399;
-  --color-primary: #06c755; /* Awesome official green */
-  --color-primary-600: #059669;
-  --color-primary-700: #047857;
-  --color-primary-800: #065f46;
-  --color-primary-900: #064e3b;
+  /* Primary Scale: Magic Violet */
+  --color-primary-50: #f5f3ff;
+  --color-primary-100: #ede9fe;
+  --color-primary-200: #ddd6fe;
+  --color-primary-300: #c4b5fd;
+  --color-primary-400: #a78bfa;
+  --color-primary: #7c3aed; /* Magic Violet */
+  --color-primary-600: #6d28d9;
+  --color-primary-700: #5b21b6;
+  --color-primary-800: #4c1d95;
+  --color-primary-900: #3b0f7a;
 
   /* Legacy aliases (= primary-400 / primary-600) */
-  --color-primary-light: #34d399;
-  --color-primary-dark: #059669;
+  --color-primary-light: #a78bfa;
+  --color-primary-dark: #6d28d9;
 
   --color-surface: #ffffff;
-  --color-surface-dark: #f0fdf4; /* Mint tint */
+  --color-surface-dark: #faf8ff; /* Violet tint */
 
-  --color-text: #064e3b; /* Deep emerald */
+  --color-text: #3b0f7a; /* Deep violet */
   --color-text-muted: #4b5563;
 
   --color-success: #10b981;

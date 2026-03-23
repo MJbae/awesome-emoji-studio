@@ -17,10 +17,10 @@ interface StrategyStageProps {
 }
 
 const PERSONA_COLORS: Record<string, { bg: string; text: string }> = {
-  'Market Analyst': { bg: 'bg-emerald-100', text: 'text-emerald-700' },
-  'Art Director': { bg: 'bg-teal-100', text: 'text-teal-700' },
-  'Cultural Expert': { bg: 'bg-green-100', text: 'text-green-700' },
-  'Chief Creative Director': { bg: 'bg-lime-100', text: 'text-lime-700' },
+  'Market Analyst': { bg: 'bg-violet-100', text: 'text-violet-700' },
+  'Art Director': { bg: 'bg-fuchsia-100', text: 'text-fuchsia-700' },
+  'Cultural Expert': { bg: 'bg-amber-100', text: 'text-amber-700' },
+  'Chief Creative Director': { bg: 'bg-indigo-100', text: 'text-indigo-700' },
 };
 
 function getPersonaColor(persona: string) {
@@ -90,8 +90,8 @@ function StrategyStage({
         {strategy.culturalNotes && (
           <CollapsibleStrategyCard
             title={t('strategy.culturalNotes')}
-            icon={<Globe className="w-5 h-5 text-green-700" />}
-            iconBg="bg-green-100"
+            icon={<Globe className="w-5 h-5 text-amber-700" />}
+            iconBg="bg-amber-100"
           >
             <p className="text-sm text-text-muted leading-relaxed break-words whitespace-normal">
               {strategy.culturalNotes}
@@ -102,8 +102,8 @@ function StrategyStage({
         {strategy.salesReasoning && (
           <CollapsibleStrategyCard
             title={t('strategy.salesReasoning')}
-            icon={<TrendingUp className="w-5 h-5 text-lime-700" />}
-            iconBg="bg-lime-100"
+            icon={<TrendingUp className="w-5 h-5 text-indigo-700" />}
+            iconBg="bg-indigo-100"
           >
             <p className="text-sm text-text-muted leading-relaxed break-words whitespace-normal">
               {strategy.salesReasoning}

@@ -91,7 +91,7 @@ function StickerBatchStage({
               className="w-full h-3 bg-slate-100 rounded-full overflow-hidden shadow-inner"
             >
               <div
-                className="h-full bg-gradient-to-r from-[#06C755] to-[#45e888] rounded-full transition-all duration-500 ease-out shadow-[0_0_10px_rgba(6,199,85,0.4)]"
+                className="h-full bg-gradient-to-r from-[#7c3aed] to-[#a78bfa] rounded-full transition-all duration-500 ease-out shadow-[0_0_10px_rgba(124,58,237,0.4)]"
                 style={{ width: `${progressPct}%` }}
               />
             </div>
