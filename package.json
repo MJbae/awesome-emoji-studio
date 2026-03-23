@@ -1,8 +1,8 @@
 {
-  "name": "line-emoji-studio",
+  "name": "awesome-emoji-studio",
   "private": true,
   "version": "0.1.0",
-  "description": "AI-powered LINE Emoji studio",
+  "description": "AI-powered Emoji studio",
   "type": "module",
   "workspaces": [
     "packages/*"

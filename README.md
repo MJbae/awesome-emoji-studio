@@ -1,8 +1,8 @@
-# LINE Emoji Studio
+# Awesome Emoji Studio
 
-**https://line-emoji-master.vercel.app**
+**https://awesome-emoji-master.vercel.app**
 
-캐릭터 컨셉만 입력하면 AI가 LINE 이모지 세트를 자동으로 만들어 줍니다.
+캐릭터 컨셉만 입력하면 AI가 이모지 세트를 자동으로 만들어 줍니다.
 전략 수립부터 이미지 생성, 후처리, 메타데이터, ZIP 내보내기까지 한 번에 처리됩니다.
 
 ---
@@ -20,7 +20,7 @@
 
 ### 2. 이모지 만들기
 
-[line-emoji-master.vercel.app](https://line-emoji-master.vercel.app)에 접속하면 API Key 입력 화면이 나타납니다. 키를 입력하면 6단계 파이프라인이 시작됩니다.
+[awesome-emoji-master.vercel.app](https://awesome-emoji-master.vercel.app)에 접속하면 API Key 입력 화면이 나타납니다. 키를 입력하면 6단계 파이프라인이 시작됩니다.
 
 ```
 1. 컨셉 입력 → 2. AI 전략 → 3. 캐릭터 생성 → 4. 이모지 일괄 생성 → 5. 후처리 → 6. 메타 · 내보내기
@@ -154,7 +154,7 @@ npm run dev:cli -- generate -c "귀여운 고양이" --auto
 npm workspaces 기반 모노레포입니다.
 
 ```
-line-emoji-master/
+awesome-emoji-master/
 ├── packages/
 │   ├── shared/    # 공통 코드 (React 컴포넌트, Gemini AI, 이미지 처리, Zustand 스토어)
 │   ├── web/       # 웹 SPA (Vite)

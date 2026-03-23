@@ -1,6 +1,6 @@
-# LINE Emoji Master - 작업 계획서
+# Awesome Emoji Master - 작업 계획서
 
-> **프로젝트**: LINE Emoji 전용 AI 스튜디오  
+> **프로젝트**: Awesome Emoji 전용 AI 스튜디오  
 > **기반**: emoji_master (텍스트 이모티콘 스튜디오)  
 > **작성일**: 2026-02-19  
 > **상태**: 계획 수립
@@ -11,29 +11,29 @@
 
 ### 1.1 목적
 
-`emoji_master` 프로젝트를 기반으로 **텍스트가 없는 LINE Emoji 전용 스튜디오**를 구축합니다.
+`emoji_master` 프로젝트를 기반으로 **텍스트가 없는 Awesome Emoji 전용 스튜디오**를 구축합니다.
 
 - 모든 텍스트 관련 기능을 제거
-- LINE Emoji 규격(180x180px)에 최적화
+- Awesome Emoji 규격(180x180px)에 최적화
 - 최신 Gemini Flash 모델을 활용한 고품질 이미지 생성
 - 매출 극대화를 위한 컨셉/아이디어 자동 생성
 
 ### 1.2 핵심 변경 사항 요약
 
-| 영역        | emoji_master (현재)                               | line-emoji-master (신규)                                   |
+| 영역        | emoji_master (현재)                               | awesome-emoji-master (신규)                                   |
 | ----------- | ------------------------------------------------- | ---------------------------------------------------------- |
-| 플랫폼      | OGQ / LINE Sticker / LINE Emoji                   | **LINE Emoji 전용**                                        |
+| 플랫폼      | OGQ / Awesome Sticker / Awesome Emoji                   | **Awesome Emoji 전용**                                        |
 | 텍스트      | 텍스트 오버레이 지원 (noText 옵션)                | **텍스트 완전 제거**                                       |
 | AI 모델     | gemini-3.1-pro-preview / gemini-3-pro-image-preview | **gemini-2.5-flash-preview-image-generation (최신 Flash)** |
 | 이미지 크기 | 740x640 / 370x320 / 180x180                       | **180x180 전용**                                           |
-| 생성 수     | 45개 생성 → 플랫폼별 선택                         | **45개 생성 → 40개 선택 (LINE Emoji 규격)**                |
+| 생성 수     | 45개 생성 → 플랫폼별 선택                         | **45개 생성 → 40개 선택 (Awesome Emoji 규격)**                |
 | 언어 선택   | Korean / Japanese / Traditional Chinese           | **프롬프트 전용 (출력 텍스트 없음)**                       |
 
 ---
 
-## 2. LINE Emoji 시장 분석 & 전략
+## 2. Awesome Emoji 시장 분석 & 전략
 
-### 2.1 LINE Emoji 기술 규격
+### 2.1 Awesome Emoji 기술 규격
 
 | 항목        | 규격                                        |
 | ----------- | ------------------------------------------- |
@@ -105,7 +105,7 @@ GEMINI_MODELS = {
 };
 ```
 
-**line-emoji-master 모델 구성:**
+**awesome-emoji-master 모델 구성:**
 
 ```typescript
 // 신규 프로젝트 설정
@@ -161,7 +161,7 @@ config: {
 ### 4.1 프로젝트 구조
 
 ```
-line-emoji-master/
+awesome-emoji-master/
 ├── packages/
 │   ├── shared/              # 공통 코드 (서비스, 타입, 상수, 상태관리)
 │   │   └── src/
@@ -196,7 +196,7 @@ line-emoji-master/
 
 ### 4.2 파이프라인 재설계 (6단계)
 
-기존 7단계에서 텍스트 관련을 제거하고 LINE Emoji에 최적화한 **6단계 파이프라인**:
+기존 7단계에서 텍스트 관련을 제거하고 Awesome Emoji에 최적화한 **6단계 파이프라인**:
 
 ```
 1. 입력 → 2. AI 전략 → 3. 캐릭터 생성 → 4. 이모지 일괄 생성
@@ -211,7 +211,7 @@ line-emoji-master/
 | **3. 캐릭터 생성**         | 베이스 캐릭터 + 스타일 변환       | 변경 없음 (텍스트 무관)                        |
 | **4. 이모지 생성**         | 45개 아이디어 → 이미지 생성       | 텍스트 필드 제거, 이모지 최적 프롬프트         |
 | **5. 후처리 & 메타데이터** | 배경 제거 + 아웃라인 + 메타데이터 | 텍스트 자연스러움 검사 제거, 단계 병합         |
-| **6. 내보내기**            | LINE Emoji ZIP                    | LINE Emoji 단일 포맷                           |
+| **6. 내보내기**            | Awesome Emoji ZIP                    | Awesome Emoji 단일 포맷                           |
 
 ---
 
@@ -268,7 +268,7 @@ line-emoji-master/
 #### 프롬프트 (`services/gemini/prompts/`)
 
 - `characterGen.ts`: 텍스트 오버레이 지시 제거, "ABSOLUTELY NO TEXT. PURE IMAGE ONLY." 항상 적용
-- `expertPanel.ts`: 텍스트 스타일 추천 제거, LINE Emoji 시장 분석 강화
+- `expertPanel.ts`: 텍스트 스타일 추천 제거, Awesome Emoji 시장 분석 강화
 - `metadata.ts`: 텍스트 스타일 관련 컨텍스트 제거
 
 #### UI 컴포넌트
@@ -276,17 +276,17 @@ line-emoji-master/
 - `InputStage.tsx`: noText 토글 제거, 언어 선택을 "타깃 시장"으로 변경
 - `StrategyStage.tsx`: 텍스트 스타일 카드 제거
 - `PostProcessStage.tsx`: 텍스트 자연스러움 검사 UI 제거
-- `ExportStage.tsx`: 플랫폼 선택 제거 (LINE Emoji 고정)
+- `ExportStage.tsx`: 플랫폼 선택 제거 (Awesome Emoji 고정)
 
 ### 5.2 수정 대상
 
 #### 플랫폼 상수 (`constants/platforms.ts`)
 
 ```typescript
-// LINE Emoji 전용
+// Awesome Emoji 전용
 export const EMOJI_SPEC = {
-  label: "LINE Emoji",
-  description: "LINE Messenger Emoji",
+  label: "Awesome Emoji",
+  description: "Awesome Messenger Emoji",
   count: 40,
   content: { width: 180, height: 180 },
   main: null,
@@ -315,7 +315,7 @@ export const GEMINI_MODELS = {
 #### 프롬프트 리뉴얼 — 이모지 아이디어 생성
 
 ```typescript
-// LINE Emoji에 최적화된 45개 아이디어 카테고리
+// Awesome Emoji에 최적화된 45개 아이디어 카테고리
 const EMOJI_CATEGORIES = {
   BASIC_EMOTIONS: { count: 10, description: "기본 감정 표현" },
   GREETINGS_RESPONSES: { count: 8, description: "인사 및 응답 제스처" },
@@ -391,7 +391,7 @@ const EMOJI_CATEGORIES = {
    - `EmoteIdea`에서 `text` 필드 제거
    - `UserInput`에서 `noText`, `language` → `targetMarket`으로 변경
    - `LLMStrategy`에서 `selectedTextStyle` 제거
-   - `PlatformId` → LINE Emoji 단일 타입으로 변경
+   - `PlatformId` → Awesome Emoji 단일 타입으로 변경
    - 새로운 타입 추가: `EmojiQualityScore`, `EmojiSelectionState`
 
 3. **상수 재정의**
@@ -433,7 +433,7 @@ const EMOJI_CATEGORIES = {
 
    **expertPanel.ts 수정:**
    - 텍스트 스타일 추천 로직 제거
-   - LINE Emoji 시장에 특화된 분석 프롬프트
+   - Awesome Emoji 시장에 특화된 분석 프롬프트
    - 이모지 카테고리별 최적 전략 수립 프롬프트
    - 180x180 소형 이미지에서의 시각적 매력도 분석 추가
 
@@ -441,11 +441,11 @@ const EMOJI_CATEGORIES = {
    - `buildBaseCharacterPrompt`: "DO NOT include any text" 강화
    - `buildEmoteIdeasPrompt`: 텍스트 필드 완전 제거, 45개 이모지 카테고리 분배 반영
    - `buildSingleEmotePrompt`: 텍스트 오버레이 지시 제거, "ABSOLUTELY NO TEXT" 항상 적용
-   - LINE Emoji 특성 반영: 180x180에서 잘 보이는 과장된 표정, 선명한 실루엣
+   - Awesome Emoji 특성 반영: 180x180에서 잘 보이는 과장된 표정, 선명한 실루엣
 
    **metadata.ts 수정:**
    - 텍스트 스타일 컨텍스트 제거
-   - LINE Emoji 스토어 SEO 최적화 강화
+   - Awesome Emoji 스토어 SEO 최적화 강화
 
 3. **오케스트레이터 수정** (`services/gemini/orchestrator.ts`)
    - `checkTextNaturalness()` 제거
@@ -466,7 +466,7 @@ const EMOJI_CATEGORIES = {
 
 - [ ] Gemini 클라이언트 최신 모델 적용
 - [ ] 텍스트 제거된 프롬프트 전체 리뉴얼
-- [ ] LINE Emoji 특화 프롬프트 (45개 카테고리 분배)
+- [ ] Awesome Emoji 특화 프롬프트 (45개 카테고리 분배)
 - [ ] 이모지 품질 검증 함수 구현
 - [ ] 파이프라인 6단계 동작 확인
 
@@ -474,19 +474,19 @@ const EMOJI_CATEGORIES = {
 
 ### Agent 3: 프론트엔드 엔지니어 (Frontend UI/UX)
 
-**역할**: UI 컴포넌트 수정 및 LINE Emoji 전용 인터페이스 구축
+**역할**: UI 컴포넌트 수정 및 Awesome Emoji 전용 인터페이스 구축
 
 **담당 업무:**
 
 1. **InputStage 수정**
    - noText 토글 제거 (항상 텍스트 없음)
    - `language` 셀렉터 → `targetMarket` 셀렉터로 변경 (프롬프트용)
-   - 프로젝트 타이틀/설명을 "LINE Emoji 스튜디오"로 변경
-   - LINE Emoji 가이드라인 안내 추가
+   - 프로젝트 타이틀/설명을 "Awesome Emoji 스튜디오"로 변경
+   - Awesome Emoji 가이드라인 안내 추가
 
 2. **StrategyStage 수정**
    - 텍스트 스타일 카드 제거
-   - LINE Emoji 시장 분석 결과 강조 표시
+   - Awesome Emoji 시장 분석 결과 강조 표시
    - 추천 카테고리 분배 시각화 추가
 
 3. **CharacterStage** — 변경 최소화 (텍스트 무관)
@@ -505,8 +505,8 @@ const EMOJI_CATEGORIES = {
 6. **MetadataStage** — 텍스트 스타일 컨텍스트 UI 제거
 
 7. **ExportStage 수정**
-   - 플랫폼 선택 제거 (LINE Emoji 고정)
-   - LINE Creators Market 제출 가이드 표시
+   - 플랫폼 선택 제거 (Awesome Emoji 고정)
+   - Awesome Creators Market 제출 가이드 표시
    - 내보내기 미리보기 (40개 그리드)
 
 8. **StageStepper 수정**
@@ -514,8 +514,8 @@ const EMOJI_CATEGORIES = {
    - 단계명 변경 (stickers → emojis 등)
 
 9. **AppShell 수정**
-   - 앱 타이틀: "LINE Emoji Studio"
-   - 브랜딩 색상 LINE 그린(#06C755) 반영
+   - 앱 타이틀: "Awesome Emoji Studio"
+   - 브랜딩 색상 Awesome 그린(#06C755) 반영
 
 **카테고리**: `visual-engineering`
 **스킬**: `frontend-ui-ux`, `frontend-patterns`, `coding-standards`
@@ -523,7 +523,7 @@ const EMOJI_CATEGORIES = {
 **산출물:**
 
 - [ ] 전체 UI 컴포넌트 텍스트 관련 제거
-- [ ] LINE Emoji 브랜딩 적용
+- [ ] Awesome Emoji 브랜딩 적용
 - [ ] 이모지 선택 인터페이스 구현
 - [ ] 용어 통일 (스티커 → 이모지)
 - [ ] 반응형 레이아웃 동작 확인
@@ -532,19 +532,19 @@ const EMOJI_CATEGORIES = {
 
 ### Agent 4: 이미지 처리 엔지니어 (Image Processing & Export)
 
-**역할**: 이미지 후처리, 리사이즈, LINE Emoji 규격 내보내기
+**역할**: 이미지 후처리, 리사이즈, Awesome Emoji 규격 내보내기
 
 **담당 업무:**
 
 1. **이미지 처리 수정** (`services/image/`)
    - `backgroundRemoval.ts`: 변경 없음 (텍스트 무관)
    - `outlineGeneration.ts`: 변경 없음
-   - `resize.ts`: LINE Emoji 180x180 전용 최적화
+   - `resize.ts`: Awesome Emoji 180x180 전용 최적화
    - `core.ts`: 불필요한 크기 변환 로직 정리
 
 2. **내보내기 수정** (`services/image/export.ts`)
-   - OGQ/LINE Sticker 관련 코드 제거
-   - LINE Emoji 전용 ZIP 생성:
+   - OGQ/Awesome Sticker 관련 코드 제거
+   - Awesome Emoji 전용 ZIP 생성:
      - `tab.png` (96x74) — 자동 생성
      - `001.png` ~ `040.png` (180x180)
    - 메타데이터 JSON 포함 옵션
@@ -559,8 +559,8 @@ const EMOJI_CATEGORIES = {
    - 또는 AI로 탭 이미지 별도 생성
 
 5. **CLI 패키지 수정** (`packages/cli/`)
-   - LINE Emoji 전용 명령어
-   - `--format line-emoji` 고정
+   - Awesome Emoji 전용 명령어
+   - `--format awesome-emoji` 고정
    - 이미지 처리 파이프라인 업데이트
 
 **카테고리**: `unspecified-low`
@@ -568,7 +568,7 @@ const EMOJI_CATEGORIES = {
 
 **산출물:**
 
-- [ ] LINE Emoji 전용 내보내기 기능
+- [ ] Awesome Emoji 전용 내보내기 기능
 - [ ] 180x180 리사이즈 최적화
 - [ ] 탭 이미지 자동 생성
 - [ ] ZIP 파일 구조 검증
@@ -610,7 +610,7 @@ const EMOJI_CATEGORIES = {
    - Agent 1~4의 산출물 통합
    - 전체 파이프라인 end-to-end 동작 검증
    - 성능 테스트 (45개 이모지 생성 시간)
-   - 내보내기 ZIP 파일 LINE 규격 준수 검증
+   - 내보내기 ZIP 파일 Awesome 규격 준수 검증
 
 **카테고리**: `deep`
 **스킬**: `tdd-workflow`, `coding-standards`, `superpowers/verification-before-completion`
@@ -661,7 +661,7 @@ Phase 3 (순차): Agent 5 (전체 통합)
 | Gemini Flash 이미지 모델 API 변경 | 높음   | Fallback 모델 체인 유지, 모델명 상수화    |
 | 캐릭터 일관성 저하                | 높음   | CharacterSpec 강화, 참조 이미지 항상 포함 |
 | 180x180 해상도에서 품질 저하      | 중간   | 1024x1024 생성 후 고품질 다운스케일       |
-| LINE 이모지 심사 반려             | 중간   | LINE 가이드라인 체크리스트 내장           |
+| Awesome 이모지 심사 반려             | 중간   | Awesome 가이드라인 체크리스트 내장           |
 | API 비용 초과                     | 낮음   | Flash 모델 사용으로 비용 70% 절감         |
 
 ---
@@ -669,11 +669,11 @@ Phase 3 (순차): Agent 5 (전체 통합)
 ## 9. 성공 기준
 
 - [ ] 텍스트 관련 코드 **완전 제거** (grep 검증)
-- [ ] 45개 이모지 생성 → 40개 선택 → LINE Emoji ZIP 내보내기 정상 동작
+- [ ] 45개 이모지 생성 → 40개 선택 → Awesome Emoji ZIP 내보내기 정상 동작
 - [ ] Gemini Flash 최신 모델로 이미지 생성 정상 동작
 - [ ] 웹/Electron/CLI 모두 빌드 성공
 - [ ] 전체 파이프라인 E2E 테스트 통과
-- [ ] 내보내기 ZIP이 LINE Emoji 규격 준수 (180x180, PNG, 투명 배경, 001~040 파일명)
+- [ ] 내보내기 ZIP이 Awesome Emoji 규격 준수 (180x180, PNG, 투명 배경, 001~040 파일명)
 - [ ] 타입 에러 0건, 린트 에러 0건
 
 ---
@@ -686,7 +686,7 @@ Phase 3 (순차): Agent 5 (전체 통합)
 | ------------------------------------------------------------- | ---------------------- | ----------------------------------------- |
 | `packages/shared/src/types/domain.ts`                         | 도메인 타입 정의       | TextStyleOption, EmoteIdea.text 제거      |
 | `packages/shared/src/constants/gemini.ts`                     | Gemini 모델 상수       | 최신 Flash 모델로 변경                    |
-| `packages/shared/src/constants/platforms.ts`                  | 플랫폼 규격            | LINE Emoji 단일 규격                      |
+| `packages/shared/src/constants/platforms.ts`                  | 플랫폼 규격            | Awesome Emoji 단일 규격                      |
 | `packages/shared/src/constants/styles.ts`                     | 비주얼 스타일          | 변경 없음                                 |
 | `packages/shared/src/services/gemini/client.ts`               | Gemini API 클라이언트  | 모델명 변경                               |
 | `packages/shared/src/services/gemini/orchestrator.ts`         | AI 오케스트레이터      | checkTextNaturalness 제거, textStyle 제거 |
@@ -695,7 +695,7 @@ Phase 3 (순차): Agent 5 (전체 통합)
 | `packages/shared/src/services/gemini/prompts/metadata.ts`     | 메타데이터 프롬프트    | 텍스트 스타일 컨텍스트 제거               |
 | `packages/shared/src/services/pipeline/fullPipeline.ts`       | 전체 파이프라인        | 6단계로 축소                              |
 | `packages/shared/src/services/pipeline/generationPipeline.ts` | 생성 파이프라인        | 텍스트 로직 제거                          |
-| `packages/shared/src/services/image/export.ts`                | ZIP 내보내기           | LINE Emoji 전용                           |
+| `packages/shared/src/services/image/export.ts`                | ZIP 내보내기           | Awesome Emoji 전용                           |
 | `packages/shared/src/components/stages/InputStage.tsx`        | 입력 UI                | noText 토글, 언어 선택 제거               |
 | `packages/shared/src/components/stages/StrategyStage.tsx`     | 전략 UI                | 텍스트 스타일 카드 제거                   |
 | `packages/shared/src/components/stages/StickerBatchStage.tsx` | 배치 생성 UI           | EmojiBatchStage로 리네이밍                |

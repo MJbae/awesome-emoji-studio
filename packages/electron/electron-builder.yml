@@ -1,5 +1,5 @@
 appId: com.emoticonstudio.app
-productName: LINE Emoji Studio
+productName: Awesome Emoji Studio
 directories:
   buildResources: resources
   output: dist
@@ -55,8 +55,8 @@ nsis:
   perMachine: false
   allowToChangeInstallationDirectory: true
   artifactName: ${name}-${version}-setup.${ext}
-  shortcutName: LINE Emoji Studio
-  uninstallDisplayName: LINE Emoji Studio
+  shortcutName: Awesome Emoji Studio
+  uninstallDisplayName: Awesome Emoji Studio
   installerIcon: resources/icon.ico
   uninstallerIcon: resources/icon.ico
 

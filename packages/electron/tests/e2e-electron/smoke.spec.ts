@@ -15,7 +15,7 @@ test('app launches and renders the main window', async () => {
   page = await ctx.app.firstWindow();
 
   const title = await page.title();
-  expect(title).toContain('LINE Emoji Studio');
+  expect(title).toContain('Awesome Emoji Studio');
 });
 
 test('app shell is visible after launch', async () => {

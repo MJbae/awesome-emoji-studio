@@ -169,7 +169,7 @@ emoticon-studio/
 │   │   └── jobs.ts                 # JobSnapshot, JobStatus
 │   │
 │   ├── constants/
-│   │   ├── platforms.ts            # OGQ, LINE Sticker, LINE Emoji 스펙
+│   │   ├── platforms.ts            # OGQ, Awesome Sticker, Awesome Emoji 스펙
 │   │   ├── styles.ts               # 비주얼 스타일 5종 + 텍스트 스타일
 │   │   ├── imageProcessing.ts      # BG_TOLERANCE, SOBEL_THRESHOLD, etc.
 │   │   └── gemini.ts               # 모델명, 온도, 재시도 설정
@@ -388,7 +388,7 @@ LLM 에이전트는 Playwright MCP를 통해 웹 앱과 상호작용합니다. P
 type Stage = 'setup' | 'input' | 'strategy' | 'character' 
            | 'stickers' | 'postprocess' | 'metadata' | 'export';
 type Lang = 'Korean' | 'Japanese' | 'Traditional Chinese';
-type PlatformId = 'ogq_sticker' | 'line_sticker' | 'line_emoji';
+type PlatformId = 'ogq_sticker' | 'awesome_sticker' | 'awesome_emoji';
 
 interface ServiceError {
   code: 'VALIDATION' | 'GEMINI' | 'IMAGE_PROCESSING' | 'EXPORT' | 'CANCELLED' | 'UNKNOWN';
@@ -494,7 +494,7 @@ await page.waitForFunction(
 
 // 4. 결과 확인 및 내보내기
 const stickers = await page.evaluate(() => window.emoticon.getStickers());
-const { blobUrl } = await page.evaluate(() => window.emoticon.export('line_sticker'));
+const { blobUrl } = await page.evaluate(() => window.emoticon.export('awesome_sticker'));
 ```
 
 ### 4.5 시맨틱 HTML 가이드라인
@@ -632,8 +632,8 @@ tests/unit/services/image/outlineGeneration.test.ts
 
 tests/unit/services/image/export.test.ts
   ├── OGQ 리사이즈 740×640
-  ├── LINE 스티커 리사이즈 370×320
-  ├── LINE 이모지 리사이즈 180×180
+  ├── Awesome 스티커 리사이즈 370×320
+  ├── Awesome 이모지 리사이즈 180×180
   ├── tab.png + main.png 생성
   ├── ZIP 파일 유효성 (파일명 패턴, PNG 매직 바이트)
   └── metadata.json 포함 여부
@@ -1011,7 +1011,7 @@ jobs:
 | 2 | **Rate Limit 충돌** | 🔴 높음 | 높음 | 통합 시 세션당 최대 30+ API 호출. 공유 Rate Limiter + 큐 + backoff 필수 |
 | 3 | **브라우저 메모리 초과** | 🔴 높음 | 중간 | 45 원본 + 45 처리 = 90개 base64 이미지. Object URL 사용, 미사용 즉시 해제, IndexedDB 고려 |
 | 4 | **이미지 처리 UI 프리즈** | 중간 | 높음 | Sobel + 플러드 필이 메인 스레드 점유. Web Worker로 분리 검토 |
-| 5 | **플랫폼 스펙 불일치** | 🔴 높음 | 중간 | 두 프로젝트의 `PLATFORMS`/`PLATFORM_SPECS` 값이 다를 수 있음. 실제 OGQ/LINE 제출 가이드와 대조 감사 필수 |
+| 5 | **플랫폼 스펙 불일치** | 🔴 높음 | 중간 | 두 프로젝트의 `PLATFORMS`/`PLATFORM_SPECS` 값이 다를 수 있음. 실제 OGQ/Awesome 제출 가이드와 대조 감사 필수 |
 | 6 | **Canvas 크로스 브라우저** | 중간 | 낮음 | Chromium 기준 개발, Playwright가 Chromium 사용하므로 LLM 에이전트와 동일 환경 보장 |
 | 7 | **API Key 클라이언트 노출** | 중간 | 높음 | 프런트엔드 전용이므로 불가피. README에 보안 주의사항 명시, 개인용 도구 명시 |
 
@@ -1278,7 +1278,7 @@ Canvas mock은 API 표면만 모킹하며 **실제 픽셀 연산을 수행하지
 
 ### 결정 2 🟡 — 플랫폼 스펙 정본
 
-두 프로젝트의 OGQ/LINE Sticker/LINE Emoji 스펙이 다를 수 있습니다. **실제 플랫폼 제출 가이드와 대조 감사** 후 단일 정본(single source of truth)을 확정해야 합니다.
+두 프로젝트의 OGQ/Awesome Sticker/Awesome Emoji 스펙이 다를 수 있습니다. **실제 플랫폼 제출 가이드와 대조 감사** 후 단일 정본(single source of truth)을 확정해야 합니다.
 
 ### 결정 3 🟡 — 테스트 깊이 상한
 

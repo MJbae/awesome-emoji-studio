@@ -1,6 +1,6 @@
 {
     "app": {
-        "title": "LINE Emoji Studio",
+        "title": "Awesome Emoji Studio",
         "apiConnected": "API 已连接",
         "apiMissing": "缺少 API 密钥",
         "analysisFailed": "分析失败",

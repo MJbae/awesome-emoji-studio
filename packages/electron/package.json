@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "description": "AI-powered emoji pack creator with cross-platform desktop support",
-  "author": "LINE Emoji Studio",
+  "author": "Awesome Emoji Studio",
   "type": "module",
   "main": "./out/main/index.js",
   "scripts": {

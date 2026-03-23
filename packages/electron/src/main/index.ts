@@ -45,7 +45,7 @@ function createWindow(): void {
     ...bounds,
     minWidth: 900,
     minHeight: 600,
-    title: 'LINE Emoji Studio',
+    title: 'Awesome Emoji Studio',
     icon: join(__dirname, '../../resources/icon.png'),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
