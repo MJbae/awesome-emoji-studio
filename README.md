@@ -19,7 +19,8 @@ all processed client-side. No server. No uploads. Your API key never leaves your
 
 <br />
 
-[**Live Demo**](https://awesome-emoji-studio.vercel.app) · [**Download Desktop App**](https://github.com/user/awesome-emoji-studio/releases) · [**Get a Free API Key**](https://aistudio.google.com/apikey)
+[**Live Demo**](https://awesome-emoji-studio.vercel.app) 
+· [**Get a Free API Key**](https://aistudio.google.com/apikey)
 
 </div>
 
