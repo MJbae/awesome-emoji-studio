@@ -134,7 +134,7 @@ function ProcessingOptions({ options, onChange }: ProcessingOptionsProps) {
                 htmlFor={thicknessId}
                 className="text-xs font-medium text-slate-600 block mb-1.5"
               >
-                Thickness ({options.outlineThickness}px)
+                {t('postprocess.thickness')} ({options.outlineThickness}px)
               </label>
               <input
                 id={thicknessId}
@@ -153,7 +153,7 @@ function ProcessingOptions({ options, onChange }: ProcessingOptionsProps) {
                 htmlFor={opacityId}
                 className="text-xs font-medium text-slate-600 block mb-1.5"
               >
-                Opacity ({options.outlineOpacity}%)
+                {t('postprocess.opacity')} ({options.outlineOpacity}%)
               </label>
               <input
                 id={opacityId}

@@ -99,7 +99,25 @@
         "enableOutline": "Enable Outline",
         "style": "Style",
         "outlineWhite": "White Outline",
-        "outlineBlack": "Black Outline"
+        "outlineBlack": "Black Outline",
+        "thickness": "Thickness",
+        "opacity": "Opacity"
+    },
+    "fileUpload": {
+        "label": "Upload emoji images",
+        "noValidImages": "No valid images found. Please upload PNG, JPG, WEBP or ZIP.",
+        "tooManyImages": "Too many images. Maximum {{max}} allowed.",
+        "processing": "Processing files...",
+        "dragOrClick": "Drag & drop or click",
+        "formatInfo": "PNG, JPG, WEBP, ZIP — max {{max}} files",
+        "autoExtractZip": "Auto ZIP extraction",
+        "highResSupport": "High resolution support",
+        "browserOnly": "Browser-only processing"
+    },
+    "selectionGrid": {
+        "selected": "Selected:",
+        "selectAll": "Select All",
+        "clear": "Clear"
     },
     "metadata": {
         "generating": "Generating Metadata Automatically",

@@ -7,13 +7,15 @@ import ko from './locales/ko.json';
 import ja from './locales/ja.json';
 import zhTW from './locales/zh-TW.json';
 import zhCN from './locales/zh-CN.json';
+import th from './locales/th.json';
 
 const resources = {
     en: { translation: en },
     ko: { translation: ko },
     ja: { translation: ja },
     'zh-TW': { translation: zhTW },
-    'zh-CN': { translation: zhCN }
+    'zh-CN': { translation: zhCN },
+    th: { translation: th }
 };
 
 i18n

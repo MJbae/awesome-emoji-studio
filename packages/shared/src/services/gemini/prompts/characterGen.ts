@@ -72,6 +72,14 @@ Be EXTREMELY specific about facial features - they are the #1 source of inconsis
 
 function getLanguageSpecificCategories(language: string): string {
   switch (language) {
+    case 'English':
+      return `
+Popular English LINE emoji categories for high sales:
+- Universal emotional reactions
+- Sarcastic/witty responses
+- Workplace & daily life humor
+- Relationship & friendship expressions
+- Pop-culture inspired reactions`;
     case 'Korean':
       return `
 Popular Korean LINE emoji categories for high sales:
@@ -96,6 +104,22 @@ Popular Traditional Chinese LINE emoji categories for high sales:
 - Trendy slang expressions
 - Food & lifestyle
 - Emotional emphasis`;
+    case 'Simplified Chinese':
+      return `
+Popular Simplified Chinese emoji categories for high sales:
+- Internet meme reactions
+- Work-life balance humor
+- Food culture expressions
+- Social media trendy slang
+- Festive & seasonal greetings`;
+    case 'Thai':
+      return `
+Popular Thai LINE emoji categories for high sales:
+- Sanuk (fun) & playful reactions
+- Polite wai greetings & respect expressions
+- Food & street food culture
+- Cute & humorous daily life
+- Festival & Buddhist holiday greetings`;
     default:
       return '';
   }

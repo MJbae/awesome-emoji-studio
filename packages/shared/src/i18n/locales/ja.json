@@ -52,7 +52,7 @@
         "subtitle": "AIが生成した絵文字セットの戦略を確認してください。",
         "culturalNotes": "文化的な考慮事項",
         "salesReasoning": "販売戦略",
-        "expertInsights": "専門家のインサイト",
+        "expertInsights": "専門家の見解",
         "clickForDetails": "クリックして詳細を見る",
         "next": "次へ →"
     },
@@ -72,7 +72,7 @@
         "colorPalette": "カラーパレット",
         "distinguishingFeatures": "特徴的な要素",
         "artStyle": "アートスタイル",
-        "expandDetails": "詳細を展開",
+        "expandDetails": "詳細を表示",
         "toEmojiGen": "絵文字生成へ →"
     },
     "stickers": {
@@ -92,14 +92,32 @@
         "applyCount": "{{count}} 個の画像に適用されます。",
         "livePreview": "リアルタイムプレビュー",
         "selectImage": "プレビューする画像を選択してください",
-        "cleanup": "画像のクリーンアップ",
-        "removeBg": "背景を削除",
+        "cleanup": "自動クリーンアップ",
+        "removeBg": "背景除去",
         "removeBgDesc": "画像の背景を自動的に削除して透明にします。",
         "outlineEffect": "アウトライン効果",
         "enableOutline": "アウトラインを有効にする",
         "style": "スタイル",
-        "outlineWhite": "白い枠線",
-        "outlineBlack": "黒い枠線"
+        "outlineWhite": "白アウトライン",
+        "outlineBlack": "黒アウトライン",
+        "thickness": "太さ",
+        "opacity": "不透明度"
+    },
+    "fileUpload": {
+        "label": "絵文字画像をアップロード",
+        "noValidImages": "有効な画像がありません。PNG、JPG、WEBPまたはZIPをアップロードしてください。",
+        "tooManyImages": "画像が多すぎます。最大{{max}}枚までです。",
+        "processing": "ファイル処理中…",
+        "dragOrClick": "ドラッグ＆ドロップまたはクリック",
+        "formatInfo": "PNG, JPG, WEBP, ZIP — 最大{{max}}ファイル",
+        "autoExtractZip": "ZIP自動展開",
+        "highResSupport": "高解像度対応",
+        "browserOnly": "ブラウザ内処理"
+    },
+    "selectionGrid": {
+        "selected": "選択：",
+        "selectAll": "すべて選択",
+        "clear": "クリア"
     },
     "metadata": {
         "generating": "メタデータ自動生成中",

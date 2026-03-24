@@ -2,12 +2,18 @@ import type { VisualStyle } from '@/types/domain';
 
 export function getCulturalContext(language: string): string {
   switch (language) {
+    case 'English':
+      return 'Optimize for global English-speaking LINE emoji market. English-speaking users appreciate universal humor, relatable everyday expressions, and clean modern designs. Popular categories include sarcastic reactions, workplace humor, relationship expressions, and pop-culture references. Buyers value versatility, wit, and broad relatability across cultures.';
     case 'Korean':
       return 'Optimize for Korean LINE emoji market. Korean users prefer cute, expressive characters with warm colors. Popular categories include aegyo expressions, food reactions, daily life situations, and K-culture references. Korean buyers value emotional warmth and relatability.';
     case 'Japanese':
       return 'Optimize for Japanese LINE emoji market. Japanese users appreciate detailed, polished art with clean aesthetics. Popular categories include kawaii expressions, seasonal greetings, polite responses, and workplace communication. Japanese buyers value quality, politeness variations, and aesthetic refinement.';
     case 'Traditional Chinese':
       return 'Optimize for Traditional Chinese LINE emoji market. Users prefer vibrant, lucky-themed designs with bold expressions. Popular categories include festive greetings, humorous reactions, trendy slang, and auspicious imagery. Buyers value expressive humor, cultural symbolism, and vibrant energy.';
+    case 'Simplified Chinese':
+      return 'Optimize for Simplified Chinese emoji market. Mainland Chinese users enjoy humorous, meme-style expressions with bold, trendy designs. Popular categories include internet slang reactions, work-life balance humor, food culture, and social media expressions. Buyers value humor, trendiness, and relatable modern lifestyle content.';
+    case 'Thai':
+      return 'Optimize for Thai LINE emoji market. Thailand is LINE\'s largest market. Thai users love playful, colorful, and humorous characters with exaggerated expressions. Popular categories include sanuk (fun) reactions, polite greetings (wai), food expressions, and playful teasing. Thai buyers value cuteness, humor, bright colors, and characters that express the Thai concept of "mai pen rai" (easygoing attitude).';
     default:
       return 'Optimize for LINE emoji market with broad appeal.';
   }

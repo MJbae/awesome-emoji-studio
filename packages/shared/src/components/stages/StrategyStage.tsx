@@ -193,6 +193,7 @@ function CollapsibleStrategyCard({
   defaultExpanded?: boolean;
   badge?: string;
 }) {
+  const { t } = useTranslation();
   const [expanded, setExpanded] = useState(defaultExpanded);
 
   return (
@@ -217,7 +218,7 @@ function CollapsibleStrategyCard({
           </div>
           {!expanded && (
             <p className="text-xs text-text-muted truncate mt-1">
-              <span className="hidden sm:inline">Click for details / </span>클릭하여 상세 내용 확인
+              {t('strategy.clickForDetails')}
             </p>
           )}
           {expanded && (

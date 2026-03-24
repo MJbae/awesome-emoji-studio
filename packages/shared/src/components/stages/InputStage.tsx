@@ -11,12 +11,14 @@ interface InputStageProps {
   initialData?: UserInput;
 }
 
-const LANGUAGES = ['Korean', 'Japanese', 'Traditional Chinese'] as const;
+const LANGUAGES = ['Korean', 'Japanese', 'Traditional Chinese', 'Simplified Chinese', 'Thai'] as const;
 
 const LANG_META: Record<(typeof LANGUAGES)[number], { native: string }> = {
   Korean: { native: '한국' },
   Japanese: { native: '일본' },
   'Traditional Chinese': { native: '대만' },
+  'Simplified Chinese': { native: '중국' },
+  Thai: { native: '태국' },
 };
 
 function InputStage({ onSubmit, initialData }: InputStageProps) {
@@ -89,7 +91,7 @@ function InputStage({ onSubmit, initialData }: InputStageProps) {
         <fieldset className="space-y-1.5">
           <legend className="block text-sm font-medium text-slate-700 mb-2">{t('input.targetMarket')}</legend>
           <div
-            className="grid grid-cols-1 sm:grid-cols-3 gap-3"
+            className="grid grid-cols-2 sm:grid-cols-3 gap-3"
             role="radiogroup"
             aria-label="Target language"
           >

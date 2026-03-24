@@ -1,4 +1,5 @@
 import { CheckCircle2, Circle, XCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { cn } from '@/utils/cn';
 import { Button } from './Button';
 
@@ -23,6 +24,7 @@ function SelectionGrid({
   onSelectAll,
   onClearAll,
 }: SelectionGridProps) {
+  const { t } = useTranslation();
   const selectedCount = selectedIds.size;
 
   return (
@@ -30,7 +32,7 @@ function SelectionGrid({
       <div className="flex flex-col sm:flex-row justify-between items-end sm:items-center gap-3 bg-white p-4 rounded-xl border border-slate-200 sticky top-0 z-10">
         <div>
           <p className="text-sm text-text-muted">
-            선택: <span className="font-semibold text-primary">{selectedCount}</span> /{' '}
+            {t('selectionGrid.selected')} <span className="font-semibold text-primary">{selectedCount}</span> /{' '}
             {items.length}
           </p>
         </div>
@@ -43,7 +45,7 @@ function SelectionGrid({
             aria-label="Select all images"
             data-testid="select-all-btn"
           >
-            전체 선택
+            {t('selectionGrid.selectAll')}
           </Button>
           <Button
             variant="ghost"
@@ -53,7 +55,7 @@ function SelectionGrid({
             aria-label="Clear selection"
             data-testid="clear-selection-btn"
           >
-            초기화
+            {t('selectionGrid.clear')}
           </Button>
         </div>
       </div>

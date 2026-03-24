@@ -1,4 +1,5 @@
 import { useCallback, useState, useId } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Upload, Image as ImageIcon, AlertCircle } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
@@ -13,12 +14,14 @@ function FileUpload({
   onUpload,
   accept = 'image/*,.zip',
   maxFiles = 120,
-  label = '이모지 이미지 업로드',
+  label,
 }: FileUploadProps) {
+  const { t } = useTranslation();
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const inputId = useId();
+  const resolvedLabel = label ?? t('fileUpload.label');
 
   const handleFiles = useCallback(
     async (fileList: FileList | null) => {
@@ -36,9 +39,9 @@ function FileUpload({
       }
 
       if (images.length === 0) {
-        setError('유효한 이미지가 없습니다. PNG, JPG, WEBP 또는 ZIP을 업로드하세요.');
+        setError(t('fileUpload.noValidImages'));
       } else if (images.length > maxFiles) {
-        setError(`이미지가 너무 많습니다. 최대 ${maxFiles}개입니다.`);
+        setError(t('fileUpload.tooManyImages', { max: maxFiles }));
       } else {
         onUpload(images.slice(0, maxFiles));
       }
@@ -70,7 +73,7 @@ function FileUpload({
   return (
     <div className="w-full space-y-3">
       <label htmlFor={inputId} className="sr-only">
-        {label}
+        {resolvedLabel}
       </label>
 
       <div
@@ -83,7 +86,7 @@ function FileUpload({
             ? 'border-transparent shadow-lg scale-105 bg-white'
             : 'border-dashed border-slate-300 hover:border-[#7c3aed]/40 hover:bg-slate-50',
         )}
-        aria-label={label}
+        aria-label={resolvedLabel}
       >
         {isDragging && (
           <>
@@ -99,7 +102,7 @@ function FileUpload({
             accept={accept}
             onChange={(e) => handleFiles(e.target.files)}
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-            aria-label={label}
+            aria-label={resolvedLabel}
           />
 
           <div className="flex flex-col items-center gap-3">
@@ -115,9 +118,9 @@ function FileUpload({
             </div>
             <div className="pointer-events-none">
               <p className="font-semibold text-slate-800">
-                {isProcessing ? '파일 처리 중…' : '드래그 앤 드롭 또는 클릭'}
+                {isProcessing ? t('fileUpload.processing') : t('fileUpload.dragOrClick')}
               </p>
-              <p className="text-sm text-text-muted mt-1">PNG, JPG, WEBP, ZIP — 최대 {maxFiles}개</p>
+              <p className="text-sm text-text-muted mt-1">{t('fileUpload.formatInfo', { max: maxFiles })}</p>
             </div>
           </div>
         </div>
@@ -135,9 +138,9 @@ function FileUpload({
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
         {[
-          { Icon: ImageIcon, text: 'ZIP 자동 추출' },
-          { Icon: Upload, text: '고해상도 지원' },
-          { Icon: AlertCircle, text: '브라우저 전용 처리' },
+          { Icon: ImageIcon, text: t('fileUpload.autoExtractZip') },
+          { Icon: Upload, text: t('fileUpload.highResSupport') },
+          { Icon: AlertCircle, text: t('fileUpload.browserOnly') },
         ].map(({ Icon, text }) => (
           <div
             key={text}

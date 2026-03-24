@@ -58,6 +58,12 @@ const LANGUAGES: LanguageEntry[] = [
     required: false,
     nativeName: '简体中文',
   },
+  {
+    code: 'th',
+    label: 'Thai',
+    required: false,
+    nativeName: 'ไทย',
+  },
 ];
 
 function App() {

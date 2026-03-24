@@ -53,7 +53,7 @@ export interface PlatformExportResult {
 export interface UserInput {
   concept: string;
   referenceImage: string | null; // Base64
-  language: 'Korean' | 'Japanese' | 'Traditional Chinese';
+  language: 'Korean' | 'Japanese' | 'Traditional Chinese' | 'Simplified Chinese' | 'Thai';
   skipCharacterGen?: boolean;
 }
 
@@ -137,7 +137,7 @@ export interface ProcessingOptions {
 }
 
 /** Language codes supported by the metadata generator */
-export type LanguageCode = 'en' | 'ja' | 'zh-TW' | 'zh-CN' | 'ko';
+export type LanguageCode = 'en' | 'ja' | 'zh-TW' | 'zh-CN' | 'ko' | 'th';
 
 export interface EvaluationScores {
   naturalness: number;
