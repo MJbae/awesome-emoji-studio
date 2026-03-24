@@ -146,7 +146,7 @@
         "selectPlatforms": "플랫폼 선택",
         "selectAll": "전체 선택",
         "deselectAll": "전체 해제",
-        "exportSelected": "선택 플랫폼 내보내기",
+        "exportSelected": "선택 플랫폼 ZIP 내보내기",
         "exportCombined": "통합 ZIP 내보내기",
         "exporting": "내보내기 중…",
         "exportProgress": "내보내기 진행",
