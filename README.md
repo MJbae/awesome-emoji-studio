@@ -1,167 +1,141 @@
+<div align="center">
+
 # Awesome Emoji Studio
 
-> From concept to store-ready emoji pack — powered by AI.
+**AI-powered emoji pack factory — from concept to store-ready packages with zero backend.**
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
-[![Gemini](https://img.shields.io/badge/Google%20Gemini-AI-4285F4?logo=google&logoColor=white)](https://ai.google.dev/)
-[![Electron](https://img.shields.io/badge/Electron-40-47848F?logo=electron&logoColor=white)](https://www.electronjs.org/)
-[![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
-[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Gemini](https://img.shields.io/badge/Gemini_AI-3.1_Pro-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
+[![Electron](https://img.shields.io/badge/Electron-40-47848F?style=for-the-badge&logo=electron&logoColor=white)](https://www.electronjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](#license)
 
-Most AI image generators stop at "here's a picture." Awesome Emoji Studio goes further — it produces **market-ready emoji packs** that meet the exact submission requirements of real storefronts. Enter a character concept, and the platform handles everything: market strategy, 45-image batch generation, background removal, outline rendering, multilingual SEO metadata, and platform-specific ZIP packaging for **7 different marketplaces**.
+<br />
 
-**[Live Demo](https://awesome-emoji-studio.vercel.app)**
+Enter a character concept. Get **45 platform-compliant images**, background removal, outline rendering,
+multilingual SEO metadata in **6 languages**, and submission-ready ZIPs for **6 storefronts** —
+all processed client-side. No server. No uploads. Your API key never leaves your device.
+
+<br />
+
+[**Live Demo**](https://awesome-emoji-studio.vercel.app) · [**Download Desktop App**](https://github.com/user/awesome-emoji-studio/releases) · [**Get a Free API Key**](https://aistudio.google.com/apikey)
+
+</div>
+
+<br />
+
+```mermaid
+flowchart LR
+    A["<b>Concept Input</b><br/>Text + Reference Image<br/>+ Target Language"] --> B["<b>AI Expert Panel</b><br/>Market Analyst<br/>Art Director<br/>Cultural Expert<br/>+ Synthesis"]
+    B --> C["<b>Character Design</b><br/>Base Image<br/>+ Style Refinement"]
+    C --> D["<b>Batch Generation</b><br/>45 images<br/>per concept"]
+    D --> E["<b>Post-Processing</b><br/>Sobel Edge → Flood Fill<br/>→ Alpha Defringe → Outline<br/><i>Pure Canvas API</i>"]
+    D --> F["<b>Metadata</b><br/>6 languages<br/>3 strategy variants<br/>4-axis self-scoring"]
+    E --> G["<b>Platform Export — 6 formats</b><br/>KakaoTalk Emoticon · KakaoTalk Mini · LINE Sticker<br/>LINE Emoji · Telegram Sticker · OGQ Sticker<br/><i>Auto-resize · Tab/Main images · Naming conventions · ZIP</i>"]
+    F --> G
+```
 
 ---
 
 ## Highlights
 
-- **Market-Ready Output**: Not just generated images, but store-submission-ready packages with correct dimensions, naming conventions, tab/main images, and metadata for KakaoTalk, LINE, Telegram, and OGQ Market.
-- **AI Expert Panel**: Four AI personas (Market Analyst, Art Director, Cultural Expert, Chief Creative Director) collaborate to build a data-driven creative strategy before a single pixel is drawn.
-- **Zero Backend**: Fully serverless. Gemini API calls, image processing, and ZIP generation all happen client-side. Your API key never leaves your device.
-- **Two Interfaces, One Codebase**: Web (Vite + Vercel) and Desktop (Electron) share ~80% of code through a monorepo architecture.
-- **Pure Canvas Image Engine**: Background removal (Sobel edge detection + flood fill + defringing) and outline rendering built entirely with the Canvas API — no native dependencies in the browser.
+> Most AI image tools stop at "here is a picture." This project solves the **entire commercial pipeline** — from creative strategy to store submission.
+
+<table>
+<tr>
+<td width="50%">
+
+### Multi-Agent AI Strategy
+
+Three specialized AI personas — Market Analyst, Art Director, and Cultural Expert — run a **structured deliberation** before a single image is generated. Market Analyst feeds Art Director; Cultural Expert runs in parallel. A synthesis step then combines all insights into a **45-emoji production plan** with categorized themes.
+
+</td>
+<td width="50%">
+
+### Client-Side Computer Vision
+
+Background removal powered by a **Sobel edge detection + flood fill + alpha defringing** pipeline, plus circular-offset outline rendering — all implemented from scratch using only the Canvas API. Zero native dependencies. Computer-vision-grade processing running entirely in the browser.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 6 Storefronts, One Click
+
+Produces submission-ready ZIP packages for **KakaoTalk** (Emoticon + Mini), **LINE** (Sticker + Emoji), **Telegram** (Static Sticker), and **OGQ Market** — each with correct dimensions, naming conventions, tab/main images, and file size limits.
+
+</td>
+<td width="50%">
+
+### Zero Backend Architecture
+
+Every operation runs client-side: Gemini API calls go directly from your browser to Google, image processing uses Canvas, ZIPs are built with JSZip, files download via Web Share API. **No server. No telemetry. No data collection.** API keys are encrypted with OS safeStorage on desktop.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 85% Shared Codebase
+
+Web and Desktop apps share **~6,985 lines of TypeScript** through a Bridge pattern adapter. The web shell is **10 lines**. The Electron shell is **~523 lines**. One codebase, two production-grade interfaces — with full security hardening on desktop (contextIsolation, sandbox, safeStorage).
+
+</td>
+<td width="50%">
+
+### Culturally-Adapted for 6 Markets
+
+Not just translation — **cultural product management**. Each target market (Korean, Japanese, Traditional Chinese, Simplified Chinese, Thai, English) gets custom prompt engineering for category distribution, humor style, and taboo avoidance. Thai prompts reference "sanuk" and "mai pen rai."
+
+</td>
+</tr>
+</table>
 
 ---
 
-## How It Works
-
-```
-                         Awesome Emoji Studio Pipeline
- ┌─────────────────────────────────────────────────────────────────────────┐
- │                                                                         │
- │  ┌──────────┐   ┌───────────────────────┐   ┌────────────────────────┐  │
- │  │  CONCEPT │   │    AI EXPERT PANEL    │   │   CHARACTER DESIGN    │  │
- │  │  INPUT   │──▶│                       │──▶│                       │  │
- │  │          │   │  Market Analyst       │   │  Base character       │  │
- │  │ Text +   │   │  Art Director         │   │  generation +         │  │
- │  │ Ref Img  │   │  Cultural Expert      │   │  style refinement     │  │
- │  │ + Market │   │  ──────────────────   │   │                       │  │
- │  │          │   │  Chief Creative Dir.  │   │                       │  │
- │  └──────────┘   └───────────────────────┘   └───────────┬────────────┘  │
- │                                                         │               │
- │  ┌──────────────────────────────────────────────────────▼────────────┐  │
- │  │                    BATCH GENERATION (45 images)                   │  │
- │  │  Theme-based category distribution · Chunked parallel generation  │  │
- │  │  Rate limit management · CharacterSpec consistency enforcement    │  │
- │  └──────────────────────────────────┬───────────────────────────────┘  │
- │                                     │                                   │
- │  ┌──────────────────────────────────▼───────────────────────────────┐  │
- │  │                      POST-PROCESSING                             │  │
- │  │  Sobel edge detection ─▶ Flood fill ─▶ Defringing ─▶ Outline    │  │
- │  │  Pure Canvas API · No external dependencies                      │  │
- │  └──────────────────────────────────┬───────────────────────────────┘  │
- │                                     │                                   │
- │  ┌──────────────────────┐  ┌────────▼───────────────────────────────┐  │
- │  │  MULTILINGUAL SEO    │  │         PLATFORM EXPORT                │  │
- │  │  METADATA            │  │                                        │  │
- │  │                      │  │  7 platforms · Auto-resize · Tab/Main  │  │
- │  │  5 languages         │  │  images · Naming conventions · ZIP     │  │
- │  │  3 strategy options  │  │                                        │  │
- │  │  Self-scoring (4ax)  │  │  KakaoTalk · LINE · Telegram · OGQ    │  │
- │  └──────────────────────┘  └────────────────────────────────────────┘  │
- │                                                                         │
- └─────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## Architecture
+## Key Features
 
 ### AI Expert Panel (Multi-Agent Prompting)
 
-The strategy phase doesn't rely on a single prompt. Instead, four specialized AI personas analyze the concept sequentially:
+The strategy phase runs three specialized AI personas, not a single monolithic prompt:
 
-1. **Market Analyst** evaluates trends, competition, and positioning for the target market (Korea, Japan, or Taiwan).
-2. **Art Director** defines visual style, proportions, and expression range.
-3. **Cultural Expert** adapts humor, gestures, and themes for cultural fit.
-4. **Chief Creative Director** synthesizes all inputs into a final production plan with 45 categorized emoji ideas.
+1. **Market Analyst** — evaluates trends, competition, and positioning for the target market
+2. **Art Director** — defines visual style, proportions, and expression range based on market data
+3. **Cultural Expert** — adapts humor, gestures, and themes for cultural fit (runs in parallel with Art Director)
 
-This approach produces significantly more coherent and market-aware emoji packs than single-prompt generation.
+A **synthesis step** then combines all persona insights into a unified production plan with structured JSON output via Gemini response schemas.
 
-### Monorepo + Shared Core
+### Self-Scoring Metadata Engine
 
-```
-packages/
-├── shared/        ← ~80% of all code lives here
-│   ├── services/gemini/     AI orchestration + prompt engineering
-│   ├── services/image/      Canvas-based image processing engine
-│   ├── services/pipeline/   Pipeline state machine + orchestration
-│   ├── store/               Zustand 5 (5 slices + persist)
-│   ├── components/          React 19 UI (7 stage components)
-│   ├── bridge/              window.emoticon API + EventBus
-│   ├── platform/            Web/Electron adapters (Bridge pattern)
-│   ├── i18n/                5-language translations
-│   └── types/               Domain types + API contracts
-├── web/           ← Thin Vite SPA shell
-└── electron/      ← Thin Electron shell (contextIsolation + sandbox)
-```
-
-Platform-specific behavior is handled through a **Bridge pattern** — `@emoji/shared` defines the interfaces, and each platform package provides the concrete implementation.
-
-### Gemini Model Fallback Chain
-
-The AI pipeline includes automatic model fallback. If the primary model (e.g., `gemini-3.1-pro-preview`) fails or hits rate limits, the system transparently switches to fallback models, adapting to each model's capability differences.
+The metadata generator produces **3 strategy variants** (personality, utility, creative) per language, each with a **4-axis self-evaluation**: naturalness, tone, searchability, and creativity. The UI auto-selects the highest-scoring option — essentially built-in quality assurance for AI output.
 
 ### Programmatic API
 
 The web build exposes `window.emoticon` for scripting and automation:
 
 ```javascript
-// Start a full pipeline run from the browser console
+// Run the full pipeline from the browser console
 const jobId = await window.emoticon.runFullPipeline(
   { concept: 'office worker rabbit', referenceImage: null, language: 'Korean' },
   'kakaotalk_emoticon',
 );
 
-// Subscribe to progress events
+// Subscribe to real-time progress events
 const unsubscribe = window.emoticon.subscribe(jobId, ({ stage, current, total, message }) => {
   console.log(stage, `${current}/${total}`, message);
 });
 
-// Cancel at any time
+// Cancel at any time — propagates through AbortController to every async step
 window.emoticon.cancelJob(jobId);
 ```
 
----
+Backed by a job management system with UUID tracking, a status state machine (idle / running / paused / completed / failed / cancelled), LRU cleanup (max 10 jobs, 10-min TTL), and AbortController-based cancellation that reaches into rate-limit delays.
 
-## Features
+### Post-Process-Only Mode
 
-### Batch Emoji Generation
-- 45 emoji images generated from a single character concept
-- Theme-based category distribution (greetings, emotions, daily life, etc.)
-- CharacterSpec enforcement for visual consistency across all images
-- Chunked parallel generation with rate limit management (~15-25 min)
-
-### Image Post-Processing
-- **Background removal**: Sobel edge detection + flood fill + defringing algorithm
-- **Outline generation**: Circular offset rendering with adjustable thickness and opacity
-- All implemented with pure Canvas API — zero native dependencies in the browser
-- Post-process-only mode: upload existing images (PNG/JPG/ZIP, up to 120) and apply processing without AI generation
-
-### Platform Export
-
-Produces submission-ready ZIP packages for 7 platforms:
-
-| Platform | Content Size | Tab Size | Includes | Category |
-|----------|-------------|----------|----------|----------|
-| KakaoTalk Emoticon | 360 x 360 | 96 x 74 | main.png + tab.png + 45 emojis | KakaoTalk |
-| KakaoTalk Mini | 180 x 180 | 96 x 74 | tab.png + 45 emojis | KakaoTalk |
-| LINE Sticker | 370 x 320 | 96 x 74 | main.png + tab.png + 45 stickers | LINE |
-| LINE Emoji | 180 x 180 | 96 x 74 | tab.png + 45 emojis | LINE |
-| Telegram Static Sticker | 512 x 512 | 100 x 100 | tab.png + 45 stickers (max 512KB) | Etc |
-| Telegram Custom Emoji | 100 x 100 | 100 x 100 | tab.png + 45 emojis (max 512KB) | Etc |
-| OGQ Sticker | 740 x 640 | 96 x 74 | main.png + tab.png + 45 stickers | Etc |
-
-### Multilingual SEO Metadata
-- Auto-generated titles, descriptions, and tags in 5 languages (EN, KO, JA, zh-TW, zh-CN)
-- 3 metadata strategy options
-- 4-axis self-evaluation scoring for quality assessment
-
-### Cultural Optimization
-- Market-specific category distribution for Korea, Japan, and Taiwan
-- Culturally-adapted prompts (humor, gestures, expressions)
+Already have images? Upload existing PNGs, JPGs, or a ZIP (up to 120 images) and apply the full post-processing pipeline — background removal, outline rendering, and multi-platform export — without any AI generation.
 
 ---
 
@@ -184,25 +158,25 @@ npm install
 ### Run
 
 ```bash
-# Web (opens at http://localhost:5173)
+# Web — opens at http://localhost:5173
 npm run dev:web
 
-# Desktop
+# Desktop — launches Electron app
 npm run dev:electron
 ```
 
 ### Build
 
 ```bash
-npm run build:web         # Production web build
-npm run build:electron    # Production desktop build
+npm run build:web         # Production web build (Vercel-ready)
+npm run build:electron    # Production desktop build (macOS universal + Windows x64)
 ```
 
 ### Test
 
 ```bash
 npm run test              # Unit tests (Vitest)
-npm run test:e2e          # E2E tests (Playwright)
+npm run test:e2e          # E2E tests (Playwright — EN, JA, zh-TW)
 npm run lint              # ESLint
 ```
 
@@ -210,9 +184,10 @@ npm run lint              # ESLint
 
 ## Security
 
-- API keys are stored only in browser `localStorage` (web) or OS `safeStorage` (Electron). They are never transmitted to any server.
-- Fully client-side architecture: all AI calls go directly from your browser/app to the Gemini API.
-- No backend server. No data collection. No telemetry.
+- **API keys never leave your device.** Stored in `localStorage` (web) or OS-level encrypted `safeStorage` (Electron).
+- **All AI calls go directly from your browser to the Gemini API.** No proxy, no middleware, no server.
+- **Electron hardening**: `contextIsolation: true`, `nodeIntegration: false`, `sandbox: true`, `webSecurity: true`, navigation blocking, external link interception, single-instance lock.
+- **No backend. No telemetry. No data collection.**
 
 ---
 
