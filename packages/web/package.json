@@ -12,7 +12,8 @@
     "test:e2e:typecheck": "tsc --noEmit -p tsconfig.e2e.json",
     "test:coverage": "vitest run --coverage",
     "test:e2e:coverage": "E2E_ENFORCE_COVERAGE=1 playwright test",
-    "coverage:e2e:check": "E2E_ENFORCE_COVERAGE=1 node scripts/e2e-coverage.mjs"
+    "coverage:e2e:check": "E2E_ENFORCE_COVERAGE=1 node scripts/e2e-coverage.mjs",
+    "prebuild": "node ../../scripts/check-locales.mjs"
   },
   "dependencies": {
     "@emoji/shared": "*",

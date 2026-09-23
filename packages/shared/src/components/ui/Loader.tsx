@@ -1,4 +1,5 @@
 import { cn } from '@/utils/cn';
+import { useTranslation } from 'react-i18next';
 import { Sparkles } from 'lucide-react';
 
 interface LoaderProps {
@@ -15,12 +16,13 @@ const SIZE_MAP: Record<NonNullable<LoaderProps['size']>, { w: string; innerIcon:
 };
 
 function Loader({ title, text, size = 'md' }: LoaderProps) {
+  const { t } = useTranslation();
   const dimensions = SIZE_MAP[size] || SIZE_MAP.md;
   return (
     <div
       role="status"
       aria-live="polite"
-      aria-label={title ?? text ?? 'Loading'}
+      aria-label={title ?? text ?? t('a11y.loading')}
       className="flex flex-col items-center justify-center gap-5 py-12"
     >
       <div

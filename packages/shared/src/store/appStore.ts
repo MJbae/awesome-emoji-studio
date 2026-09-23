@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { createConfigSlice, type ConfigSlice, type SupportedLanguage } from './slices/configSlice';
+import { createConfigSlice, type ConfigSlice } from './slices/configSlice';
 import { createWorkflowSlice, type WorkflowSlice } from './slices/workflowSlice';
 import { createAssetsSlice, type AssetsSlice } from './slices/assetsSlice';
 import { createJobsSlice, type JobsSlice } from './slices/jobsSlice';
@@ -8,15 +8,7 @@ import { createExportSlice, type ExportSlice } from './slices/exportSlice';
 
 export type AppState = ConfigSlice & WorkflowSlice & AssetsSlice & JobsSlice & ExportSlice;
 
-const VALID_LANGUAGES: readonly SupportedLanguage[] = [
-  'Korean',
-  'Japanese',
-  'Traditional Chinese',
-] as const;
-
-function isValidLanguage(value: unknown): value is SupportedLanguage {
-  return typeof value === 'string' && VALID_LANGUAGES.includes(value as SupportedLanguage);
-}
+import { isTargetLanguage } from '@/constants/languages';
 
 export const useAppStore = create<AppState>()(
   persist(
@@ -37,7 +29,7 @@ export const useAppStore = create<AppState>()(
         const stored = persisted as Record<string, unknown> | undefined;
         return {
           ...current,
-          ...(isValidLanguage(stored?.language) ? { language: stored.language } : {}),
+          ...(isTargetLanguage(stored?.language) ? { language: stored.language } : {}),
         };
       },
     },

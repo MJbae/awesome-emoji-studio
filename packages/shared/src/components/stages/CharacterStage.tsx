@@ -78,7 +78,7 @@ function CharacterStage({
               onClick={onRegenerate}
               loading={loading}
               icon={<RefreshCw size={14} />}
-              aria-label="Regenerate character"
+              aria-label={t('a11y.regenerateCharacter')}
               data-testid="regenerate-btn"
             >
               {t('character.regenerate')}
@@ -89,7 +89,8 @@ function CharacterStage({
             {characterImage ? (
               <img
                 src={`data:image/png;base64,${characterImage}`}
-                alt="Generated character"
+                alt={t('a11y.generatedCharacter')}
+                data-testid="generated-character"
                 className="w-full h-full object-contain p-6 sm:p-8"
               />
             ) : error ? (
@@ -101,7 +102,7 @@ function CharacterStage({
                   variant="outline"
                   size="sm"
                   onClick={onRegenerate}
-                  aria-label="Retry character generation"
+                  aria-label={t('a11y.retryCharacter')}
                   data-testid="retry-btn"
                 >
                   {t('character.retry')}
@@ -118,7 +119,7 @@ function CharacterStage({
             <button
               onClick={() => setSpecExpanded((e) => !e)}
               aria-expanded={specExpanded}
-              aria-label="Toggle character spec details"
+              aria-label={t('a11y.toggleCharacterDetails')}
               data-testid="toggle-spec-btn"
               className="w-full flex items-center justify-between gap-3 text-left rounded-lg"
             >
@@ -156,14 +157,19 @@ function CharacterStage({
       </div>
 
       <div className="stage-actions">
-        <Button variant="outline" onClick={onBack} aria-label="Go back" data-testid="back-btn">
+        <Button
+          variant="outline"
+          onClick={onBack}
+          aria-label={t('a11y.back')}
+          data-testid="back-btn"
+        >
           {t('strategy.back')}
         </Button>
         <Button
           onClick={onContinue}
           disabled={!characterImage}
           size="lg"
-          aria-label="Continue to emoji generation"
+          aria-label={t('a11y.continueStickers')}
           data-testid="continue-btn"
         >
           {t('character.toEmojiGen')}

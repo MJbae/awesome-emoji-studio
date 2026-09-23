@@ -77,7 +77,7 @@ function StickerBatchStage({
           </div>
           <div className="space-y-1.5">
             <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-text">
-              {t('stickers.generatingTitle')}
+              {t(isComplete ? 'stickers.completeTitle' : 'stickers.generatingTitle')}
             </h2>
             <div role="status" aria-live="polite" className="text-sm text-text-muted">
               {isGenerating
@@ -94,7 +94,7 @@ function StickerBatchStage({
               aria-valuenow={doneCount}
               aria-valuemin={0}
               aria-valuemax={totalCount}
-              aria-label="Emoji generation progress"
+              aria-label={t('a11y.generationProgress')}
               className="w-full h-2 bg-[#eeeee7] rounded-full overflow-hidden"
             >
               <div
@@ -110,7 +110,7 @@ function StickerBatchStage({
             onClick={onContinue}
             disabled={!isComplete}
             size="md"
-            aria-label="Continue to post-processing"
+            aria-label={t('a11y.continueProcessing')}
             data-testid="continue-btn"
           >
             {t('strategy.next')}
@@ -121,7 +121,8 @@ function StickerBatchStage({
       <div
         className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4"
         role="list"
-        aria-label="Emoji grid"
+        aria-label={t('a11y.emojiGrid')}
+        data-testid="emoji-grid"
       >
         {stickers.map((sticker) => (
           <React.Fragment key={sticker.id}>
@@ -129,7 +130,7 @@ function StickerBatchStage({
               <div
                 className="studio-preview w-full aspect-square rounded-2xl mb-3 flex items-center justify-center overflow-hidden border border-[#eaeae3] relative group"
                 role="listitem"
-                aria-label={`Emoji ${sticker.id}: ${sticker.idea.label}`}
+                aria-label={t('a11y.emoji', { id: sticker.id, label: sticker.idea.label })}
                 data-job-status={sticker.status}
               >
                 {sticker.status === 'done' && sticker.imageUrl ? (
@@ -142,7 +143,7 @@ function StickerBatchStage({
                     <div className="absolute bottom-1.5 inset-x-1.5 flex items-center justify-center gap-1">
                       <button
                         onClick={() => onRegenerate(sticker.id)}
-                        aria-label={`Regenerate emoji ${sticker.id}`}
+                        aria-label={t('a11y.regenerateEmoji', { id: sticker.id })}
                         data-testid={`regen-${sticker.id}`}
                         className="p-2.5 bg-white rounded-xl border border-[#e4e5dd] hover:bg-primary-50 hover:border-primary-200 text-primary transition-colors shadow-xs"
                       >
@@ -150,7 +151,7 @@ function StickerBatchStage({
                       </button>
                       <button
                         onClick={() => startEdit(sticker)}
-                        aria-label={`Edit emoji ${sticker.id} prompt`}
+                        aria-label={t('a11y.editEmoji', { id: sticker.id })}
                         data-testid={`edit-${sticker.id}`}
                         className="p-2.5 bg-white rounded-xl border border-[#e4e5dd] hover:bg-surface-dark text-text-muted transition-colors shadow-xs"
                       >
@@ -167,7 +168,7 @@ function StickerBatchStage({
                     <AlertCircle className="w-7 h-7 text-danger mx-auto" />
                     <button
                       onClick={() => onRegenerate(sticker.id)}
-                      aria-label={`Retry emoji ${sticker.id}`}
+                      aria-label={t('a11y.retryEmoji', { id: sticker.id })}
                       data-testid={`retry-${sticker.id}`}
                       className="text-sm text-primary font-semibold underline underline-offset-4 px-3 py-2"
                     >
@@ -205,7 +206,7 @@ function StickerBatchStage({
                       onChange={(e) => setEditPrompt(e.target.value)}
                       rows={3}
                       className="w-full bg-transparent px-4 py-3 text-sm leading-relaxed resize-y outline-none"
-                      aria-label="Edit generation prompt"
+                      aria-label={t('a11y.editPrompt')}
                       data-testid={`edit-prompt-${sticker.id}`}
                     />
                   </AnimatedInputWrapper>
@@ -217,7 +218,8 @@ function StickerBatchStage({
                   <Button
                     size="sm"
                     onClick={() => saveEdit(sticker.id)}
-                    aria-label="Save and regenerate"
+                    aria-label={t('a11y.saveRegenerate')}
+                    data-testid="save-regenerate-btn"
                   >
                     {t('stickers.saveAndRegen')}
                   </Button>
@@ -233,7 +235,7 @@ function StickerBatchStage({
           variant="outline"
           onClick={onBack}
           disabled={isGenerating}
-          aria-label="Go back"
+          aria-label={t('a11y.back')}
           data-testid="back-btn"
         >
           {t('strategy.back')}

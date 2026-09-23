@@ -40,7 +40,7 @@ function StageStepper({ currentStage, mode, completedStages, onStageClick }: Sta
 
   return (
     <nav
-      aria-label="Workflow stages"
+      aria-label={t('a11y.workflow')}
       className="min-w-0 border-b border-slate-200 py-5 lg:sticky lg:top-0 lg:min-h-[calc(100vh-141px)] lg:border-b-0 lg:border-r lg:py-9 lg:pr-6"
       data-testid="stage-stepper"
     >
@@ -61,12 +61,12 @@ function StageStepper({ currentStage, mode, completedStages, onStageClick }: Sta
               <button
                 onClick={() => isCompleted && onStageClick(id)}
                 disabled={!isCompleted}
-                aria-label={`Stage ${index + 1}: ${t(`stepper.${id}`)}`}
+                aria-label={t('a11y.stage', { number: index + 1, label: t(`stepper.${id}`) })}
                 aria-current={isCurrent ? 'step' : undefined}
                 data-stage={id}
                 data-testid={`stage-step-${id}`}
                 className={cn(
-                  'relative flex w-full flex-col items-center gap-2 rounded-xl px-0.5 py-2.5 transition-colors lg:flex-row lg:gap-3 lg:px-3 lg:py-3.5',
+                  'relative flex w-full flex-col items-center gap-2 rounded-xl px-0 py-2.5 transition-colors lg:flex-row lg:gap-3 lg:px-3 lg:py-3.5',
                   isCurrent
                     ? 'bg-[#e9edda] text-[#3e4b28]'
                     : isCompleted
@@ -87,7 +87,7 @@ function StageStepper({ currentStage, mode, completedStages, onStageClick }: Sta
                     <Icon size={17} strokeWidth={1.7} />
                   )}
                 </span>
-                <span className="w-full break-words text-center text-[9px] font-medium leading-tight sm:text-[11px] lg:w-auto lg:text-left lg:text-xs">
+                <span className="w-full break-normal text-center text-[9px] font-medium leading-tight sm:text-[11px] lg:w-auto lg:text-left lg:text-xs">
                   <span className="hidden lg:inline">{t(`stepper.${id}`)}</span>
                   <span className="lg:hidden">{t(`stepper.${id}Short`)}</span>
                 </span>

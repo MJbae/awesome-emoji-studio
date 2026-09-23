@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { KeyRound, Eye, EyeOff, X, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { AnimatedInputWrapper } from '@/components/ui/AnimatedInputWrapper';
+import { LanguageSelector } from '@/components/ui/LanguageSelector';
 import { GoogleGenAI } from '@google/genai';
 
 interface ApiKeyModalProps {
@@ -16,7 +17,7 @@ function ApiKeyModal({ open, onSave, onClose, dismissable = false }: ApiKeyModal
   const { t } = useTranslation();
   const [key, setKey] = useState('');
   const [showKey, setShowKey] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<'minError' | 'invalidError' | null>(null);
   const [validating, setValidating] = useState(false);
 
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -33,7 +34,7 @@ function ApiKeyModal({ open, onSave, onClose, dismissable = false }: ApiKeyModal
     const cycleFocus = (event: KeyboardEvent) => {
       if (event.key !== 'Tab') return;
       const controls = dialog?.querySelectorAll<HTMLElement>(
-        'button:not(:disabled), input, a[href]',
+        'button:not(:disabled), input, select, a[href]',
       );
       if (!controls?.length) return;
       const first = controls[0];
@@ -69,7 +70,7 @@ function ApiKeyModal({ open, onSave, onClose, dismissable = false }: ApiKeyModal
     if (validating) return;
     const trimmed = key.trim();
     if (trimmed.length < 10) {
-      setError(t('setup.minError'));
+      setError('minError');
       return;
     }
 
@@ -82,7 +83,7 @@ function ApiKeyModal({ open, onSave, onClose, dismissable = false }: ApiKeyModal
       await ai.models.list({ config: { pageSize: 1 } });
       onSave(trimmed);
     } catch {
-      setError(t('setup.invalidError'));
+      setError('invalidError');
     } finally {
       setValidating(false);
     }
@@ -97,7 +98,7 @@ function ApiKeyModal({ open, onSave, onClose, dismissable = false }: ApiKeyModal
       className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-[#252720]/30 p-4 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
-      aria-label="Gemini API Key Setup"
+      aria-label={t('setup.apiTitle')}
       data-testid="api-key-modal"
     >
       <div className="max-h-[calc(100dvh-2rem)] overflow-y-auto bg-white rounded-3xl border border-white/80 shadow-[0_24px_100px_#25272025] w-full max-w-md animate-[fadeSlideIn_0.3s_ease-out]">
@@ -117,7 +118,7 @@ function ApiKeyModal({ open, onSave, onClose, dismissable = false }: ApiKeyModal
             {dismissable && onClose && (
               <button
                 onClick={onClose}
-                aria-label="Close modal"
+                aria-label={t('a11y.closeModal')}
                 data-testid="close-modal-btn"
                 className="p-2 rounded-lg text-text-muted hover:bg-slate-100 transition-colors"
               >
@@ -159,7 +160,7 @@ function ApiKeyModal({ open, onSave, onClose, dismissable = false }: ApiKeyModal
             </AnimatedInputWrapper>
             {error && (
               <p id="api-key-error" role="alert" className="text-xs text-danger">
-                {error}
+                {t(`setup.${error}`)}
               </p>
             )}
           </div>
@@ -181,6 +182,8 @@ function ApiKeyModal({ open, onSave, onClose, dismissable = false }: ApiKeyModal
               </a>
             </p>
           </div>
+
+          <LanguageSelector testId="setup-language-select" />
 
           <Button
             onClick={handleSave}

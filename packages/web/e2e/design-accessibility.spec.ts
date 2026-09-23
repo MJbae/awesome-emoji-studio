@@ -124,7 +124,7 @@ test('completed input retains the uploaded reference preview and market on retur
   await submitConcept(page, 'japanese');
   await expect(page.locator('section[data-stage="strategy"][data-phase="complete"]')).toBeVisible();
   await page.getByTestId('stage-step-input').click();
-  await expect(page.getByRole('img', { name: 'Reference preview', exact: true })).toBeVisible();
+  await expect(page.getByTestId('reference-preview')).toBeVisible();
   await expect(page.getByTestId('lang-japanese')).toHaveAttribute('aria-checked', 'true');
   await expect(page.getByTestId('concept-textarea')).toHaveValue('A friendly blue bear celebrating everyday life');
   expect(api.calls.filter((call) => call.kind === 'strategy')).toHaveLength(1);
@@ -165,16 +165,19 @@ async function verifyResponsiveStage(page: Page, stage: string, language: string
     const geometry = await page.evaluate(() => ({ width: window.innerWidth, content: document.documentElement.scrollWidth }));
     expect(geometry.content, `${language}, ${stage}, ${width}px horizontal overflow`).toBeLessThanOrEqual(geometry.width);
     const text = await page.locator('body').innerText();
-    expect(text).not.toMatch(/\b(?:studio|input|strategy|character|stickers|postprocess|metadata|export)\.[A-Za-z]\w*/);
-    if ((language.startsWith('ko') && width === 390) || (language.startsWith('en') && width === 1024)) {
+    const labels = await page.locator('[aria-label], img[alt]').evaluateAll((elements) => elements.map((element) => element.getAttribute('aria-label') ?? element.getAttribute('alt')).join('\n'));
+    expect(`${text}\n${labels}`).not.toMatch(/\b(?:app|stepper|studio|input|strategy|character|stickers|postprocess|metadata|export|setup|language|a11y|personas|platforms)\.[A-Za-z]\w*/);
+    expect(`${text}\n${labels}`).not.toMatch(/{{\s*\w+\s*}}/);
+    await expect(page.locator('html')).toHaveAttribute('lang', language.replace(/-results$/, ''));
+    if (width === 390 || width === 1024) {
       await page.screenshot({ path: testInfo.outputPath(`${language}-${width}-${stage}.png`), fullPage: true });
     }
   }
 }
 
 for (const [language, market] of [
-  ['en', 'korean'], ['ko', 'korean'], ['ja', 'japanese'],
-  ['zh-TW', 'traditional-chinese'], ['zh-CN', 'simplified-chinese'], ['th', 'thai'],
+  ['en', 'english'], ['ko', 'korean'], ['ja', 'japanese'],
+  ['zh-TW', 'traditional-chinese'], ['zh-CN', 'simplified-chinese'],
 ] as const) {
   test(`redesigned ${language} workflow fits 320, 390, 768 and 1024 pixel viewports`, async ({ page, api }, testInfo) => {
     api.ideaCount = 3;
@@ -195,14 +198,14 @@ for (const [language, market] of [
     await expect(page.getByTestId('edit-prompt-1')).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
     await page.getByTestId('continue-btn').click();
-    await expect(page.getByRole('img', { name: 'Processing preview', exact: true })).toBeVisible();
+    await expect(page.getByTestId('processing-preview')).toBeVisible();
     await page.locator('section[data-stage="postprocess"]').getByRole('switch').nth(1).click();
     await verifyResponsiveStage(page, 'postprocess', language, testInfo);
     await page.getByTestId('continue-btn').click();
     await expect(page.getByTestId('generate-metadata-btn')).toBeVisible();
     await verifyResponsiveStage(page, 'metadata', language, testInfo);
     await page.getByTestId('generate-metadata-btn').click();
-    await expect(page.getByTestId('select-meta-creative')).toHaveCount(6);
+    await expect(page.getByTestId('select-meta-creative')).toHaveCount(5);
     await verifyResponsiveStage(page, 'metadata', `${language}-results`, testInfo);
     await page.getByTestId('continue-to-export-btn').click();
     await verifyResponsiveStage(page, 'export', language, testInfo);

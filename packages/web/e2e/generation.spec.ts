@@ -45,35 +45,35 @@ test('complete generation, editing, processing, metadata and downloadable ZIP', 
   await page.getByTestId('regen-2').click();
   await expect(page.locator('[data-job-status="done"]')).toHaveCount(45);
   await page.getByTestId('continue-btn').click();
-  await expect(page.getByRole('img', { name: 'Processing preview', exact: true })).toBeVisible();
-  await page.getByRole('radio', { name: 'Black background', exact: true }).click();
-  await expect(page.getByRole('radio', { name: 'Black background', exact: true })).toHaveAttribute('aria-checked', 'true');
-  await page.getByRole('radio', { name: 'White background', exact: true }).click();
+  await expect(page.getByTestId('processing-preview')).toBeVisible();
+  await page.getByTestId('preview-bg-black').click();
+  await expect(page.getByTestId('preview-bg-black')).toHaveAttribute('aria-checked', 'true');
+  await page.getByTestId('preview-bg-white').click();
   const switches = page.locator('section[data-stage="postprocess"]').getByRole('switch');
   await switches.nth(0).click(); // Background removal off
   await switches.nth(1).click(); // Outline on
   await page.getByTestId('outline-style-black').click();
-  await page.getByRole('slider', { name: /Outline thickness/ }).fill('7');
-  await page.getByRole('slider', { name: /Outline opacity/ }).fill('60');
-  await expect(page.getByRole('slider', { name: /Outline thickness/ })).toHaveValue('7');
+  await page.getByTestId('outline-thickness').fill('7');
+  await page.getByTestId('outline-opacity').fill('60');
+  await expect(page.getByTestId('outline-thickness')).toHaveValue('7');
   await page.getByTestId('outline-style-white').click();
   await page.getByTestId('continue-btn').click();
   await expect(page.locator('section[data-stage="metadata"]')).toBeVisible();
   await page.getByTestId('generate-metadata-btn').click();
-  await expect(page.getByTestId('select-meta-creative')).toHaveCount(6);
+  await expect(page.getByTestId('select-meta-creative')).toHaveCount(5);
   await page.getByTestId('select-meta-creative').first().click();
   await page.getByTestId('select-meta-personality').first().click();
   await page.getByTestId('copy-tags-btn').first().click();
   await expect(page.getByTestId('copy-tags-btn').first()).toContainText('Copied');
   await page.getByTestId('regenerate-metadata-btn').click();
-  await expect(page.getByTestId('select-meta-creative')).toHaveCount(6);
+  await expect(page.getByTestId('select-meta-creative')).toHaveCount(5);
   await page.getByTestId('continue-to-export-btn').click();
   await expect(page.locator('section[data-stage="export"]')).toBeVisible();
-  await page.getByRole('button', { name: 'Deselect All', exact: true }).click();
+  await page.getByTestId('deselect-all-platforms-btn').click();
   await expect(page.getByTestId('export-selected-btn')).toBeDisabled();
-  await page.getByRole('button', { name: 'Select All', exact: true }).click();
-  await page.getByRole('button', { name: 'Deselect All', exact: true }).click();
-  await page.getByRole('button', { name: /^LINE Emoji/ }).click();
+  await page.getByTestId('select-all-platforms-btn').click();
+  await page.getByTestId('deselect-all-platforms-btn').click();
+  await page.getByTestId('platform-line_emoji').click();
   const downloadPromise = page.waitForEvent('download');
   await page.getByTestId('export-selected-btn').click();
   const download = await downloadPromise;
@@ -130,13 +130,13 @@ test('concept constraints, all markets, reference upload and direct base charact
   await page.getByTestId('concept-textarea').fill('  ');
   await expect(page.getByTestId('analyze-btn')).toBeDisabled();
   await page.getByTestId('concept-textarea').fill('Blue bear');
-  for (const market of ['japanese', 'traditional-chinese', 'simplified-chinese', 'thai', 'korean']) {
+  for (const market of ['english', 'japanese', 'traditional-chinese', 'simplified-chinese', 'korean']) {
     await page.getByTestId(`lang-${market}`).click();
     await expect(page.getByTestId(`lang-${market}`)).toHaveAttribute('aria-checked', 'true');
   }
   await expect(page.getByTestId('skip-chargen-toggle')).toBeDisabled();
   await page.getByTestId('reference-image-input').setInputFiles({ name: 'reference.png', mimeType: 'image/png', buffer: Buffer.from(PNG, 'base64') });
-  await expect(page.getByRole('img', { name: 'Reference preview' })).toBeVisible();
+  await expect(page.getByTestId('reference-preview')).toBeVisible();
   await page.getByTestId('skip-chargen-toggle').click();
   await expect(page.getByTestId('skip-chargen-toggle')).toHaveAttribute('aria-checked', 'true');
   await page.getByTestId('skip-chargen-toggle').click();
@@ -209,7 +209,7 @@ test('metadata language selection, service recovery, back navigation and no proc
   await page.getByTestId('continue-btn').click();
   await page.locator('section[data-stage="postprocess"]').getByRole('switch').nth(0).click();
   await page.getByTestId('continue-btn').click();
-  for (const language of ['en', 'ko', 'ja', 'zh-TW', 'zh-CN', 'th']) await page.getByTestId(`meta-lang-${language}`).click();
+  for (const language of ['en', 'ko', 'ja', 'zh-TW', 'zh-CN']) await page.getByTestId(`meta-lang-${language}`).click();
   await expect(page.getByTestId('generate-metadata-btn')).toBeDisabled();
   await page.getByTestId('meta-lang-en').click();
   api.failNext('metadata');

@@ -64,10 +64,20 @@ function ExportStage({
       <div className="flex flex-wrap justify-between items-center gap-3 border-b border-[#e4e5dd] pb-5">
         <h3 className="text-base font-semibold text-text">{t('export.selectPlatforms')}</h3>
         <div className="flex gap-2">
-          <Button variant="outline" size="sm" onClick={onSelectAll}>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={onSelectAll}
+            data-testid="select-all-platforms-btn"
+          >
             {t('export.selectAll')}
           </Button>
-          <Button variant="outline" size="sm" onClick={onDeselectAll}>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={onDeselectAll}
+            data-testid="deselect-all-platforms-btn"
+          >
             {t('export.deselectAll')}
           </Button>
         </div>
@@ -90,6 +100,7 @@ function ExportStage({
                   key={platformId}
                   onClick={() => onTogglePlatform(platformId)}
                   aria-pressed={isSelected}
+                  data-testid={`platform-${platformId}`}
                   className={cn(
                     'relative p-5 rounded-2xl border text-left transition-colors',
                     isSelected && 'border-primary bg-primary-50 ring-1 ring-primary/20',
@@ -102,9 +113,11 @@ function ExportStage({
                     </span>
                   )}
 
-                  <p className="font-semibold text-text text-base pr-7">{spec.label}</p>
+                  <p className="font-semibold text-text text-base pr-7">
+                    {t(`platforms.${platformId}.label`)}
+                  </p>
                   <p className="text-xs text-text-muted leading-relaxed mt-1 mb-4">
-                    {spec.description}
+                    {t(`platforms.${platformId}.description`)}
                   </p>
 
                   <div className="space-y-2 text-xs text-text-muted bg-white/65 p-3.5 rounded-xl border border-[#e4e5dd]/70">
@@ -166,7 +179,7 @@ function ExportStage({
             icon={<Download size={16} />}
             size="lg"
             className="flex-1"
-            aria-label="Export selected platforms"
+            aria-label={t('a11y.exportSelected')}
             data-testid="export-selected-btn"
           >
             {t('export.exportSelected')}
@@ -178,7 +191,7 @@ function ExportStage({
             icon={<Package size={16} />}
             size="lg"
             className="flex-1"
-            aria-label="Export combined ZIP"
+            aria-label={t('a11y.exportCombined')}
             data-testid="export-combined-btn"
           >
             {t('export.exportCombined')}
@@ -204,13 +217,18 @@ function ExportStage({
                 {job.status === 'pending' && <Clock size={16} className="text-slate-300" />}
               </div>
               <span className="text-xs sm:text-sm text-text w-24 sm:w-48 truncate">
-                {PLATFORM_SPECS[job.platformId]?.label ?? job.platformId}
+                {t(`platforms.${job.platformId}.label`, { defaultValue: job.platformId })}
               </span>
               <div className="flex-1 min-w-0">
                 <progress
                   value={job.progress}
                   max={100}
-                  aria-label={job.platformId}
+                  aria-label={t('a11y.exportProgress', {
+                    platform: t(`platforms.${job.platformId}.label`, {
+                      defaultValue: job.platformId,
+                    }),
+                  })}
+                  data-testid={`export-progress-${job.platformId}`}
                   className="w-full h-2 overflow-hidden [&::-webkit-progress-bar]:rounded-full [&::-webkit-progress-bar]:bg-[#eeeee7] [&::-webkit-progress-value]:rounded-full [&::-webkit-progress-value]:bg-primary [&::-webkit-progress-value]:transition-all [&::-moz-progress-bar]:bg-primary [&::-moz-progress-bar]:rounded-full"
                 />
               </div>
@@ -228,7 +246,7 @@ function ExportStage({
           variant="outline"
           onClick={onBack}
           disabled={isExporting}
-          aria-label="Go back"
+          aria-label={t('a11y.back')}
           data-testid="back-btn"
         >
           {t('strategy.back')}

@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Settings2, Smile, ArrowUpRight } from 'lucide-react';
 import { cn } from '@/utils/cn';
+import { LanguageSelector } from '@/components/ui/LanguageSelector';
 
 interface AppShellProps {
   children: React.ReactNode;
@@ -18,23 +19,24 @@ function AppShell({ children, hasApiKey, onOpenSettings }: AppShellProps) {
       </a>
       <header className="border-b border-slate-200 bg-white/95">
         <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-4 px-5 sm:px-8 lg:px-10">
-          <a href="/" className="flex min-w-0 items-center gap-3" aria-label="Go to home">
+          <a href="/" className="flex min-w-0 items-center gap-3" aria-label={t('a11y.home')}>
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] bg-primary text-white">
               <Smile size={25} strokeWidth={1.8} />
             </span>
             <div className="min-w-0">
-              <h1 className="text-[13px] font-bold tracking-tight sm:text-base">
+              <h1 className="sr-only font-bold tracking-tight sm:not-sr-only sm:text-base">
                 {t('app.title')}
               </h1>
-              <p className="mt-0.5 text-[10px] font-medium tracking-[0.12em] text-text-muted">
+              <p className="mt-0.5 hidden text-[10px] font-medium tracking-[0.12em] text-text-muted sm:block">
                 {t('studio.brandTagline')}
               </p>
             </div>
           </a>
-          <div className="flex shrink-0 items-center gap-3 sm:gap-5">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-4">
+            <LanguageSelector className="w-32" />
             <button
               onClick={onOpenSettings}
-              aria-label="API connection settings"
+              aria-label={t('a11y.apiSettings')}
               className="flex min-h-10 items-center gap-2 text-xs text-text-muted hover:text-text"
             >
               <span
@@ -46,7 +48,7 @@ function AppShell({ children, hasApiKey, onOpenSettings }: AppShellProps) {
             </button>
             <button
               onClick={onOpenSettings}
-              aria-label="Open settings"
+              aria-label={t('a11y.settings')}
               data-testid="settings-btn"
               className="flex h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-50"
             >

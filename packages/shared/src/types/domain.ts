@@ -50,10 +50,12 @@ export interface PlatformExportResult {
 // Generation Pipeline (from emoticon_generator)
 // ---------------------------------------------------------------------------
 
+export type TargetLanguage = 'English' | 'Korean' | 'Japanese' | 'Traditional Chinese' | 'Simplified Chinese';
+
 export interface UserInput {
   concept: string;
   referenceImage: string | null; // Base64
-  language: 'Korean' | 'Japanese' | 'Traditional Chinese' | 'Simplified Chinese' | 'Thai';
+  language: TargetLanguage;
   skipCharacterGen?: boolean;
 }
 
@@ -137,7 +139,7 @@ export interface ProcessingOptions {
 }
 
 /** Language codes supported by the metadata generator */
-export type LanguageCode = 'en' | 'ja' | 'zh-TW' | 'zh-CN' | 'ko' | 'th';
+export type LanguageCode = 'en' | 'ja' | 'zh-TW' | 'zh-CN' | 'ko';
 
 export interface EvaluationScores {
   naturalness: number;

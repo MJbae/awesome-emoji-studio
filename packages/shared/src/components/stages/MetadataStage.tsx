@@ -77,18 +77,18 @@ function MetadataStage({
           </div>
 
           <fieldset>
-            <legend className="sr-only">Select metadata language</legend>
+            <legend className="sr-only">{t('a11y.metadataLanguage')}</legend>
             <div
               className="grid grid-cols-2 lg:grid-cols-3 gap-3"
               role="group"
-              aria-label="Metadata languages"
+              aria-label={t('a11y.metadataLanguages')}
             >
               {languages.map((lang) => (
                 <button
                   key={lang.code}
                   role="checkbox"
                   aria-checked={selectedLanguages.has(lang.code)}
-                  aria-label={`Language: ${lang.label}`}
+                  aria-label={t('a11y.language', { language: t(`language.names.${lang.code}`) })}
                   data-testid={`meta-lang-${lang.code}`}
                   onClick={() => onLanguageToggle(lang.code)}
                   className={cn(
@@ -99,7 +99,7 @@ function MetadataStage({
                   )}
                 >
                   <span className="min-w-0">
-                    <span className="block">{lang.label}</span>
+                    <span className="block">{t(`language.names.${lang.code}`)}</span>
                     <span className="block text-xs font-normal text-text-muted mt-1">
                       {lang.nativeName}
                     </span>
@@ -130,7 +130,7 @@ function MetadataStage({
               loading={loading}
               icon={<Sparkles size={16} />}
               size="lg"
-              aria-label="Generate metadata"
+              aria-label={t('a11y.generateMetadata')}
               data-testid="generate-metadata-btn"
               className="w-full sm:w-auto"
             >
@@ -155,7 +155,7 @@ function MetadataStage({
                 size="sm"
                 onClick={onRegenerate}
                 icon={<RefreshCw size={14} />}
-                aria-label="Regenerate metadata"
+                aria-label={t('a11y.regenerateMetadata')}
                 data-testid="regenerate-metadata-btn"
               >
                 {t('character.regenerate')}
@@ -164,7 +164,7 @@ function MetadataStage({
                 onClick={onContinue}
                 size="sm"
                 icon={<ArrowRight size={14} />}
-                aria-label="Continue to export"
+                aria-label={t('a11y.continueExport')}
                 data-testid="continue-to-export-btn"
               >
                 {t('strategy.next')}
@@ -177,7 +177,7 @@ function MetadataStage({
             return (
               <div key={code} className="space-y-4 pt-3">
                 <div className="flex items-center gap-2 text-lg font-semibold text-text border-b border-[#e4e5dd] pb-3">
-                  <span>{langInfo?.label}</span>
+                  <span>{t(`language.names.${code}`)}</span>
                   <span className="text-text-muted text-sm font-normal ml-auto">
                     {langInfo?.nativeName}
                   </span>
@@ -204,7 +204,12 @@ function MetadataStage({
 
       {!hasResults && (
         <div className="stage-actions">
-          <Button variant="outline" onClick={onBack} aria-label="Go back" data-testid="back-btn">
+          <Button
+            variant="outline"
+            onClick={onBack}
+            aria-label={t('a11y.back')}
+            data-testid="back-btn"
+          >
             {t('strategy.back')}
           </Button>
         </div>
@@ -256,14 +261,16 @@ function MetaResultCard({
         )}
       >
         <span className="text-xs font-semibold capitalize text-text bg-white border border-[#e4e5dd] px-2.5 py-1 rounded-full">
-          {result.optionType}
+          {t(`metadata.optionTypes.${result.optionType}`)}
         </span>
         <Button
           variant={isSelected ? 'primary' : 'ghost'}
           size="sm"
           onClick={onSelect}
           aria-pressed={isSelected}
-          aria-label={`Select ${result.optionType} metadata option`}
+          aria-label={t('a11y.selectMetadata', {
+            option: t(`metadata.optionTypes.${result.optionType}`),
+          })}
           data-testid={`select-meta-${result.optionType}`}
         >
           {isSelected ? (
@@ -294,7 +301,7 @@ function MetaResultCard({
             </p>
             <button
               onClick={copyTags}
-              aria-label="Copy tags to clipboard"
+              aria-label={t('a11y.copyTags')}
               data-testid="copy-tags-btn"
               className={cn(
                 'text-xs px-2 py-2 rounded-lg transition-colors flex items-center gap-1.5',

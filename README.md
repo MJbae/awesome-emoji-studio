@@ -14,8 +14,8 @@
 <br />
 
 Enter a character concept. Get **45 platform-compliant images**, background removal, outline rendering,
-multilingual SEO metadata in **6 languages**, and submission-ready ZIPs for **6 storefronts** —
-all processed client-side. No server. No uploads. Your API key never leaves your device.
+multilingual SEO metadata in **5 languages**, and submission-ready ZIPs for **6 storefronts** —
+all processed client-side. No server. No uploads. Your API key is stored on your device and used for requests to Google Gemini.
 
 <br />
 
@@ -32,7 +32,7 @@ flowchart LR
     B --> C["<b>Character Design</b><br/>Base Image<br/>+ Style Refinement"]
     C --> D["<b>Batch Generation</b><br/>45 images<br/>per concept"]
     D --> E["<b>Post-Processing</b><br/>Sobel Edge → Flood Fill<br/>→ Alpha Defringe → Outline<br/><i>Pure Canvas API</i>"]
-    D --> F["<b>Metadata</b><br/>6 languages<br/>3 strategy variants<br/>4-axis self-scoring"]
+    D --> F["<b>Metadata</b><br/>5 languages<br/>3 strategy variants<br/>4-axis self-scoring"]
     E --> G["<b>Platform Export — 6 formats</b><br/>KakaoTalk Emoticon · KakaoTalk Mini · LINE Sticker<br/>LINE Emoji · Telegram Sticker · OGQ Sticker<br/><i>Auto-resize · Tab/Main images · Naming conventions · ZIP</i>"]
     F --> G
 ```
@@ -86,9 +86,9 @@ Web and Desktop apps share **~6,985 lines of TypeScript** through a Bridge patte
 </td>
 <td width="50%">
 
-### Culturally-Adapted for 6 Markets
+### Natural copy for 5 supported languages
 
-Not just translation — **cultural product management**. Each target market (Korean, Japanese, Traditional Chinese, Simplified Chinese, Thai, English) gets custom prompt engineering for category distribution, humor style, and taboo avoidance. Thai prompts reference "sanuk" and "mai pen rai."
+English, Korean, Japanese, Simplified Chinese, and Traditional Chinese are supported throughout the interface and generation workflow. The app selects the first supported browser/device language, defaults to English, and remembers a manual choice. Simplified Chinese uses mainland terminology; Traditional Chinese uses Taiwan terminology. Each catalog is approved by a separate language review agent before adoption, and builds reject unreviewed copy changes. [Language policy and reviews](docs/localization/README.md).
 
 </td>
 </tr>
@@ -182,6 +182,7 @@ npm run test:e2e:electron # Desktop E2E (builds Electron first)
 npm run test:e2e:typecheck # Type-check browser and desktop test contracts
 npm run test:e2e:coverage # E2E + strict 100% source branch coverage gate
 npm run verify:design     # All redesign acceptance checks, including strict gate
+npm run check:i18n        # Five-language catalog, interpolation, and review approval checks
 npm run lint              # ESLint
 ```
 
@@ -191,7 +192,7 @@ npm run lint              # ESLint
 
 ## Security
 
-- **API keys never leave your device.** Stored in `localStorage` (web) or OS-level encrypted `safeStorage` (Electron).
+- **API keys are stored on your device and used for Google Gemini API requests.** Stored in `localStorage` (web) or OS-level encrypted `safeStorage` (Electron).
 - **All AI calls go directly from your browser to the Gemini API.** No proxy, no middleware, no server.
 - **Electron hardening**: `contextIsolation: true`, `nodeIntegration: false`, `sandbox: true`, `webSecurity: true`, navigation blocking, external link interception, single-instance lock.
 - **No backend. No telemetry. No data collection.**

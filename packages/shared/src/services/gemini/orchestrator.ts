@@ -8,6 +8,7 @@ import type {
   MetaResult,
   LanguageCode,
   LanguageEntry,
+  TargetLanguage,
 } from '@/types/domain';
 import { VISUAL_STYLES } from '@/constants/styles';
 import { generateImage, generateWithFlash } from './client';
@@ -141,8 +142,9 @@ export async function analyzeConcept(input: UserInput): Promise<LLMStrategy> {
 export async function extractCharacterSpec(
   mainImage: string,
   concept: string,
+  language: TargetLanguage = 'English',
 ): Promise<CharacterSpec> {
-  const prompt = buildExtractCharacterSpecPrompt(concept);
+  const prompt = buildExtractCharacterSpecPrompt(concept, language);
 
   const response = await generateWithFlash({
     contents: {

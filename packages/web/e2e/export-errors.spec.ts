@@ -18,7 +18,7 @@ test('empty metadata options can be regenerated and unselected metadata is omitt
   api.ideaCount = 3;
   await openStudio(page);
   await toMetadata(page);
-  for (const language of ['ko', 'ja', 'zh-TW', 'zh-CN', 'th']) await page.getByTestId(`meta-lang-${language}`).click();
+  for (const language of ['ko', 'ja', 'zh-TW', 'zh-CN']) await page.getByTestId(`meta-lang-${language}`).click();
   api.metadataOptions = 0;
   await page.getByTestId('generate-metadata-btn').click();
   await expect(page.getByTestId('generate-metadata-btn')).toBeVisible();
@@ -29,8 +29,8 @@ test('empty metadata options can be regenerated and unselected metadata is omitt
   await page.getByTestId('select-meta-creative').click();
   await expect(page.getByTestId('select-meta-creative')).toHaveText('Select');
   await page.getByTestId('continue-to-export-btn').click();
-  await page.getByRole('button', { name: 'Deselect All', exact: true }).click();
-  await page.getByRole('button', { name: /^LINE Emoji/ }).click();
+  await page.getByTestId('deselect-all-platforms-btn').click();
+  await page.getByTestId('platform-line_emoji').click();
   for (const button of ['export-selected-btn', 'export-combined-btn']) {
     const pendingDownload = page.waitForEvent('download');
     await page.getByTestId(button).click();
@@ -51,15 +51,15 @@ test('corrupt generated images surface platform export failures and leave retry 
   await page.getByTestId('continue-btn').click();
   await expect(page.locator('[data-job-status="done"]')).toHaveCount(3);
   await page.getByTestId('continue-btn').click();
-  await expect(page.getByRole('img', { name: 'Processing preview', exact: true })).toHaveCount(0);
+  await expect(page.getByTestId('processing-preview')).toHaveCount(0);
   await page.locator('section[data-stage="postprocess"]').getByRole('switch').first().click();
   await page.getByTestId('continue-btn').click();
-  for (const language of ['ko', 'ja', 'zh-TW', 'zh-CN', 'th']) await page.getByTestId(`meta-lang-${language}`).click();
+  for (const language of ['ko', 'ja', 'zh-TW', 'zh-CN']) await page.getByTestId(`meta-lang-${language}`).click();
   await page.getByTestId('generate-metadata-btn').click();
   await expect(page.getByTestId('select-meta-creative')).toHaveCount(1);
   await page.getByTestId('continue-to-export-btn').click();
-  await page.getByRole('button', { name: 'Deselect All', exact: true }).click();
-  await page.getByRole('button', { name: /^LINE Emoji/ }).click();
+  await page.getByTestId('deselect-all-platforms-btn').click();
+  await page.getByTestId('platform-line_emoji').click();
   await page.getByTestId('export-selected-btn').click();
   await expect(page.getByText('Failed', { exact: true })).toBeVisible();
   await expect(page.getByTestId('export-selected-btn')).toBeEnabled();

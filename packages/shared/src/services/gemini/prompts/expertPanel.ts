@@ -1,7 +1,8 @@
 import type { VisualStyle } from '@/types/domain';
+import { buildWritingGuidance, normalizeTargetLanguage } from './writingGuidance';
 
 export function getCulturalContext(language: string): string {
-  switch (language) {
+  switch (normalizeTargetLanguage(language)) {
     case 'English':
       return 'Optimize for global English-speaking LINE emoji market. English-speaking users appreciate universal humor, relatable everyday expressions, and clean modern designs. Popular categories include sarcastic reactions, workplace humor, relationship expressions, and pop-culture references. Buyers value versatility, wit, and broad relatability across cultures.';
     case 'Korean':
@@ -9,17 +10,14 @@ export function getCulturalContext(language: string): string {
     case 'Japanese':
       return 'Optimize for Japanese LINE emoji market. Japanese users appreciate detailed, polished art with clean aesthetics. Popular categories include kawaii expressions, seasonal greetings, polite responses, and workplace communication. Japanese buyers value quality, politeness variations, and aesthetic refinement.';
     case 'Traditional Chinese':
-      return 'Optimize for Traditional Chinese LINE emoji market. Users prefer vibrant, lucky-themed designs with bold expressions. Popular categories include festive greetings, humorous reactions, trendy slang, and auspicious imagery. Buyers value expressive humor, cultural symbolism, and vibrant energy.';
+      return 'Optimize for the Traditional Chinese LINE emoji market in Taiwan. Consider relatable everyday reactions, conversational humor, greetings, and work or school situations. Use Taiwan cultural context where it fits the concept; do not assume that festive or auspicious imagery suits every character.';
     case 'Simplified Chinese':
       return 'Optimize for Simplified Chinese emoji market. Mainland Chinese users enjoy humorous, meme-style expressions with bold, trendy designs. Popular categories include internet slang reactions, work-life balance humor, food culture, and social media expressions. Buyers value humor, trendiness, and relatable modern lifestyle content.';
-    case 'Thai':
-      return 'Optimize for Thai LINE emoji market. Thailand is LINE\'s largest market. Thai users love playful, colorful, and humorous characters with exaggerated expressions. Popular categories include sanuk (fun) reactions, polite greetings (wai), food expressions, and playful teasing. Thai buyers value cuteness, humor, bright colors, and characters that express the Thai concept of "mai pen rai" (easygoing attitude).';
-    default:
-      return 'Optimize for LINE emoji market with broad appeal.';
   }
 }
 
 export function buildMarketAnalystPrompt(concept: string, language: string): string {
+  language = normalizeTargetLanguage(language);
   const culturalContext = getCulturalContext(language);
   return `
 You are a Senior LINE Emoji Market Analyst with 10+ years of experience in the ${language} digital goods market.
@@ -32,6 +30,7 @@ Target Market: ${language}
 ${culturalContext}
 
 Respond in 3-4 sentences total covering: market trends, target demographics, competition level, and pricing tier for this concept. Be specific. No generic advice.
+${buildWritingGuidance(language, 'the complete market assessment')}
 `;
 }
 
@@ -41,6 +40,7 @@ export function buildArtDirectorPrompt(
   marketInsight: string,
   visualStyles: Omit<VisualStyle, 'imageUrl'>[],
 ): string {
+  language = normalizeTargetLanguage(language);
   const visualStyleDescriptions = visualStyles
     .map((style, index) => `[${index}] "${style.name}": ${style.description}`)
     .join('\n');
@@ -62,12 +62,14 @@ AVAILABLE VISUAL STYLES (recommend ONE by index):
 ${visualStyleDescriptions}
 
 Respond in 3-4 sentences total: recommend ONE visual style index (0-4) with reason, color palette strategy, and visual translation for the ${language} audience. Be decisive.
+${buildWritingGuidance(language, 'the complete art direction advice')}
 `;
 }
 
 export function buildCulturalExpertPrompt(concept: string, language: string): string {
+  language = normalizeTargetLanguage(language);
   return `
-You are a Cultural Marketing Expert for East Asian digital markets, specializing in the ${language} region.
+You are a Cultural Marketing Expert for digital marketplaces, specializing in ${language}-speaking audiences.
 
 Analyze cultural considerations for this LINE emoji concept.
 
@@ -75,6 +77,7 @@ Concept: ${concept}
 Target Market: ${language}
 
 Respond in 3-4 sentences total: key cultural nuances, taboos to avoid, and current trends for this concept in the ${language} market. Be specific to ${language}.
+${buildWritingGuidance(language, 'the complete cultural advice')}
 `;
 }
 
@@ -84,6 +87,7 @@ export function buildSynthesisPrompt(
   insightsSummary: string,
   visualStyles: Omit<VisualStyle, 'imageUrl'>[],
 ): string {
+  language = normalizeTargetLanguage(language);
   const visualStyleDescriptions = visualStyles
     .map((style, index) => `[${index}] "${style.name}": ${style.description}`)
     .join('\n');
@@ -108,5 +112,6 @@ YOUR TASK: Integrate all expert inputs into a final decision.
 3. salesReasoning: 2-3 sentences on commercial strategy.
 
 Be decisive. Keep each field under 3 sentences.
+${buildWritingGuidance(language, 'culturalNotes and salesReasoning')}
 `;
 }

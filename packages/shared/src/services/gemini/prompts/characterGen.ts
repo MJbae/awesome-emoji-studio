@@ -1,5 +1,6 @@
-import type { CharacterSpec, EmoteIdea } from '@/types/domain';
+import type { CharacterSpec, EmoteIdea, TargetLanguage } from '@/types/domain';
 import { getCulturalContext } from './expertPanel';
+import { buildWritingGuidance, normalizeTargetLanguage } from './writingGuidance';
 
 export function buildBaseCharacterPrompt(
   concept: string,
@@ -45,7 +46,10 @@ Expression: Excited/Happy (Representative Emote)
 `;
 }
 
-export function buildExtractCharacterSpecPrompt(concept: string): string {
+export function buildExtractCharacterSpecPrompt(
+  concept: string,
+  language: string = 'English',
+): string {
   return `
 Analyze this character image and extract a PRECISE character specification for consistent reproduction.
 The character concept is: ${concept}
@@ -67,10 +71,11 @@ Extract:
 5. ART STYLE: Line thickness (thin 1px/medium 2-3px/thick 4px+), outline color, shading style (flat/cel-shaded/gradient), detail level (minimal/moderate/detailed)
 
 Be EXTREMELY specific about facial features - they are the #1 source of inconsistency.
+${buildWritingGuidance(language, 'physicalDescription, facialFeatures, colorPalette, distinguishingFeatures, and artStyle')}
 `;
 }
 
-function getLanguageSpecificCategories(language: string): string {
+function getLanguageSpecificCategories(language: TargetLanguage): string {
   switch (language) {
     case 'English':
       return `
@@ -98,10 +103,10 @@ Popular Japanese LINE emoji categories for high sales:
 - Trendy internet expressions`;
     case 'Traditional Chinese':
       return `
-Popular Traditional Chinese LINE emoji categories for high sales:
-- Festival & lucky greetings
+Traditional Chinese LINE emoji categories to consider for Taiwan:
+- Everyday greetings and replies
 - Humorous daily reactions
-- Trendy slang expressions
+- Natural conversational expressions
 - Food & lifestyle
 - Emotional emphasis`;
     case 'Simplified Chinese':
@@ -112,16 +117,6 @@ Popular Simplified Chinese emoji categories for high sales:
 - Food culture expressions
 - Social media trendy slang
 - Festive & seasonal greetings`;
-    case 'Thai':
-      return `
-Popular Thai LINE emoji categories for high sales:
-- Sanuk (fun) & playful reactions
-- Polite wai greetings & respect expressions
-- Food & street food culture
-- Cute & humorous daily life
-- Festival & Buddhist holiday greetings`;
-    default:
-      return '';
   }
 }
 
@@ -133,8 +128,9 @@ export function buildEmoteIdeasPrompt(
   strategyContext: { salesReasoning: string; culturalNotes: string },
   targetCount: number = 45,
 ): string {
-  const culturalContext = getCulturalContext(language);
-  const languageSpecificCategories = getLanguageSpecificCategories(language);
+  const targetLanguage = normalizeTargetLanguage(language);
+  const culturalContext = getCulturalContext(targetLanguage);
+  const languageSpecificCategories = getLanguageSpecificCategories(targetLanguage);
 
   const c1 = Math.floor(targetCount * 0.22); // Core Theme Emotions
   const c2 = Math.floor(targetCount * 0.22); // Theme-Specific Actions
@@ -148,7 +144,7 @@ Generate ${targetCount} unique emoji ideas optimized for LINE messenger emoji sa
 These will display at 180x180px — prioritize clear, bold designs.
 Character: ${concept}
 Style: ${visualStyleName}
-Language: ${language}
+Language: ${targetLanguage}
 
 CHARACTER REFERENCE (use this to write accurate imagePrompt descriptions):
 - Appearance: ${characterSpec.physicalDescription}
@@ -180,6 +176,7 @@ STRATEGY DIRECTION (each imagePrompt MUST reflect this):
 - Cultural Optimization: ${strategyContext.culturalNotes}
 
 imagePrompt rules:
+- Write imagePrompt in English for the image generator; it is a technical prompt, separate from the localized label and category.
 - Maximum 10 words, action-focused keywords only
 - Do NOT describe the character's appearance (reference image is provided separately)
 - Focus on WHAT the character is doing and HOW they feel
@@ -191,6 +188,7 @@ CRITICAL RULES:
 - Distinct silhouettes for each emote.
 - Exaggerated expressions for visibility at small sizes.
 - Prioritize emoji that users will send MOST OFTEN in LINE conversations.
+${buildWritingGuidance(targetLanguage, 'every idea label and category')}
 `;
 }
 

@@ -1,12 +1,12 @@
 import type { StateCreator } from 'zustand';
-import type { PlatformId } from '@/types/domain';
+import type { PlatformId, TargetLanguage } from '@/types/domain';
 import {
   setApiKey as setStoredApiKey,
   clearApiKey as clearStoredApiKey,
 } from '@/services/config/apiKeyManager';
 import { platform } from '@/platform/adapter';
 
-export type SupportedLanguage = 'Korean' | 'Japanese' | 'Traditional Chinese';
+export type SupportedLanguage = TargetLanguage;
 
 export type KeyHydrationState = 'unknown' | 'present' | 'absent';
 
@@ -27,7 +27,7 @@ export interface ConfigSlice {
 export const createConfigSlice: StateCreator<ConfigSlice, [], [], ConfigSlice> = (set) => ({
   apiKey: null,
   keyHydrated: 'unknown',
-  language: 'Korean',
+  language: 'English',
   defaultPlatform: 'line_emoji',
 
   setApiKey: (key: string) => {

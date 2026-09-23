@@ -10,12 +10,13 @@
     "dev": "electron-vite dev",
     "build": "electron-vite build",
     "preview": "electron-vite preview",
-    "package:mac": "electron-vite build && electron-builder --mac",
-    "package:win": "electron-vite build && electron-builder --win",
-    "package:all": "electron-vite build && electron-builder --mac --win",
+    "package:mac": "npm run build && electron-builder --mac",
+    "package:win": "npm run build && electron-builder --win",
+    "package:all": "npm run build && electron-builder --mac --win",
     "test": "vitest run --config vitest.config.main.ts",
     "test:coverage": "vitest run --config vitest.config.main.ts --coverage",
-    "test:e2e": "electron-vite build && playwright test --config playwright-electron.config.ts"
+    "test:e2e": "npm run build && playwright test --config playwright-electron.config.ts",
+    "prebuild": "node ../../scripts/check-locales.mjs"
   },
   "dependencies": {
     "@emoji/shared": "*",

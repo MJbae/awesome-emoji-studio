@@ -103,7 +103,7 @@ try {
     await expect(page.getByTestId('concept-textarea')).toBeVisible();
     await page.getByTestId('concept-textarea').fill(fixture.concept);
     await page.getByTestId('reference-image-input').setInputFiles(path.join(fixtureDir,fixture.characterImage));
-    await expect(page.getByRole('img',{name:'Reference preview',exact:true})).toBeVisible();
+    await expect(page.getByTestId('reference-preview').or(page.getByRole('img',{name:'Reference preview',exact:true})).first()).toBeVisible();
     await capture('input');
     await page.getByTestId('analyze-btn').click();
     await expect(page.locator('section[data-stage="strategy"][data-phase="complete"]')).toBeVisible();
@@ -122,18 +122,18 @@ try {
     await expect(page.getByTestId('continue-btn')).toBeEnabled();
     await capture('stickers');
     await page.getByTestId('continue-btn').click();
-    const preview=page.getByRole('img',{name:'Processing preview',exact:true});
+    const preview=page.getByTestId('processing-preview').or(page.getByRole('img',{name:'Processing preview',exact:true})).first();
     await expect(preview).toBeVisible();
     const switches=page.locator('section[data-stage="postprocess"]').getByRole('switch');
     await switches.nth(1).click();
     await page.getByTestId('outline-style-white').click();
-    await page.getByRole('slider',{name:/Outline thickness/}).fill('6');
-    await page.getByRole('radio',{name:'Black background',exact:true}).click();
+    await page.getByTestId('outline-thickness').or(page.getByRole('slider',{name:/Outline thickness/})).first().fill('6');
+    await page.getByTestId('preview-bg-black').or(page.getByRole('radio',{name:'Black background',exact:true})).first().click();
     await expect(preview).toHaveAttribute('src',/^data:image\/png;base64,/);
     await capture('postprocess');
     await page.getByTestId('continue-btn').click();
     await expect(page.getByTestId('generate-metadata-btn')).toBeVisible({timeout:120_000});
-    for(const lang of ['en','ja','zh-TW','zh-CN','th']) await page.getByTestId(`meta-lang-${lang}`).click();
+    for(const lang of ['en','ja','zh-TW','zh-CN','th']) { const option = page.getByTestId(`meta-lang-${lang}`); if (await option.count()) await option.click(); }
     await page.getByTestId('meta-lang-en').click();
     await capture('metadata-languages');
     await page.getByTestId('generate-metadata-btn').click();
@@ -141,7 +141,7 @@ try {
     await expect(page.getByText('오늘도 귤러가는 중',{exact:true})).toBeVisible();
     await capture('metadata');
     await page.getByTestId('continue-to-export-btn').click();
-    await page.getByRole('button',{name:'전체 선택',exact:true}).click();
+    await page.getByTestId('select-all-platforms-btn').or(page.getByRole('button',{name:'전체 선택',exact:true})).first().click();
     const downloadPromise=page.waitForEvent('download',{timeout:120_000});
     await page.getByTestId('export-combined-btn').click();
     const download=await downloadPromise;

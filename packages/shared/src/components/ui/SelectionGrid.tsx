@@ -28,7 +28,7 @@ function SelectionGrid({
   const selectedCount = selectedIds.size;
 
   return (
-    <div className="space-y-4" aria-label="Select images for processing">
+    <div className="space-y-4" aria-label={t('a11y.selectImages')}>
       <div className="flex flex-col sm:flex-row justify-between items-end sm:items-center gap-3 bg-white p-4 rounded-xl border border-slate-200 sticky top-3 z-10">
         <div>
           <p className="text-sm text-text-muted">
@@ -42,7 +42,7 @@ function SelectionGrid({
             variant="ghost"
             size="sm"
             onClick={onSelectAll}
-            aria-label="Select all images"
+            aria-label={t('a11y.selectAllImages')}
             data-testid="select-all-btn"
           >
             {t('selectionGrid.selectAll')}
@@ -52,7 +52,7 @@ function SelectionGrid({
             size="sm"
             onClick={onClearAll}
             icon={<XCircle size={14} />}
-            aria-label="Clear selection"
+            aria-label={t('a11y.clearSelection')}
             data-testid="clear-selection-btn"
           >
             {t('selectionGrid.clear')}
@@ -64,7 +64,8 @@ function SelectionGrid({
         className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3"
         role="listbox"
         aria-multiselectable="true"
-        aria-label="Image selection grid"
+        aria-label={t('a11y.imageSelectionGrid')}
+        data-testid="image-selection-grid"
       >
         {items.map((item) => {
           const isSelected = selectedIds.has(item.id);
@@ -74,7 +75,7 @@ function SelectionGrid({
               key={item.id}
               role="option"
               aria-selected={isSelected}
-              aria-label={`${item.name}${isSelected ? ' (selected)' : ''}`}
+              aria-label={isSelected ? t('a11y.selectedImage', { name: item.name }) : item.name}
               data-testid={`grid-item-${item.id}`}
               onClick={() => onToggle(item.id)}
               className={cn(

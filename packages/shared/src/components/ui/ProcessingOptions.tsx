@@ -13,10 +13,12 @@ function Toggle({
   checked,
   onToggle,
   label,
+  testId,
 }: {
   checked: boolean;
   onToggle: () => void;
   label: string;
+  testId: string;
 }) {
   const id = useId();
 
@@ -31,7 +33,7 @@ function Toggle({
         aria-checked={checked}
         aria-label={label}
         onClick={onToggle}
-        data-testid={`toggle-${label.toLowerCase().replace(/\s+/g, '-')}`}
+        data-testid={testId}
         className={cn(
           'w-11 h-6 rounded-full transition-colors relative',
           checked ? 'bg-primary' : 'bg-slate-300',
@@ -80,6 +82,7 @@ function ProcessingOptions({ options, onChange }: ProcessingOptionsProps) {
           checked={options.isBgRemovalEnabled}
           onToggle={() => update('isBgRemovalEnabled', !options.isBgRemovalEnabled)}
           label={t('postprocess.removeBg')}
+          testId="toggle-remove-background"
         />
         <p className="text-xs text-text-muted">{t('postprocess.removeBgDesc')}</p>
       </section>
@@ -94,6 +97,7 @@ function ProcessingOptions({ options, onChange }: ProcessingOptionsProps) {
           checked={options.isOutlineEnabled}
           onToggle={() => update('isOutlineEnabled', !options.isOutlineEnabled)}
           label={t('postprocess.enableOutline')}
+          testId="toggle-enable-outline"
         />
 
         {options.isOutlineEnabled && (
@@ -106,7 +110,7 @@ function ProcessingOptions({ options, onChange }: ProcessingOptionsProps) {
                 {outlineStyles.map((s) => (
                   <button
                     key={s.value}
-                    aria-label={`Outline style: ${s.label}`}
+                    aria-label={t('a11y.outlineStyle', { style: s.label })}
                     aria-pressed={options.outlineStyle === s.value}
                     data-testid={`outline-style-${s.value}`}
                     onClick={() => update('outlineStyle', s.value)}
@@ -138,7 +142,8 @@ function ProcessingOptions({ options, onChange }: ProcessingOptionsProps) {
                 max={12}
                 value={options.outlineThickness}
                 onChange={(e) => update('outlineThickness', Number(e.target.value))}
-                aria-label={`Outline thickness: ${options.outlineThickness} pixels`}
+                aria-label={t('a11y.outlineThickness', { count: options.outlineThickness })}
+                data-testid="outline-thickness"
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary"
               />
             </div>
@@ -157,7 +162,8 @@ function ProcessingOptions({ options, onChange }: ProcessingOptionsProps) {
                 max={100}
                 value={options.outlineOpacity}
                 onChange={(e) => update('outlineOpacity', Number(e.target.value))}
-                aria-label={`Outline opacity: ${options.outlineOpacity} percent`}
+                aria-label={t('a11y.outlineOpacity', { count: options.outlineOpacity })}
+                data-testid="outline-opacity"
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary"
               />
             </div>

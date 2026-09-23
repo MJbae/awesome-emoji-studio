@@ -12,14 +12,16 @@
     "dev:electron": "npm -w @emoji/electron run dev",
     "build:web": "npm -w @emoji/web run build",
     "build:electron": "npm -w @emoji/electron run build",
-    "test": "npm -w @emoji/web run test && npm -w @emoji/electron run test",
+    "test": "npm run check:i18n && npm run test:i18n-review && npm -w @emoji/web run test && npm -w @emoji/electron run test",
     "test:e2e": "npm -w @emoji/web run test:e2e",
     "test:e2e:electron": "npm -w @emoji/electron run test:e2e",
     "lint": "eslint .",
     "test:e2e:coverage": "npm -w @emoji/web run test:e2e:coverage",
     "test:coverage:electron": "npm -w @emoji/electron run test:coverage",
-    "verify:design": "npm run lint && npm run test:e2e:typecheck && npm test && npm run build:web && npm run test:coverage:electron && npm run test:e2e:electron && npm run test:e2e:coverage",
-    "test:e2e:typecheck": "npm -w @emoji/web run test:e2e:typecheck && npm -w @emoji/electron exec -- tsc -p tsconfig.e2e-electron.json --noEmit"
+    "verify:design": "npm run lint && npm run check:i18n && npm run test:e2e:typecheck && npm test && npm run build:web && npm run test:coverage:electron && npm run test:e2e:electron && npm run test:e2e:coverage",
+    "test:e2e:typecheck": "npm -w @emoji/web run test:e2e:typecheck && npm -w @emoji/electron exec -- tsc -p tsconfig.e2e-electron.json --noEmit",
+    "check:i18n": "node scripts/check-locales.mjs",
+    "test:i18n-review": "node --test scripts/check-locales.test.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",

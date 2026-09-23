@@ -8,7 +8,6 @@ import type {
   UserInput,
   ProcessingOptions as ProcessingOptionsType,
   LanguageCode,
-  LanguageEntry,
   Sticker,
   ProcessedImage,
   MetaResult,
@@ -42,29 +41,7 @@ import { PostProcessStage } from '@/components/stages/PostProcessStage';
 import { MetadataStage } from '@/components/stages/MetadataStage';
 import { ExportStage } from '@/components/stages/ExportStage';
 
-const LANGUAGES: LanguageEntry[] = [
-  { code: 'en', label: 'English', required: true, nativeName: 'English' },
-  { code: 'ko', label: 'Korean', required: false, nativeName: '한국어' },
-  { code: 'ja', label: 'Japanese', required: false, nativeName: '日本語' },
-  {
-    code: 'zh-TW',
-    label: 'Traditional Chinese',
-    required: false,
-    nativeName: '繁體中文',
-  },
-  {
-    code: 'zh-CN',
-    label: 'Simplified Chinese',
-    required: false,
-    nativeName: '简体中文',
-  },
-  {
-    code: 'th',
-    label: 'Thai',
-    required: false,
-    nativeName: 'ไทย',
-  },
-];
+import { METADATA_LANGUAGES as LANGUAGES } from '@/constants/languages';
 
 function App() {
   const { t } = useTranslation();
@@ -214,7 +191,7 @@ function App() {
         if (userInput.skipCharacterGen && userInput.referenceImage) {
           // Skip generation — use reference image directly
           useAppStore.getState().setMainImage(userInput.referenceImage);
-          const spec = await extractCharacterSpec(userInput.referenceImage, userInput.concept);
+          const spec = await extractCharacterSpec(userInput.referenceImage, userInput.concept, userInput.language);
           useAppStore.getState().setCharacterSpec(spec);
           // Auto-advance past character stage
           markCompleted('character');
@@ -228,7 +205,7 @@ function App() {
             userInput.language,
           );
           useAppStore.getState().setMainImage(styledImage);
-          const spec = await extractCharacterSpec(styledImage, userInput.concept);
+          const spec = await extractCharacterSpec(styledImage, userInput.concept, userInput.language);
           useAppStore.getState().setCharacterSpec(spec);
         }
       } catch (e) {

@@ -38,7 +38,7 @@ journey report is in `packages/web/playwright-report/`.
 | Processing | Real canvas processing and preview, cleanup toggle, outline white/black/thickness/opacity, preview background, continue/back |
 | Metadata | Six languages, none selected, generation/failure/retry/regeneration, option selection/deselection, quality scores, clipboard |
 | Export | Platform toggle/select all/none, individual and combined downloads, actual ZIP contents and image dimensions |
-| Localization/layout | English, Korean, Japanese, Traditional/Simplified Chinese and Thai, mobile viewport, no horizontal overflow, translated postprocessing labels |
+| Localization/layout | English, Korean, Japanese, Simplified Chinese and Traditional Chinese; browser preference detection, saved manual choice, language switching without state loss, mobile layouts, translated visible/accessibility labels |
 | Public integration API | Separate `public-api.spec.ts` exercises the production automation interface and pipeline jobs |
 
 The test requests use a fixed fake key and deterministic Gemini HTTP responses.

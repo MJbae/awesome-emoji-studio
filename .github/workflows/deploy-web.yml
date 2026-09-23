@@ -5,6 +5,9 @@ on:
     paths:
       - 'packages/shared/**'
       - 'packages/web/**'
+      - 'docs/localization/**'
+      - 'scripts/check-locales*'
+      - 'package*.json'
   workflow_dispatch:
 
 permissions:
@@ -22,6 +25,9 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      - name: Verify approved language catalogs
+        run: npm run check:i18n && npm run test:i18n-review
 
       - name: Build Web
         run: npm run build:web

@@ -111,7 +111,7 @@ export async function toStickers(page: Page) {
 export async function toMetadata(page: Page) {
   await toStickers(page);
   await page.getByTestId('continue-btn').click();
-  await expect(page.getByRole('img', { name: 'Processing preview', exact: true })).toBeVisible();
+  await expect(page.getByTestId('processing-preview')).toBeVisible();
   await page.getByTestId('continue-btn').click();
   await expect(page.locator('section[data-stage="metadata"]')).toBeVisible();
 }

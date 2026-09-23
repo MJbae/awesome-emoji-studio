@@ -21,7 +21,7 @@ jobs:
 
       - name: Build & Package macOS
         working-directory: packages/electron
-        run: npx electron-vite build && npx electron-builder --mac --universal --publish always
+        run: npm run build && npx electron-builder --mac --universal --publish always
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CSC_LINK: ${{ secrets.APPLE_CERTIFICATE_BASE64 }}
@@ -44,6 +44,6 @@ jobs:
 
       - name: Build & Package Windows
         working-directory: packages/electron
-        run: npx electron-vite build && npx electron-builder --win --x64 --publish always
+        run: npm run build && npx electron-builder --win --x64 --publish always
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

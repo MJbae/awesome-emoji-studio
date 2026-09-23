@@ -61,12 +61,13 @@ function PostProcessStage({
             <div
               className="flex items-center gap-1.5 bg-white/70 border border-[#e0e2d6] rounded-2xl p-1.5"
               role="radiogroup"
-              aria-label="Preview background color"
+              aria-label={t('a11y.previewBackground')}
             >
               <button
                 role="radio"
                 aria-checked={previewBg === 'white'}
-                aria-label="White background"
+                aria-label={t('a11y.whiteBackground')}
+                data-testid="preview-bg-white"
                 onClick={() => setPreviewBg('white')}
                 className={cn(
                   'w-10 h-10 rounded-xl border-2 transition-colors',
@@ -78,7 +79,8 @@ function PostProcessStage({
               <button
                 role="radio"
                 aria-checked={previewBg === 'black'}
-                aria-label="Black background"
+                aria-label={t('a11y.blackBackground')}
+                data-testid="preview-bg-black"
                 onClick={() => setPreviewBg('black')}
                 className={cn(
                   'w-10 h-10 rounded-xl border-2 transition-colors',
@@ -94,7 +96,7 @@ function PostProcessStage({
               'flex-1 min-h-[320px] rounded-2xl border border-[#dfe1d6] flex items-center justify-center overflow-hidden relative transition-colors',
               previewBg === 'black' ? 'bg-black' : 'bg-white',
             )}
-            aria-label="Processing preview"
+            aria-label={t('a11y.processingPreview')}
           >
             {isProcessing && (
               <div
@@ -111,7 +113,8 @@ function PostProcessStage({
             {previewSrc ? (
               <img
                 src={previewSrc}
-                alt="Processing preview"
+                alt={t('a11y.processingPreview')}
+                data-testid="processing-preview"
                 className="w-full max-h-[440px] object-contain p-6 sm:p-8"
               />
             ) : (
@@ -133,7 +136,7 @@ function PostProcessStage({
         <Button
           variant="outline"
           onClick={onBack}
-          aria-label="Go back"
+          aria-label={t('a11y.back')}
           data-testid="back-btn"
           className="w-full sm:w-auto"
         >
@@ -143,7 +146,7 @@ function PostProcessStage({
           onClick={onContinue}
           disabled={selectedIds.size === 0}
           size="lg"
-          aria-label="Continue to metadata"
+          aria-label={t('a11y.continueMetadata')}
           data-testid="continue-btn"
           className="w-full sm:w-auto"
         >

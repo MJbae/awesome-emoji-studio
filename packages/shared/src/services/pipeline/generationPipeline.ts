@@ -167,7 +167,7 @@ export async function runGenerationPipeline(
       onProgress,
     );
 
-    const characterSpec = await extractCharacterSpec(mainImage, input.concept);
+    const characterSpec = await extractCharacterSpec(mainImage, input.concept, input.language);
     state.setCharacterSpec(characterSpec);
     getAppState().updateJob(jobId, { characterSpec });
 

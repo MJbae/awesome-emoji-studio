@@ -23,6 +23,13 @@ const PERSONA_COLORS: Record<string, { bg: string; text: string }> = {
   'Chief Creative Director': { bg: 'bg-indigo-100', text: 'text-indigo-700' },
 };
 
+const PERSONA_KEYS: Record<string, string> = {
+  'Market Analyst': 'market',
+  'Art Director': 'art',
+  'Cultural Expert': 'culture',
+  'Chief Creative Director': 'chief',
+};
+
 function getPersonaColor(persona: string) {
   return PERSONA_COLORS[persona] ?? { bg: 'bg-slate-100', text: 'text-slate-600' };
 }
@@ -64,13 +71,18 @@ function StrategyStage({
           <Button
             variant="outline"
             onClick={onRetry}
-            aria-label="Retry analysis"
+            aria-label={t('a11y.retryAnalysis')}
             data-testid="retry-btn"
           >
             {t('strategy.retryAnalysis')}
           </Button>
         </div>
-        <Button variant="outline" onClick={onBack} aria-label="Go back" data-testid="back-btn">
+        <Button
+          variant="outline"
+          onClick={onBack}
+          aria-label={t('a11y.back')}
+          data-testid="back-btn"
+        >
           {t('strategy.back')}
         </Button>
       </section>
@@ -124,13 +136,15 @@ function StrategyStage({
             {strategy.personaInsights.map((insight: PersonaInsight, index: number) => {
               const isExpanded = expandedInsights[index] ?? false;
               const colors = getPersonaColor(insight.persona);
+              const personaKey = PERSONA_KEYS[insight.persona];
+              const personaLabel = personaKey ? t(`personas.${personaKey}`) : insight.persona;
 
               return (
                 <Card key={index} className="overflow-hidden">
                   <button
                     onClick={() => toggleInsight(index)}
                     aria-expanded={isExpanded}
-                    aria-label={`${insight.persona} insight`}
+                    aria-label={t('a11y.insight', { persona: personaLabel })}
                     data-testid={`persona-${index}`}
                     className="w-full p-5 sm:p-6 flex items-start gap-4 text-left hover:bg-surface-dark transition-colors"
                   >
@@ -140,7 +154,7 @@ function StrategyStage({
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
                         <h4 className="font-semibold text-text text-sm sm:text-base">
-                          {insight.persona}
+                          {personaLabel}
                         </h4>
                         <div className="shrink-0 text-text-muted rounded-full bg-surface-dark p-1.5">
                           {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
@@ -168,13 +182,18 @@ function StrategyStage({
       </div>
 
       <div className="stage-actions">
-        <Button variant="outline" onClick={onBack} aria-label="Go back" data-testid="back-btn">
+        <Button
+          variant="outline"
+          onClick={onBack}
+          aria-label={t('a11y.back')}
+          data-testid="back-btn"
+        >
           {t('strategy.back')}
         </Button>
         <Button
           onClick={onContinue}
           size="lg"
-          aria-label="Continue to character generation"
+          aria-label={t('a11y.continueCharacter')}
           data-testid="continue-btn"
         >
           {t('strategy.next')}

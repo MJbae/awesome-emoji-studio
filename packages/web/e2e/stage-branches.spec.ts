@@ -34,7 +34,7 @@ test('empty base character image can be retried without losing the strategy', as
   await expect(page.getByTestId('continue-btn')).toBeDisabled();
   await page.getByTestId('retry-btn').click();
   await waitForCharacter(page);
-  await expect(page.getByRole('img', { name: 'Generated character', exact: true })).toBeVisible();
+  await expect(page.getByTestId('generated-character')).toBeVisible();
   await page.getByTestId('back-btn').click();
   await waitForStrategy(page);
 });
@@ -66,7 +66,7 @@ test('empty character details retain the image and regeneration restores the det
   api.emptyNext('spec');
   await page.getByTestId('continue-btn').click();
   await waitForCharacter(page);
-  await expect(page.getByRole('img', { name: 'Generated character', exact: true })).toBeVisible();
+  await expect(page.getByTestId('generated-character')).toBeVisible();
   await expect(page.getByTestId('toggle-spec-btn')).toHaveCount(0);
   await page.getByTestId('regenerate-btn').click();
   await waitForCharacter(page);
@@ -79,7 +79,7 @@ test('reference image guides normal generation while skip generation stays off',
   await page.getByTestId('reference-image-input').setInputFiles({
     name: 'bear-reference.png', mimeType: 'image/png', buffer: Buffer.from(PNG, 'base64'),
   });
-  await expect(page.getByRole('img', { name: 'Reference preview', exact: true })).toBeVisible();
+  await expect(page.getByTestId('reference-preview')).toBeVisible();
   await expect(page.getByTestId('skip-chargen-toggle')).toHaveAttribute('aria-checked', 'false');
   await submitConcept(page, 'japanese');
   await waitForStrategy(page);
@@ -121,7 +121,7 @@ test('empty metadata response recovers and clipboard denial does not interrupt t
   });
   await openStudio(page);
   await toMetadata(page);
-  for (const language of ['ko', 'ja', 'zh-TW', 'zh-CN', 'th']) {
+  for (const language of ['ko', 'ja', 'zh-TW', 'zh-CN']) {
     await page.getByTestId(`meta-lang-${language}`).click();
   }
   api.emptyNext('metadata');
@@ -144,15 +144,15 @@ test('every selected platform downloads a ZIP with the specified image dimension
   api.ideaCount = 3;
   await openStudio(page);
   await toMetadata(page);
-  for (const language of ['ko', 'ja', 'zh-TW', 'zh-CN', 'th']) {
+  for (const language of ['ko', 'ja', 'zh-TW', 'zh-CN']) {
     await page.getByTestId(`meta-lang-${language}`).click();
   }
   await page.getByTestId('generate-metadata-btn').click();
   await expect(page.getByTestId('select-meta-creative')).toHaveCount(1);
   await page.getByTestId('continue-to-export-btn').click();
-  await page.getByRole('button', { name: 'Deselect All', exact: true }).click();
+  await page.getByTestId('deselect-all-platforms-btn').click();
   await expect(page.getByTestId('export-combined-btn')).toBeDisabled();
-  await page.getByRole('button', { name: 'Select All', exact: true }).click();
+  await page.getByTestId('select-all-platforms-btn').click();
   const downloads: Download[] = [];
   page.on('download', (download) => downloads.push(download));
   await page.getByTestId('export-selected-btn').click();

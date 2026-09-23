@@ -1,6 +1,8 @@
 import { Type } from '@google/genai';
 import type { LanguageCode, LanguageEntry, LLMStrategy, CharacterSpec } from '@/types/domain';
 import { GEMINI_CONFIG } from '@/constants/gemini';
+import { LANGUAGE_OPTIONS, targetLanguageForLocale } from '@/constants/languages';
+import { buildWritingGuidance } from './writingGuidance';
 
 export function buildMetadataSystemInstruction(
   targetLang: LanguageCode,
@@ -8,9 +10,11 @@ export function buildMetadataSystemInstruction(
   strategy?: LLMStrategy | null,
   characterSpec?: CharacterSpec | null,
 ): string {
-  const languageInfo = languages.find((l) => l.code === targetLang);
-  const languageName = languageInfo?.label ?? 'English';
-  const nativeName = languageInfo?.nativeName ?? 'English';
+  const targetLanguage = targetLanguageForLocale(targetLang);
+  const supportedLanguage = LANGUAGE_OPTIONS.find((language) => language.market === targetLanguage)!;
+  const languageInfo = languages.find((language) => language.code === supportedLanguage.code);
+  const languageName = supportedLanguage.label;
+  const nativeName = languageInfo?.nativeName ?? supportedLanguage.nativeName;
 
   let strategyContext = '';
   if (strategy) {
@@ -94,6 +98,8 @@ You must provide exactly 3 options, each with a different strategic approach:
 - Language: ${languageName} (${nativeName}) only
 - No direct translations - culturally adapt the content
 - Must feel natural to native speakers
+${buildWritingGuidance(targetLanguage, 'every title, description, tag, and reasoning explanation')}
+- Keep optionType values personality, utility, and creative unchanged; they are machine-readable enum values, not translated labels.
 
 ### Tag Generation Strategy (Revenue Optimized)
 For the tags, include a strategic mix of:

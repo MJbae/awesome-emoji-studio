@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "Independent AI language review before adoption; not a human-native-speaker certification",
+  "defaultLanguage": "en",
+  "locales": {
+    "en": {
+      "status": "PASS",
+      "reviewer": "review_en_ko",
+      "report": "docs/localization/en-ko-review.md",
+      "sha256": "52f8b7b285f63ef4102361e10faf814b73ce31d2c449b3a4300a19c2ee756790"
+    },
+    "ko": {
+      "status": "PASS",
+      "reviewer": "review_en_ko",
+      "report": "docs/localization/en-ko-review.md",
+      "sha256": "7d224f6a6e56ff9b00bd2aa8ca4dfb030341b0209cd06ec58763b5938fd512b1"
+    },
+    "ja": {
+      "status": "PASS",
+      "reviewer": "review_ja",
+      "report": "docs/localization/ja-review.md",
+      "sha256": "6494d40289100781af9754ff919851ded57a2a31b916e4557d6815af485ab260"
+    },
+    "zh-CN": {
+      "status": "PASS",
+      "reviewer": "review_zh",
+      "report": "docs/localization/zh-review.md",
+      "sha256": "1a6b14fb7f376c0a71600ac20e3b2496fc494bd78ce2770a5a14bfa02fcda374"
+    },
+    "zh-TW": {
+      "status": "PASS",
+      "reviewer": "review_zh",
+      "report": "docs/localization/zh-review.md",
+      "sha256": "c5411c2179ecba60711b5ebea6fbb035b687a98b0fab0d6c56dd961b388202f2"
+    }
+  },
+  "hashFormat": "SHA-256 of recursively key-sorted canonical JSON (formatting-independent)",
+  "generatedWritingGuidance": {
+    "status": "PASS",
+    "reviewers": [
+      "review_en_ko",
+      "review_ja",
+      "review_zh"
+    ],
+    "report": "docs/localization/generated-language-review.md",
+    "source": "packages/shared/src/services/gemini/prompts/writingGuidance.ts",
+    "sha256": "6844aee8d12a1bac904a877d931f16c35191fa55a30b60a48543cd500870b822",
+    "hashFormat": "SHA-256 of UTF-8 source with CRLF normalized to LF"
+  }
+}

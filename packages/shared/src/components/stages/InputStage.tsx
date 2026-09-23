@@ -6,34 +6,20 @@ import { Button } from '@/components/ui/Button';
 import { AnimatedInputWrapper } from '@/components/ui/AnimatedInputWrapper';
 import { cn } from '@/utils/cn';
 import samples from '@/assets/studio-samples.svg';
+import { LANGUAGE_OPTIONS, targetLanguageForLocale } from '@/constants/languages';
 
 interface InputStageProps {
   onSubmit: (input: UserInput) => void;
   initialData?: UserInput;
 }
 
-const LANGUAGES = [
-  'Korean',
-  'Japanese',
-  'Traditional Chinese',
-  'Simplified Chinese',
-  'Thai',
-] as const;
-const LANG_META: Record<(typeof LANGUAGES)[number], { native: string; code: string }> = {
-  Korean: { native: '한국', code: 'KR' },
-  Japanese: { native: '日本', code: 'JP' },
-  'Traditional Chinese': { native: '台灣', code: 'TW' },
-  'Simplified Chinese': { native: '中国', code: 'CN' },
-  Thai: { native: 'ไทย', code: 'TH' },
-};
-
 function InputStage({ onSubmit, initialData }: InputStageProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [data, setData] = useState<UserInput>(
     initialData ?? {
       concept: '',
       referenceImage: null,
-      language: 'Korean',
+      language: targetLanguageForLocale(i18n.resolvedLanguage),
       skipCharacterGen: false,
     },
   );
@@ -89,7 +75,7 @@ function InputStage({ onSubmit, initialData }: InputStageProps) {
                 value={data.concept}
                 onChange={(e) => setData((prev) => ({ ...prev, concept: e.target.value }))}
                 placeholder={t('input.conceptPlaceholder')}
-                aria-label="Character concept description"
+                aria-label={t('a11y.concept')}
                 aria-describedby={`${conceptId}-hint`}
                 data-testid="concept-textarea"
                 className="h-32 w-full resize-y bg-transparent p-4 text-sm leading-7 outline-none placeholder:text-slate-400"
@@ -115,10 +101,10 @@ function InputStage({ onSubmit, initialData }: InputStageProps) {
             <div
               className="grid grid-cols-5 gap-1.5 sm:gap-2"
               role="radiogroup"
-              aria-label="Target language"
+              aria-label={t('a11y.targetLanguage')}
             >
-              {LANGUAGES.map((lang) => {
-                const meta = LANG_META[lang];
+              {LANGUAGE_OPTIONS.map((meta) => {
+                const lang = meta.market;
                 const isSelected = data.language === lang;
                 return (
                   <button
@@ -126,7 +112,7 @@ function InputStage({ onSubmit, initialData }: InputStageProps) {
                     type="button"
                     role="radio"
                     aria-checked={isSelected}
-                    aria-label={`Language: ${lang}`}
+                    aria-label={t('a11y.language', { language: t(`language.names.${meta.code}`) })}
                     data-testid={`lang-${lang.toLowerCase().replace(/\s+/g, '-')}`}
                     onClick={() => setData((prev) => ({ ...prev, language: lang }))}
                     className={cn(
@@ -139,11 +125,14 @@ function InputStage({ onSubmit, initialData }: InputStageProps) {
                     <span className="text-[10px] font-semibold tracking-wider opacity-65">
                       {meta.code}
                     </span>
-                    <span className="text-xs font-semibold">{meta.native}</span>
+                    <span className="text-[11px] sm:text-xs font-semibold">{meta.nativeName}</span>
                   </button>
                 );
               })}
             </div>
+            <p className="text-[11px] leading-relaxed text-text-muted">
+              {t('language.targetHint')}
+            </p>
           </fieldset>
 
           <div className="space-y-3 border-t border-slate-100 pt-6">
@@ -157,14 +146,15 @@ function InputStage({ onSubmit, initialData }: InputStageProps) {
                 accept="image/*"
                 className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
                 onChange={handleImageUpload}
-                aria-label="Upload reference image"
+                aria-label={t('a11y.uploadReference')}
                 data-testid="reference-image-input"
               />
               {preview ? (
                 <div className="pointer-events-none text-center">
                   <img
                     src={preview}
-                    alt="Reference preview"
+                    alt={t('a11y.referencePreview')}
+                    data-testid="reference-preview"
                     className="mx-auto h-28 rounded-lg object-contain"
                   />
                   <p className="mt-2 text-xs text-text-muted">{t('input.clickToChange')}</p>
@@ -225,7 +215,7 @@ function InputStage({ onSubmit, initialData }: InputStageProps) {
               disabled={!isValid}
               className="w-full"
               size="lg"
-              aria-label="Analyze concept and proceed"
+              aria-label={t('a11y.analyze')}
               data-testid="analyze-btn"
             >
               {t('input.analyzeConcept')}

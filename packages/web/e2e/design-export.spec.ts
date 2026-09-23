@@ -30,10 +30,10 @@ for (const outcome of ['complete', 'cancel'] as const) {
     await openStudio(page);
     await toMetadata(page);
     await page.getByTestId('generate-metadata-btn').click();
-    await expect(page.getByTestId('select-meta-creative')).toHaveCount(6);
+    await expect(page.getByTestId('select-meta-creative')).toHaveCount(5);
     await page.getByTestId('continue-to-export-btn').click();
-    await page.getByRole('button', { name: 'Deselect All', exact: true }).click();
-    await page.getByRole('button', { name: /^LINE Emoji/ }).click();
+    await page.getByTestId('deselect-all-platforms-btn').click();
+    await page.getByTestId('platform-line_emoji').click();
     let expectedCalls = 0;
     for (const button of ['export-selected-btn', 'export-combined-btn']) {
       const fallbackDownload = outcome === 'cancel' ? page.waitForEvent('download') : undefined;
