@@ -44,7 +44,11 @@ function StrategyStage({
 
   if (loading) {
     return (
-      <section data-stage="strategy" data-phase="loading" className="flex flex-col items-center justify-center min-h-[50vh]">
+      <section
+        data-stage="strategy"
+        data-phase="loading"
+        className="flex flex-col items-center justify-center min-h-[50vh]"
+      >
         <Loader title={t('strategy.analyzing')} text={t('strategy.analyzingDesc')} size="xl" />
       </section>
     );
@@ -52,8 +56,8 @@ function StrategyStage({
 
   if (error && !strategy) {
     return (
-      <section data-stage="strategy" data-phase="error" className="max-w-2xl mx-auto space-y-6">
-        <div className="bg-danger-light border border-red-200 rounded-xl p-6 text-center space-y-4">
+      <section data-stage="strategy" data-phase="error" className="max-w-3xl mx-auto space-y-6">
+        <div className="bg-danger-light border border-red-200 rounded-3xl p-8 text-center space-y-4">
           <p role="alert" className="text-danger font-medium">
             {error}
           </p>
@@ -76,22 +80,22 @@ function StrategyStage({
   if (!strategy) return null;
 
   return (
-    <section data-stage="strategy" data-phase="complete" className="max-w-3xl mx-auto space-y-8">
-      <div className="text-center space-y-3">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium">
+    <section data-stage="strategy" data-phase="complete" className="max-w-4xl mx-auto space-y-8">
+      <div className="space-y-4">
+        <div className="stage-eyebrow">
           <Brain size={14} />
           {t('strategy.panel')}
         </div>
-        <h2 className="text-3xl font-bold text-text">{t('strategy.title')}</h2>
-        <p className="text-text-muted">{t('strategy.subtitle')}</p>
+        <h2 className="stage-heading">{t('strategy.title')}</h2>
+        <p className="max-w-2xl text-text-muted leading-relaxed">{t('strategy.subtitle')}</p>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-3">
         {strategy.culturalNotes && (
           <CollapsibleStrategyCard
             title={t('strategy.culturalNotes')}
-            icon={<Globe className="w-5 h-5 text-amber-700" />}
-            iconBg="bg-amber-100"
+            icon={<Globe className="w-5 h-5 text-[#656c35]" />}
+            iconBg="bg-[#edf0ce]"
           >
             <p className="text-sm text-text-muted leading-relaxed break-words whitespace-normal">
               {strategy.culturalNotes}
@@ -102,8 +106,8 @@ function StrategyStage({
         {strategy.salesReasoning && (
           <CollapsibleStrategyCard
             title={t('strategy.salesReasoning')}
-            icon={<TrendingUp className="w-5 h-5 text-indigo-700" />}
-            iconBg="bg-indigo-100"
+            icon={<TrendingUp className="w-5 h-5 text-[#76628d]" />}
+            iconBg="bg-[#ece8f5]"
           >
             <p className="text-sm text-text-muted leading-relaxed break-words whitespace-normal">
               {strategy.salesReasoning}
@@ -113,11 +117,9 @@ function StrategyStage({
 
         {strategy.personaInsights && strategy.personaInsights.length > 0 && (
           <>
-            <div className="flex items-center gap-2 px-1">
+            <div className="flex items-center gap-2 px-1 pt-6 pb-2">
               <Users className="w-4 h-4 text-text-muted" />
-              <h3 className="font-bold text-slate-700 text-xs uppercase tracking-wide">
-                {t('strategy.expertInsights')}
-              </h3>
+              <h3 className="font-semibold text-text text-sm">{t('strategy.expertInsights')}</h3>
             </div>
             {strategy.personaInsights.map((insight: PersonaInsight, index: number) => {
               const isExpanded = expandedInsights[index] ?? false;
@@ -130,25 +132,29 @@ function StrategyStage({
                     aria-expanded={isExpanded}
                     aria-label={`${insight.persona} insight`}
                     data-testid={`persona-${index}`}
-                    className="w-full p-4 flex items-start gap-3 text-left hover:bg-slate-50 transition-colors"
+                    className="w-full p-5 sm:p-6 flex items-start gap-4 text-left hover:bg-surface-dark transition-colors"
                   >
-                    <div className={cn('p-2 rounded-lg shrink-0 mt-0.5', colors.bg)}>
+                    <div className={cn('p-3 rounded-2xl shrink-0', colors.bg)}>
                       <Users className={cn('w-4 h-4', colors.text)} />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
-                        <h4 className="font-bold text-slate-900 text-sm">{insight.persona}</h4>
-                        <div className="shrink-0 text-slate-400">
+                        <h4 className="font-semibold text-text text-sm sm:text-base">
+                          {insight.persona}
+                        </h4>
+                        <div className="shrink-0 text-text-muted rounded-full bg-surface-dark p-1.5">
                           {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                         </div>
                       </div>
 
                       {!isExpanded && (
-                        <p className="text-xs text-text-muted truncate mt-1">{insight.analysis}</p>
+                        <p className="text-sm text-text-muted truncate mt-1.5">
+                          {insight.analysis}
+                        </p>
                       )}
 
                       {isExpanded && (
-                        <p className="text-sm text-text-muted leading-relaxed pt-3 border-t border-slate-100 mt-3 break-words whitespace-normal">
+                        <p className="text-sm text-text-muted leading-7 pt-4 border-t border-[#e4e5dd] mt-4 break-words whitespace-normal">
                           {insight.analysis}
                         </p>
                       )}
@@ -161,7 +167,7 @@ function StrategyStage({
         )}
       </div>
 
-      <div className="flex justify-between pt-6">
+      <div className="stage-actions">
         <Button variant="outline" onClick={onBack} aria-label="Go back" data-testid="back-btn">
           {t('strategy.back')}
         </Button>
@@ -200,29 +206,27 @@ function CollapsibleStrategyCard({
     <Card className="overflow-hidden">
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full p-5 flex items-start gap-3 text-left hover:bg-slate-50 transition-colors"
+        className="w-full p-5 sm:p-6 flex items-start gap-4 text-left hover:bg-surface-dark transition-colors"
         aria-expanded={expanded}
       >
-        <div className={cn('p-2 rounded-lg shrink-0 mt-0.5', iconBg)}>{icon}</div>
+        <div className={cn('p-3 rounded-2xl shrink-0', iconBg)}>{icon}</div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between gap-2">
-            <h3 className="font-bold text-slate-900 text-sm">{title}</h3>
+            <h3 className="font-semibold text-text text-base">{title}</h3>
             {badge && (
               <span className="bg-primary-100 text-primary-800 text-xs font-semibold px-2.5 py-0.5 rounded-full whitespace-nowrap ml-auto mr-2">
                 {badge}
               </span>
             )}
-            <div className="shrink-0 text-slate-400">
+            <div className="shrink-0 text-text-muted rounded-full bg-surface-dark p-1.5">
               {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
             </div>
           </div>
           {!expanded && (
-            <p className="text-xs text-text-muted truncate mt-1">
-              {t('strategy.clickForDetails')}
-            </p>
+            <p className="text-sm text-text-muted mt-1.5">{t('strategy.clickForDetails')}</p>
           )}
           {expanded && (
-            <div className="mt-3 pt-3 border-t border-slate-100 animate-fade-in">{children}</div>
+            <div className="mt-4 pt-4 border-t border-[#e4e5dd] animate-fade-in">{children}</div>
           )}
         </div>
       </button>

@@ -194,7 +194,8 @@ CRITICAL RULES:
 `;
 }
 
-export function buildSingleEmotePrompt(idea: EmoteIdea, _characterSpec: CharacterSpec): string {
+// Keep the character specification parameter for existing API consumers.
+export function buildSingleEmotePrompt(idea: EmoteIdea, _characterSpec: CharacterSpec): string { // eslint-disable-line @typescript-eslint/no-unused-vars
   return `LINE emoji sticker, 180x180px, square, solid white background.
 Match the character in the reference image exactly.
 Only change the expression and pose — not the character design.

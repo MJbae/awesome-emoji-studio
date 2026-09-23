@@ -1,0 +1,2686 @@
+{
+  "recordedAt": "2026-09-23T12:31:13.594660+00:00",
+  "revision": "working-tree after redesign",
+  "runtimeSourceUnmodified": false,
+  "command": "npm -w @emoji/web run test:e2e",
+  "tests": {
+    "passed": 79,
+    "failed": 0,
+    "regressionPassed": 64,
+    "designOnlyPassed": 15
+  },
+  "scope": "All runtime TS/TSX in packages/shared/src and packages/web/src; tests, declarations and MSW support excluded",
+  "thresholds": {
+    "branches": 100
+  },
+  "thresholdPassed": false,
+  "summary": {
+    "lines": {
+      "total": 1465,
+      "covered": 1280,
+      "skipped": 0,
+      "pct": 87.37
+    },
+    "statements": {
+      "total": 1618,
+      "covered": 1390,
+      "skipped": 0,
+      "pct": 85.9
+    },
+    "functions": {
+      "total": 406,
+      "covered": 345,
+      "skipped": 0,
+      "pct": 84.97
+    },
+    "branches": {
+      "total": 812,
+      "covered": 646,
+      "skipped": 0,
+      "pct": 79.55
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "files": {
+    "shared/src/App.tsx": {
+      "lines": {
+        "total": 308,
+        "covered": 302,
+        "skipped": 0,
+        "pct": 98.05
+      },
+      "functions": {
+        "total": 80,
+        "covered": 80,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 352,
+        "covered": 339,
+        "skipped": 0,
+        "pct": 96.3
+      },
+      "branches": {
+        "total": 141,
+        "covered": 126,
+        "skipped": 0,
+        "pct": 89.36
+      }
+    },
+    "shared/src/bridge/domState.ts": {
+      "lines": {
+        "total": 14,
+        "covered": 14,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 4,
+        "covered": 4,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 15,
+        "covered": 14,
+        "skipped": 0,
+        "pct": 93.33
+      },
+      "branches": {
+        "total": 12,
+        "covered": 6,
+        "skipped": 0,
+        "pct": 50
+      }
+    },
+    "shared/src/bridge/eventBus.ts": {
+      "lines": {
+        "total": 6,
+        "covered": 6,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 4,
+        "covered": 4,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 6,
+        "covered": 6,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "shared/src/bridge/windowApi.ts": {
+      "lines": {
+        "total": 63,
+        "covered": 63,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 23,
+        "covered": 23,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 65,
+        "covered": 65,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 22,
+        "covered": 21,
+        "skipped": 0,
+        "pct": 95.45
+      }
+    },
+    "shared/src/components/layout/AppShell.tsx": {
+      "lines": {
+        "total": 2,
+        "covered": 2,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 1,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 2,
+        "covered": 2,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 4,
+        "covered": 4,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "shared/src/components/layout/StageStepper.tsx": {
+      "lines": {
+        "total": 11,
+        "covered": 11,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 6,
+        "covered": 6,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 12,
+        "covered": 12,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 20,
+        "covered": 20,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "shared/src/components/setup/ApiKeyModal.tsx": {
+      "lines": {
+        "total": 61,
+        "covered": 59,
+        "skipped": 0,
+        "pct": 96.72
+      },
+      "functions": {
+        "total": 12,
+        "covered": 12,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 70,
+        "covered": 65,
+        "skipped": 0,
+        "pct": 92.85
+      },
+      "branches": {
+        "total": 52,
+        "covered": 45,
+        "skipped": 0,
+        "pct": 86.53
+      }
+    },
+    "shared/src/components/stages/CharacterStage.tsx": {
+      "lines": {
+        "total": 9,
+        "covered": 9,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 5,
+        "covered": 5,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 11,
+        "covered": 11,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 16,
+        "covered": 16,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "shared/src/components/stages/ExportStage.tsx": {
+      "lines": {
+        "total": 14,
+        "covered": 14,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 8,
+        "covered": 8,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 16,
+        "covered": 15,
+        "skipped": 0,
+        "pct": 93.75
+      },
+      "branches": {
+        "total": 30,
+        "covered": 27,
+        "skipped": 0,
+        "pct": 90
+      }
+    },
+    "shared/src/components/stages/InputStage.tsx": {
+      "lines": {
+        "total": 27,
+        "covered": 27,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 13,
+        "covered": 13,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 32,
+        "covered": 31,
+        "skipped": 0,
+        "pct": 96.87
+      },
+      "branches": {
+        "total": 28,
+        "covered": 25,
+        "skipped": 0,
+        "pct": 89.28
+      }
+    },
+    "shared/src/components/stages/MetadataStage.tsx": {
+      "lines": {
+        "total": 28,
+        "covered": 28,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 13,
+        "covered": 13,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 31,
+        "covered": 31,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 34,
+        "covered": 34,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "shared/src/components/stages/PostProcessStage.tsx": {
+      "lines": {
+        "total": 5,
+        "covered": 5,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 3,
+        "covered": 3,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 5,
+        "covered": 5,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 14,
+        "covered": 12,
+        "skipped": 0,
+        "pct": 85.71
+      }
+    },
+    "shared/src/components/stages/StickerBatchStage.tsx": {
+      "lines": {
+        "total": 24,
+        "covered": 24,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 13,
+        "covered": 13,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 27,
+        "covered": 27,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 23,
+        "covered": 22,
+        "skipped": 0,
+        "pct": 95.65
+      }
+    },
+    "shared/src/components/stages/StrategyStage.tsx": {
+      "lines": {
+        "total": 20,
+        "covered": 20,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 8,
+        "covered": 8,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 22,
+        "covered": 22,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 34,
+        "covered": 32,
+        "skipped": 0,
+        "pct": 94.11
+      }
+    },
+    "shared/src/components/ui/AnimatedInputWrapper.tsx": {
+      "lines": {
+        "total": 1,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 1,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 1,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 2,
+        "covered": 2,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "shared/src/components/ui/Button.tsx": {
+      "lines": {
+        "total": 6,
+        "covered": 6,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 1,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 6,
+        "covered": 6,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 11,
+        "covered": 10,
+        "skipped": 0,
+        "pct": 90.9
+      }
+    },
+    "shared/src/components/ui/Card.tsx": {
+      "lines": {
+        "total": 3,
+        "covered": 3,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 1,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 3,
+        "covered": 3,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 8,
+        "covered": 5,
+        "skipped": 0,
+        "pct": 62.5
+      }
+    },
+    "shared/src/components/ui/FileUpload.tsx": {
+      "lines": {
+        "total": 34,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      },
+      "functions": {
+        "total": 7,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      },
+      "statements": {
+        "total": 35,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      },
+      "branches": {
+        "total": 20,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      }
+    },
+    "shared/src/components/ui/Loader.tsx": {
+      "lines": {
+        "total": 3,
+        "covered": 3,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 1,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 3,
+        "covered": 3,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 10,
+        "covered": 8,
+        "skipped": 0,
+        "pct": 80
+      }
+    },
+    "shared/src/components/ui/ProcessingOptions.tsx": {
+      "lines": {
+        "total": 15,
+        "covered": 15,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 9,
+        "covered": 9,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 15,
+        "covered": 15,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 8,
+        "covered": 8,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "shared/src/components/ui/SelectionGrid.tsx": {
+      "lines": {
+        "total": 6,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      },
+      "functions": {
+        "total": 3,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      },
+      "statements": {
+        "total": 6,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      },
+      "branches": {
+        "total": 6,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      }
+    },
+    "shared/src/constants/gemini.ts": {
+      "lines": {
+        "total": 2,
+        "covered": 2,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 2,
+        "covered": 2,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "shared/src/constants/imageProcessing.ts": {
+      "lines": {
+        "total": 3,
+        "covered": 3,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 3,
+        "covered": 3,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "shared/src/constants/platforms.ts": {
+      "lines": {
+        "total": 20,
+        "covered": 12,
+        "skipped": 0,
+        "pct": 60
+      },
+      "functions": {
+        "total": 7,
+        "covered": 6,
+        "skipped": 0,
+        "pct": 85.71
+      },
+      "statements": {
+        "total": 22,
+        "covered": 12,
+        "skipped": 0,
+        "pct": 54.54
+      },
+      "branches": {
+        "total": 8,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      }
+    },
+    "shared/src/constants/styles.ts": {
+      "lines": {
+        "total": 1,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 1,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "shared/src/hooks/useApiKey.ts": {
+      "lines": {
+        "total": 7,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      },
+      "functions": {
+        "total": 7,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      },
+      "statements": {
+        "total": 13,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      },
+      "branches": {
+        "total": 2,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      }
+    },
+    "shared/src/hooks/useExposeApi.ts": {
+      "lines": {
+        "total": 6,
+        "covered": 6,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 3,
+        "covered": 3,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 6,
+        "covered": 6,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "shared/src/hooks/useMigrateApiKey.ts": {
+      "lines": {
+        "total": 13,
+        "covered": 2,
+        "skipped": 0,
+        "pct": 15.38
+      },
+      "functions": {
+        "total": 3,
+        "covered": 2,
+        "skipped": 0,
+        "pct": 66.66
+      },
+      "statements": {
+        "total": 14,
+        "covered": 3,
+        "skipped": 0,
+        "pct": 21.42
+      },
+      "branches": {
+        "total": 6,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 16.66
+      }
+    },
+    "shared/src/hooks/usePipeline.ts": {
+      "lines": {
+        "total": 31,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      },
+      "functions": {
+        "total": 14,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      },
+      "statements": {
+        "total": 41,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      },
+      "branches": {
+        "total": 10,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      }
+    },
+    "shared/src/i18n/index.ts": {
+      "lines": {
+        "total": 2,
+        "covered": 2,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 2,
+        "covered": 2,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "shared/src/platform/adapter.ts": {
+      "lines": {
+        "total": 31,
+        "covered": 22,
+        "skipped": 0,
+        "pct": 70.96
+      },
+      "functions": {
+        "total": 6,
+        "covered": 4,
+        "skipped": 0,
+        "pct": 66.66
+      },
+      "statements": {
+        "total": 31,
+        "covered": 22,
+        "skipped": 0,
+        "pct": 70.96
+      },
+      "branches": {
+        "total": 14,
+        "covered": 9,
+        "skipped": 0,
+        "pct": 64.28
+      }
+    },
+    "shared/src/services/config/apiKeyManager.ts": {
+      "lines": {
+        "total": 14,
+        "covered": 4,
+        "skipped": 0,
+        "pct": 28.57
+      },
+      "functions": {
+        "total": 7,
+        "covered": 3,
+        "skipped": 0,
+        "pct": 42.85
+      },
+      "statements": {
+        "total": 16,
+        "covered": 4,
+        "skipped": 0,
+        "pct": 25
+      },
+      "branches": {
+        "total": 10,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 0
+      }
+    },
+    "shared/src/services/gemini/client.ts": {
+      "lines": {
+        "total": 31,
+        "covered": 26,
+        "skipped": 0,
+        "pct": 83.87
+      },
+      "functions": {
+        "total": 5,
+        "covered": 4,
+        "skipped": 0,
+        "pct": 80
+      },
+      "statements": {
+        "total": 31,
+        "covered": 26,
+        "skipped": 0,
+        "pct": 83.87
+      },
+      "branches": {
+        "total": 18,
+        "covered": 13,
+        "skipped": 0,
+        "pct": 72.22
+      }
+    },
+    "shared/src/services/gemini/orchestrator.ts": {
+      "lines": {
+        "total": 71,
+        "covered": 71,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 15,
+        "covered": 15,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 81,
+        "covered": 80,
+        "skipped": 0,
+        "pct": 98.76
+      },
+      "branches": {
+        "total": 35,
+        "covered": 32,
+        "skipped": 0,
+        "pct": 91.42
+      }
+    },
+    "shared/src/services/gemini/prompts/characterGen.ts": {
+      "lines": {
+        "total": 23,
+        "covered": 21,
+        "skipped": 0,
+        "pct": 91.3
+      },
+      "functions": {
+        "total": 6,
+        "covered": 6,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 23,
+        "covered": 21,
+        "skipped": 0,
+        "pct": 91.3
+      },
+      "branches": {
+        "total": 10,
+        "covered": 7,
+        "skipped": 0,
+        "pct": 70
+      }
+    },
+    "shared/src/services/gemini/prompts/expertPanel.ts": {
+      "lines": {
+        "total": 17,
+        "covered": 15,
+        "skipped": 0,
+        "pct": 88.23
+      },
+      "functions": {
+        "total": 7,
+        "covered": 7,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 17,
+        "covered": 15,
+        "skipped": 0,
+        "pct": 88.23
+      },
+      "branches": {
+        "total": 7,
+        "covered": 5,
+        "skipped": 0,
+        "pct": 71.42
+      }
+    },
+    "shared/src/services/gemini/prompts/metadata.ts": {
+      "lines": {
+        "total": 13,
+        "covered": 13,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 3,
+        "covered": 3,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 14,
+        "covered": 14,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 8,
+        "covered": 4,
+        "skipped": 0,
+        "pct": 50
+      }
+    },
+    "shared/src/services/image/backgroundRemoval.ts": {
+      "lines": {
+        "total": 102,
+        "covered": 102,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 8,
+        "covered": 8,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 113,
+        "covered": 113,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 28,
+        "covered": 28,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "shared/src/services/image/core.ts": {
+      "lines": {
+        "total": 12,
+        "covered": 12,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 4,
+        "covered": 4,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 14,
+        "covered": 13,
+        "skipped": 0,
+        "pct": 92.85
+      },
+      "branches": {
+        "total": 4,
+        "covered": 3,
+        "skipped": 0,
+        "pct": 75
+      }
+    },
+    "shared/src/services/image/export.ts": {
+      "lines": {
+        "total": 65,
+        "covered": 62,
+        "skipped": 0,
+        "pct": 95.38
+      },
+      "functions": {
+        "total": 7,
+        "covered": 7,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 72,
+        "covered": 68,
+        "skipped": 0,
+        "pct": 94.44
+      },
+      "branches": {
+        "total": 34,
+        "covered": 26,
+        "skipped": 0,
+        "pct": 76.47
+      }
+    },
+    "shared/src/services/image/outlineGeneration.ts": {
+      "lines": {
+        "total": 19,
+        "covered": 18,
+        "skipped": 0,
+        "pct": 94.73
+      },
+      "functions": {
+        "total": 1,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 21,
+        "covered": 20,
+        "skipped": 0,
+        "pct": 95.23
+      },
+      "branches": {
+        "total": 4,
+        "covered": 3,
+        "skipped": 0,
+        "pct": 75
+      }
+    },
+    "shared/src/services/image/resize.ts": {
+      "lines": {
+        "total": 23,
+        "covered": 23,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 2,
+        "covered": 2,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 23,
+        "covered": 23,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 3,
+        "covered": 2,
+        "skipped": 0,
+        "pct": 66.66
+      }
+    },
+    "shared/src/services/pipeline/fullPipeline.ts": {
+      "lines": {
+        "total": 36,
+        "covered": 28,
+        "skipped": 0,
+        "pct": 77.77
+      },
+      "functions": {
+        "total": 9,
+        "covered": 5,
+        "skipped": 0,
+        "pct": 55.55
+      },
+      "statements": {
+        "total": 37,
+        "covered": 28,
+        "skipped": 0,
+        "pct": 75.67
+      },
+      "branches": {
+        "total": 16,
+        "covered": 12,
+        "skipped": 0,
+        "pct": 75
+      }
+    },
+    "shared/src/services/pipeline/generationPipeline.ts": {
+      "lines": {
+        "total": 72,
+        "covered": 72,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 9,
+        "covered": 9,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 76,
+        "covered": 75,
+        "skipped": 0,
+        "pct": 98.68
+      },
+      "branches": {
+        "total": 10,
+        "covered": 7,
+        "skipped": 0,
+        "pct": 70
+      }
+    },
+    "shared/src/services/pipeline/postProcessPipeline.ts": {
+      "lines": {
+        "total": 27,
+        "covered": 26,
+        "skipped": 0,
+        "pct": 96.29
+      },
+      "functions": {
+        "total": 2,
+        "covered": 2,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 28,
+        "covered": 27,
+        "skipped": 0,
+        "pct": 96.42
+      },
+      "branches": {
+        "total": 8,
+        "covered": 7,
+        "skipped": 0,
+        "pct": 87.5
+      }
+    },
+    "shared/src/store/appStore.ts": {
+      "lines": {
+        "total": 10,
+        "covered": 10,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 5,
+        "covered": 5,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 10,
+        "covered": 10,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 6,
+        "covered": 5,
+        "skipped": 0,
+        "pct": 83.33
+      }
+    },
+    "shared/src/store/slices/assetsSlice.ts": {
+      "lines": {
+        "total": 12,
+        "covered": 11,
+        "skipped": 0,
+        "pct": 91.66
+      },
+      "functions": {
+        "total": 12,
+        "covered": 11,
+        "skipped": 0,
+        "pct": 91.66
+      },
+      "statements": {
+        "total": 14,
+        "covered": 13,
+        "skipped": 0,
+        "pct": 92.85
+      },
+      "branches": {
+        "total": 2,
+        "covered": 2,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "shared/src/store/slices/configSlice.ts": {
+      "lines": {
+        "total": 20,
+        "covered": 10,
+        "skipped": 0,
+        "pct": 50
+      },
+      "functions": {
+        "total": 8,
+        "covered": 4,
+        "skipped": 0,
+        "pct": 50
+      },
+      "statements": {
+        "total": 21,
+        "covered": 11,
+        "skipped": 0,
+        "pct": 52.38
+      },
+      "branches": {
+        "total": 4,
+        "covered": 4,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "shared/src/store/slices/exportSlice.ts": {
+      "lines": {
+        "total": 16,
+        "covered": 14,
+        "skipped": 0,
+        "pct": 87.5
+      },
+      "functions": {
+        "total": 9,
+        "covered": 7,
+        "skipped": 0,
+        "pct": 77.77
+      },
+      "statements": {
+        "total": 18,
+        "covered": 16,
+        "skipped": 0,
+        "pct": 88.88
+      },
+      "branches": {
+        "total": 4,
+        "covered": 3,
+        "skipped": 0,
+        "pct": 75
+      }
+    },
+    "shared/src/store/slices/jobsSlice.ts": {
+      "lines": {
+        "total": 40,
+        "covered": 30,
+        "skipped": 0,
+        "pct": 75
+      },
+      "functions": {
+        "total": 13,
+        "covered": 11,
+        "skipped": 0,
+        "pct": 84.61
+      },
+      "statements": {
+        "total": 47,
+        "covered": 36,
+        "skipped": 0,
+        "pct": 76.59
+      },
+      "branches": {
+        "total": 19,
+        "covered": 12,
+        "skipped": 0,
+        "pct": 63.15
+      }
+    },
+    "shared/src/store/slices/workflowSlice.ts": {
+      "lines": {
+        "total": 28,
+        "covered": 19,
+        "skipped": 0,
+        "pct": 67.85
+      },
+      "functions": {
+        "total": 9,
+        "covered": 6,
+        "skipped": 0,
+        "pct": 66.66
+      },
+      "statements": {
+        "total": 32,
+        "covered": 21,
+        "skipped": 0,
+        "pct": 65.62
+      },
+      "branches": {
+        "total": 14,
+        "covered": 7,
+        "skipped": 0,
+        "pct": 50
+      }
+    },
+    "shared/src/utils/base64.ts": {
+      "lines": {
+        "total": 14,
+        "covered": 7,
+        "skipped": 0,
+        "pct": 50
+      },
+      "functions": {
+        "total": 6,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 16.66
+      },
+      "statements": {
+        "total": 16,
+        "covered": 8,
+        "skipped": 0,
+        "pct": 50
+      },
+      "branches": {
+        "total": 3,
+        "covered": 2,
+        "skipped": 0,
+        "pct": 66.66
+      }
+    },
+    "shared/src/utils/cn.ts": {
+      "lines": {
+        "total": 1,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 1,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 1,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "shared/src/utils/errors.ts": {
+      "lines": {
+        "total": 22,
+        "covered": 22,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 2,
+        "covered": 2,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 22,
+        "covered": 22,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 30,
+        "covered": 29,
+        "skipped": 0,
+        "pct": 96.66
+      }
+    },
+    "web/src/main.tsx": {
+      "lines": {
+        "total": 1,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 1,
+        "covered": 1,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    }
+  },
+  "uncoveredBranches": [
+    {
+      "file": "packages/shared/src/platform/adapter.ts",
+      "line": 7,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/platform/adapter.ts",
+      "line": 14,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/platform/adapter.ts",
+      "line": 22,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/platform/adapter.ts",
+      "line": 24,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/platform/adapter.ts",
+      "line": 30,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/config/apiKeyManager.ts",
+      "line": 34,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/config/apiKeyManager.ts",
+      "line": 34,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/config/apiKeyManager.ts",
+      "line": 34,
+      "type": "binary-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/config/apiKeyManager.ts",
+      "line": 34,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/config/apiKeyManager.ts",
+      "line": 35,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/config/apiKeyManager.ts",
+      "line": 35,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/config/apiKeyManager.ts",
+      "line": 35,
+      "type": "binary-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/config/apiKeyManager.ts",
+      "line": 35,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/config/apiKeyManager.ts",
+      "line": 36,
+      "type": "binary-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/config/apiKeyManager.ts",
+      "line": 36,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/store/slices/workflowSlice.ts",
+      "line": 41,
+      "type": "cond-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/store/slices/workflowSlice.ts",
+      "line": 63,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/store/slices/workflowSlice.ts",
+      "line": 65,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/store/slices/workflowSlice.ts",
+      "line": 72,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/store/slices/workflowSlice.ts",
+      "line": 74,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/store/slices/workflowSlice.ts",
+      "line": 81,
+      "type": "binary-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/store/slices/workflowSlice.ts",
+      "line": 81,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/store/slices/jobsSlice.ts",
+      "line": 67,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/store/slices/jobsSlice.ts",
+      "line": 69,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/store/slices/jobsSlice.ts",
+      "line": 101,
+      "type": "cond-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/store/slices/jobsSlice.ts",
+      "line": 113,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/store/slices/jobsSlice.ts",
+      "line": 113,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/store/slices/jobsSlice.ts",
+      "line": 113,
+      "type": "binary-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/store/slices/jobsSlice.ts",
+      "line": 113,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/constants/platforms.ts",
+      "line": 86,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/constants/platforms.ts",
+      "line": 86,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/constants/platforms.ts",
+      "line": 86,
+      "type": "binary-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/constants/platforms.ts",
+      "line": 86,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/constants/platforms.ts",
+      "line": 89,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/constants/platforms.ts",
+      "line": 89,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/constants/platforms.ts",
+      "line": 93,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/constants/platforms.ts",
+      "line": 93,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/store/slices/exportSlice.ts",
+      "line": 31,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/store/appStore.ts",
+      "line": 51,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/utils/errors.ts",
+      "line": 28,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/client.ts",
+      "line": 41,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/client.ts",
+      "line": 43,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/client.ts",
+      "line": 57,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/client.ts",
+      "line": 59,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/client.ts",
+      "line": 61,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/prompts/expertPanel.ts",
+      "line": 5,
+      "type": "switch",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/prompts/expertPanel.ts",
+      "line": 17,
+      "type": "switch",
+      "arm": 6,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/prompts/characterGen.ts",
+      "line": 75,
+      "type": "switch",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/prompts/characterGen.ts",
+      "line": 123,
+      "type": "switch",
+      "arm": 6,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/prompts/characterGen.ts",
+      "line": 134,
+      "type": "default-arg",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/prompts/metadata.ts",
+      "line": 12,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/prompts/metadata.ts",
+      "line": 13,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/prompts/metadata.ts",
+      "line": 16,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/prompts/metadata.ts",
+      "line": 40,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/orchestrator.ts",
+      "line": 210,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/orchestrator.ts",
+      "line": 286,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/gemini/orchestrator.ts",
+      "line": 291,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/pipeline/generationPipeline.ts",
+      "line": 201,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/pipeline/generationPipeline.ts",
+      "line": 242,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/pipeline/generationPipeline.ts",
+      "line": 294,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/image/core.ts",
+      "line": 19,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/image/outlineGeneration.ts",
+      "line": 16,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/pipeline/postProcessPipeline.ts",
+      "line": 14,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/pipeline/fullPipeline.ts",
+      "line": 43,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/pipeline/fullPipeline.ts",
+      "line": 92,
+      "type": "cond-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/pipeline/fullPipeline.ts",
+      "line": 102,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/pipeline/fullPipeline.ts",
+      "line": 102,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/utils/base64.ts",
+      "line": 2,
+      "type": "cond-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/image/resize.ts",
+      "line": 27,
+      "type": "default-arg",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/image/export.ts",
+      "line": 18,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/image/export.ts",
+      "line": 25,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/image/export.ts",
+      "line": 74,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/image/export.ts",
+      "line": 74,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/image/export.ts",
+      "line": 76,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/image/export.ts",
+      "line": 105,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/image/export.ts",
+      "line": 120,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/services/image/export.ts",
+      "line": 133,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/bridge/windowApi.ts",
+      "line": 121,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/bridge/domState.ts",
+      "line": 21,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/bridge/domState.ts",
+      "line": 27,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/bridge/domState.ts",
+      "line": 27,
+      "type": "binary-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/bridge/domState.ts",
+      "line": 27,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/bridge/domState.ts",
+      "line": 34,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/bridge/domState.ts",
+      "line": 46,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/Button.tsx",
+      "line": 60,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/setup/ApiKeyModal.tsx",
+      "line": 15,
+      "type": "default-arg",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/setup/ApiKeyModal.tsx",
+      "line": 31,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/setup/ApiKeyModal.tsx",
+      "line": 38,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/setup/ApiKeyModal.tsx",
+      "line": 41,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/setup/ApiKeyModal.tsx",
+      "line": 43,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/setup/ApiKeyModal.tsx",
+      "line": 43,
+      "type": "cond-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/setup/ApiKeyModal.tsx",
+      "line": 69,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/useMigrateApiKey.ts",
+      "line": 7,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/useMigrateApiKey.ts",
+      "line": 10,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/useMigrateApiKey.ts",
+      "line": 10,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/useMigrateApiKey.ts",
+      "line": 17,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/useMigrateApiKey.ts",
+      "line": 17,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/stages/InputStage.tsx",
+      "line": 49,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/stages/InputStage.tsx",
+      "line": 54,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/stages/InputStage.tsx",
+      "line": 58,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/Card.tsx",
+      "line": 13,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/Card.tsx",
+      "line": 20,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/Card.tsx",
+      "line": 22,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/Loader.tsx",
+      "line": 17,
+      "type": "default-arg",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/Loader.tsx",
+      "line": 18,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/stages/StrategyStage.tsx",
+      "line": 27,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/stages/StrategyStage.tsx",
+      "line": 217,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/stages/StickerBatchStage.tsx",
+      "line": 45,
+      "type": "cond-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/stages/PostProcessStage.tsx",
+      "line": 103,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/stages/PostProcessStage.tsx",
+      "line": 121,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/stages/ExportStage.tsx",
+      "line": 21,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/stages/ExportStage.tsx",
+      "line": 204,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/stages/ExportStage.tsx",
+      "line": 207,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/App.tsx",
+      "line": 147,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/App.tsx",
+      "line": 179,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/App.tsx",
+      "line": 186,
+      "type": "cond-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/App.tsx",
+      "line": 210,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/App.tsx",
+      "line": 235,
+      "type": "cond-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/App.tsx",
+      "line": 254,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/App.tsx",
+      "line": 260,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/App.tsx",
+      "line": 318,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/App.tsx",
+      "line": 321,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/App.tsx",
+      "line": 339,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/App.tsx",
+      "line": 344,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/App.tsx",
+      "line": 432,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/App.tsx",
+      "line": 453,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/App.tsx",
+      "line": 457,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/App.tsx",
+      "line": 722,
+      "type": "switch",
+      "arm": 7,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 13,
+      "type": "default-arg",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 13,
+      "type": "default-arg",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 19,
+      "type": "binary-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 19,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 23,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 23,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 31,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 31,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 36,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 38,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 38,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 40,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 81,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 82,
+      "type": "cond-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 100,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 102,
+      "type": "cond-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 107,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 107,
+      "type": "cond-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 117,
+      "type": "binary-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/FileUpload.tsx",
+      "line": 118,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/SelectionGrid.tsx",
+      "line": 77,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/SelectionGrid.tsx",
+      "line": 77,
+      "type": "cond-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/SelectionGrid.tsx",
+      "line": 83,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/SelectionGrid.tsx",
+      "line": 84,
+      "type": "cond-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/SelectionGrid.tsx",
+      "line": 89,
+      "type": "cond-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/components/ui/SelectionGrid.tsx",
+      "line": 91,
+      "type": "cond-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/useApiKey.ts",
+      "line": 14,
+      "type": "binary-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/useApiKey.ts",
+      "line": 14,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/usePipeline.ts",
+      "line": 30,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/usePipeline.ts",
+      "line": 30,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/usePipeline.ts",
+      "line": 31,
+      "type": "binary-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/usePipeline.ts",
+      "line": 31,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/usePipeline.ts",
+      "line": 34,
+      "type": "binary-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/usePipeline.ts",
+      "line": 34,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/usePipeline.ts",
+      "line": 36,
+      "type": "binary-expr",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/usePipeline.ts",
+      "line": 36,
+      "type": "binary-expr",
+      "arm": 1,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/usePipeline.ts",
+      "line": 61,
+      "type": "if",
+      "arm": 0,
+      "hits": 0
+    },
+    {
+      "file": "packages/shared/src/hooks/usePipeline.ts",
+      "line": 61,
+      "type": "if",
+      "arm": 1,
+      "hits": 0
+    }
+  ],
+  "electron": {
+    "e2ePassed": 15,
+    "unitPassed": 57,
+    "unitCoverage": {
+      "branches": {
+        "covered": 108,
+        "total": 108,
+        "pct": 100
+      },
+      "statements": {
+        "covered": 384,
+        "total": 384,
+        "pct": 100
+      },
+      "lines": {
+        "covered": 384,
+        "total": 384,
+        "pct": 100
+      },
+      "functions": {
+        "covered": 26,
+        "total": 26,
+        "pct": 100
+      }
+    },
+    "scope": "Electron main/preload + shared platform adapter only"
+  },
+  "otherChecks": {
+    "webBuild": "passed",
+    "electronBuild": "passed",
+    "webUnitTests": {
+      "passed": 1,
+      "failed": 0
+    },
+    "webAndElectronE2ETypecheck": "passed",
+    "eslint": {
+      "errors": 0,
+      "existingWarnings": 3
+    },
+    "sourceBranchGateExitCode": 1
+  }
+}

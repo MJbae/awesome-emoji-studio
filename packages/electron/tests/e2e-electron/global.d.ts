@@ -1,23 +1,4 @@
-export {};
-
-interface DesktopSecure {
-  getApiKey(): Promise<string | null>;
-  setApiKey(req: { key: string }): Promise<void>;
-  deleteApiKey(): Promise<void>;
-}
-
-interface DesktopApp {
-  getVersion(): Promise<string>;
-  getPaths(): Promise<{ documents: string; userData: string }>;
-}
-
-interface DesktopAPI {
-  secure: DesktopSecure;
-  file: Record<string, (...args: unknown[]) => Promise<unknown>>;
-  app: DesktopApp;
-  updater: Record<string, (...args: unknown[]) => unknown>;
-  shell: Record<string, (...args: unknown[]) => Promise<unknown>>;
-}
+import type { DesktopAPI } from '../../src/shared/ipc';
 
 interface EmoticonAPI {
   setApiKey(key: string): Promise<void>;

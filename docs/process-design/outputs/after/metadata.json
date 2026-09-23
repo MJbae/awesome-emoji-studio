@@ -1,0 +1,152 @@
+[
+  {
+    "language": "ko",
+    "optionType": "personality",
+    "title": "퇴근요정 귤리의 하루",
+    "description": "출근은 졸리고, 커피는 소중하고, 퇴근은 행복해! 작은 귤리가 당신의 하루를 다정하게 대신 말해요.",
+    "tags": [
+      "귤리",
+      "직장인",
+      "출근",
+      "퇴근",
+      "커피",
+      "일상",
+      "귀여움",
+      "공감",
+      "응원",
+      "인사"
+    ],
+    "evaluation": {
+      "naturalness": 5,
+      "tone": 5,
+      "searchability": 4,
+      "creativity": 4
+    },
+    "reasoning": "일상의 감정과 캐릭터의 개성을 함께 담은 소개입니다."
+  },
+  {
+    "language": "ko",
+    "optionType": "utility",
+    "title": "귤리와 매일 한마디",
+    "description": "고마워요부터 수고했어요까지. 회사에서도 친구에게도 가볍게 건네는 귤리의 45가지 일상 인사.",
+    "tags": [
+      "귤",
+      "감사",
+      "인사",
+      "수고",
+      "대화",
+      "직장",
+      "친구",
+      "축하",
+      "사랑",
+      "일상"
+    ],
+    "evaluation": {
+      "naturalness": 5,
+      "tone": 4,
+      "searchability": 5,
+      "creativity": 4
+    },
+    "reasoning": "일상의 감정과 캐릭터의 개성을 함께 담은 소개입니다."
+  },
+  {
+    "language": "ko",
+    "optionType": "creative",
+    "title": "오늘도 귤러가는 중",
+    "description": "회의엔 멍, 커피엔 반짝, 퇴근엔 활짝. 오늘도 자기 속도로 귤러가는 작은 친구를 만나보세요.",
+    "tags": [
+      "귤리",
+      "유머",
+      "퇴근요정",
+      "회사생활",
+      "공감",
+      "커피타임",
+      "힐링",
+      "휴식",
+      "표정",
+      "귀여운"
+    ],
+    "evaluation": {
+      "naturalness": 5,
+      "tone": 5,
+      "searchability": 4,
+      "creativity": 5
+    },
+    "reasoning": "일상의 감정과 캐릭터의 개성을 함께 담은 소개입니다."
+  },
+  {
+    "language": "en",
+    "optionType": "personality",
+    "title": "Gyulli's Tiny Office",
+    "description": "Sleepy mornings, precious coffee, happy home time. Let a little tangerine share the small feelings in your day.",
+    "tags": [
+      "gyulli",
+      "tangerine",
+      "office",
+      "coffee",
+      "daily",
+      "cute",
+      "hello",
+      "thanks",
+      "cheer",
+      "work"
+    ],
+    "evaluation": {
+      "naturalness": 5,
+      "tone": 5,
+      "searchability": 4,
+      "creativity": 4
+    },
+    "reasoning": "A warm title tied to everyday reactions and the character identity."
+  },
+  {
+    "language": "en",
+    "optionType": "utility",
+    "title": "A Little Hello from Gyulli",
+    "description": "From thank you to you got this, 45 warm reactions for work chats, close friends, and everyday moments.",
+    "tags": [
+      "hello",
+      "thanks",
+      "support",
+      "friend",
+      "chat",
+      "work",
+      "reaction",
+      "orange",
+      "warm",
+      "daily"
+    ],
+    "evaluation": {
+      "naturalness": 5,
+      "tone": 4,
+      "searchability": 5,
+      "creativity": 4
+    },
+    "reasoning": "A warm title tied to everyday reactions and the character identity."
+  },
+  {
+    "language": "en",
+    "optionType": "creative",
+    "title": "One More Sip, Then Home",
+    "description": "Meetings can wait a moment. Gyulli is here with tiny cheers, big yawns, and a well-earned coffee break.",
+    "tags": [
+      "coffee",
+      "office life",
+      "break",
+      "happy",
+      "sleepy",
+      "funny",
+      "relatable",
+      "rest",
+      "cheer",
+      "gyulli"
+    ],
+    "evaluation": {
+      "naturalness": 5,
+      "tone": 5,
+      "searchability": 4,
+      "creativity": 5
+    },
+    "reasoning": "A warm title tied to everyday reactions and the character identity."
+  }
+]

@@ -169,11 +169,32 @@
         "apiKeyPlaceholder": "AIza...",
         "showKey": "APIキーを表示",
         "hideKey": "APIキーを隠す",
-        "keyStorageInfo": "キーはブラウザにのみ保存され、外部に送信されません。",
+        "keyStorageInfo": "キーはこの端末に保存され、Google Gemini APIへのリクエストにのみ使用されます。",
         "keyIssue": "キーの取得:",
         "validating": "検証中...",
         "saveAndContinue": "保存して続行",
         "minError": "APIキーは10文字以上である必要があります。",
         "invalidError": "APIキーが無効です。キーを確認してください。"
+    },
+    "studio": {
+        "skipToContent": "作業エリアに移動",
+        "brandTagline": "小さなアイデア、豊かな表現。",
+        "settings": "設定",
+        "workspace": "ワークスペース",
+        "sidebarTitle": "ひとつのセットを、各プラットフォームへ",
+        "sidebarDescription": "人と人がつながる場所へ、あなたのキャラクターを。",
+        "footer": "絵文字ひとつで、もっと豊かな表現を。",
+        "poweredBy": "Powered by Gemini",
+        "newCollection": "新しいコレクション",
+        "required": "必須",
+        "madeOfIdeas": "アイデアから生まれる",
+        "previewTitle": "小さなキャラクター。大きな個性。",
+        "previewDescription": "アイデアに表情と感情、独自の世界を添えましょう。",
+        "sampleAlt": "異なる感情を表現する4つのみかんのキャラクター",
+        "collectionIncludes": "コレクションに含まれるもの",
+        "includesImages": "表情豊かな45枚の絵文字画像",
+        "includesLanguages": "6言語のメタデータ",
+        "includesExports": "6種類のプラットフォーム用パッケージ",
+        "exampleNote": "イラストは参考例です。あなただけのキャラクターを作りましょう。"
     }
 }

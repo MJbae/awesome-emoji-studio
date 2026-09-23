@@ -531,8 +531,8 @@ function App() {
   // Export Stage — multi-platform export
   // ---------------------------------------------------------------------------
   const runMultiPlatformExport = useCallback(async () => {
-    useAppStore.setState({ isExporting: true });
     resetExport();
+    useAppStore.setState({ isExporting: true });
     try {
       const state = useAppStore.getState();
       const processedImages = state.processedImages;
@@ -567,8 +567,8 @@ function App() {
   }, [selectedExportPlatforms, selectedMetaMap, resetExport, updateExportJob]);
 
   const runCombinedExport = useCallback(async () => {
-    useAppStore.setState({ isExporting: true });
     resetExport();
+    useAppStore.setState({ isExporting: true });
     try {
       const state = useAppStore.getState();
       const processedImages = state.processedImages;

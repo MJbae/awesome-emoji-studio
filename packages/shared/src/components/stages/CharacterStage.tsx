@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import type { TFunction } from 'i18next';
 import { useState } from 'react';
 import { Sparkles, RefreshCw, ChevronDown, ChevronUp, Fingerprint } from 'lucide-react';
 import type { CharacterSpec } from '@/types/domain';
@@ -16,7 +17,7 @@ interface CharacterStageProps {
   onBack: () => void;
 }
 
-const getSpecFields = (t: any): { key: keyof CharacterSpec; label: string }[] => [
+const getSpecFields = (t: TFunction): { key: keyof CharacterSpec; label: string }[] => [
   { key: 'physicalDescription', label: t('character.physicalDesc') },
   { key: 'facialFeatures', label: t('character.facialFeatures') },
   { key: 'colorPalette', label: t('character.colorPalette') },
@@ -39,7 +40,11 @@ function CharacterStage({
 
   if (loading) {
     return (
-      <section data-stage="character" data-phase="loading" className="flex flex-col items-center justify-center min-h-[50vh]">
+      <section
+        data-stage="character"
+        data-phase="loading"
+        className="flex flex-col items-center justify-center min-h-[50vh]"
+      >
         <Loader title={t('character.designing')} text={t('character.designingDesc')} size="xl" />
       </section>
     );
@@ -49,21 +54,21 @@ function CharacterStage({
     <section
       data-stage="character"
       data-phase={characterImage ? 'complete' : 'idle'}
-      className="max-w-4xl mx-auto space-y-8"
+      className="max-w-5xl mx-auto space-y-8"
     >
-      <div className="text-center space-y-3">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium">
+      <div className="space-y-4">
+        <div className="stage-eyebrow">
           <Sparkles size={14} />
           {t('character.step3')}
         </div>
-        <h2 className="text-3xl font-bold text-text">{t('character.title')}</h2>
-        <p className="text-text-muted">{t('character.subtitle')}</p>
+        <h2 className="stage-heading">{t('character.title')}</h2>
+        <p className="text-text-muted leading-relaxed">{t('character.subtitle')}</p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        <Card className="p-5 space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="font-bold text-slate-900 flex items-center gap-2 text-sm">
+      <div className="grid md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] items-start gap-6">
+        <Card className="p-4 sm:p-6 space-y-5">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h3 className="font-semibold text-text flex items-center gap-2 text-sm">
               <Sparkles size={16} className="text-primary" />
               {t('character.generatedChar')}
             </h3>
@@ -80,12 +85,12 @@ function CharacterStage({
             </Button>
           </div>
 
-          <div className="aspect-square rounded-xl bg-slate-50 border border-slate-200 overflow-hidden flex items-center justify-center">
+          <div className="studio-preview aspect-square rounded-2xl border border-[#e4e5dd] overflow-hidden flex items-center justify-center">
             {characterImage ? (
               <img
                 src={`data:image/png;base64,${characterImage}`}
                 alt="Generated character"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain p-6 sm:p-8"
               />
             ) : error ? (
               <div className="text-center p-6 space-y-3">
@@ -109,16 +114,18 @@ function CharacterStage({
         </Card>
 
         {characterSpec && (
-          <Card className="p-5 space-y-4">
+          <Card className="p-5 sm:p-6 space-y-5 bg-[#f2f0f7]! border-[#e4dfee]!">
             <button
               onClick={() => setSpecExpanded((e) => !e)}
               aria-expanded={specExpanded}
               aria-label="Toggle character spec details"
               data-testid="toggle-spec-btn"
-              className="w-full flex items-center justify-between"
+              className="w-full flex items-center justify-between gap-3 text-left rounded-lg"
             >
-              <h3 className="font-bold text-slate-900 flex items-center gap-2 text-sm">
-                <Fingerprint size={16} className="text-primary-700" />
+              <h3 className="font-semibold text-text flex items-center gap-3 text-sm">
+                <span className="rounded-xl p-2.5 bg-[#e5def0] text-[#76628d]">
+                  <Fingerprint size={18} />
+                </span>
                 {t('character.charInfo')}
               </h3>
               {specExpanded ? (
@@ -129,24 +136,26 @@ function CharacterStage({
             </button>
 
             {specExpanded && (
-              <div className="space-y-3 pt-2 border-t border-slate-100">
+              <div className="space-y-5 pt-5 border-t border-[#e4dfee]">
                 {SPEC_FIELDS.map(({ key, label }) => (
                   <div key={key}>
-                    <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-0.5">
-                      {label}
-                    </p>
-                    <p className="text-sm text-slate-700 leading-relaxed">{characterSpec[key]}</p>
+                    <p className="text-xs font-semibold text-[#76628d] mb-1.5">{label}</p>
+                    <p className="text-sm text-text leading-relaxed">{characterSpec[key]}</p>
                   </div>
                 ))}
               </div>
             )}
 
-            {!specExpanded && <p className="text-xs text-text-muted">{t('character.expandDetails')}</p>}
+            {!specExpanded && (
+              <p className="text-sm leading-relaxed text-text-muted">
+                {t('character.expandDetails')}
+              </p>
+            )}
           </Card>
         )}
       </div>
 
-      <div className="flex justify-between pt-4">
+      <div className="stage-actions">
         <Button variant="outline" onClick={onBack} aria-label="Go back" data-testid="back-btn">
           {t('strategy.back')}
         </Button>

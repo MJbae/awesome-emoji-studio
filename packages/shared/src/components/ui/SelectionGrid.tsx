@@ -29,11 +29,11 @@ function SelectionGrid({
 
   return (
     <div className="space-y-4" aria-label="Select images for processing">
-      <div className="flex flex-col sm:flex-row justify-between items-end sm:items-center gap-3 bg-white p-4 rounded-xl border border-slate-200 sticky top-0 z-10">
+      <div className="flex flex-col sm:flex-row justify-between items-end sm:items-center gap-3 bg-white p-4 rounded-xl border border-slate-200 sticky top-3 z-10">
         <div>
           <p className="text-sm text-text-muted">
-            {t('selectionGrid.selected')} <span className="font-semibold text-primary">{selectedCount}</span> /{' '}
-            {items.length}
+            {t('selectionGrid.selected')}{' '}
+            <span className="font-semibold text-primary">{selectedCount}</span> / {items.length}
           </p>
         </div>
 
@@ -80,7 +80,7 @@ function SelectionGrid({
               className={cn(
                 'relative aspect-square rounded-xl cursor-pointer group transition-all duration-200',
                 isSelected
-                  ? 'ring-3 ring-primary ring-offset-2 bg-primary/5'
+                  ? 'ring-2 ring-primary ring-offset-2 bg-primary/5'
                   : 'bg-white border border-slate-200 hover:border-primary-light',
               )}
             >

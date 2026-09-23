@@ -1,0 +1,47 @@
+{
+  "revision": "working-tree after redesign",
+  "tests": {
+    "passed": 79,
+    "failed": 0,
+    "regressionPassed": 64,
+    "designOnlyPassed": 15
+  },
+  "scope": "All runtime TS/TSX in packages/shared/src and packages/web/src; tests, declarations and MSW support excluded",
+  "thresholds": {
+    "branches": 100
+  },
+  "thresholdPassed": false,
+  "summary": {
+    "lines": {
+      "total": 1465,
+      "covered": 1280,
+      "skipped": 0,
+      "pct": 87.37
+    },
+    "statements": {
+      "total": 1618,
+      "covered": 1390,
+      "skipped": 0,
+      "pct": 85.9
+    },
+    "functions": {
+      "total": 406,
+      "covered": 345,
+      "skipped": 0,
+      "pct": 84.97
+    },
+    "branches": {
+      "total": 812,
+      "covered": 646,
+      "skipped": 0,
+      "pct": 79.55
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "detailedReport": "../../../docs/verification/redesign.json"
+}

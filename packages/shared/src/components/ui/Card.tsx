@@ -16,10 +16,8 @@ function Card({ children, selected, hoverable, onClick, className }: CardProps) 
     <Comp
       onClick={onClick}
       className={cn(
-        'rounded-2xl border bg-white transition-all duration-200 shadow-sm',
-        selected
-          ? 'border-primary ring-3 ring-primary/20'
-          : 'border-slate-200',
+        'rounded-2xl border bg-white transition-all duration-200 shadow-[0_3px_12px_#24271f03]',
+        selected ? 'border-primary/70 ring-2 ring-primary/10' : 'border-slate-200',
         hoverable && 'hover:border-slate-300 hover:shadow-xs',
         isInteractive && 'cursor-pointer text-left w-full',
         className,

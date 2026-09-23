@@ -1,0 +1,512 @@
+{
+  "mockData": true,
+  "method": "Actual application UI journey with Gemini HTTP responses replaced; no store mutation or stage skipping",
+  "originalRevision": "3a4eb67",
+  "uiLanguage": "ko",
+  "fixtureSha256": "7666d7cca595206671eb342642913ed41758e45ba8d90532368762656443c2d4",
+  "stickerCount": 45,
+  "metadataLanguages": [
+    "ko",
+    "en"
+  ],
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "versions": [
+    {
+      "version": "before",
+      "origin": "http://127.0.0.1:5195",
+      "counts": {
+        "stickers": 45,
+        "processed": 45,
+        "metadata": 6,
+        "exportPlatforms": 6,
+        "zipFiles": 284
+      },
+      "requests": {
+        "validate": 1,
+        "analysis": 3,
+        "strategy": 1,
+        "character": 2,
+        "spec": 1,
+        "ideas": 1,
+        "sticker": 45,
+        "metadata": 2
+      },
+      "outputsDigest": "873d38549debcb5ed54ef26ff713be94c5e980d374413ce66dddd8d8df714d2f",
+      "pageErrors": [],
+      "zip": "outputs/before-gyulli-6-platforms.zip"
+    },
+    {
+      "version": "after",
+      "origin": "http://127.0.0.1:5190",
+      "counts": {
+        "stickers": 45,
+        "processed": 45,
+        "metadata": 6,
+        "exportPlatforms": 6,
+        "zipFiles": 284
+      },
+      "requests": {
+        "validate": 1,
+        "analysis": 3,
+        "strategy": 1,
+        "character": 2,
+        "spec": 1,
+        "ideas": 1,
+        "sticker": 45,
+        "metadata": 2
+      },
+      "outputsDigest": "873d38549debcb5ed54ef26ff713be94c5e980d374413ce66dddd8d8df714d2f",
+      "pageErrors": [],
+      "zip": "outputs/after-gyulli-6-platforms.zip"
+    }
+  ],
+  "images": [
+    {
+      "version": "before",
+      "device": "desktop",
+      "stage": "setup",
+      "path": "screenshots/before/desktop/setup.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 40785,
+      "sha256": "7369c1232023df4474f118eebc7d6c5856efb6cdf0ee37db4b7785c8a75aa2c2"
+    },
+    {
+      "version": "before",
+      "device": "mobile",
+      "stage": "setup",
+      "path": "screenshots/before/mobile/setup.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 33020,
+      "sha256": "9b8a39ca080ed870d3150f33138687735b95c966b98b35f27c1c1f267c18f2fd"
+    },
+    {
+      "version": "before",
+      "device": "desktop",
+      "stage": "input",
+      "path": "screenshots/before/desktop/input.png",
+      "width": 1440,
+      "height": 1230,
+      "bytes": 100112,
+      "sha256": "9653e8c943da6a2f3de46eb57c417179d9d65b0a811ae4470d10d4d77e901eb1"
+    },
+    {
+      "version": "before",
+      "device": "mobile",
+      "stage": "input",
+      "path": "screenshots/before/mobile/input.png",
+      "width": 390,
+      "height": 1264,
+      "bytes": 86122,
+      "sha256": "174f1ba28919986725673adccd8a50afff23119f2504b311da40a88ead5241f6"
+    },
+    {
+      "version": "before",
+      "device": "desktop",
+      "stage": "strategy",
+      "path": "screenshots/before/desktop/strategy.png",
+      "width": 1440,
+      "height": 1185,
+      "bytes": 152200,
+      "sha256": "c9427ae69036824143be4a5580d0954de348dd7e50ad098c53dc5f1e7f460133"
+    },
+    {
+      "version": "before",
+      "device": "mobile",
+      "stage": "strategy",
+      "path": "screenshots/before/mobile/strategy.png",
+      "width": 390,
+      "height": 1478,
+      "bytes": 138132,
+      "sha256": "7cdd843cfbc5480e43d3222c0b650eab5e3946c435fecdf6ad3cb661fb9b5eb6"
+    },
+    {
+      "version": "before",
+      "device": "desktop",
+      "stage": "character",
+      "path": "screenshots/before/desktop/character.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 129680,
+      "sha256": "e7699924616ba1aea173520ae3f058f22f2c370e047b81b35efa5e727426904a"
+    },
+    {
+      "version": "before",
+      "device": "mobile",
+      "stage": "character",
+      "path": "screenshots/before/mobile/character.png",
+      "width": 390,
+      "height": 1368,
+      "bytes": 108381,
+      "sha256": "0099b40979c2653b41c6c6a5e1e178a066702835fd2851cce0189a0811cbb035"
+    },
+    {
+      "version": "before",
+      "device": "desktop",
+      "stage": "stickers",
+      "path": "screenshots/before/desktop/stickers.png",
+      "width": 1440,
+      "height": 3059,
+      "bytes": 551360,
+      "sha256": "b0a015407ed64990f4bb60074fa309b29f99d2183724273e69e08dc35d9a7406"
+    },
+    {
+      "version": "before",
+      "device": "mobile",
+      "stage": "stickers",
+      "path": "screenshots/before/mobile/stickers.png",
+      "width": 390,
+      "height": 5896,
+      "bytes": 473927,
+      "sha256": "11949f59955c5a4b36e351b67f74033beee20164afd5d35ee9280a058013be24"
+    },
+    {
+      "version": "before",
+      "device": "desktop",
+      "stage": "postprocess",
+      "path": "screenshots/before/desktop/postprocess.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 93971,
+      "sha256": "7094894e386aaf7fff377c55827da4897a30db207787d21d5dea43bf85ba5130"
+    },
+    {
+      "version": "before",
+      "device": "mobile",
+      "stage": "postprocess",
+      "path": "screenshots/before/mobile/postprocess.png",
+      "width": 390,
+      "height": 1423,
+      "bytes": 88957,
+      "sha256": "3327df05316cdacbab63319be0d7570865f8e9ce297a8d114fd37607151aff2b"
+    },
+    {
+      "version": "before",
+      "device": "desktop",
+      "stage": "metadata-languages",
+      "path": "screenshots/before/desktop/metadata-languages.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 59565,
+      "sha256": "d9fdd3bce8b6684722dbf42fa0d4606403ae6dcc85a8afc58f43bc679b8c3688"
+    },
+    {
+      "version": "before",
+      "device": "mobile",
+      "stage": "metadata-languages",
+      "path": "screenshots/before/mobile/metadata-languages.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 51119,
+      "sha256": "b346f7400b6e95d116ebce30b787c404da22e3024d305d0f57c1b2bc3a22c96e"
+    },
+    {
+      "version": "before",
+      "device": "desktop",
+      "stage": "metadata",
+      "path": "screenshots/before/desktop/metadata.png",
+      "width": 1440,
+      "height": 1222,
+      "bytes": 185381,
+      "sha256": "ef15c1daf31512f722f45c3fcf76fbeac5e963c54e04bac5f1258076959b2a78"
+    },
+    {
+      "version": "before",
+      "device": "mobile",
+      "stage": "metadata",
+      "path": "screenshots/before/mobile/metadata.png",
+      "width": 390,
+      "height": 2943,
+      "bytes": 190831,
+      "sha256": "1439d1a231ee585968fa41a7ce97ec888108dacf90d58875dd04b06b7821ec30"
+    },
+    {
+      "version": "before",
+      "device": "desktop",
+      "stage": "export",
+      "path": "screenshots/before/desktop/export.png",
+      "width": 1440,
+      "height": 1665,
+      "bytes": 136526,
+      "sha256": "ba1f2107e9a5d28344debaa7f2a3dd2ee6ad3a88fbb5d00d1c4af6dbcbbe7267"
+    },
+    {
+      "version": "before",
+      "device": "mobile",
+      "stage": "export",
+      "path": "screenshots/before/mobile/export.png",
+      "width": 390,
+      "height": 2250,
+      "bytes": 129597,
+      "sha256": "123da1209e4b023c95ef844f628fa5151f6c62a342b3f7d3d4cfbf4c77664592"
+    },
+    {
+      "version": "after",
+      "device": "desktop",
+      "stage": "setup",
+      "path": "screenshots/after/desktop/setup.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 62783,
+      "sha256": "d327fc67be88039e2b3fb4f774a57d1057c85e3f77eb18acb2d7eee16d1977ea"
+    },
+    {
+      "version": "after",
+      "device": "mobile",
+      "stage": "setup",
+      "path": "screenshots/after/mobile/setup.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 47514,
+      "sha256": "70af2d375ade2e7449964b7b604c45d0e5c7d895c4173f6bcf17f125a7384aff"
+    },
+    {
+      "version": "after",
+      "device": "desktop",
+      "stage": "input",
+      "path": "screenshots/after/desktop/input.png",
+      "width": 1440,
+      "height": 1132,
+      "bytes": 165379,
+      "sha256": "20c7b4cd1e5f6a203b68e19aa60f04fc0f1fdd75dc5e02e71c336b85746386d7"
+    },
+    {
+      "version": "after",
+      "device": "mobile",
+      "stage": "input",
+      "path": "screenshots/after/mobile/input.png",
+      "width": 390,
+      "height": 1844,
+      "bytes": 133353,
+      "sha256": "136082fedf6ba4dfeff1e1fa377fa06b8c499e14bf632e851af2546c6c02b804"
+    },
+    {
+      "version": "after",
+      "device": "desktop",
+      "stage": "strategy",
+      "path": "screenshots/after/desktop/strategy.png",
+      "width": 1440,
+      "height": 1404,
+      "bytes": 169182,
+      "sha256": "553dca83bdb0cbd5a8d39aba7987b3f5dd5ac713c49b51f89eac2781eeaeaa4e"
+    },
+    {
+      "version": "after",
+      "device": "mobile",
+      "stage": "strategy",
+      "path": "screenshots/after/mobile/strategy.png",
+      "width": 390,
+      "height": 1908,
+      "bytes": 143707,
+      "sha256": "57d132862f131f8474c46c10e2904c18a395908d35a73dda418a363a9471eae4"
+    },
+    {
+      "version": "after",
+      "device": "desktop",
+      "stage": "character",
+      "path": "screenshots/after/desktop/character.png",
+      "width": 1440,
+      "height": 1134,
+      "bytes": 158751,
+      "sha256": "1443c9902c68eda8911dcce166ca31f9a0be1861c99ca0a6a0c7d03be214d64b"
+    },
+    {
+      "version": "after",
+      "device": "mobile",
+      "stage": "character",
+      "path": "screenshots/after/mobile/character.png",
+      "width": 390,
+      "height": 1615,
+      "bytes": 110340,
+      "sha256": "0c1841251660b880b7b64abac8138b2c16d1cdb066a08631a31a024e50270e01"
+    },
+    {
+      "version": "after",
+      "device": "desktop",
+      "stage": "stickers",
+      "path": "screenshots/after/desktop/stickers.png",
+      "width": 1440,
+      "height": 3011,
+      "bytes": 469094,
+      "sha256": "204604ca244c4dec78f62df83ea24ce07e3c8cb94473480cffa7747e45ec343e"
+    },
+    {
+      "version": "after",
+      "device": "mobile",
+      "stage": "stickers",
+      "path": "screenshots/after/mobile/stickers.png",
+      "width": 390,
+      "height": 6161,
+      "bytes": 379747,
+      "sha256": "a1352cc32b2ceb7eb8c89c5bd406b8441b48dc9b9a14a500f64d1eb10cf24795"
+    },
+    {
+      "version": "after",
+      "device": "desktop",
+      "stage": "postprocess",
+      "path": "screenshots/after/desktop/postprocess.png",
+      "width": 1440,
+      "height": 1108,
+      "bytes": 127941,
+      "sha256": "a9b7946de2d91c96e5c1f6f3f1f429a2570842934f8b1db7bb87605a6ebbdb47"
+    },
+    {
+      "version": "after",
+      "device": "mobile",
+      "stage": "postprocess",
+      "path": "screenshots/after/mobile/postprocess.png",
+      "width": 390,
+      "height": 1585,
+      "bytes": 87936,
+      "sha256": "95a7068773149178c003ff01031aadb4761607ca6749baec3971e5044d7d369d"
+    },
+    {
+      "version": "after",
+      "device": "desktop",
+      "stage": "metadata-languages",
+      "path": "screenshots/after/desktop/metadata-languages.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 86805,
+      "sha256": "d6eb15d4f8614b38b060f664b2b0ede38b83418ec9451fc97d081b15c17a1b43"
+    },
+    {
+      "version": "after",
+      "device": "mobile",
+      "stage": "metadata-languages",
+      "path": "screenshots/after/mobile/metadata-languages.png",
+      "width": 390,
+      "height": 1067,
+      "bytes": 58871,
+      "sha256": "93389400f7e546ffadffff13d3c2b547fbdba9fd4f342a83834f70df71ff33f5"
+    },
+    {
+      "version": "after",
+      "device": "desktop",
+      "stage": "metadata",
+      "path": "screenshots/after/desktop/metadata.png",
+      "width": 1440,
+      "height": 1547,
+      "bytes": 218219,
+      "sha256": "8ae50e58725f5208a6b2a26fe674756869ff14118de9e85e6d7f1e1f4066f65c"
+    },
+    {
+      "version": "after",
+      "device": "mobile",
+      "stage": "metadata",
+      "path": "screenshots/after/mobile/metadata.png",
+      "width": 390,
+      "height": 3798,
+      "bytes": 218758,
+      "sha256": "a10ddfa139965d77fb0f490cedcfdb8c34dc7da3003c0277ba24519e4c94f0f9"
+    },
+    {
+      "version": "after",
+      "device": "desktop",
+      "stage": "export",
+      "path": "screenshots/after/desktop/export.png",
+      "width": 1440,
+      "height": 1978,
+      "bytes": 161257,
+      "sha256": "1431b3f94795aba0016432453726c5bc7d75272db15c2e5e786e0a2031a6c3d1"
+    },
+    {
+      "version": "after",
+      "device": "mobile",
+      "stage": "export",
+      "path": "screenshots/after/mobile/export.png",
+      "width": 390,
+      "height": 2794,
+      "bytes": 140180,
+      "sha256": "f9552d573d1510a0e305a512c33735f5c99ce399d12cfa12d597bf3a5865d295"
+    }
+  ],
+  "comparisons": {
+    "desktop": [
+      {
+        "stage": "setup",
+        "path": "comparisons/desktop/setup.png"
+      },
+      {
+        "stage": "input",
+        "path": "comparisons/desktop/input.png"
+      },
+      {
+        "stage": "strategy",
+        "path": "comparisons/desktop/strategy.png"
+      },
+      {
+        "stage": "character",
+        "path": "comparisons/desktop/character.png"
+      },
+      {
+        "stage": "stickers",
+        "path": "comparisons/desktop/stickers.png"
+      },
+      {
+        "stage": "postprocess",
+        "path": "comparisons/desktop/postprocess.png"
+      },
+      {
+        "stage": "metadata-languages",
+        "path": "comparisons/desktop/metadata-languages.png"
+      },
+      {
+        "stage": "metadata",
+        "path": "comparisons/desktop/metadata.png"
+      },
+      {
+        "stage": "export",
+        "path": "comparisons/desktop/export.png"
+      }
+    ],
+    "mobile": [
+      {
+        "stage": "setup",
+        "path": "comparisons/mobile/setup.png"
+      },
+      {
+        "stage": "input",
+        "path": "comparisons/mobile/input.png"
+      },
+      {
+        "stage": "strategy",
+        "path": "comparisons/mobile/strategy.png"
+      },
+      {
+        "stage": "character",
+        "path": "comparisons/mobile/character.png"
+      },
+      {
+        "stage": "stickers",
+        "path": "comparisons/mobile/stickers.png"
+      },
+      {
+        "stage": "postprocess",
+        "path": "comparisons/mobile/postprocess.png"
+      },
+      {
+        "stage": "metadata-languages",
+        "path": "comparisons/mobile/metadata-languages.png"
+      },
+      {
+        "stage": "metadata",
+        "path": "comparisons/mobile/metadata.png"
+      },
+      {
+        "stage": "export",
+        "path": "comparisons/mobile/export.png"
+      }
+    ]
+  }
+}

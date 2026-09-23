@@ -1,0 +1,47 @@
+{
+  "revision": "3a4eb67da2d5f000257fbafe9fb32a83d656df45",
+  "tests": {
+    "passed": 64,
+    "failed": 0,
+    "regressionPassed": 64,
+    "designOnlyPassed": 0
+  },
+  "scope": "All runtime TS/TSX in packages/shared/src and packages/web/src; tests, declarations and MSW support excluded",
+  "thresholds": {
+    "branches": 100
+  },
+  "thresholdPassed": false,
+  "summary": {
+    "lines": {
+      "total": 1428,
+      "covered": 1242,
+      "skipped": 0,
+      "pct": 86.97
+    },
+    "statements": {
+      "total": 1576,
+      "covered": 1350,
+      "skipped": 0,
+      "pct": 85.65
+    },
+    "functions": {
+      "total": 399,
+      "covered": 338,
+      "skipped": 0,
+      "pct": 84.71
+    },
+    "branches": {
+      "total": 807,
+      "covered": 636,
+      "skipped": 0,
+      "pct": 78.81
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "detailedReport": "../../../docs/verification/baseline.json"
+}

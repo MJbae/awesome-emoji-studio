@@ -1,6 +1,6 @@
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 
-const handlers = new Map<string, Function>();
+const handlers = new Map<string, (...args: unknown[]) => Promise<unknown>>();
 
 const mockStoreData = new Map<string, unknown>();
 
@@ -12,7 +12,7 @@ const mockReadFile = vi.fn();
 
 vi.mock('electron', () => ({
   ipcMain: {
-    handle: vi.fn((channel: string, handler: Function) => {
+    handle: vi.fn((channel: string, handler: (...args: unknown[]) => Promise<unknown>) => {
       handlers.set(channel, handler);
     }),
   },
@@ -44,16 +44,17 @@ vi.mock('fs/promises', () => ({
 
 vi.mock('electron-store', () => {
   return {
-    default: vi.fn().mockImplementation(() => ({
-      get: vi.fn((key: string) => mockStoreData.get(key)),
-      set: vi.fn((key: string, value: unknown) => mockStoreData.set(key, value)),
-      delete: vi.fn((key: string) => mockStoreData.delete(key)),
-    })),
+    default: class MockStore {
+      get(key: string) { return mockStoreData.get(key); }
+      set(key: string, value: unknown) { mockStoreData.set(key, value); }
+      delete(key: string) { mockStoreData.delete(key); }
+    },
   };
 });
 
 describe('IPC Handlers', () => {
   beforeEach(() => {
+    vi.clearAllMocks();
     handlers.clear();
     mockStoreData.clear();
     mockDialogShowSaveDialog.mockReset();
@@ -277,5 +278,81 @@ describe('IPC Handlers', () => {
     const result = await handler({}, '/mock/file.png');
     expect(result).toEqual(new Uint8Array([10, 20, 30, 40]));
     expect(mockReadFile).toHaveBeenCalledWith('/mock/file.png');
+  });
+
+  it('opens an HTTPS URL through the system browser', async () => {
+    const { registerAppInfoHandlers } = await import('../../../src/main/ipc/appInfo');
+    const { shell } = await import('electron');
+    registerAppInfoHandlers();
+    await handlers.get('shell:openExternal')!({}, 'https://example.com/help');
+    expect(shell.openExternal).toHaveBeenCalledWith('https://example.com/help');
+  });
+
+  it('rejects malformed external URLs', async () => {
+    const { registerAppInfoHandlers } = await import('../../../src/main/ipc/appInfo');
+    registerAppInfoHandlers();
+    await expect(handlers.get('shell:openExternal')!({}, 'not a URL')).rejects.toThrow();
+  });
+
+  it('never stores plaintext when OS encryption is unavailable', async () => {
+    const { registerSecureStoreHandlers } = await import('../../../src/main/ipc/secureStore');
+    const { safeStorage } = await import('electron');
+    vi.mocked(safeStorage.isEncryptionAvailable).mockReturnValueOnce(false);
+    registerSecureStoreHandlers();
+    await expect(handlers.get('secure:setApiKey')!({}, { key: 'private-key' })).rejects.toThrow('OS encryption unavailable');
+    expect(mockStoreData.has('geminiApiKey')).toBe(false);
+  });
+
+  it('clears keys that cannot be decrypted when OS encryption is unavailable', async () => {
+    const { registerSecureStoreHandlers } = await import('../../../src/main/ipc/secureStore');
+    const { safeStorage } = await import('electron');
+    vi.mocked(safeStorage.isEncryptionAvailable).mockReturnValueOnce(false);
+    mockStoreData.set('geminiApiKey', Buffer.from('enc:key').toString('hex'));
+    registerSecureStoreHandlers();
+    expect(await handlers.get('secure:getApiKey')!()).toBeNull();
+    expect(mockStoreData.has('geminiApiKey')).toBe(false);
+  });
+
+  it('treats a missing save path as cancellation without writing', async () => {
+    mockDialogShowSaveDialog.mockResolvedValue({ canceled: false });
+    const { registerFileServiceHandlers } = await import('../../../src/main/ipc/fileService');
+    registerFileServiceHandlers();
+    expect(await handlers.get('file:saveBinary')!({}, { data: new Uint8Array([1]), defaultName: 'test.zip' }))
+      .toEqual({ canceled: true, path: null });
+    expect(mockWriteFile).not.toHaveBeenCalled();
+  });
+
+  it('uses the requested directory and preserves typed array offsets', async () => {
+    mockDialogShowSaveDialog.mockResolvedValue({ canceled: false, filePath: '/custom/output.zip' });
+    const { registerFileServiceHandlers } = await import('../../../src/main/ipc/fileService');
+    registerFileServiceHandlers();
+    const bytes = new Uint8Array([99, 1, 2, 88]).subarray(1, 3);
+    await handlers.get('file:saveBinary')!({}, { data: bytes, defaultDirectory: '/custom', defaultName: 'output.zip' });
+    expect(mockDialogShowSaveDialog).toHaveBeenCalledWith(expect.objectContaining({ defaultPath: '/custom/output.zip' }));
+    expect(mockWriteFile).toHaveBeenCalledWith('/custom/output.zip', Buffer.from([1, 2]));
+  });
+
+  it('preserves unexpected filesystem errors', async () => {
+    mockDialogShowSaveDialog.mockResolvedValue({ canceled: false, filePath: '/mock/output.zip' });
+    const error = new Error('device disconnected');
+    mockWriteFile.mockRejectedValue(error);
+    const { registerFileServiceHandlers } = await import('../../../src/main/ipc/fileService');
+    registerFileServiceHandlers();
+    await expect(handlers.get('file:saveBinary')!({}, { data: new Uint8Array([1]), defaultName: 'test.zip' }))
+      .rejects.toBe(error);
+  });
+
+  it('preserves open-dialog cancellation', async () => {
+    mockDialogShowOpenDialog.mockResolvedValue({ canceled: true, filePaths: [] });
+    const { registerFileServiceHandlers } = await import('../../../src/main/ipc/fileService');
+    registerFileServiceHandlers();
+    expect(await handlers.get('file:showOpenDialog')!()).toEqual({ canceled: true, paths: [] });
+  });
+
+  it('propagates read failures', async () => {
+    mockReadFile.mockRejectedValue(new Error('ENOENT'));
+    const { registerFileServiceHandlers } = await import('../../../src/main/ipc/fileService');
+    registerFileServiceHandlers();
+    await expect(handlers.get('file:readBinary')!({}, '/missing.png')).rejects.toThrow('ENOENT');
   });
 });

@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Sparkles, Settings } from 'lucide-react';
+import { Settings2, Smile, ArrowUpRight } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
 interface AppShellProps {
@@ -12,33 +12,35 @@ function AppShell({ children, hasApiKey, onOpenSettings }: AppShellProps) {
   const { t } = useTranslation();
 
   return (
-    <div
-      data-testid="app-shell"
-      className="min-h-screen bg-surface-dark flex flex-col font-sans text-text"
-    >
-      <header className="bg-white/80 backdrop-blur-md border-b border-slate-200/50 sticky top-0 z-50 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity" aria-label="Go to home">
-            <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center shadow-sm">
-              <Sparkles className="text-primary" size={20} />
+    <div data-testid="app-shell" className="min-h-screen bg-surface-dark font-sans text-text">
+      <a href="#studio-content" className="skip-link">
+        {t('studio.skipToContent')}
+      </a>
+      <header className="border-b border-slate-200 bg-white/95">
+        <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-4 px-5 sm:px-8 lg:px-10">
+          <a href="/" className="flex min-w-0 items-center gap-3" aria-label="Go to home">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] bg-primary text-white">
+              <Smile size={25} strokeWidth={1.8} />
+            </span>
+            <div className="min-w-0">
+              <h1 className="text-[13px] font-bold tracking-tight sm:text-base">
+                {t('app.title')}
+              </h1>
+              <p className="mt-0.5 text-[10px] font-medium tracking-[0.12em] text-text-muted">
+                {t('studio.brandTagline')}
+              </p>
             </div>
-            <h1 className="text-xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-primary to-primary-700 tracking-tight">
-              {t('app.title')}
-            </h1>
           </a>
-
-          <div className="flex items-center gap-3">
+          <div className="flex shrink-0 items-center gap-3 sm:gap-5">
             <button
               onClick={onOpenSettings}
-              role="status"
-              aria-live="polite"
-              aria-label="Open settings"
-              className="flex items-center gap-1.5 text-xs font-medium hover:bg-slate-100 p-2 rounded-lg transition-colors cursor-pointer"
+              aria-label="API connection settings"
+              className="flex min-h-10 items-center gap-2 text-xs text-text-muted hover:text-text"
             >
-              <div
-                className={cn('w-2 h-2 rounded-full', hasApiKey ? 'bg-success' : 'bg-warning')}
+              <span
+                className={cn('h-1.5 w-1.5 rounded-full', hasApiKey ? 'bg-success' : 'bg-warning')}
               />
-              <span className="text-text-muted hidden sm:inline">
+              <span role="status" aria-live="polite" className="hidden sm:inline">
                 {hasApiKey ? t('app.apiConnected') : t('app.apiMissing')}
               </span>
             </button>
@@ -46,17 +48,27 @@ function AppShell({ children, hasApiKey, onOpenSettings }: AppShellProps) {
               onClick={onOpenSettings}
               aria-label="Open settings"
               data-testid="settings-btn"
-              className="p-2 rounded-lg text-text-muted hover:bg-slate-100 hover:text-text transition-colors"
+              className="flex h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-50"
             >
-              <Settings size={18} />
+              <Settings2 size={16} />
+              <span className="hidden sm:inline">{t('studio.settings')}</span>
             </button>
           </div>
         </div>
       </header>
-
-      <main className="flex-1">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">{children}</div>
+      <main
+        id="studio-content"
+        tabIndex={-1}
+        className="mx-auto min-h-[calc(100vh-141px)] max-w-[1440px] px-5 outline-none sm:px-8 lg:px-10"
+      >
+        <div className="studio-workspace">{children}</div>
       </main>
+      <footer className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-3 border-t border-slate-200 px-5 py-5 text-[11px] text-text-muted sm:px-8 lg:px-10">
+        <span>{t('studio.footer')}</span>
+        <span className="flex items-center gap-1.5">
+          {t('studio.poweredBy')} <ArrowUpRight size={12} />
+        </span>
+      </footer>
     </div>
   );
 }

@@ -31,3 +31,6 @@ test-results
 
 # CLI output
 output/
+
+# TypeScript incremental build metadata
+*.tsbuildinfo

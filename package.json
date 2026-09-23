@@ -15,7 +15,11 @@
     "test": "npm -w @emoji/web run test && npm -w @emoji/electron run test",
     "test:e2e": "npm -w @emoji/web run test:e2e",
     "test:e2e:electron": "npm -w @emoji/electron run test:e2e",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test:e2e:coverage": "npm -w @emoji/web run test:e2e:coverage",
+    "test:coverage:electron": "npm -w @emoji/electron run test:coverage",
+    "verify:design": "npm run lint && npm run test:e2e:typecheck && npm test && npm run build:web && npm run test:coverage:electron && npm run test:e2e:electron && npm run test:e2e:coverage",
+    "test:e2e:typecheck": "npm -w @emoji/web run test:e2e:typecheck && npm -w @emoji/electron exec -- tsc -p tsconfig.e2e-electron.json --noEmit"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",

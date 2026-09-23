@@ -169,11 +169,32 @@
         "apiKeyPlaceholder": "AIza...",
         "showKey": "顯示 API 金鑰",
         "hideKey": "隱藏 API 金鑰",
-        "keyStorageInfo": "金鑰僅儲存在您的瀏覽器中，不會傳送到外部。",
+        "keyStorageInfo": "金鑰儲存在此裝置上，僅用於向 Google Gemini API 發送請求。",
         "keyIssue": "取得金鑰:",
         "validating": "驗證中...",
         "saveAndContinue": "儲存並繼續",
         "minError": "API 金鑰長度至少需要 10 個字元。",
         "invalidError": "API 金鑰無效。請確認您的金鑰。"
+    },
+    "studio": {
+        "skipToContent": "跳至工作區",
+        "brandTagline": "小小靈感，豐富表情。",
+        "settings": "設定",
+        "workspace": "我的工作室",
+        "sidebarTitle": "一套作品，多個平台",
+        "sidebarDescription": "讓你的角色出現在人們交流的地方。",
+        "footer": "每一個表情，都是更多的表達。",
+        "poweredBy": "由 Gemini 驅動",
+        "newCollection": "新系列",
+        "required": "必填",
+        "madeOfIdeas": "源自靈感",
+        "previewTitle": "小小角色，滿滿個性。",
+        "previewDescription": "為你的點子加上表情、情緒和專屬的世界。",
+        "sampleAlt": "四個表達不同情緒的橘子角色插畫",
+        "collectionIncludes": "你的系列將包含",
+        "includesImages": "45 張生動的表情圖片",
+        "includesLanguages": "6 種語言的中繼資料",
+        "includesExports": "6 種平台規格的套件",
+        "exampleNote": "插畫僅供靈感參考。創造屬於你的角色。"
     }
 }

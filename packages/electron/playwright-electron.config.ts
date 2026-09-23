@@ -11,4 +11,8 @@ export default defineConfig({
   retries: 0,
   workers: 1,
   reporter: [['list'], ['html', { open: 'never' }]],
+  use: {
+    trace: 'retain-on-failure',
+    screenshot: 'only-on-failure',
+  },
 });

@@ -169,11 +169,32 @@
         "apiKeyPlaceholder": "AIza...",
         "showKey": "API 키 보기",
         "hideKey": "API 키 숨기기",
-        "keyStorageInfo": "키는 브라우저에만 저장되며 외부로 전송되지 않습니다.",
+        "keyStorageInfo": "키는 이 기기에 저장되며 Google Gemini API 요청에만 사용됩니다.",
         "keyIssue": "키 발급:",
         "validating": "검증 중...",
         "saveAndContinue": "저장 후 계속",
         "minError": "API 키는 최소 10자 이상이어야 합니다.",
         "invalidError": "API 키가 유효하지 않습니다. 키를 확인해 주세요."
+    },
+    "studio": {
+        "skipToContent": "작업 영역으로 이동",
+        "brandTagline": "작은 아이디어, 다채로운 표현.",
+        "settings": "설정",
+        "workspace": "나의 작업실",
+        "sidebarTitle": "한 세트로 여러 플랫폼에",
+        "sidebarDescription": "사람들이 소통하는 곳에 나만의 캐릭터를 선보이세요.",
+        "footer": "이모지 하나에 담는, 조금 더 다채로운 표현.",
+        "poweredBy": "Gemini와 함께",
+        "newCollection": "새 컬렉션",
+        "required": "필수",
+        "madeOfIdeas": "아이디어에서 시작해요",
+        "previewTitle": "작은 캐릭터에\n가득 담긴 개성.",
+        "previewDescription": "나만의 아이디어에 표정과 감정, 이야기를 더해 보세요.",
+        "sampleAlt": "서로 다른 감정을 표현하는 네 개의 귤 캐릭터 일러스트",
+        "collectionIncludes": "이렇게 완성돼요",
+        "includesImages": "다양한 표정의 이모지 이미지 45개",
+        "includesLanguages": "6개 언어의 메타데이터",
+        "includesExports": "6개 플랫폼 규격의 패키지",
+        "exampleNote": "영감을 위한 예시입니다. 나만의 캐릭터를 만들어 보세요."
     }
 }

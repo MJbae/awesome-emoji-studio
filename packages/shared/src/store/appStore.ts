@@ -49,5 +49,5 @@ export function getAppState(): AppState {
 }
 
 if (typeof window !== 'undefined') {
-  (window as any).useAppStore = useAppStore;
+  (window as Window & { useAppStore?: typeof useAppStore }).useAppStore = useAppStore;
 }

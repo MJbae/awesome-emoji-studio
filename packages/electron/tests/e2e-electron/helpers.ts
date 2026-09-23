@@ -1,7 +1,8 @@
 import { _electron as electron, type ElectronApplication } from '@playwright/test';
-import { mkdtemp, rm } from 'fs/promises';
+import { mkdtemp, rm, writeFile } from 'fs/promises';
 import { tmpdir } from 'os';
-import { join } from 'path';
+import { join, resolve } from 'path';
+import { pathToFileURL } from 'url';
 
 export interface AppContext {
   app: ElectronApplication;
@@ -10,13 +11,25 @@ export interface AppContext {
 
 export async function launchApp(existingUserDataDir?: string): Promise<AppContext> {
   const userDataDir = existingUserDataDir ?? (await mkdtemp(join(tmpdir(), 'emoticon-e2e-')));
+  // Imported main modules create electron-store instances synchronously. Set the
+  // profile before importing the real app so tests never touch a user's profile.
+  const bootstrap = join(userDataDir, 'e2e-bootstrap.cjs');
+  await writeFile(bootstrap, [
+    "const { app } = require('electron');",
+    "app.setPath('userData', process.env.EMOTICON_STUDIO_USER_DATA_DIR);",
+    `import(${JSON.stringify(pathToFileURL(resolve('out/main/index.js')).href)});`,
+  ].join('\n'));
+  const environment = { ...process.env };
+  delete environment.ELECTRON_RUN_AS_NODE;
 
   const app = await electron.launch({
-    args: ['./out/main/index.js'],
+    args: [bootstrap],
+    timeout: 30_000,
     env: {
-      ...process.env,
+      ...environment,
       EMOTICON_STUDIO_E2E: '1',
       EMOTICON_STUDIO_USER_DATA_DIR: userDataDir,
+      ELECTRON_RENDERER_URL: '',
     },
   });
 

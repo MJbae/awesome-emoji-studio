@@ -1,57 +1,195 @@
 @import 'tailwindcss' source('.');
 
 @theme {
-  --font-sans: 'Nunito', sans-serif;
-
-  /* Primary Scale: Magic Violet */
-  --color-primary-50: #f5f3ff;
-  --color-primary-100: #ede9fe;
-  --color-primary-200: #ddd6fe;
-  --color-primary-300: #c4b5fd;
-  --color-primary-400: #a78bfa;
-  --color-primary: #7c3aed; /* Magic Violet */
-  --color-primary-600: #6d28d9;
-  --color-primary-700: #5b21b6;
-  --color-primary-800: #4c1d95;
-  --color-primary-900: #3b0f7a;
-
-  /* Legacy aliases (= primary-400 / primary-600) */
-  --color-primary-light: #a78bfa;
-  --color-primary-dark: #6d28d9;
-
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+  --color-primary-50: #fff6f0;
+  --color-primary-100: #fce8dc;
+  --color-primary-200: #f6ceb8;
+  --color-primary-300: #eca584;
+  --color-primary-400: #df7b53;
+  --color-primary: #bc4725;
+  --color-primary-600: #a83d1e;
+  --color-primary-700: #89341d;
+  --color-primary-800: #6f2e1e;
+  --color-primary-900: #57281c;
+  --color-primary-light: #df7b53;
+  --color-primary-dark: #a83d1e;
   --color-surface: #ffffff;
-  --color-surface-dark: #faf8ff; /* Violet tint */
-
-  --color-text: #3b0f7a; /* Deep violet */
-  --color-text-muted: #4b5563;
-
-  --color-success: #10b981;
-  --color-success-light: #d1fae5;
-  --color-danger: #ef4444;
-  --color-danger-light: #fee2e2;
-  --color-warning: #f59e0b;
-  --color-warning-light: #fef3c7;
-
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
+  --color-surface-dark: #f7f7f2;
+  --color-text: #252720;
+  --color-text-muted: #6b6e62;
+  --color-success: #35734e;
+  --color-success-light: #e7f2e8;
+  --color-danger: #be3435;
+  --color-danger-light: #fceceb;
+  --color-warning: #9b6c16;
+  --color-warning-light: #fcf3dc;
+  --color-slate-50: #f8f8f5;
+  --color-slate-100: #f0f1ea;
+  --color-slate-200: #e4e5dd;
+  --color-slate-300: #d0d2c7;
+  --color-slate-400: #979b8c;
+  --color-slate-500: #737769;
+  --color-slate-600: #5c6053;
+  --color-slate-700: #45493e;
+  --color-slate-800: #30352b;
+  --color-slate-900: #24271f;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.125rem;
 }
 
+@layer base {
+  body {
+    margin: 0;
+    min-width: 320px;
+    background: var(--color-surface-dark);
+    -webkit-font-smoothing: antialiased;
+  }
+  button:not(:disabled),
+  [role='button'] {
+    cursor: pointer;
+  }
+  button,
+  input,
+  textarea,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 4px;
+  }
+  ::selection {
+    background: #f6ceb8;
+    color: #252720;
+  }
+  input[type='range'] {
+    accent-color: var(--color-primary);
+  }
+}
+
+@layer components {
+  .studio-workspace {
+    display: grid;
+    grid-template-columns: 208px minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+  }
+  .studio-workspace > section {
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+    padding: 36px 0 48px;
+  }
+  .stage-heading {
+    font-size: clamp(1.65rem, 2.4vw, 2.25rem);
+    font-weight: 750;
+    letter-spacing: -0.045em;
+    line-height: 1.2;
+    color: var(--color-text);
+  }
+  .stage-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 650;
+    letter-spacing: 0.07em;
+    color: var(--color-primary);
+    text-transform: uppercase;
+  }
+  .stage-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-slate-200);
+  }
+  .studio-preview {
+    background-color: #fafbf7;
+    background-image:
+      linear-gradient(45deg, #e9ece3 25%, transparent 25%),
+      linear-gradient(-45deg, #e9ece3 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #e9ece3 75%),
+      linear-gradient(-45deg, transparent 75%, #e9ece3 75%);
+    background-size: 20px 20px;
+    background-position:
+      0 0,
+      0 10px,
+      10px -10px,
+      -10px 0;
+  }
+  .studio-card {
+    border: 1px solid var(--color-slate-200);
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 3px 12px #24271f03;
+  }
+  .studio-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 650;
+    color: var(--color-text);
+  }
+  .skip-link {
+    position: fixed;
+    top: -80px;
+    left: 16px;
+    z-index: 100;
+    padding: 12px 20px;
+    border-radius: 12px;
+    background: var(--color-text);
+    color: white;
+  }
+  .skip-link:focus {
+    top: 12px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .studio-workspace {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .studio-workspace > section {
+    padding-top: 26px;
+  }
+}
+@media (max-width: 479px) {
+  .stage-actions {
+    gap: 10px;
+  }
+  .stage-actions > button {
+    padding-inline: 14px;
+    font-size: 12px;
+  }
+}
 @keyframes fadeSlideIn {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

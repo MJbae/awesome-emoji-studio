@@ -1,119 +1,122 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+// @vitest-environment jsdom
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { isElectron, platform } from '../../../../shared/src/platform/adapter';
 
-let isElectron: () => boolean;
-let platform: {
-  getApiKey(): Promise<string | null>;
-  setApiKey(key: string): Promise<void>;
-  deleteApiKey(): Promise<void>;
-  saveFile(data: Uint8Array, defaultName: string): Promise<boolean>;
-};
+function desktopMock() {
+  return {
+    secure: {
+      getApiKey: vi.fn().mockResolvedValue('electron-key'),
+      setApiKey: vi.fn().mockResolvedValue(undefined),
+      deleteApiKey: vi.fn().mockResolvedValue(undefined),
+    },
+    file: { saveBinary: vi.fn().mockResolvedValue({ canceled: false, path: '/saved/file.zip' }) },
+    app: {}, updater: {}, shell: {},
+  };
+}
 
-describe('Platform Adapter', () => {
-  beforeEach(async () => {
-    vi.resetModules();
-    delete (window as unknown as Record<string, unknown>).desktop;
-    const mod = await import('../../../../shared/src/platform/adapter');
-    isElectron = mod.isElectron;
-    platform = mod.platform;
+function installDesktop(mock = desktopMock()) {
+  Object.defineProperty(window, 'desktop', { configurable: true, value: mock });
+  return mock;
+}
+
+function installShare(share: unknown, canShare: unknown) {
+  Object.defineProperty(navigator, 'share', { configurable: true, value: share });
+  Object.defineProperty(navigator, 'canShare', { configurable: true, value: canShare });
+}
+
+describe('Platform adapter', () => {
+  const data = new Uint8Array([1, 2, 3]);
+  let click: ReturnType<typeof vi.spyOn>;
+
+  beforeEach(() => {
+    vi.useFakeTimers();
+    delete window.desktop;
+    localStorage.clear();
+    installShare(undefined, undefined);
+    Object.defineProperty(URL, 'createObjectURL', { configurable: true, value: vi.fn(() => 'blob:export') });
+    Object.defineProperty(URL, 'revokeObjectURL', { configurable: true, value: vi.fn() });
+    click = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
   });
 
-  it('isElectron() returns false when window.desktop is absent', () => {
+  afterEach(() => {
+    vi.runOnlyPendingTimers();
+    vi.useRealTimers();
+    delete window.desktop;
+    document.body.replaceChildren();
+  });
+
+  it('detects browser and desktop environments', () => {
     expect(isElectron()).toBe(false);
-  });
-
-  it('isElectron() returns true when window.desktop exists', () => {
-    (window as unknown as Record<string, unknown>).desktop = {
-      secure: {},
-      file: {},
-      app: {},
-      updater: {},
-      shell: {},
-    };
+    installDesktop();
     expect(isElectron()).toBe(true);
   });
 
-  describe('web fallback', () => {
-    it('getApiKey reads from localStorage', async () => {
-      const spy = vi.spyOn(Storage.prototype, 'getItem').mockReturnValue('test-key');
-      const result = await platform.getApiKey();
-      expect(result).toBe('test-key');
-      expect(spy).toHaveBeenCalledWith('emoticon_studio_api_key');
-      spy.mockRestore();
-    });
-
-    it('setApiKey writes to localStorage', async () => {
-      const spy = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {});
-      await platform.setApiKey('my-key');
-      expect(spy).toHaveBeenCalledWith('emoticon_studio_api_key', 'my-key');
-      spy.mockRestore();
-    });
-
-    it('deleteApiKey removes from localStorage', async () => {
-      const spy = vi.spyOn(Storage.prototype, 'removeItem').mockImplementation(() => {});
-      await platform.deleteApiKey();
-      expect(spy).toHaveBeenCalledWith('emoticon_studio_api_key');
-      spy.mockRestore();
-    });
-
-    it('saveFile creates anchor element for download', async () => {
-      const createObjectURLMock = vi.fn(() => 'blob:mock-url');
-      const revokeObjectURLMock = vi.fn();
-      globalThis.URL.createObjectURL = createObjectURLMock;
-      globalThis.URL.revokeObjectURL = revokeObjectURLMock;
-
-      const clickMock = vi.fn();
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      vi.spyOn(document, 'createElement').mockReturnValue({
-        href: '',
-        download: '',
-        click: clickMock,
-      } as any);
-
-      const result = await platform.saveFile(new Uint8Array([1, 2, 3]), 'test.zip');
-      expect(result).toBe(true);
-      expect(clickMock).toHaveBeenCalled();
-      expect(revokeObjectURLMock).toHaveBeenCalledWith('blob:mock-url');
-    });
+  it('reads, saves, and deletes the browser API key', async () => {
+    expect(await platform.getApiKey()).toBeNull();
+    await platform.setApiKey('browser-key');
+    expect(localStorage.getItem('emoticon_studio_api_key')).toBe('browser-key');
+    expect(await platform.getApiKey()).toBe('browser-key');
+    await platform.deleteApiKey();
+    expect(await platform.getApiKey()).toBeNull();
   });
 
-  describe('electron mode', () => {
-    it('getApiKey calls desktop.secure.getApiKey', async () => {
-      const mockGetApiKey = vi.fn().mockResolvedValue('electron-key');
-      (window as unknown as Record<string, unknown>).desktop = {
-        secure: { getApiKey: mockGetApiKey, setApiKey: vi.fn(), deleteApiKey: vi.fn() },
-        file: {},
-        app: {},
-        updater: {},
-        shell: {},
-      };
+  it('delegates all key operations to the desktop secure store', async () => {
+    const desktop = installDesktop();
+    expect(await platform.getApiKey()).toBe('electron-key');
+    await platform.setApiKey('new-key');
+    await platform.deleteApiKey();
+    expect(desktop.secure.getApiKey).toHaveBeenCalledOnce();
+    expect(desktop.secure.setApiKey).toHaveBeenCalledWith({ key: 'new-key' });
+    expect(desktop.secure.deleteApiKey).toHaveBeenCalledOnce();
+    expect(localStorage.getItem('emoticon_studio_api_key')).toBeNull();
+  });
 
-      const mod = await import('../../../../shared/src/platform/adapter');
-      const result = await mod.platform.getApiKey();
-      expect(result).toBe('electron-key');
-      expect(mockGetApiKey).toHaveBeenCalled();
-    });
+  it.each([false, true])('preserves desktop save cancellation = %s', async (canceled) => {
+    const desktop = installDesktop();
+    desktop.file.saveBinary.mockResolvedValue({ canceled, path: '/saved/file.zip' });
+    expect(await platform.saveFile(data, 'output.zip')).toBe(!canceled);
+    expect(desktop.file.saveBinary).toHaveBeenCalledWith({ data, defaultName: 'output.zip', mimeType: 'application/zip' });
+    expect(click).not.toHaveBeenCalled();
+  });
 
-    it('saveFile calls desktop.file.saveBinary', async () => {
-      const mockSaveBinary = vi
-        .fn()
-        .mockResolvedValue({ canceled: false, path: '/saved/file.zip' });
-      (window as unknown as Record<string, unknown>).desktop = {
-        secure: {},
-        file: { saveBinary: mockSaveBinary },
-        app: {},
-        updater: {},
-        shell: {},
-      };
+  it('propagates desktop save errors', async () => {
+    const desktop = installDesktop();
+    desktop.file.saveBinary.mockRejectedValue(new Error('DISK_FULL'));
+    await expect(platform.saveFile(data, 'output.zip')).rejects.toThrow('DISK_FULL');
+  });
 
-      const mod = await import('../../../../shared/src/platform/adapter');
-      const data = new Uint8Array([1, 2, 3]);
-      const result = await mod.platform.saveFile(data, 'output.zip');
-      expect(result).toBe(true);
-      expect(mockSaveBinary).toHaveBeenCalledWith({
-        data,
-        defaultName: 'output.zip',
-        mimeType: 'application/zip',
-      });
-    });
+  it('keeps the browser download in the DOM until its cleanup delay', async () => {
+    expect(await platform.saveFile(data, 'output.zip')).toBe(true);
+    const anchor = document.querySelector('a')!;
+    expect(anchor.download).toBe('output.zip');
+    expect(anchor.href).toBe('blob:export');
+    expect(anchor.style.display).toBe('none');
+    expect(click).toHaveBeenCalledOnce();
+    expect(URL.revokeObjectURL).not.toHaveBeenCalled();
+    await vi.advanceTimersByTimeAsync(3000);
+    expect(document.querySelector('a')).toBeNull();
+    expect(URL.revokeObjectURL).toHaveBeenCalledWith('blob:export');
+  });
+
+  it('uses native sharing when file sharing is supported', async () => {
+    const share = vi.fn().mockResolvedValue(undefined);
+    const canShare = vi.fn(() => true);
+    installShare(share, canShare);
+    expect(await platform.saveFile(data, 'mobile.zip')).toBe(true);
+    const request = share.mock.calls[0]![0];
+    expect(request.title).toBe('mobile.zip');
+    expect(request.files[0].name).toBe('mobile.zip');
+    expect(request.files[0].type).toBe('application/zip');
+    expect(click).not.toHaveBeenCalled();
+  });
+
+  it.each(['unsupported', 'missing-capability', 'canceled'])('downloads if native sharing is %s', async (reason) => {
+    const share = reason === 'canceled'
+      ? vi.fn().mockRejectedValue(new DOMException('Canceled', 'AbortError'))
+      : vi.fn();
+    installShare(share, reason === 'missing-capability' ? undefined : () => reason === 'canceled');
+    expect(await platform.saveFile(data, 'fallback.zip')).toBe(true);
+    expect(click).toHaveBeenCalledOnce();
+    expect(document.querySelector('a')?.download).toBe('fallback.zip');
   });
 });

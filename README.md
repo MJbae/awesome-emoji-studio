@@ -177,9 +177,15 @@ npm run build:electron    # Production desktop build (macOS universal + Windows 
 
 ```bash
 npm run test              # Unit tests (Vitest)
-npm run test:e2e          # E2E tests (Playwright — EN, JA, zh-TW)
+npm run test:e2e          # Deterministic browser E2E: 6 locales, UI + public API
+npm run test:e2e:electron # Desktop E2E (builds Electron first)
+npm run test:e2e:typecheck # Type-check browser and desktop test contracts
+npm run test:e2e:coverage # E2E + strict 100% source branch coverage gate
+npm run verify:design     # All redesign acceptance checks, including strict gate
 npm run lint              # ESLint
 ```
+
+[Design review and screenshots](docs/design-review.md) · [Measured test results and coverage limits](docs/testing.md)
 
 ---
 

@@ -1,47 +1,24 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, openStudio, submitConcept } from './support/fixtures';
 
-test.describe('i18n translations in PostProcessStage', () => {
-  test('should not display raw translation keys for postprocess', async ({ page }) => {
-    // Navigate to local server
-    await page.goto('/');
-
-    // Wait until React and Zustand initialize
-    await page.waitForFunction(() => (window as any).useAppStore !== undefined);
-
-    // Manipulate Zustand state to jump directly to the postprocess stage
-    await page.evaluate(() => {
-      const store = (window as any).useAppStore;
-      store.setState({
-        apiKey: 'fake-key',
-        keyHydrated: true,
-        stage: 'postprocess',
-        stickers: [
-          {
-            id: 1,
-            status: 'done',
-            // 1x1 transparent png
-            imageUrl: 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=',
-            idea: { expression: 'test' }
-          }
-        ]
-      });
-    });
-
-    // We wait for some postprocess specific UI structure to appear
-    await page.waitForSelector('text=1'); // "1" could match applied count, but let's wait more generally
-    await page.waitForTimeout(1000); // Give it a second to render the stage
-
-    // Check that the body does NOT contain the raw keys
-    const bodyText = await page.textContent('body') || '';
-    
-    expect(bodyText).not.toContain('postprocess.cleanup');
-    expect(bodyText).not.toContain('postprocess.removeBg');
-    expect(bodyText).not.toContain('postprocess.removeBgDesc');
-    expect(bodyText).not.toContain('postprocess.outlineEffect');
-    expect(bodyText).not.toContain('postprocess.enableOutline');
-    
-    // Verify it rendered the actual fallback text (like Auto Cleanup or 이미지 정리)
-    const hasAnyValidTranslation = bodyText.includes('이미지') || bodyText.includes('Cleanup') || bodyText.includes('クリーンアップ') || bodyText.includes('清理');
-    expect(hasAnyValidTranslation).toBe(true);
+for (const [language, market] of [['en', 'korean'], ['ko', 'korean'], ['ja', 'japanese'], ['zh-TW', 'traditional-chinese'], ['zh-CN', 'simplified-chinese'], ['th', 'thai']]) {
+  test(`localized ${language} journey reaches metadata without untranslated keys`, async ({ page, api }, testInfo) => {
+    if (language === 'ko' || language === 'th') await page.setViewportSize({ width: 390, height: 844 });
+    await openStudio(page, language);
+    await page.screenshot({ path: testInfo.outputPath('input.png'), fullPage: true });
+    await submitConcept(page, market);
+    await expect(page.locator('[data-stage="strategy"][data-phase="complete"]')).toBeVisible();
+    await page.getByTestId('continue-btn').click();
+    await expect(page.locator('[data-stage="character"][data-phase="complete"]')).toBeVisible();
+    await page.getByTestId('continue-btn').click();
+    await expect(page.locator('[data-stage="stickers"][data-phase="complete"]')).toBeVisible();
+    await page.getByTestId('continue-btn').click();
+    await expect(page.getByRole('img', { name: 'Processing preview', exact: true })).toBeVisible();
+    const body = await page.locator('body').innerText();
+    expect(body).not.toMatch(/postprocess\.(cleanup|removeBg|removeBgDesc|outlineEffect|enableOutline)/);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    await page.screenshot({ path: testInfo.outputPath('postprocess.png'), fullPage: true });
+    await page.getByTestId('continue-btn').click();
+    await expect(page.getByTestId('generate-metadata-btn')).toBeVisible();
+    expect(api.calls.filter((call) => call.kind === 'sticker')).toHaveLength(5);
   });
-});
+}

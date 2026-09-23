@@ -9,44 +9,33 @@ interface LoaderProps {
 
 const SIZE_MAP: Record<NonNullable<LoaderProps['size']>, { w: string; innerIcon: number }> = {
   sm: { w: 'w-6 h-6', innerIcon: 12 },
-  md: { w: 'w-12 h-12', innerIcon: 24 },
-  lg: { w: 'w-20 h-20', innerIcon: 32 },
-  xl: { w: 'w-24 h-24 text-primary', innerIcon: 40 },
+  md: { w: 'w-12 h-12', innerIcon: 20 },
+  lg: { w: 'w-20 h-20', innerIcon: 28 },
+  xl: { w: 'w-24 h-24', innerIcon: 32 },
 };
 
 function Loader({ title, text, size = 'md' }: LoaderProps) {
   const dimensions = SIZE_MAP[size] || SIZE_MAP.md;
-
   return (
     <div
       role="status"
       aria-live="polite"
       aria-label={title ?? text ?? 'Loading'}
-      className="flex flex-col items-center justify-center gap-4 py-8"
+      className="flex flex-col items-center justify-center gap-5 py-12"
     >
-      <div className="relative flex items-center justify-center">
-        {/* Outer glowing pulsing ring */}
-        <div className={cn("absolute inset-0 rounded-full bg-primary/20 blur-md animate-pulse", dimensions.w)} />
-
-        {/* Core spinning/gradient circle without an inner mask, so it's filled */}
-        <div
-          className={cn('relative rounded-full flex items-center justify-center shadow-inner overflow-hidden', dimensions.w)}
-          aria-hidden="true"
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-[#7c3aed] to-[#a78bfa] animate-[spin_3s_linear_infinite]" />
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#7c3aed]/50 to-transparent animate-[spin_2s_linear_infinite_reverse]" />
-
-          {/* A soft inner glow rather than cutting out the center */}
-          <div className="absolute inset-1 rounded-full bg-white/20 backdrop-blur-sm" />
-
-          {/* Icon in the center for better aesthetics */}
-          <Sparkles size={dimensions.innerIcon} className="relative z-10 text-white animate-pulse" />
-        </div>
+      <div
+        className={cn(
+          'relative flex items-center justify-center rounded-full bg-primary-50',
+          dimensions.w,
+        )}
+        aria-hidden="true"
+      >
+        <div className="absolute inset-0 animate-spin rounded-full border-2 border-primary/10 border-t-primary" />
+        <Sparkles size={dimensions.innerIcon} className="text-primary" strokeWidth={1.5} />
       </div>
-
-      <div className="text-center space-y-2 mt-2">
-        {title && <h2 className="text-2xl font-bold text-text animate-pulse">{title}</h2>}
-        {text && <p className={cn("font-medium text-slate-600 animate-pulse", size === 'xl' ? "text-base" : "text-sm")}>{text}</p>}
+      <div className="max-w-md space-y-2 text-center">
+        {title && <h2 className="text-xl font-semibold tracking-tight text-text">{title}</h2>}
+        {text && <p className="text-sm leading-relaxed text-text-muted">{text}</p>}
       </div>
     </div>
   );

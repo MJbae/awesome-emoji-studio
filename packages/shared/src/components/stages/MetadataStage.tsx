@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Sparkles, RefreshCw, Copy, Check, Hash, ArrowRight } from 'lucide-react';
+import { Sparkles, RefreshCw, Copy, Check, Hash, ArrowRight, Globe2 } from 'lucide-react';
 import type { MetaResult, LanguageCode, LanguageEntry } from '@/types/domain';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -46,7 +46,11 @@ function MetadataStage({
 
   if (loading) {
     return (
-      <section data-stage="metadata" data-phase="loading" className="flex flex-col items-center justify-center min-h-[50vh]">
+      <section
+        data-stage="metadata"
+        data-phase="loading"
+        className="flex flex-col items-center justify-center min-h-[50vh]"
+      >
         <Loader title={t('metadata.generating')} text={t('metadata.generatingDesc')} size="xl" />
       </section>
     );
@@ -55,22 +59,27 @@ function MetadataStage({
   return (
     <section data-stage="metadata" className="max-w-6xl mx-auto space-y-8">
       {!hasResults && (
-        <div className="bg-white p-6 rounded-2xl border border-slate-200 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium">
+        <div className="bg-white p-5 sm:p-9 rounded-3xl border border-[#e4e5dd] space-y-8">
+          <div className="stage-eyebrow">
             <Sparkles size={14} />
             {t('metadata.step6')}
           </div>
-          <div>
-            <h2 className="text-2xl font-bold text-text">{t('metadata.title')}</h2>
-            <p className="text-text-muted mt-2 max-w-lg mx-auto">
-              {t('metadata.subtitle')}
-            </p>
+          <div className="flex items-start justify-between gap-6">
+            <div>
+              <h2 className="stage-heading">{t('metadata.title')}</h2>
+              <p className="text-text-muted mt-3 max-w-2xl leading-relaxed">
+                {t('metadata.subtitle')}
+              </p>
+            </div>
+            <div className="hidden sm:flex shrink-0 h-20 w-20 items-center justify-center rounded-3xl bg-[#ece8f5] text-[#76628d]">
+              <Globe2 size={36} strokeWidth={1.5} />
+            </div>
           </div>
 
           <fieldset>
             <legend className="sr-only">Select metadata language</legend>
             <div
-              className="flex flex-wrap justify-center gap-3"
+              className="grid grid-cols-2 lg:grid-cols-3 gap-3"
               role="group"
               aria-label="Metadata languages"
             >
@@ -83,40 +92,64 @@ function MetadataStage({
                   data-testid={`meta-lang-${lang.code}`}
                   onClick={() => onLanguageToggle(lang.code)}
                   className={cn(
-                    'px-4 py-2 rounded-xl border flex items-center gap-2 transition-all text-sm',
+                    'px-4 py-4 rounded-2xl border flex items-center justify-between gap-3 transition-colors text-sm text-left',
                     selectedLanguages.has(lang.code)
-                      ? 'border-primary bg-primary-50 text-primary-700 font-medium'
-                      : 'border-slate-200 hover:border-primary-300 text-slate-600',
+                      ? 'border-primary bg-primary-50 text-primary-800 font-semibold ring-1 ring-primary/10'
+                      : 'border-[#e4e5dd] hover:border-primary-300 hover:bg-surface-dark text-text-muted',
                   )}
                 >
-                  <span>{lang.label}</span>
+                  <span className="min-w-0">
+                    <span className="block">{lang.label}</span>
+                    <span className="block text-xs font-normal text-text-muted mt-1">
+                      {lang.nativeName}
+                    </span>
+                  </span>
+                  <span
+                    className={cn(
+                      'flex h-5 w-5 shrink-0 items-center justify-center rounded-md border',
+                      selectedLanguages.has(lang.code)
+                        ? 'bg-primary border-primary text-white'
+                        : 'border-[#d4d7ca]',
+                    )}
+                    aria-hidden="true"
+                  >
+                    <Check
+                      size={12}
+                      className={cn(!selectedLanguages.has(lang.code) && 'opacity-0')}
+                    />
+                  </span>
                 </button>
               ))}
             </div>
           </fieldset>
 
-          <Button
-            onClick={onGenerate}
-            disabled={selectedLanguages.size === 0}
-            loading={loading}
-            icon={<Sparkles size={16} />}
-            size="lg"
-            aria-label="Generate metadata"
-            data-testid="generate-metadata-btn"
-          >
-            {t('metadata.generate')}
-          </Button>
+          <div className="flex justify-end border-t border-[#e4e5dd] pt-6">
+            <Button
+              onClick={onGenerate}
+              disabled={selectedLanguages.size === 0}
+              loading={loading}
+              icon={<Sparkles size={16} />}
+              size="lg"
+              aria-label="Generate metadata"
+              data-testid="generate-metadata-btn"
+              className="w-full sm:w-auto"
+            >
+              {t('metadata.generate')}
+            </Button>
+          </div>
         </div>
       )}
 
       {hasResults && (
         <div className="space-y-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center bg-white/90 backdrop-blur-sm p-4 rounded-2xl border border-slate-200/60 sticky top-16 z-10 gap-3 shadow-md transition-all">
-            <h3 className="text-lg font-bold text-text flex items-center gap-2">
-              <Sparkles className="text-primary" size={18} />
+          <div className="flex flex-col sm:flex-row justify-between sm:items-center bg-white/95 backdrop-blur-md p-5 sm:p-6 rounded-3xl border border-[#e4e5dd] sticky top-20 z-10 gap-4 shadow-[0_6px_24px_-18px_rgba(37,39,32,0.3)]">
+            <h3 className="text-xl font-bold tracking-tight text-text flex items-center gap-3">
+              <span className="p-2.5 rounded-xl bg-[#ece8f5] text-[#76628d]">
+                <Sparkles size={20} />
+              </span>
               {t('metadata.results')}
             </h3>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <Button
                 variant="outline"
                 size="sm"
@@ -142,14 +175,14 @@ function MetadataStage({
           {Object.entries(resultsByLang).map(([code, options]) => {
             const langInfo = languages.find((l) => l.code === code);
             return (
-              <div key={code} className="space-y-4">
-                <div className="flex items-center gap-2 text-lg font-bold text-slate-700 border-b border-slate-200 pb-2">
+              <div key={code} className="space-y-4 pt-3">
+                <div className="flex items-center gap-2 text-lg font-semibold text-text border-b border-[#e4e5dd] pb-3">
                   <span>{langInfo?.label}</span>
                   <span className="text-text-muted text-sm font-normal ml-auto">
                     {langInfo?.nativeName}
                   </span>
                 </div>
-                <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                   {options.map((option, idx) => {
                     const selectedForLang = selectedMetaMap.get(option.language);
                     const isSelected = selectedForLang?.optionType === option.optionType;
@@ -170,7 +203,7 @@ function MetadataStage({
       )}
 
       {!hasResults && (
-        <div className="flex justify-start pt-4">
+        <div className="stage-actions">
           <Button variant="outline" onClick={onBack} aria-label="Go back" data-testid="back-btn">
             {t('strategy.back')}
           </Button>
@@ -203,7 +236,7 @@ function MetaResultCard({
     scoreAvg >= 4.5 ? 'text-success' : scoreAvg >= 3.5 ? 'text-amber-600' : 'text-slate-500';
 
   const copyTags = () => {
-    navigator.clipboard.writeText(result.tags.join(', ')).catch(() => { });
+    navigator.clipboard.writeText(result.tags.join(', ')).catch(() => {});
     setCopiedTags(true);
     setTimeout(() => setCopiedTags(false), 2000);
   };
@@ -211,24 +244,25 @@ function MetaResultCard({
   return (
     <Card
       className={cn(
-        'flex flex-col h-full hover:shadow-xs',
-        isSelected && 'ring-2 ring-primary border-primary',
+        'flex flex-col h-full overflow-hidden',
+        isSelected && 'ring-2 ring-primary/30 border-primary',
       )}
       hoverable
     >
       <div
         className={cn(
-          'px-5 py-3 border-b flex justify-between items-center',
-          isSelected ? 'bg-primary-50 border-primary-200' : 'bg-slate-50/50 border-slate-100',
+          'px-5 py-4 border-b flex justify-between items-center gap-2',
+          isSelected ? 'bg-primary-50 border-primary-200' : 'bg-surface-dark border-[#e4e5dd]',
         )}
       >
-        <span className="text-xs font-bold uppercase tracking-wider text-primary-700 bg-primary-100 px-2 py-0.5 rounded">
+        <span className="text-xs font-semibold capitalize text-text bg-white border border-[#e4e5dd] px-2.5 py-1 rounded-full">
           {result.optionType}
         </span>
         <Button
           variant={isSelected ? 'primary' : 'ghost'}
           size="sm"
           onClick={onSelect}
+          aria-pressed={isSelected}
           aria-label={`Select ${result.optionType} metadata option`}
           data-testid={`select-meta-${result.optionType}`}
         >
@@ -242,44 +276,42 @@ function MetaResultCard({
         </Button>
       </div>
 
-      <div className="p-5 flex-1 flex flex-col gap-3">
+      <div className="p-5 sm:p-6 flex-1 flex flex-col gap-5">
         <div>
-          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-0.5">
-            {t('metadata.titleLabel')}
-          </p>
-          <p className="font-bold text-slate-800 text-base leading-tight">{result.title}</p>
+          <p className="text-xs font-medium text-text-muted mb-2">{t('metadata.titleLabel')}</p>
+          <p className="font-bold text-text text-xl leading-snug tracking-tight">{result.title}</p>
         </div>
 
         <div>
-          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-0.5">
-            {t('metadata.descLabel')}
-          </p>
+          <p className="text-xs font-medium text-text-muted mb-2">{t('metadata.descLabel')}</p>
           <p className="text-sm text-text-muted leading-relaxed">{result.description}</p>
         </div>
 
         <div>
           <div className="flex justify-between items-center mb-1.5">
-            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide flex items-center gap-1">
-              <Hash size={10} /> {t('metadata.tags')} ({result.tags.length})
+            <p className="text-xs font-medium text-text-muted flex items-center gap-1">
+              <Hash size={12} /> {t('metadata.tags')} ({result.tags.length})
             </p>
             <button
               onClick={copyTags}
               aria-label="Copy tags to clipboard"
               data-testid="copy-tags-btn"
               className={cn(
-                'text-xs px-2 py-0.5 rounded transition-colors flex items-center gap-1',
-                copiedTags ? 'text-success bg-success-light' : 'text-slate-500 hover:bg-slate-100',
+                'text-xs px-2 py-2 rounded-lg transition-colors flex items-center gap-1.5',
+                copiedTags
+                  ? 'text-success bg-success-light'
+                  : 'text-text-muted hover:bg-surface-dark',
               )}
             >
               {copiedTags ? <Check size={10} /> : <Copy size={10} />}
               {copiedTags ? t('metadata.copied') : t('metadata.copy')}
             </button>
           </div>
-          <div className="flex flex-wrap gap-1">
+          <div className="flex flex-wrap gap-1.5">
             {result.tags.map((tag, i) => (
               <span
                 key={i}
-                className="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] rounded-full border border-slate-200"
+                className="px-2.5 py-1 bg-surface-dark text-text-muted text-xs rounded-lg border border-[#e4e5dd]"
               >
                 {tag}
               </span>
@@ -287,12 +319,16 @@ function MetaResultCard({
           </div>
         </div>
 
-        <div className="mt-auto pt-3 border-t border-slate-100">
-          <div className="flex justify-between items-end mb-1.5">
-            <span className="text-xs font-bold text-slate-400">{t('metadata.qualityScore')}</span>
-            <span className={cn('text-lg font-bold', scoreColor)}>{scoreAvg.toFixed(1)}</span>
+        <div className="mt-auto pt-4 border-t border-[#e4e5dd]">
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-xs font-semibold text-text-muted">
+              {t('metadata.qualityScore')}
+            </span>
+            <span className={cn('text-2xl font-semibold tabular-nums', scoreColor)}>
+              {scoreAvg.toFixed(1)}
+            </span>
           </div>
-          <div className="grid grid-cols-2 gap-y-0.5 gap-x-4 text-xs text-text-muted">
+          <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-xs text-text-muted tabular-nums">
             <div className="flex justify-between">
               <span>{t('metadata.naturalness')}</span> <b>{result.evaluation.naturalness}</b>
             </div>

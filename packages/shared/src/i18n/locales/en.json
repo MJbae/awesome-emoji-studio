@@ -169,11 +169,32 @@
         "apiKeyPlaceholder": "AIza...",
         "showKey": "Show API Key",
         "hideKey": "Hide API Key",
-        "keyStorageInfo": "The key is only stored in your browser and is not sent externally.",
+        "keyStorageInfo": "Your key is stored on this device and used only for requests to Google Gemini.",
         "keyIssue": "Get a key:",
         "validating": "Validating...",
         "saveAndContinue": "Save and Continue",
         "minError": "API key must be at least 10 characters long.",
         "invalidError": "Invalid API key. Please check your key."
+    },
+    "studio": {
+        "skipToContent": "Skip to workspace",
+        "brandTagline": "A LITTLE IDEA. A LOT OF EXPRESSION.",
+        "settings": "Settings",
+        "workspace": "Your workspace",
+        "sidebarTitle": "One set. Every platform.",
+        "sidebarDescription": "Bring your characters to the places people connect.",
+        "footer": "A little more expression, one emoji at a time.",
+        "poweredBy": "Powered by Gemini",
+        "newCollection": "New collection",
+        "required": "Required",
+        "madeOfIdeas": "Made of ideas",
+        "previewTitle": "Small characters. Big personalities.",
+        "previewDescription": "Give your idea a face, a mood, and a world of its own.",
+        "sampleAlt": "Four illustrated tangerine characters showing different emotions",
+        "collectionIncludes": "Your collection includes",
+        "includesImages": "45 expressive emoji images",
+        "includesLanguages": "Metadata in 6 languages",
+        "includesExports": "Packages for 6 platform formats",
+        "exampleNote": "Illustration for inspiration. Your characters will be unique."
     }
 }

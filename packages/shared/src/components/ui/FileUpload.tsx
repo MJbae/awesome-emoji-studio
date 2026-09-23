@@ -10,12 +10,7 @@ interface FileUploadProps {
   label?: string;
 }
 
-function FileUpload({
-  onUpload,
-  accept = 'image/*,.zip',
-  maxFiles = 120,
-  label,
-}: FileUploadProps) {
+function FileUpload({ onUpload, accept = 'image/*,.zip', maxFiles = 120, label }: FileUploadProps) {
   const { t } = useTranslation();
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -48,7 +43,7 @@ function FileUpload({
 
       setIsProcessing(false);
     },
-    [maxFiles, onUpload],
+    [maxFiles, onUpload, t],
   );
 
   const onDragOver = useCallback((e: React.DragEvent) => {
@@ -81,19 +76,13 @@ function FileUpload({
         onDragLeave={onDragLeave}
         onDrop={onDrop}
         className={cn(
-          'group relative overflow-hidden flex flex-col items-center justify-center p-6 sm:p-10 text-center cursor-pointer transition-all duration-300 rounded-2xl border-2',
+          'group relative overflow-hidden flex flex-col items-center justify-center p-6 sm:p-10 text-center cursor-pointer transition-all duration-300 rounded-2xl border focus-within:ring-2 focus-within:ring-primary/30',
           isDragging
-            ? 'border-transparent shadow-lg scale-105 bg-white'
-            : 'border-dashed border-slate-300 hover:border-[#7c3aed]/40 hover:bg-slate-50',
+            ? 'border-primary bg-primary-50'
+            : 'border-dashed border-slate-300 hover:border-primary/50 hover:bg-slate-50',
         )}
         aria-label={resolvedLabel}
       >
-        {isDragging && (
-          <>
-            <span className="absolute left-1/2 top-1/2 aspect-square w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_270deg,rgba(124,58,237,0.2)_330deg,#7c3aed_360deg)] opacity-100" />
-            <span className="absolute inset-[2px] rounded-[14px] bg-[#f5f3ff]" />
-          </>
-        )}
         <div className="relative z-10 w-full flex flex-col items-center gap-3">
           <input
             id={inputId}
@@ -108,10 +97,7 @@ function FileUpload({
           <div className="flex flex-col items-center gap-3">
             <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center pointer-events-none">
               {isProcessing ? (
-                <div className="relative overflow-hidden w-9 h-9 rounded-full flex items-center justify-center">
-                  <span className="absolute left-1/2 top-1/2 aspect-square w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_1s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_270deg,rgba(124,58,237,0.4)_330deg,#7c3aed_360deg)]" />
-                  <span className="absolute inset-[3px] rounded-full bg-[#f5f3ff]" />
-                </div>
+                <span className="h-8 w-8 animate-spin rounded-full border-2 border-primary/20 border-t-primary" />
               ) : (
                 <Upload size={28} />
               )}
@@ -120,7 +106,9 @@ function FileUpload({
               <p className="font-semibold text-slate-800">
                 {isProcessing ? t('fileUpload.processing') : t('fileUpload.dragOrClick')}
               </p>
-              <p className="text-sm text-text-muted mt-1">{t('fileUpload.formatInfo', { max: maxFiles })}</p>
+              <p className="text-sm text-text-muted mt-1">
+                {t('fileUpload.formatInfo', { max: maxFiles })}
+              </p>
             </div>
           </div>
         </div>

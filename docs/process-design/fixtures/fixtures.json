@@ -1,0 +1,331 @@
+{
+  "mock": true,
+  "provenance": "로컬 SVG를 PNG로 렌더링한 결정적 디자인 검토용 모의 산출물. 실제 Gemini 생성 결과가 아닙니다.",
+  "concept": "퇴근요정 귤리는 따뜻한 주황색 몸과 초록 잎을 가진 작고 동글동글한 귤 요정입니다. 커피 한 잔으로 힘을 내고 퇴근을 기다리는 직장인의 하루를 포근한 미소와 솔직한 표정으로 전합니다.",
+  "description": "작은 기쁨으로 하루를 버티는 직장인 귤 요정. 커피 한 잔부터 퇴근의 환호까지, 매일의 기분을 포근하고 솔직하게 전해요.",
+  "characterSpecification": {
+    "physicalDescription": "따뜻한 살구빛 주황색의 동글동글한 귤 캐릭터. 몸과 머리가 하나인 말랑한 실루엣에 짧고 작은 팔다리를 가진다.",
+    "facialFeatures": "짙은 갈색의 단순하고 또렷한 눈, 작은 입, 복숭아빛 볼. 모든 표정에서 눈과 볼의 위치 및 얼굴 비율을 일정하게 유지한다.",
+    "colorPalette": "몸 #F4A25F, 잎 #829965, 눈과 입 #513F35, 볼 #E68A77, 배경 #FFFFFF.",
+    "distinguishingFeatures": "머리에 올리브빛 초록 잎 한 장과 짧은 갈색 줄기가 있으며 이마 왼쪽에 작은 살구빛 반사광이 있다.",
+    "artStyle": "간결한 선과 평면적인 색면으로 표현한 포근한 스티커 일러스트. 흰 배경, 부드러운 곡선, 또렷한 실루엣, 그림자와 질감은 최소화한다."
+  },
+  "characterImage": "character.png",
+  "stickers": [
+    {
+      "id": 1,
+      "label": "반가워요",
+      "mood": "happy",
+      "prop": "wave",
+      "image": "sticker-01.png"
+    },
+    {
+      "id": 2,
+      "label": "사랑해요",
+      "mood": "heart",
+      "prop": "hearts",
+      "image": "sticker-02.png"
+    },
+    {
+      "id": 3,
+      "label": "커피 충전",
+      "mood": "calm",
+      "prop": "coffee",
+      "image": "sticker-03.png"
+    },
+    {
+      "id": 4,
+      "label": "열일 중",
+      "mood": "focus",
+      "prop": "laptop",
+      "image": "sticker-04.png"
+    },
+    {
+      "id": 5,
+      "label": "퇴근이다!",
+      "mood": "happy",
+      "prop": "bag",
+      "image": "sticker-05.png"
+    },
+    {
+      "id": 6,
+      "label": "오늘도 파이팅",
+      "mood": "happy",
+      "prop": "cheer",
+      "image": "sticker-06.png"
+    },
+    {
+      "id": 7,
+      "label": "고마워요",
+      "mood": "calm",
+      "prop": "flower",
+      "image": "sticker-07.png"
+    },
+    {
+      "id": 8,
+      "label": "잘 자요",
+      "mood": "sleep",
+      "prop": "sleep",
+      "image": "sticker-08.png"
+    },
+    {
+      "id": 9,
+      "label": "배고파요",
+      "mood": "sad",
+      "prop": "food",
+      "image": "sticker-09.png"
+    },
+    {
+      "id": 10,
+      "label": "완전 좋아",
+      "mood": "happy",
+      "prop": "thumb",
+      "image": "sticker-10.png"
+    },
+    {
+      "id": 11,
+      "label": "미안해요",
+      "mood": "sad",
+      "prop": "sorry",
+      "image": "sticker-11.png"
+    },
+    {
+      "id": 12,
+      "label": "눈물 뚝뚝",
+      "mood": "cry",
+      "prop": "tears",
+      "image": "sticker-12.png"
+    },
+    {
+      "id": 13,
+      "label": "조금 화났어",
+      "mood": "angry",
+      "prop": "anger",
+      "image": "sticker-13.png"
+    },
+    {
+      "id": 14,
+      "label": "우와!",
+      "mood": "surprise",
+      "prop": "stars",
+      "image": "sticker-14.png"
+    },
+    {
+      "id": 15,
+      "label": "부끄러워",
+      "mood": "shy",
+      "prop": "blush",
+      "image": "sticker-15.png"
+    },
+    {
+      "id": 16,
+      "label": "축하해요",
+      "mood": "happy",
+      "prop": "party",
+      "image": "sticker-16.png"
+    },
+    {
+      "id": 17,
+      "label": "선물이에요",
+      "mood": "heart",
+      "prop": "gift",
+      "image": "sticker-17.png"
+    },
+    {
+      "id": 18,
+      "label": "잠깐만요",
+      "mood": "focus",
+      "prop": "stop",
+      "image": "sticker-18.png"
+    },
+    {
+      "id": 19,
+      "label": "알겠어요",
+      "mood": "calm",
+      "prop": "check",
+      "image": "sticker-19.png"
+    },
+    {
+      "id": 20,
+      "label": "좋은 아침",
+      "mood": "happy",
+      "prop": "sun",
+      "image": "sticker-20.png"
+    },
+    {
+      "id": 21,
+      "label": "월요일이라니",
+      "mood": "tired",
+      "prop": "cloud",
+      "image": "sticker-21.png"
+    },
+    {
+      "id": 22,
+      "label": "드디어 금요일",
+      "mood": "happy",
+      "prop": "music",
+      "image": "sticker-22.png"
+    },
+    {
+      "id": 23,
+      "label": "충전이 필요해",
+      "mood": "tired",
+      "prop": "battery",
+      "image": "sticker-23.png"
+    },
+    {
+      "id": 24,
+      "label": "나 지금 가는 중",
+      "mood": "focus",
+      "prop": "run",
+      "image": "sticker-24.png"
+    },
+    {
+      "id": 25,
+      "label": "밥 먹었어요?",
+      "mood": "happy",
+      "prop": "rice",
+      "image": "sticker-25.png"
+    },
+    {
+      "id": 26,
+      "label": "답장 기다리는 중",
+      "mood": "sad",
+      "prop": "phone",
+      "image": "sticker-26.png"
+    },
+    {
+      "id": 27,
+      "label": "괜찮아요",
+      "mood": "calm",
+      "prop": "pat",
+      "image": "sticker-27.png"
+    },
+    {
+      "id": 28,
+      "label": "멋져요!",
+      "mood": "heart",
+      "prop": "sparkle",
+      "image": "sticker-28.png"
+    },
+    {
+      "id": 29,
+      "label": "회의 중이에요",
+      "mood": "focus",
+      "prop": "notes",
+      "image": "sticker-29.png"
+    },
+    {
+      "id": 30,
+      "label": "살려 주세요",
+      "mood": "cry",
+      "prop": "deadline",
+      "image": "sticker-30.png"
+    },
+    {
+      "id": 31,
+      "label": "휴가 갑니다",
+      "mood": "happy",
+      "prop": "holiday",
+      "image": "sticker-31.png"
+    },
+    {
+      "id": 32,
+      "label": "비 오는 날",
+      "mood": "calm",
+      "prop": "umbrella",
+      "image": "sticker-32.png"
+    },
+    {
+      "id": 33,
+      "label": "따뜻하게 입어요",
+      "mood": "calm",
+      "prop": "scarf",
+      "image": "sticker-33.png"
+    },
+    {
+      "id": 34,
+      "label": "더워요",
+      "mood": "tired",
+      "prop": "fan",
+      "image": "sticker-34.png"
+    },
+    {
+      "id": 35,
+      "label": "간식 시간",
+      "mood": "happy",
+      "prop": "cookie",
+      "image": "sticker-35.png"
+    },
+    {
+      "id": 36,
+      "label": "진짜요?",
+      "mood": "surprise",
+      "prop": "question",
+      "image": "sticker-36.png"
+    },
+    {
+      "id": 37,
+      "label": "생각하는 중",
+      "mood": "focus",
+      "prop": "think",
+      "image": "sticker-37.png"
+    },
+    {
+      "id": 38,
+      "label": "응원할게요",
+      "mood": "happy",
+      "prop": "flag",
+      "image": "sticker-38.png"
+    },
+    {
+      "id": 39,
+      "label": "오늘은 쉬어요",
+      "mood": "sleep",
+      "prop": "pillow",
+      "image": "sticker-39.png"
+    },
+    {
+      "id": 40,
+      "label": "보고 싶어요",
+      "mood": "sad",
+      "prop": "heart",
+      "image": "sticker-40.png"
+    },
+    {
+      "id": 41,
+      "label": "약속해요",
+      "mood": "calm",
+      "prop": "promise",
+      "image": "sticker-41.png"
+    },
+    {
+      "id": 42,
+      "label": "정말 최고야",
+      "mood": "happy",
+      "prop": "medal",
+      "image": "sticker-42.png"
+    },
+    {
+      "id": 43,
+      "label": "수고했어요",
+      "mood": "calm",
+      "prop": "tea",
+      "image": "sticker-43.png"
+    },
+    {
+      "id": 44,
+      "label": "내일 또 만나요",
+      "mood": "happy",
+      "prop": "bye",
+      "image": "sticker-44.png"
+    },
+    {
+      "id": 45,
+      "label": "퇴근요정 출동",
+      "mood": "happy",
+      "prop": "cape",
+      "image": "sticker-45.png"
+    }
+  ]
+}

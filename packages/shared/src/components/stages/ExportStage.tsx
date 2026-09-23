@@ -44,20 +44,25 @@ function ExportStage({
   const selectedCount = selectedPlatforms.length;
 
   return (
-    <section data-stage="export" className="max-w-5xl mx-auto space-y-8">
+    <section data-stage="export" className="max-w-6xl mx-auto space-y-8">
       {/* Header */}
-      <div className="text-center space-y-3">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium">
-          <FileDown size={14} />
-          {t('export.title')}
+      <div className="flex items-start justify-between gap-6">
+        <div className="space-y-4">
+          <div className="stage-eyebrow">
+            <FileDown size={14} />
+            {t('export.title')}
+          </div>
+          <h2 className="stage-heading">{t('export.title')}</h2>
+          <p className="text-text-muted leading-relaxed">{t('export.subtitle')}</p>
         </div>
-        <h2 className="text-3xl font-bold text-text">{t('export.title')}</h2>
-        <p className="text-text-muted">{t('export.subtitle')}</p>
+        <div className="hidden sm:flex h-24 w-24 shrink-0 items-center justify-center bg-[#edf0ce] text-[#656c35] rounded-3xl rotate-3">
+          <Package size={42} strokeWidth={1.5} />
+        </div>
       </div>
 
       {/* Select All / Deselect All */}
-      <div className="flex justify-between items-center">
-        <h3 className="text-sm font-bold text-slate-800">{t('export.selectPlatforms')}</h3>
+      <div className="flex flex-wrap justify-between items-center gap-3 border-b border-[#e4e5dd] pb-5">
+        <h3 className="text-base font-semibold text-text">{t('export.selectPlatforms')}</h3>
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={onSelectAll}>
             {t('export.selectAll')}
@@ -70,11 +75,12 @@ function ExportStage({
 
       {/* Platform selection grid by category */}
       {platformsByCategory.map((cat) => (
-        <div key={cat.id} className="space-y-3">
-          <h4 className="text-sm font-semibold text-slate-600 border-b border-slate-200 pb-1">
+        <div key={cat.id} className="space-y-4">
+          <h4 className="text-sm font-semibold text-text-muted flex items-center gap-3">
             {t(cat.labelKey)}
+            <span className="h-px flex-1 bg-[#e4e5dd]" aria-hidden="true" />
           </h4>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2">
             {cat.platforms.map((platformId) => {
               const spec = PLATFORM_SPECS[platformId];
               const isSelected = selectedPlatforms.includes(platformId);
@@ -83,25 +89,30 @@ function ExportStage({
                 <button
                   key={platformId}
                   onClick={() => onTogglePlatform(platformId)}
+                  aria-pressed={isSelected}
                   className={cn(
-                    'relative p-4 rounded-xl border-2 text-left transition-all',
-                    isSelected && 'border-primary bg-primary/5',
-                    !isSelected && 'border-slate-200 hover:border-slate-300 bg-white',
+                    'relative p-5 rounded-2xl border text-left transition-colors',
+                    isSelected && 'border-primary bg-primary-50 ring-1 ring-primary/20',
+                    !isSelected && 'border-[#e4e5dd] hover:border-[#b8bcae] bg-white',
                   )}
                 >
                   {isSelected && (
-                    <span className="absolute top-2 right-2">
+                    <span className="absolute top-5 right-5">
                       <CheckCircle2 size={18} className="text-primary" />
                     </span>
                   )}
 
-                  <p className="font-bold text-slate-800 text-sm pr-8">{spec.label}</p>
-                  <p className="text-xs text-text-muted mb-2">{spec.description}</p>
+                  <p className="font-semibold text-text text-base pr-7">{spec.label}</p>
+                  <p className="text-xs text-text-muted leading-relaxed mt-1 mb-4">
+                    {spec.description}
+                  </p>
 
-                  <div className="space-y-1 text-[10px] text-slate-600 bg-slate-50 p-2 rounded border border-slate-100">
+                  <div className="space-y-2 text-xs text-text-muted bg-white/65 p-3.5 rounded-xl border border-[#e4e5dd]/70">
                     <div className="flex justify-between">
                       <span>{t('export.dimensions')}</span>
-                      <span className="font-mono">{spec.content.width}×{spec.content.height}</span>
+                      <span className="font-mono">
+                        {spec.content.width}×{spec.content.height}
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span>{t('export.format')}</span>
@@ -110,12 +121,16 @@ function ExportStage({
                     {spec.main && (
                       <div className="flex justify-between">
                         <span>{t('export.mainImage')}</span>
-                        <span className="font-mono">{spec.main.width}×{spec.main.height}</span>
+                        <span className="font-mono">
+                          {spec.main.width}×{spec.main.height}
+                        </span>
                       </div>
                     )}
                     <div className="flex justify-between">
                       <span>{t('export.tabImage')}</span>
-                      <span className="font-mono">{spec.tab.width}×{spec.tab.height}</span>
+                      <span className="font-mono">
+                        {spec.tab.width}×{spec.tab.height}
+                      </span>
                     </div>
                     {spec.maxFileSize && (
                       <div className="flex justify-between">
@@ -132,11 +147,13 @@ function ExportStage({
       ))}
 
       {/* Export actions */}
-      <div className="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
-        <div className="flex items-center gap-3">
-          <Download className="text-primary" size={20} />
+      <div className="bg-[#edf0ce] p-5 sm:p-7 rounded-3xl border border-[#dce2b6] space-y-6">
+        <div className="flex items-center gap-4">
+          <span className="p-3 rounded-2xl bg-white/70 text-[#656c35]">
+            <Download size={22} />
+          </span>
           <div>
-            <p className="font-bold text-slate-800">
+            <p className="font-semibold text-text text-lg">
               {t('export.readyCount', { count: selectedCount })}
             </p>
           </div>
@@ -171,27 +188,33 @@ function ExportStage({
 
       {/* Export progress */}
       {exportJobs.length > 0 && (
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 space-y-3">
-          <h4 className="text-sm font-bold text-slate-800">{t('export.exportProgress')}</h4>
+        <div
+          className="bg-white p-5 sm:p-6 rounded-3xl border border-[#e4e5dd] space-y-5"
+          aria-live="polite"
+        >
+          <h4 className="text-sm font-semibold text-text">{t('export.exportProgress')}</h4>
           {exportJobs.map((job) => (
-            <div key={job.platformId} className="flex items-center gap-3">
+            <div key={job.platformId} className="flex items-center gap-2 sm:gap-3">
               <div className="w-5 shrink-0">
                 {job.status === 'done' && <CheckCircle2 size={16} className="text-success" />}
                 {job.status === 'error' && <XCircle size={16} className="text-red-500" />}
-                {job.status === 'processing' && <Clock size={16} className="text-primary animate-spin" />}
+                {job.status === 'processing' && (
+                  <Clock size={16} className="text-primary animate-spin" />
+                )}
                 {job.status === 'pending' && <Clock size={16} className="text-slate-300" />}
               </div>
-              <span className="text-sm text-slate-700 w-48 truncate">
+              <span className="text-xs sm:text-sm text-text w-24 sm:w-48 truncate">
                 {PLATFORM_SPECS[job.platformId]?.label ?? job.platformId}
               </span>
-              <div className="flex-1">
+              <div className="flex-1 min-w-0">
                 <progress
                   value={job.progress}
                   max={100}
-                  className="w-full h-2 overflow-hidden [&::-webkit-progress-bar]:rounded-full [&::-webkit-progress-bar]:bg-slate-200 [&::-webkit-progress-value]:rounded-full [&::-webkit-progress-value]:bg-primary [&::-webkit-progress-value]:transition-all [&::-moz-progress-bar]:bg-primary [&::-moz-progress-bar]:rounded-full"
+                  aria-label={job.platformId}
+                  className="w-full h-2 overflow-hidden [&::-webkit-progress-bar]:rounded-full [&::-webkit-progress-bar]:bg-[#eeeee7] [&::-webkit-progress-value]:rounded-full [&::-webkit-progress-value]:bg-primary [&::-webkit-progress-value]:transition-all [&::-moz-progress-bar]:bg-primary [&::-moz-progress-bar]:rounded-full"
                 />
               </div>
-              <span className="text-xs text-text-muted w-10 text-right">
+              <span className="text-xs text-text-muted w-10 text-right tabular-nums">
                 {job.status === 'error' ? t('export.exportFailed') : `${job.progress}%`}
               </span>
             </div>
@@ -200,7 +223,7 @@ function ExportStage({
       )}
 
       {/* Back button */}
-      <div className="flex justify-start pt-4">
+      <div className="stage-actions">
         <Button
           variant="outline"
           onClick={onBack}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { RefreshCw, Clock, AlertCircle, Pencil } from 'lucide-react';
+import { RefreshCw, Clock, AlertCircle, Pencil, Layers } from 'lucide-react';
 import type { Sticker } from '@/types/domain';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -70,32 +70,41 @@ function StickerBatchStage({
       data-phase={isGenerating ? 'generating' : 'complete'}
       className="max-w-7xl mx-auto space-y-6"
     >
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-white/90 backdrop-blur-sm p-5 rounded-2xl border border-slate-200/60 sticky top-16 z-30 gap-4 shadow-md transition-all">
-        <div className="space-y-1 w-full sm:w-auto text-center sm:text-left">
-          <h2 className="text-lg font-bold text-text">{t('stickers.generatingTitle')}</h2>
-          <div role="status" aria-live="polite" className="text-sm text-text-muted">
-            {isGenerating
-              ? t('stickers.processing', { done: doneCount, total: totalCount })
-              : t('stickers.completed', { done: doneCount, error: errorCount })}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between bg-white/95 backdrop-blur-md p-5 sm:p-6 rounded-3xl border border-[#e4e5dd] sticky top-20 z-30 gap-5 shadow-[0_6px_24px_-18px_rgba(37,39,32,0.3)]">
+        <div className="flex items-center gap-4 min-w-0">
+          <div className="shrink-0 p-3 rounded-2xl bg-[#edf0ce] text-[#656c35]">
+            <Layers size={24} />
+          </div>
+          <div className="space-y-1.5">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-text">
+              {t('stickers.generatingTitle')}
+            </h2>
+            <div role="status" aria-live="polite" className="text-sm text-text-muted">
+              {isGenerating
+                ? t('stickers.processing', { done: doneCount, total: totalCount })
+                : t('stickers.completed', { done: doneCount, error: errorCount })}
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto">
-          <div className="flex-1 w-full sm:w-56">
+        <div className="flex items-center gap-5 w-full lg:w-auto">
+          <div className="flex-1 min-w-0 lg:w-44">
             <div
               role="progressbar"
               aria-valuenow={doneCount}
               aria-valuemin={0}
               aria-valuemax={totalCount}
               aria-label="Emoji generation progress"
-              className="w-full h-3 bg-slate-100 rounded-full overflow-hidden shadow-inner"
+              className="w-full h-2 bg-[#eeeee7] rounded-full overflow-hidden"
             >
               <div
-                className="h-full bg-gradient-to-r from-[#7c3aed] to-[#a78bfa] rounded-full transition-all duration-500 ease-out shadow-[0_0_10px_rgba(124,58,237,0.4)]"
+                className="h-full bg-primary rounded-full transition-all duration-500 ease-out"
                 style={{ width: `${progressPct}%` }}
               />
             </div>
-            <p className="text-xs font-semibold text-text-muted mt-1.5 text-right">{progressPct}%</p>
+            <p className="text-xs font-semibold text-text-muted mt-2 tabular-nums">
+              {progressPct}%
+            </p>
           </div>
           <Button
             onClick={onContinue}
@@ -110,15 +119,15 @@ function StickerBatchStage({
       </div>
 
       <div
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+        className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4"
         role="list"
         aria-label="Emoji grid"
       >
         {stickers.map((sticker) => (
           <React.Fragment key={sticker.id}>
-            <Card className="p-3 flex flex-col items-center min-h-[200px]">
+            <Card className="p-2.5 sm:p-3 flex flex-col items-center min-h-[200px]">
               <div
-                className="w-full aspect-square bg-slate-50 rounded-xl mb-2 flex items-center justify-center overflow-hidden border border-slate-100 relative group"
+                className="studio-preview w-full aspect-square rounded-2xl mb-3 flex items-center justify-center overflow-hidden border border-[#eaeae3] relative group"
                 role="listitem"
                 aria-label={`Emoji ${sticker.id}: ${sticker.idea.label}`}
                 data-job-status={sticker.status}
@@ -128,14 +137,14 @@ function StickerBatchStage({
                     <img
                       src={`data:image/png;base64,${sticker.imageUrl}`}
                       alt={sticker.idea.label}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-contain p-3 pb-12"
                     />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                    <div className="absolute bottom-1.5 inset-x-1.5 flex items-center justify-center gap-1">
                       <button
                         onClick={() => onRegenerate(sticker.id)}
                         aria-label={`Regenerate emoji ${sticker.id}`}
                         data-testid={`regen-${sticker.id}`}
-                        className="p-2 bg-white rounded-full hover:bg-slate-100 text-primary"
+                        className="p-2.5 bg-white rounded-xl border border-[#e4e5dd] hover:bg-primary-50 hover:border-primary-200 text-primary transition-colors shadow-xs"
                       >
                         <RefreshCw size={18} />
                       </button>
@@ -143,7 +152,7 @@ function StickerBatchStage({
                         onClick={() => startEdit(sticker)}
                         aria-label={`Edit emoji ${sticker.id} prompt`}
                         data-testid={`edit-${sticker.id}`}
-                        className="p-2 bg-white rounded-full hover:bg-slate-100 text-slate-600"
+                        className="p-2.5 bg-white rounded-xl border border-[#e4e5dd] hover:bg-surface-dark text-text-muted transition-colors shadow-xs"
                       >
                         <Pencil size={18} />
                       </button>
@@ -160,38 +169,42 @@ function StickerBatchStage({
                       onClick={() => onRegenerate(sticker.id)}
                       aria-label={`Retry emoji ${sticker.id}`}
                       data-testid={`retry-${sticker.id}`}
-                      className="text-xs text-primary font-semibold underline"
+                      className="text-sm text-primary font-semibold underline underline-offset-4 px-3 py-2"
                     >
                       {t('character.retry')}
                     </button>
                   </div>
                 ) : (
-                  <Clock className="w-7 h-7 text-slate-200" />
+                  <Clock className="w-7 h-7 text-[#b9bcae]" />
                 )}
               </div>
 
-              <div className="w-full text-center space-y-0.5">
-                <p className="text-xs font-bold text-slate-900 leading-tight line-clamp-2">
+              <div className="w-full space-y-1 px-1 pb-1">
+                <p className="text-sm font-semibold text-text leading-snug line-clamp-2">
                   {sticker.idea.label}
                 </p>
-                <div className="flex justify-between items-center text-[10px] text-text-muted border-t border-slate-100 pt-1 mt-1">
-                  <span>#{sticker.id}</span>
-                  <span>{sticker.idea.category}</span>
+                <div className="flex justify-between items-center gap-2 text-xs text-text-muted pt-1.5">
+                  <span className="tabular-nums">#{sticker.id}</span>
+                  <span className="truncate">{sticker.idea.category}</span>
                 </div>
               </div>
             </Card>
             {editingId === sticker.id && (
-              <div className="col-span-full bg-white border border-primary/30 rounded-xl p-4 space-y-3 -mt-2 shadow-sm">
+              <div className="col-span-full bg-white border border-primary/30 rounded-2xl p-5 sm:p-6 space-y-4 shadow-sm">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-600 mb-1">
+                  <label
+                    htmlFor={`sticker-prompt-${sticker.id}`}
+                    className="block text-sm font-semibold text-text mb-2"
+                  >
                     {t('stickers.regenPrompt')}
                   </label>
                   <AnimatedInputWrapper>
                     <textarea
+                      id={`sticker-prompt-${sticker.id}`}
                       value={editPrompt}
                       onChange={(e) => setEditPrompt(e.target.value)}
                       rows={3}
-                      className="w-full bg-transparent px-3 py-2 text-sm resize-none outline-none"
+                      className="w-full bg-transparent px-4 py-3 text-sm leading-relaxed resize-y outline-none"
                       aria-label="Edit generation prompt"
                       data-testid={`edit-prompt-${sticker.id}`}
                     />
@@ -215,7 +228,7 @@ function StickerBatchStage({
         ))}
       </div>
 
-      <div className="text-center pt-6 pb-8">
+      <div className="stage-actions">
         <Button
           variant="outline"
           onClick={onBack}
