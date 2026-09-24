@@ -2,31 +2,41 @@
 
 # Awesome Emoji Studio
 
-**One character. Every mood.**
+**One concept. A complete emoji production pipeline.**
 
-Turn an idea into an emoji pack with Gemini.
+Pipeline designed by [MJbae](https://github.com/MJbae). AI stages powered by Gemini.
 
-[**Try it live ↗**](https://awesome-emoji-studio.vercel.app) · [Get a Gemini API key](https://aistudio.google.com/apikey)
+[**Try the pipeline ↗**](https://awesome-emoji-studio.vercel.app) · [Explore the design](docs/pipeline.md)
 
 **English** · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
 </div>
 
-![Awesome Emoji Studio: character creation and expressive sticker artwork](docs/readme/showcase.png)
+<div align="center">
+<picture>
+  <source media="(max-width: 600px)" srcset="docs/readme/pipeline/en-mobile.svg">
+  <img src="docs/readme/pipeline/en-desktop.svg" alt="Concept → AI strategy → Character + spec → 45 expressions → Background removal + outlines → Metadata 5 languages → ZIP exports 6 formats">
+</picture>
+</div>
 
-<p align="center"><sub>Actual app interface with illustrative mock artwork.</sub></p>
+- **Plan before generating.** Market, art, and cultural perspectives shape the creative strategy.
+- **Carry the character forward.** Character details shape the expression plan, and a shared reference image guides the artwork.
+- **Finish the workflow.** Process images, generate titles and tags, then package for LINE, KakaoTalk, Telegram, and OGQ.
 
-## From idea to expression
+Review the results and regenerate along the way. The pipeline runs in the browser or desktop app, with no backend to set up. AI requests go directly to Google; image processing and ZIP creation stay local.
 
-- **Create a whole cast of moods.** Plan a character and generate a set of 45 expressions.
-- **Make it yours.** Refine individual images, remove backgrounds, and add outlines.
-- **Pack it up.** Generate titles and tags in 5 languages. Export ZIPs in 6 formats for LINE, KakaoTalk, Telegram, and OGQ.
+<details>
+<summary><strong>See the studio</strong></summary>
 
-**Works in your browser. Also runs on desktop.** No backend to set up. Bring your own Gemini API key; AI requests go directly to Google. Image cleanup and ZIP creation run locally.
+![Awesome Emoji Studio interface](docs/readme/showcase.png)
+
+<sub>Actual app interface with illustrative mock artwork.</sub>
+
+</details>
 
 ## Run locally
 
-Node.js 22.12+ and npm.
+Node.js 22.12+ and npm. Bring your own [Gemini API key](https://aistudio.google.com/apikey).
 
 ```bash
 git clone https://github.com/MJbae/awesome-emoji-studio.git
@@ -35,10 +45,10 @@ npm install
 npm run dev:web
 ```
 
-For desktop, run `npm run dev:electron` instead. Add your Gemini key in the app.
+For desktop, use `npm run dev:electron`. Enter your key in the app.
 
-[Developer guide](docs/development.md) · [Design gallery](docs/process-design/README.md) · [Language reviews](docs/localization/README.md)
+[Pipeline design](docs/pipeline.md) · [Developer guide](docs/development.md) · [Language reviews](docs/localization/README.md)
 
 ---
 
-**Make something expressive.** If this project sparks an idea, give it a ⭐ so you can find it again.
+**Like the pipeline?** Give it a ⭐ and build something expressive.

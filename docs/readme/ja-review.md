@@ -2,12 +2,15 @@
 
 Status: **PASS**
 
-Reviewed candidate: `/tmp/emoji-readme/README.ja.md` against `/tmp/emoji-readme/en-draft.md`.
+Reviewed candidate: `/tmp/emoji-pipeline-readme/README.ja.md` against `/tmp/emoji-pipeline-readme/README.md`.
 
-- Complete copy reviewed for natural Japanese phrasing, concise rhythm, and a friendly GitHub project tone. Uses スタンプ for the illustrated messaging pack, 表情 for expressions, and 書き出し for export; avoids mechanically copying English slogans.
-- Features and limits preserved: 45 expressions, five output languages, six export formats across the four named platforms, user-supplied Gemini API key, direct Google requests, and local image processing/ZIP creation.
-- Browser/desktop instructions, Node.js 22.12+, all four shell commands, links, visual, and language navigation preserved.
-- Screenshot caption explicitly identifies illustrations as display samples; does not imply real generated-art validation. No API pricing, platform approval, test coverage, or popularity guarantees added.
-- Star invitation is optional and idiomatic. No language issues remaining in this candidate.
+- Reviewed all Japanese text for idiomatic app/developer README usage and concise rhythm. The lead foregrounds the complete production pipeline and explicitly credits MJbae with its design while identifying Gemini as the AI engine.
+- Preserved the seven Mermaid node IDs A–G and every stage handoff, plus the 45 expressions, five metadata languages, six export formats, and four platform names. Uses short, understandable Japanese node labels.
+- The three benefits describe strategy, character details shaping the expression plan and reuse of a shared reference image for artwork generation, and completion through packaged outputs. Review and regeneration copy describes the interactive workflow without claiming an automatic public API pipeline.
+- Preserved all link targets, current-language navigation, four shell commands, Node.js 22.12+, user-supplied key instructions, direct requests to Google, and local image/ZIP processing.
+- The app screenshot remains collapsed. Its caption clearly labels the artwork as illustrative samples. No one-click, free API, platform approval, popularity, or coverage guarantees introduced.
+- The star invitation is natural and optional. No language issues remaining in this candidate.
 
 Review performed by a dedicated Japanese language review agent; this is not a claim of human review.
+
+Precision follow-up: **PASS**. Node E now explicitly says 背景透過 (background removal). Benefit 2 distinguishes キャラクターの設定をもとに表情を考え (character details inform expression planning) from 共通の参考画像を使ってイラストを生成 (the reference image guides artwork), with no claim that the specification directly feeds each image generation call. All other README copy is unchanged.

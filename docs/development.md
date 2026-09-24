@@ -1,6 +1,6 @@
 # Developer guide
 
-[← Overview](../README.md)
+[← Overview](../README.md) · [Pipeline design](pipeline.md)
 
 ## Start
 

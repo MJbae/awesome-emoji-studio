@@ -2,31 +2,41 @@
 
 # Awesome Emoji Studio
 
-**一个角色，装下所有心情。**
+**一个创意，一套完整的表情包制作流程。**
 
-用 Gemini，把灵感变成一套表情包。
+流程由 [MJbae](https://github.com/MJbae) 设计，AI 环节由 Gemini 提供支持。
 
-[**立即体验 ↗**](https://awesome-emoji-studio.vercel.app) · [获取 Gemini API 密钥](https://aistudio.google.com/apikey)
+[**体验制作流程 ↗**](https://awesome-emoji-studio.vercel.app) · [了解流程设计](docs/pipeline.md)
 
 [English](README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · **简体中文** · [繁體中文](README.zh-TW.md)
 
 </div>
 
-![Awesome Emoji Studio：角色创作界面与丰富的表情图片](docs/readme/showcase.png)
+<div align="center">
+<picture>
+  <source media="(max-width: 600px)" srcset="docs/readme/pipeline/zh-CN-mobile.svg">
+  <img src="docs/readme/pipeline/zh-CN-desktop.svg" alt="创意 → AI 创作策略 → 角色 与外观设定 → 45 种表情 → 去除背景 添加描边 → 元数据 5 种语言 → ZIP 导出 6 种格式">
+</picture>
+</div>
 
-<p align="center"><sub>真实应用界面，展示图片为模拟示例。</sub></p>
+- **先定方向，再生成。** 结合市场、美术与文化视角，制定创作策略。
+- **沿用角色设定。** 根据角色细节规划表情，再用同一张参考图指导图片生成。
+- **完成制作流程。** 处理图片、生成标题和标签，再打包为适用于 LINE、KakaoTalk、Telegram 和 OGQ 的文件。
 
-## 从灵感到表情包
+你可以逐步查看结果，并按需重新生成。整套流程可在浏览器或桌面应用中运行，无需搭建后端。AI 请求直接发送给 Google；图片处理和 ZIP 打包都在本地完成。
 
-- **让角色有戏。** 设计角色，生成 45 张表情图。
-- **调出你的风格。** 逐张优化图片、去除背景、添加描边。
-- **打包带走。** 生成 5 种语言的标题和标签，以 6 种平台格式导出 ZIP，适配 LINE、KakaoTalk、Telegram 和 OGQ。
+<details>
+<summary><strong>看看创作界面</strong></summary>
 
-**浏览器里就能用，也支持桌面运行。** 无需搭建后端。使用你自己的 Gemini API 密钥，AI 请求直接发送给 Google；图片后处理和 ZIP 打包在本地完成。
+![Awesome Emoji Studio 界面](docs/readme/showcase.png)
+
+<sub>真实应用界面，展示图片为模拟示例。</sub>
+
+</details>
 
 ## 本地运行
 
-需要 Node.js 22.12+ 和 npm。
+需要 Node.js 22.12+ 和 npm，以及你自己的 [Gemini API 密钥](https://aistudio.google.com/apikey)。
 
 ```bash
 git clone https://github.com/MJbae/awesome-emoji-studio.git
@@ -35,10 +45,10 @@ npm install
 npm run dev:web
 ```
 
-桌面版请改用 `npm run dev:electron`，然后在应用中填入 Gemini API 密钥。
+桌面版请使用 `npm run dev:electron`，然后在应用中填入密钥。
 
-[开发指南](docs/development.md) · [设计画廊](docs/process-design/README.md) · [语言审校记录](docs/localization/README.md)
+[流程设计](docs/pipeline.md) · [开发指南](docs/development.md) · [语言审校记录](docs/localization/README.md)
 
 ---
 
-**让灵感有表情。** 如果这个项目给了你新点子，点颗 ⭐ 收藏，下次更好找。
+**喜欢这套流程？** 点颗 ⭐，动手做一套有个性的表情包。
