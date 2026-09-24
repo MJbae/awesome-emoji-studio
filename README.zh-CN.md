@@ -23,7 +23,7 @@
 - **沿用角色设定。** 根据角色细节规划表情，再用同一张参考图指导图片生成。
 - **完成制作流程。** 处理图片、生成标题和标签，再打包为适用于 LINE、KakaoTalk、Telegram 和 OGQ 的文件。
 
-你可以逐步查看结果，并按需重新生成。整套流程可在浏览器或桌面应用中运行，无需搭建后端。AI 请求直接发送给 Google；图片处理和 ZIP 打包都在本地完成。
+你可以逐步查看结果，并按需重新生成。
 
 <details>
 <summary><strong>看看创作界面</strong></summary>
@@ -34,20 +34,7 @@
 
 </details>
 
-## 本地运行
-
-需要 Node.js 22.12+ 和 npm，以及你自己的 [Gemini API 密钥](https://aistudio.google.com/apikey)。
-
-```bash
-git clone https://github.com/MJbae/awesome-emoji-studio.git
-cd awesome-emoji-studio
-npm install
-npm run dev:web
-```
-
-桌面版请使用 `npm run dev:electron`，然后在应用中填入密钥。
-
-[流程设计](docs/pipeline.md) · [开发指南](docs/development.md) · [语言审校记录](docs/localization/README.md)
+[流程设计](docs/pipeline.md) · [语言审校记录](docs/localization/README.md)
 
 ---
 

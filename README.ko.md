@@ -23,7 +23,7 @@
 - **캐릭터의 특징을 살려서.** 외형 명세로 표정과 동작을 기획하고, 공통 참고 이미지로 각 이모티콘을 생성합니다.
 - **내보내기까지 하나의 흐름으로.** 이미지를 다듬고 제목과 태그를 만든 뒤, LINE·카카오톡·Telegram·OGQ용 파일로 묶습니다.
 
-진행 중 결과를 확인하고 필요하면 다시 생성하세요. 별도 서버 구축 없이 브라우저나 데스크톱 앱에서 사용하세요. AI 요청은 Google로 직접 전송되며, 이미지 처리와 ZIP 생성은 사용자의 기기에서 이루어집니다.
+진행 중 결과를 확인하고 필요하면 다시 생성하세요.
 
 <details>
 <summary><strong>스튜디오 화면 보기</strong></summary>
@@ -34,20 +34,7 @@
 
 </details>
 
-## 내 컴퓨터에서 실행하기
-
-Node.js 22.12 이상과 npm, 본인의 [Gemini API 키](https://aistudio.google.com/apikey)가 필요합니다.
-
-```bash
-git clone https://github.com/MJbae/awesome-emoji-studio.git
-cd awesome-emoji-studio
-npm install
-npm run dev:web
-```
-
-데스크톱 앱은 마지막 명령어 대신 `npm run dev:electron`으로 실행하세요. 앱에서 API 키를 입력하면 됩니다.
-
-[파이프라인 설계](docs/pipeline.md) · [개발 가이드](docs/development.md) · [언어 검토 기록](docs/localization/README.md)
+[파이프라인 설계](docs/pipeline.md) · [언어 검토 기록](docs/localization/README.md)
 
 ---
 

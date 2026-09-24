@@ -1,47 +1,52 @@
 {
   "README.md": {
-    "lines": 54,
-    "sha256": "faf34019fb791653cb460e2e13ea81687c498530aa152944c791f662918f1734",
+    "lines": 41,
+    "sha256": "5465c76ae83e309a18b5290d74c4bba1de4b9a1448c0af11888f339b4fc19685",
     "languageReview": "PASS",
     "focus": "pipeline personally designed by MJbae",
     "diagram": "7 nodes, 6 transitions; desktop horizontal / mobile vertical",
     "layoutCheck": "GitHub GFM API HTML checked locally at 1100, 390, and 320 px; responsive image and collapsed preview verified",
-    "cta": "Live Demo (localized)"
+    "cta": "Live Demo (localized)",
+    "localExecutionInstructions": false
   },
   "README.ko.md": {
-    "lines": 54,
-    "sha256": "f2922ce1a852af37fd88116562a2d524f1773272fb3ec33368cdc0c1328efabb",
+    "lines": 41,
+    "sha256": "0bcd99c828001def051cfafbbd3dc84285904d4dcbb14a31ac6570b55b1a41e6",
     "languageReview": "PASS",
     "focus": "pipeline personally designed by MJbae",
     "diagram": "7 nodes, 6 transitions; desktop horizontal / mobile vertical",
     "layoutCheck": "GitHub GFM API HTML checked locally at 1100, 390, and 320 px; responsive image and collapsed preview verified",
-    "cta": "Live Demo (localized)"
+    "cta": "Live Demo (localized)",
+    "localExecutionInstructions": false
   },
   "README.ja.md": {
-    "lines": 54,
-    "sha256": "02ce3c909ec6db4b18b432ee2cb424d8185096338e06db700795cc91161fe32a",
+    "lines": 41,
+    "sha256": "698815e1a0247c434119a9cc23e0ffaf4267e64f9c0e38b0df8a85214e4399b7",
     "languageReview": "PASS",
     "focus": "pipeline personally designed by MJbae",
     "diagram": "7 nodes, 6 transitions; desktop horizontal / mobile vertical",
     "layoutCheck": "GitHub GFM API HTML checked locally at 1100, 390, and 320 px; responsive image and collapsed preview verified",
-    "cta": "Live Demo (localized)"
+    "cta": "Live Demo (localized)",
+    "localExecutionInstructions": false
   },
   "README.zh-CN.md": {
-    "lines": 54,
-    "sha256": "d5560d719fbd4b62295e127981f41d6b94e025464e1adea102d43c0d66909cc5",
+    "lines": 41,
+    "sha256": "ff2b0d694f2674f4b20222d9d0159f40d31dfacb59afbdd94bb4b272bac9e76b",
     "languageReview": "PASS",
     "focus": "pipeline personally designed by MJbae",
     "diagram": "7 nodes, 6 transitions; desktop horizontal / mobile vertical",
     "layoutCheck": "GitHub GFM API HTML checked locally at 1100, 390, and 320 px; responsive image and collapsed preview verified",
-    "cta": "Live Demo (localized)"
+    "cta": "Live Demo (localized)",
+    "localExecutionInstructions": false
   },
   "README.zh-TW.md": {
-    "lines": 54,
-    "sha256": "08b2364596507983393b5786d60a4e17964ff22876477bb7d3f3cba5f29c1b37",
+    "lines": 41,
+    "sha256": "ddbce2b214cefa60950c16a3fbe12257c453e215dd8e63fad47990eafdbd5eb3",
     "languageReview": "PASS",
     "focus": "pipeline personally designed by MJbae",
     "diagram": "7 nodes, 6 transitions; desktop horizontal / mobile vertical",
     "layoutCheck": "GitHub GFM API HTML checked locally at 1100, 390, and 320 px; responsive image and collapsed preview verified",
-    "cta": "Live Demo (localized)"
+    "cta": "Live Demo (localized)",
+    "localExecutionInstructions": false
   }
 }

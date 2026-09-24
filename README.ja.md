@@ -23,7 +23,7 @@
 - **キャラクターの特徴を、次の工程へ。** キャラクターの設定をもとに表情を考え、共通の参考画像を使ってイラストを生成します。
 - **仕上げから書き出しまで。** 画像を処理し、タイトルとタグを生成。LINE・KakaoTalk・Telegram・OGQ向けのファイルをZIPにまとめます。
 
-途中で結果を確認し、必要に応じて生成し直しながら進められます。パイプラインはブラウザでもデスクトップアプリでも動作し、バックエンドの構築は不要です。AIへのリクエストはGoogleに直接送信され、画像処理とZIP作成はお使いの端末内で行われます。
+途中で結果を確認し、必要に応じて生成し直しながら進められます。
 
 <details>
 <summary><strong>アプリ画面を見る</strong></summary>
@@ -34,20 +34,7 @@
 
 </details>
 
-## ローカルで起動
-
-Node.js 22.12以上とnpm、ご自身の[Gemini APIキー](https://aistudio.google.com/apikey)をご用意ください。
-
-```bash
-git clone https://github.com/MJbae/awesome-emoji-studio.git
-cd awesome-emoji-studio
-npm install
-npm run dev:web
-```
-
-デスクトップ版は`npm run dev:electron`で起動します。アプリ内でAPIキーを設定してください。
-
-[パイプラインの設計](docs/pipeline.md) · [開発ガイド](docs/development.md) · [各言語のレビュー](docs/localization/README.md)
+[パイプラインの設計](docs/pipeline.md) · [各言語のレビュー](docs/localization/README.md)
 
 ---
 

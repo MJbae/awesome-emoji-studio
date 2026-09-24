@@ -23,7 +23,7 @@ Pipeline designed by [MJbae](https://github.com/MJbae). AI stages powered by Gem
 - **Carry the character forward.** Character details shape the expression plan, and a shared reference image guides the artwork.
 - **Finish the workflow.** Process images, generate titles and tags, then package for LINE, KakaoTalk, Telegram, and OGQ.
 
-Review the results and regenerate along the way. The pipeline runs in the browser or desktop app, with no backend to set up. AI requests go directly to Google; image processing and ZIP creation stay local.
+Review the results and regenerate along the way.
 
 <details>
 <summary><strong>See the studio</strong></summary>
@@ -34,20 +34,7 @@ Review the results and regenerate along the way. The pipeline runs in the browse
 
 </details>
 
-## Run locally
-
-Node.js 22.12+ and npm. Bring your own [Gemini API key](https://aistudio.google.com/apikey).
-
-```bash
-git clone https://github.com/MJbae/awesome-emoji-studio.git
-cd awesome-emoji-studio
-npm install
-npm run dev:web
-```
-
-For desktop, use `npm run dev:electron`. Enter your key in the app.
-
-[Pipeline design](docs/pipeline.md) · [Developer guide](docs/development.md) · [Language reviews](docs/localization/README.md)
+[Pipeline design](docs/pipeline.md) · [Language reviews](docs/localization/README.md)
 
 ---
 
