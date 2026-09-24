@@ -23,3 +23,7 @@ Reviewed candidates: `/tmp/emoji-pipeline-readme/README.md` and `/tmp/emoji-pipe
 - The screenshot caption identifies mock artwork. No claims of fully automatic production, one-click completion, free API access, guaranteed store approval, or live AI verification are introduced.
 
 No remaining Korean language or factual blockers. English is approved with the two optional clarity edits above.
+
+## Live Demo CTA correction
+
+PASS — reviewed the requested demo-link wording in all five editions: Live Demo / 라이브 데모 / ライブデモ / 在线演示 / 線上示範. The destination and pipeline description are unchanged.

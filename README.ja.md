@@ -6,7 +6,7 @@
 
 パイプラインの設計は[MJbae](https://github.com/MJbae)。AI処理にはGeminiを使用しています。
 
-[**パイプラインを試す ↗**](https://awesome-emoji-studio.vercel.app) · [設計を見る](docs/pipeline.md)
+[**ライブデモ ↗**](https://awesome-emoji-studio.vercel.app) · [設計を見る](docs/pipeline.md)
 
 [English](README.md) · [한국어](README.ko.md) · **日本語** · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 

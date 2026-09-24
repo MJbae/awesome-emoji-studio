@@ -6,7 +6,7 @@
 
 流程由 [MJbae](https://github.com/MJbae) 设计，AI 环节由 Gemini 提供支持。
 
-[**体验制作流程 ↗**](https://awesome-emoji-studio.vercel.app) · [了解流程设计](docs/pipeline.md)
+[**在线演示 ↗**](https://awesome-emoji-studio.vercel.app) · [了解流程设计](docs/pipeline.md)
 
 [English](README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · **简体中文** · [繁體中文](README.zh-TW.md)
 

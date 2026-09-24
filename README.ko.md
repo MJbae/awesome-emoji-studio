@@ -6,7 +6,7 @@
 
 제작 흐름은 [MJbae](https://github.com/MJbae)가 직접 설계했습니다. AI 단계에는 Gemini를 사용합니다.
 
-[**파이프라인 체험하기 ↗**](https://awesome-emoji-studio.vercel.app) · [설계 살펴보기](docs/pipeline.md)
+[**라이브 데모 ↗**](https://awesome-emoji-studio.vercel.app) · [설계 살펴보기](docs/pipeline.md)
 
 [English](README.md) · **한국어** · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md)
 
